@@ -1,3 +1,5 @@
+/*this is a test*/
+
 /* Sample code for Lab 3.1. This code provides a basic start. */
 #include <c8051_SDCC.h>
 #include <stdio.h>
