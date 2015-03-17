@@ -53,7 +53,7 @@ void main(void)
 //
 void Port_Init()
 {
-    P1MDOUT = 0x0F;  //set output pin for CEX0 or >CEX2< in push-pull mode
+    P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
 
 }
 
