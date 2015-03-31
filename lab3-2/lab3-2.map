@@ -1,0 +1,2283 @@
+ASxxxx Linker V03.00 + NoICE + sdld,  page 1.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS                                00000000    00000000 =           0. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000000  l_BIT_BANK                      
+C:   00000000  l_CABS                          
+C:   00000000  l_GSINIT1                       
+C:   00000000  l_GSINIT5                       
+C:   00000000  l_IABS                          
+C:   00000000  l_PSEG                          
+C:   00000000  l_REG_BANK_1                    
+C:   00000000  l_REG_BANK_2                    
+C:   00000000  l_REG_BANK_3                    
+C:   00000000  l_RSEG                          
+C:   00000000  l_RSEG0                         
+C:   00000000  l_RSEG1                         
+C:   00000000  l_XABS                          
+C:   00000000  l_XINIT                         
+C:   00000000  l_XISEG                         
+C:   00000000  l__CODE                         
+C:   00000000  s_BSEG                          
+C:   00000000  s_CABS                          
+C:   00000000  s_DSEG                          
+C:   00000000  s_HOME                          
+C:   00000000  s_IABS                          
+C:   00000000  s_REG_BANK_0                    
+C:   00000000  s_RSEG                          
+C:   00000000  s_RSEG0                         
+C:   00000000  s_RSEG1                         
+C:   00000000  s_XABS                          
+C:   00000001  s_PSEG                          
+C:   00000001  s_XSEG                          
+C:   00000002  l_BSEG_BYTES                    
+C:   00000003  l_GSFINAL                       
+C:   00000003  l_GSINIT0                       
+C:   00000006  l_ISEG                          
+C:   00000006  l_OSEG                          
+C:   00000008  l_REG_BANK_0                    
+C:   00000008  s_REG_BANK_1                    
+C:   00000009  l_GSINIT                        
+C:   0000000A  l_BSEG                          
+C:   0000000A  l_GSINIT2                       
+C:   00000010  s_REG_BANK_2                    
+C:   00000011  s_OSEG                          
+C:   00000017  s_ISEG                          
+C:   00000018  s_BIT_BANK                      
+C:   00000018  s_REG_BANK_3                    
+C:   00000020  s_BSEG_BYTES                    
+C:   00000020  s__CODE                         
+C:   00000022  l_GSINIT3                       
+C:   0000002A  l_GSINIT4                       
+C:   00000050  l_XSEG                          
+C:   00000051  l_HOME                          
+C:   00000051  s_GSINIT0                       
+ASxxxx Linker V03.00 + NoICE + sdld,  page 2.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CABS                                00000000    00000000 =           0. bytes (ABS,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000051  s_XISEG                         
+C:   00000054  s_GSINIT1                       
+C:   00000054  s_GSINIT2                       
+C:   00000055  s_SSEG                          
+C:   0000005E  s_GSINIT3                       
+C:   0000006D  l_CONST                         
+C:   0000007D  l_DSEG                          
+C:   00000080  s_GSINIT4                       
+C:   000000AA  s_GSINIT                        
+C:   000000AA  s_GSINIT5                       
+C:   000000AB  l_SSEG                          
+C:   000000B3  s_GSFINAL                       
+C:   000000B6  s_CSEG                          
+C:   00000100  l_IRAM                          
+C:   00000D9C  l_CSEG                          
+C:   00000E52  s_CONST                         
+C:   00000EBF  s_XINIT                         
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000000  .__.ABS.                           _startup
+     00000080  G$P0$0$0                           lab3_2steering
+     00000080  G$P0_0$0$0                         lab3_2steering
+     00000080  _P0                                lab3_2steering
+     00000080  _P0_0                              lab3_2steering
+     00000081  G$P0_1$0$0                         lab3_2steering
+     00000081  G$SP$0$0                           lab3_2steering
+     00000081  _P0_1                              lab3_2steering
+     00000081  _SP                                lab3_2steering
+     00000082  G$DPL$0$0                          lab3_2steering
+     00000082  G$P0_2$0$0                         lab3_2steering
+     00000082  _DPL                               lab3_2steering
+     00000082  _P0_2                              lab3_2steering
+     00000083  G$BUS_SCL$0$0                      lab3_2steering
+     00000083  G$DPH$0$0                          lab3_2steering
+     00000083  G$P0_3$0$0                         lab3_2steering
+     00000083  _BUS_SCL                           lab3_2steering
+     00000083  _DPH                               lab3_2steering
+     00000083  _P0_3                              lab3_2steering
+     00000084  G$P0_4$0$0                         lab3_2steering
+     00000084  G$P4$0$0                           lab3_2steering
+     00000084  _P0_4                              lab3_2steering
+     00000084  _P4                                lab3_2steering
+     00000085  G$P0_5$0$0                         lab3_2steering
+     00000085  G$P5$0$0                           lab3_2steering
+     00000085  _P0_5                              lab3_2steering
+     00000085  _P5                                lab3_2steering
+     00000086  G$P0_6$0$0                         lab3_2steering
+     00000086  G$P6$0$0                           lab3_2steering
+     00000086  _P0_6                              lab3_2steering
+     00000086  _P6                                lab3_2steering
+     00000087  G$P0_7$0$0                         lab3_2steering
+     00000087  G$PCON$0$0                         lab3_2steering
+     00000087  _P0_7                              lab3_2steering
+     00000087  _PCON                              lab3_2steering
+     00000088  G$IT0$0$0                          lab3_2steering
+     00000088  G$TCON$0$0                         lab3_2steering
+     00000088  _IT0                               lab3_2steering
+     00000088  _TCON                              lab3_2steering
+     00000089  G$IE0$0$0                          lab3_2steering
+     00000089  G$TMOD$0$0                         lab3_2steering
+     00000089  _IE0                               lab3_2steering
+     00000089  _TMOD                              lab3_2steering
+     0000008A  G$IT1$0$0                          lab3_2steering
+     0000008A  G$TL0$0$0                          lab3_2steering
+     0000008A  _IT1                               lab3_2steering
+     0000008A  _TL0                               lab3_2steering
+     0000008B  G$IE1$0$0                          lab3_2steering
+     0000008B  G$TL1$0$0                          lab3_2steering
+     0000008B  _IE1                               lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 4.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000008B  _TL1                               lab3_2steering
+     0000008C  G$TH0$0$0                          lab3_2steering
+     0000008C  G$TR0$0$0                          lab3_2steering
+     0000008C  _TH0                               lab3_2steering
+     0000008C  _TR0                               lab3_2steering
+     0000008D  G$TF0$0$0                          lab3_2steering
+     0000008D  G$TH1$0$0                          lab3_2steering
+     0000008D  _TF0                               lab3_2steering
+     0000008D  _TH1                               lab3_2steering
+     0000008E  G$CKCON$0$0                        lab3_2steering
+     0000008E  G$TR1$0$0                          lab3_2steering
+     0000008E  _CKCON                             lab3_2steering
+     0000008E  _TR1                               lab3_2steering
+     0000008F  G$PSCTL$0$0                        lab3_2steering
+     0000008F  G$TF1$0$0                          lab3_2steering
+     0000008F  _PSCTL                             lab3_2steering
+     0000008F  _TF1                               lab3_2steering
+     00000090  G$P1$0$0                           lab3_2steering
+     00000090  G$P1_0$0$0                         lab3_2steering
+     00000090  _P1                                lab3_2steering
+     00000090  _P1_0                              lab3_2steering
+     00000091  G$P1_1$0$0                         lab3_2steering
+     00000091  G$TMR3CN$0$0                       lab3_2steering
+     00000091  _P1_1                              lab3_2steering
+     00000091  _TMR3CN                            lab3_2steering
+     00000092  G$P1_2$0$0                         lab3_2steering
+     00000092  G$TMR3RLL$0$0                      lab3_2steering
+     00000092  _P1_2                              lab3_2steering
+     00000092  _TMR3RLL                           lab3_2steering
+     00000093  G$P1_3$0$0                         lab3_2steering
+     00000093  G$TMR3RLH$0$0                      lab3_2steering
+     00000093  _P1_3                              lab3_2steering
+     00000093  _TMR3RLH                           lab3_2steering
+     00000094  G$P1_4$0$0                         lab3_2steering
+     00000094  G$TMR3L$0$0                        lab3_2steering
+     00000094  _P1_4                              lab3_2steering
+     00000094  _TMR3L                             lab3_2steering
+     00000095  G$P1_5$0$0                         lab3_2steering
+     00000095  G$TMR3H$0$0                        lab3_2steering
+     00000095  _P1_5                              lab3_2steering
+     00000095  _TMR3H                             lab3_2steering
+     00000096  G$P1_6$0$0                         lab3_2steering
+     00000096  G$P7$0$0                           lab3_2steering
+     00000096  _P1_6                              lab3_2steering
+     00000096  _P7                                lab3_2steering
+     00000097  G$P1_7$0$0                         lab3_2steering
+     00000097  _P1_7                              lab3_2steering
+     00000098  G$RI$0$0                           lab3_2steering
+     00000098  G$RI0$0$0                          lab3_2steering
+     00000098  G$SCON$0$0                         lab3_2steering
+     00000098  G$SCON0$0$0                        lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 5.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000098  _RI                                lab3_2steering
+     00000098  _RI0                               lab3_2steering
+     00000098  _SCON                              lab3_2steering
+     00000098  _SCON0                             lab3_2steering
+     00000099  G$SBUF$0$0                         lab3_2steering
+     00000099  G$SBUF0$0$0                        lab3_2steering
+     00000099  G$TI$0$0                           lab3_2steering
+     00000099  G$TI0$0$0                          lab3_2steering
+     00000099  _SBUF                              lab3_2steering
+     00000099  _SBUF0                             lab3_2steering
+     00000099  _TI                                lab3_2steering
+     00000099  _TI0                               lab3_2steering
+     0000009A  G$RB8$0$0                          lab3_2steering
+     0000009A  G$RB80$0$0                         lab3_2steering
+     0000009A  G$SPI0CFG$0$0                      lab3_2steering
+     0000009A  _RB8                               lab3_2steering
+     0000009A  _RB80                              lab3_2steering
+     0000009A  _SPI0CFG                           lab3_2steering
+     0000009B  G$SPI0DAT$0$0                      lab3_2steering
+     0000009B  G$TB8$0$0                          lab3_2steering
+     0000009B  G$TB80$0$0                         lab3_2steering
+     0000009B  _SPI0DAT                           lab3_2steering
+     0000009B  _TB8                               lab3_2steering
+     0000009B  _TB80                              lab3_2steering
+     0000009C  G$ADC1$0$0                         lab3_2steering
+     0000009C  G$REN$0$0                          lab3_2steering
+     0000009C  G$REN0$0$0                         lab3_2steering
+     0000009C  _ADC1                              lab3_2steering
+     0000009C  _REN                               lab3_2steering
+     0000009C  _REN0                              lab3_2steering
+     0000009D  G$MCE0$0$0                         lab3_2steering
+     0000009D  G$SM2$0$0                          lab3_2steering
+     0000009D  G$SM20$0$0                         lab3_2steering
+     0000009D  G$SPI0CKR$0$0                      lab3_2steering
+     0000009D  _MCE0                              lab3_2steering
+     0000009D  _SM2                               lab3_2steering
+     0000009D  _SM20                              lab3_2steering
+     0000009D  _SPI0CKR                           lab3_2steering
+     0000009E  G$CPT0CN$0$0                       lab3_2steering
+     0000009E  G$SM1$0$0                          lab3_2steering
+     0000009E  G$SM10$0$0                         lab3_2steering
+     0000009E  _CPT0CN                            lab3_2steering
+     0000009E  _SM1                               lab3_2steering
+     0000009E  _SM10                              lab3_2steering
+     0000009F  G$CPT1CN$0$0                       lab3_2steering
+     0000009F  G$S0MODE$0$0                       lab3_2steering
+     0000009F  G$SM0$0$0                          lab3_2steering
+     0000009F  G$SM00$0$0                         lab3_2steering
+     0000009F  _CPT1CN                            lab3_2steering
+     0000009F  _S0MODE                            lab3_2steering
+     0000009F  _SM0                               lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 6.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000009F  _SM00                              lab3_2steering
+     000000A0  G$P2$0$0                           lab3_2steering
+     000000A0  G$P2_0$0$0                         lab3_2steering
+     000000A0  _P2                                lab3_2steering
+     000000A0  _P2_0                              lab3_2steering
+     000000A1  G$EMI0TC$0$0                       lab3_2steering
+     000000A1  G$P2_1$0$0                         lab3_2steering
+     000000A1  _EMI0TC                            lab3_2steering
+     000000A1  _P2_1                              lab3_2steering
+     000000A2  G$P2_2$0$0                         lab3_2steering
+     000000A2  _P2_2                              lab3_2steering
+     000000A3  G$EMI0CF$0$0                       lab3_2steering
+     000000A3  G$P2_3$0$0                         lab3_2steering
+     000000A3  _EMI0CF                            lab3_2steering
+     000000A3  _P2_3                              lab3_2steering
+     000000A4  G$P0MDOUT$0$0                      lab3_2steering
+     000000A4  G$P2_4$0$0                         lab3_2steering
+     000000A4  G$PRT0CF$0$0                       lab3_2steering
+     000000A4  _P0MDOUT                           lab3_2steering
+     000000A4  _P2_4                              lab3_2steering
+     000000A4  _PRT0CF                            lab3_2steering
+     000000A5  G$P1MDOUT$0$0                      lab3_2steering
+     000000A5  G$P2_5$0$0                         lab3_2steering
+     000000A5  G$PRT1CF$0$0                       lab3_2steering
+     000000A5  _P1MDOUT                           lab3_2steering
+     000000A5  _P2_5                              lab3_2steering
+     000000A5  _PRT1CF                            lab3_2steering
+     000000A6  G$P2MDOUT$0$0                      lab3_2steering
+     000000A6  G$P2_6$0$0                         lab3_2steering
+     000000A6  G$PRT2CF$0$0                       lab3_2steering
+     000000A6  _P2MDOUT                           lab3_2steering
+     000000A6  _P2_6                              lab3_2steering
+     000000A6  _PRT2CF                            lab3_2steering
+     000000A7  G$P2_7$0$0                         lab3_2steering
+     000000A7  G$P3MDOUT$0$0                      lab3_2steering
+     000000A7  G$PRT3CF$0$0                       lab3_2steering
+     000000A7  _P2_7                              lab3_2steering
+     000000A7  _P3MDOUT                           lab3_2steering
+     000000A7  _PRT3CF                            lab3_2steering
+     000000A8  G$EX0$0$0                          lab3_2steering
+     000000A8  G$IE$0$0                           lab3_2steering
+     000000A8  _EX0                               lab3_2steering
+     000000A8  _IE                                lab3_2steering
+     000000A9  G$ET0$0$0                          lab3_2steering
+     000000A9  G$SADDR0$0$0                       lab3_2steering
+     000000A9  _ET0                               lab3_2steering
+     000000A9  _SADDR0                            lab3_2steering
+     000000AA  G$ADC1CN$0$0                       lab3_2steering
+     000000AA  G$EX1$0$0                          lab3_2steering
+     000000AA  _ADC1CN                            lab3_2steering
+     000000AA  _EX1                               lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 7.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000AB  G$ADC1CF$0$0                       lab3_2steering
+     000000AB  G$ET1$0$0                          lab3_2steering
+     000000AB  _ADC1CF                            lab3_2steering
+     000000AB  _ET1                               lab3_2steering
+     000000AC  G$AMX1SL$0$0                       lab3_2steering
+     000000AC  G$ES$0$0                           lab3_2steering
+     000000AC  G$ES0$0$0                          lab3_2steering
+     000000AC  _AMX1SL                            lab3_2steering
+     000000AC  _ES                                lab3_2steering
+     000000AC  _ES0                               lab3_2steering
+     000000AD  G$ET2$0$0                          lab3_2steering
+     000000AD  G$P3IF$0$0                         lab3_2steering
+     000000AD  _ET2                               lab3_2steering
+     000000AD  _P3IF                              lab3_2steering
+     000000AE  G$SADEN1$0$0                       lab3_2steering
+     000000AE  _SADEN1                            lab3_2steering
+     000000AF  G$EA$0$0                           lab3_2steering
+     000000AF  G$EMI0CN$0$0                       lab3_2steering
+     000000AF  G$_XPAGE$0$0                       lab3_2steering
+     000000AF  _EA                                lab3_2steering
+     000000AF  _EMI0CN                            lab3_2steering
+     000000AF  __XPAGE                            lab3_2steering
+     000000B0  G$P3$0$0                           lab3_2steering
+     000000B0  G$P3_0$0$0                         lab3_2steering
+     000000B0  _P3                                lab3_2steering
+     000000B0  _P3_0                              lab3_2steering
+     000000B1  G$OSCXCN$0$0                       lab3_2steering
+     000000B1  G$P3_1$0$0                         lab3_2steering
+     000000B1  _OSCXCN                            lab3_2steering
+     000000B1  _P3_1                              lab3_2steering
+     000000B2  G$OSCICN$0$0                       lab3_2steering
+     000000B2  G$P3_2$0$0                         lab3_2steering
+     000000B2  _OSCICN                            lab3_2steering
+     000000B2  _P3_2                              lab3_2steering
+     000000B3  G$P3_3$0$0                         lab3_2steering
+     000000B3  _P3_3                              lab3_2steering
+     000000B4  G$P3_4$0$0                         lab3_2steering
+     000000B4  _P3_4                              lab3_2steering
+     000000B5  G$P3_5$0$0                         lab3_2steering
+     000000B5  G$P74OUT$0$0                       lab3_2steering
+     000000B5  _P3_5                              lab3_2steering
+     000000B5  _P74OUT                            lab3_2steering
+     000000B6  G$FLSCL$0$0                        lab3_2steering
+     000000B6  G$P3_6$0$0                         lab3_2steering
+     000000B6  _FLSCL                             lab3_2steering
+     000000B6  _P3_6                              lab3_2steering
+     000000B7  G$FLACL$0$0                        lab3_2steering
+     000000B7  G$P3_7$0$0                         lab3_2steering
+     000000B7  _FLACL                             lab3_2steering
+     000000B7  _P3_7                              lab3_2steering
+     000000B8  G$IP$0$0                           lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000B8  G$PX0$0$0                          lab3_2steering
+     000000B8  _IP                                lab3_2steering
+     000000B8  _PX0                               lab3_2steering
+     000000B9  G$PT0$0$0                          lab3_2steering
+     000000B9  G$SADEN0$0$0                       lab3_2steering
+     000000B9  _PT0                               lab3_2steering
+     000000B9  _SADEN0                            lab3_2steering
+     000000BA  G$AMX0CF$0$0                       lab3_2steering
+     000000BA  G$PX1$0$0                          lab3_2steering
+     000000BA  _AMX0CF                            lab3_2steering
+     000000BA  _PX1                               lab3_2steering
+     000000BB  G$AMX0SL$0$0                       lab3_2steering
+     000000BB  G$PT1$0$0                          lab3_2steering
+     000000BB  _AMX0SL                            lab3_2steering
+     000000BB  _PT1                               lab3_2steering
+     000000BC  G$ADC0CF$0$0                       lab3_2steering
+     000000BC  G$PS$0$0                           lab3_2steering
+     000000BC  G$PS0$0$0                          lab3_2steering
+     000000BC  _ADC0CF                            lab3_2steering
+     000000BC  _PS                                lab3_2steering
+     000000BC  _PS0                               lab3_2steering
+     000000BD  G$P1MDIN$0$0                       lab3_2steering
+     000000BD  G$PT2$0$0                          lab3_2steering
+     000000BD  _P1MDIN                            lab3_2steering
+     000000BD  _PT2                               lab3_2steering
+     000000BE  G$ADC0L$0$0                        lab3_2steering
+     000000BE  _ADC0L                             lab3_2steering
+     000000BF  G$ADC0H$0$0                        lab3_2steering
+     000000BF  _ADC0H                             lab3_2steering
+     000000C0  G$BUS_TOE$0$0                      lab3_2steering
+     000000C0  G$SMB0CN$0$0                       lab3_2steering
+     000000C0  G$SMBTOE$0$0                       lab3_2steering
+     000000C0  _BUS_TOE                           lab3_2steering
+     000000C0  _SMB0CN                            lab3_2steering
+     000000C0  _SMBTOE                            lab3_2steering
+     000000C1  G$BUS_FTE$0$0                      lab3_2steering
+     000000C1  G$SMB0STA$0$0                      lab3_2steering
+     000000C1  G$SMBFTE$0$0                       lab3_2steering
+     000000C1  _BUS_FTE                           lab3_2steering
+     000000C1  _SMB0STA                           lab3_2steering
+     000000C1  _SMBFTE                            lab3_2steering
+     000000C2  G$AA$0$0                           lab3_2steering
+     000000C2  G$BUS_AA$0$0                       lab3_2steering
+     000000C2  G$SMB0DAT$0$0                      lab3_2steering
+     000000C2  _AA                                lab3_2steering
+     000000C2  _BUS_AA                            lab3_2steering
+     000000C2  _SMB0DAT                           lab3_2steering
+     000000C3  G$BUS_INT$0$0                      lab3_2steering
+     000000C3  G$SI$0$0                           lab3_2steering
+     000000C3  G$SMB0ADR$0$0                      lab3_2steering
+     000000C3  _BUS_INT                           lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 9.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000C3  _SI                                lab3_2steering
+     000000C3  _SMB0ADR                           lab3_2steering
+     000000C4  G$ADC0GTL$0$0                      lab3_2steering
+     000000C4  G$BUS_STOP$0$0                     lab3_2steering
+     000000C4  G$STO$0$0                          lab3_2steering
+     000000C4  _ADC0GTL                           lab3_2steering
+     000000C4  _BUS_STOP                          lab3_2steering
+     000000C4  _STO                               lab3_2steering
+     000000C5  G$ADC0GTH$0$0                      lab3_2steering
+     000000C5  G$BUS_START$0$0                    lab3_2steering
+     000000C5  G$STA$0$0                          lab3_2steering
+     000000C5  _ADC0GTH                           lab3_2steering
+     000000C5  _BUS_START                         lab3_2steering
+     000000C5  _STA                               lab3_2steering
+     000000C6  G$ADC0LTL$0$0                      lab3_2steering
+     000000C6  G$BUS_EN$0$0                       lab3_2steering
+     000000C6  G$ENSMB$0$0                        lab3_2steering
+     000000C6  _ADC0LTL                           lab3_2steering
+     000000C6  _BUS_EN                            lab3_2steering
+     000000C6  _ENSMB                             lab3_2steering
+     000000C7  G$ADC0LTH$0$0                      lab3_2steering
+     000000C7  G$BUSY$0$0                         lab3_2steering
+     000000C7  G$BUS_BUSY$0$0                     lab3_2steering
+     000000C7  _ADC0LTH                           lab3_2steering
+     000000C7  _BUSY                              lab3_2steering
+     000000C7  _BUS_BUSY                          lab3_2steering
+     000000C8  G$CPRL2$0$0                        lab3_2steering
+     000000C8  G$T2CON$0$0                        lab3_2steering
+     000000C8  _CPRL2                             lab3_2steering
+     000000C8  _T2CON                             lab3_2steering
+     000000C9  G$CT2$0$0                          lab3_2steering
+     000000C9  G$T4CON$0$0                        lab3_2steering
+     000000C9  _CT2                               lab3_2steering
+     000000C9  _T4CON                             lab3_2steering
+     000000CA  G$RCAP2L$0$0                       lab3_2steering
+     000000CA  G$TR2$0$0                          lab3_2steering
+     000000CA  _RCAP2L                            lab3_2steering
+     000000CA  _TR2                               lab3_2steering
+     000000CB  G$EXEN2$0$0                        lab3_2steering
+     000000CB  G$RCAP2H$0$0                       lab3_2steering
+     000000CB  _EXEN2                             lab3_2steering
+     000000CB  _RCAP2H                            lab3_2steering
+     000000CC  G$TCLK$0$0                         lab3_2steering
+     000000CC  G$TL2$0$0                          lab3_2steering
+     000000CC  _TCLK                              lab3_2steering
+     000000CC  _TL2                               lab3_2steering
+     000000CD  G$RCLK$0$0                         lab3_2steering
+     000000CD  G$TH2$0$0                          lab3_2steering
+     000000CD  _RCLK                              lab3_2steering
+     000000CD  _TH2                               lab3_2steering
+     000000CE  G$EXF2$0$0                         lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 10.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000CE  _EXF2                              lab3_2steering
+     000000CF  G$SMB0CR$0$0                       lab3_2steering
+     000000CF  G$TF2$0$0                          lab3_2steering
+     000000CF  _SMB0CR                            lab3_2steering
+     000000CF  _TF2                               lab3_2steering
+     000000D0  G$P$0$0                            lab3_2steering
+     000000D0  G$PSW$0$0                          lab3_2steering
+     000000D0  _P                                 lab3_2steering
+     000000D0  _PSW                               lab3_2steering
+     000000D1  G$F1$0$0                           lab3_2steering
+     000000D1  G$REF0CN$0$0                       lab3_2steering
+     000000D1  _F1                                lab3_2steering
+     000000D1  _REF0CN                            lab3_2steering
+     000000D2  G$DAC0L$0$0                        lab3_2steering
+     000000D2  G$OV$0$0                           lab3_2steering
+     000000D2  _DAC0L                             lab3_2steering
+     000000D2  _OV                                lab3_2steering
+     000000D3  G$DAC0H$0$0                        lab3_2steering
+     000000D3  G$RS0$0$0                          lab3_2steering
+     000000D3  _DAC0H                             lab3_2steering
+     000000D3  _RS0                               lab3_2steering
+     000000D4  G$DAC0CN$0$0                       lab3_2steering
+     000000D4  G$RS1$0$0                          lab3_2steering
+     000000D4  _DAC0CN                            lab3_2steering
+     000000D4  _RS1                               lab3_2steering
+     000000D5  G$DAC1L$0$0                        lab3_2steering
+     000000D5  G$F0$0$0                           lab3_2steering
+     000000D5  _DAC1L                             lab3_2steering
+     000000D5  _F0                                lab3_2steering
+     000000D6  G$AC$0$0                           lab3_2steering
+     000000D6  G$DAC1H$0$0                        lab3_2steering
+     000000D6  _AC                                lab3_2steering
+     000000D6  _DAC1H                             lab3_2steering
+     000000D7  G$CY$0$0                           lab3_2steering
+     000000D7  G$DAC1CN$0$0                       lab3_2steering
+     000000D7  _CY                                lab3_2steering
+     000000D7  _DAC1CN                            lab3_2steering
+     000000D8  G$CCF0$0$0                         lab3_2steering
+     000000D8  G$PCA0CN$0$0                       lab3_2steering
+     000000D8  _CCF0                              lab3_2steering
+     000000D8  _PCA0CN                            lab3_2steering
+     000000D9  G$CCF1$0$0                         lab3_2steering
+     000000D9  G$PCA0MD$0$0                       lab3_2steering
+     000000D9  _CCF1                              lab3_2steering
+     000000D9  _PCA0MD                            lab3_2steering
+     000000DA  G$CCF2$0$0                         lab3_2steering
+     000000DA  G$PCA0CPM0$0$0                     lab3_2steering
+     000000DA  _CCF2                              lab3_2steering
+     000000DA  _PCA0CPM0                          lab3_2steering
+     000000DB  G$CCF3$0$0                         lab3_2steering
+     000000DB  G$PCA0CPM1$0$0                     lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 11.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000DB  _CCF3                              lab3_2steering
+     000000DB  _PCA0CPM1                          lab3_2steering
+     000000DC  G$CCF4$0$0                         lab3_2steering
+     000000DC  G$PCA0CPM2$0$0                     lab3_2steering
+     000000DC  _CCF4                              lab3_2steering
+     000000DC  _PCA0CPM2                          lab3_2steering
+     000000DD  G$PCA0CPM3$0$0                     lab3_2steering
+     000000DD  _PCA0CPM3                          lab3_2steering
+     000000DE  G$CR$0$0                           lab3_2steering
+     000000DE  G$PCA0CPM4$0$0                     lab3_2steering
+     000000DE  _CR                                lab3_2steering
+     000000DE  _PCA0CPM4                          lab3_2steering
+     000000DF  G$CF$0$0                           lab3_2steering
+     000000DF  _CF                                lab3_2steering
+     000000E0  G$ACC$0$0                          lab3_2steering
+     000000E0  _ACC                               lab3_2steering
+     000000E1  G$XBR0$0$0                         lab3_2steering
+     000000E1  _XBR0                              lab3_2steering
+     000000E2  G$XBR1$0$0                         lab3_2steering
+     000000E2  _XBR1                              lab3_2steering
+     000000E3  G$XBR2$0$0                         lab3_2steering
+     000000E3  _XBR2                              lab3_2steering
+     000000E4  G$RCAP4L$0$0                       lab3_2steering
+     000000E4  _RCAP4L                            lab3_2steering
+     000000E5  G$RCAP4H$0$0                       lab3_2steering
+     000000E5  _RCAP4H                            lab3_2steering
+     000000E6  G$EIE1$0$0                         lab3_2steering
+     000000E6  _EIE1                              lab3_2steering
+     000000E7  G$EIE2$0$0                         lab3_2steering
+     000000E7  _EIE2                              lab3_2steering
+     000000E8  G$AD0LJST$0$0                      lab3_2steering
+     000000E8  G$ADC0CN$0$0                       lab3_2steering
+     000000E8  G$ADLJST$0$0                       lab3_2steering
+     000000E8  _AD0LJST                           lab3_2steering
+     000000E8  _ADC0CN                            lab3_2steering
+     000000E8  _ADLJST                            lab3_2steering
+     000000E9  G$AD0WINT$0$0                      lab3_2steering
+     000000E9  G$ADWINT$0$0                       lab3_2steering
+     000000E9  G$PCA0L$0$0                        lab3_2steering
+     000000E9  _AD0WINT                           lab3_2steering
+     000000E9  _ADWINT                            lab3_2steering
+     000000E9  _PCA0L                             lab3_2steering
+     000000EA  G$AD0CM0$0$0                       lab3_2steering
+     000000EA  G$ADSTM0$0$0                       lab3_2steering
+     000000EA  G$PCA0CPL0$0$0                     lab3_2steering
+     000000EA  _AD0CM0                            lab3_2steering
+     000000EA  _ADSTM0                            lab3_2steering
+     000000EA  _PCA0CPL0                          lab3_2steering
+     000000EB  G$AD0CM1$0$0                       lab3_2steering
+     000000EB  G$ADSTM1$0$0                       lab3_2steering
+     000000EB  G$PCA0CPL1$0$0                     lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 12.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000EB  _AD0CM1                            lab3_2steering
+     000000EB  _ADSTM1                            lab3_2steering
+     000000EB  _PCA0CPL1                          lab3_2steering
+     000000EC  G$AD0BUSY$0$0                      lab3_2steering
+     000000EC  G$ADBUSY$0$0                       lab3_2steering
+     000000EC  G$PCA0CPL2$0$0                     lab3_2steering
+     000000EC  _AD0BUSY                           lab3_2steering
+     000000EC  _ADBUSY                            lab3_2steering
+     000000EC  _PCA0CPL2                          lab3_2steering
+     000000ED  G$AD0INT$0$0                       lab3_2steering
+     000000ED  G$ADCINT$0$0                       lab3_2steering
+     000000ED  G$PCA0CPL3$0$0                     lab3_2steering
+     000000ED  _AD0INT                            lab3_2steering
+     000000ED  _ADCINT                            lab3_2steering
+     000000ED  _PCA0CPL3                          lab3_2steering
+     000000EE  G$AD0TM$0$0                        lab3_2steering
+     000000EE  G$ADCTM$0$0                        lab3_2steering
+     000000EE  G$PCA0CPL4$0$0                     lab3_2steering
+     000000EE  _AD0TM                             lab3_2steering
+     000000EE  _ADCTM                             lab3_2steering
+     000000EE  _PCA0CPL4                          lab3_2steering
+     000000EF  G$AD0EN$0$0                        lab3_2steering
+     000000EF  G$ADCEN$0$0                        lab3_2steering
+     000000EF  G$RSTSRC$0$0                       lab3_2steering
+     000000EF  _AD0EN                             lab3_2steering
+     000000EF  _ADCEN                             lab3_2steering
+     000000EF  _RSTSRC                            lab3_2steering
+     000000F0  G$B$0$0                            lab3_2steering
+     000000F0  _B                                 lab3_2steering
+     000000F1  G$SCON1$0$0                        lab3_2steering
+     000000F1  _SCON1                             lab3_2steering
+     000000F2  G$SBUF1$0$0                        lab3_2steering
+     000000F2  _SBUF1                             lab3_2steering
+     000000F3  G$SADDR1$0$0                       lab3_2steering
+     000000F3  _SADDR1                            lab3_2steering
+     000000F4  G$TL4$0$0                          lab3_2steering
+     000000F4  _TL4                               lab3_2steering
+     000000F5  G$TH4$0$0                          lab3_2steering
+     000000F5  _B_5                               _gptrget
+     000000F5  _TH4                               lab3_2steering
+     000000F6  G$EIP1$0$0                         lab3_2steering
+     000000F6  _B_6                               _gptrget
+     000000F6  _EIP1                              lab3_2steering
+     000000F7  G$EIP2$0$0                         lab3_2steering
+     000000F7  _B_7                               _gptrget
+     000000F7  _EIP2                              lab3_2steering
+     000000F8  G$SPI0CN$0$0                       lab3_2steering
+     000000F8  G$SPIEN$0$0                        lab3_2steering
+     000000F8  _SPI0CN                            lab3_2steering
+     000000F8  _SPIEN                             lab3_2steering
+     000000F9  G$MSTEN$0$0                        lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 13.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     000000F9  G$PCA0H$0$0                        lab3_2steering
+     000000F9  _MSTEN                             lab3_2steering
+     000000F9  _PCA0H                             lab3_2steering
+     000000FA  G$PCA0CPH0$0$0                     lab3_2steering
+     000000FA  G$SLVSEL$0$0                       lab3_2steering
+     000000FA  _PCA0CPH0                          lab3_2steering
+     000000FA  _SLVSEL                            lab3_2steering
+     000000FB  G$PCA0CPH1$0$0                     lab3_2steering
+     000000FB  G$TXBSY$0$0                        lab3_2steering
+     000000FB  _PCA0CPH1                          lab3_2steering
+     000000FB  _TXBSY                             lab3_2steering
+     000000FC  G$PCA0CPH2$0$0                     lab3_2steering
+     000000FC  G$RXOVRN$0$0                       lab3_2steering
+     000000FC  _PCA0CPH2                          lab3_2steering
+     000000FC  _RXOVRN                            lab3_2steering
+     000000FD  G$MODF$0$0                         lab3_2steering
+     000000FD  G$PCA0CPH3$0$0                     lab3_2steering
+     000000FD  _MODF                              lab3_2steering
+     000000FD  _PCA0CPH3                          lab3_2steering
+     000000FE  G$PCA0CPH4$0$0                     lab3_2steering
+     000000FE  G$WCOL$0$0                         lab3_2steering
+     000000FE  _PCA0CPH4                          lab3_2steering
+     000000FE  _WCOL                              lab3_2steering
+     000000FF  G$SPIF$0$0                         lab3_2steering
+     000000FF  G$WDTCN$0$0                        lab3_2steering
+     000000FF  _SPIF                              lab3_2steering
+     000000FF  _WDTCN                             lab3_2steering
+     00008C8A  G$TMR0$0$0                         lab3_2steering
+     00008C8A  _TMR0                              lab3_2steering
+     00008D8B  G$TMR1$0$0                         lab3_2steering
+     00008D8B  _TMR1                              lab3_2steering
+     00009392  G$TMR3RL$0$0                       lab3_2steering
+     00009392  _TMR3RL                            lab3_2steering
+     00009594  G$TMR3$0$0                         lab3_2steering
+     00009594  _TMR3                              lab3_2steering
+     0000BFBE  G$ADC0$0$0                         lab3_2steering
+     0000BFBE  _ADC0                              lab3_2steering
+     0000C5C4  G$ADC0GT$0$0                       lab3_2steering
+     0000C5C4  _ADC0GT                            lab3_2steering
+     0000C7C6  G$ADC0LT$0$0                       lab3_2steering
+     0000C7C6  _ADC0LT                            lab3_2steering
+     0000CBCA  G$RCAP2$0$0                        lab3_2steering
+     0000CBCA  _RCAP2                             lab3_2steering
+     0000CDCC  G$TMR2$0$0                         lab3_2steering
+     0000CDCC  _TMR2                              lab3_2steering
+     0000D3D2  G$DAC0$0$0                         lab3_2steering
+     0000D3D2  _DAC0                              lab3_2steering
+     0000D6D5  G$DAC1$0$0                         lab3_2steering
+     0000D6D5  _DAC1                              lab3_2steering
+     0000E5E4  G$RCAP4$0$0                        lab3_2steering
+     0000E5E4  _RCAP4                             lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 14.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+.  .ABS.                            00000000    00000000 =           0. bytes (ABS,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     0000F5F4  G$TMR4$0$0                         lab3_2steering
+     0000F5F4  _TMR4                              lab3_2steering
+     0000F9E9  G$PCA0$0$0                         lab3_2steering
+     0000F9E9  _PCA0                              lab3_2steering
+     0000FAEA  G$PCA0CP0$0$0                      lab3_2steering
+     0000FAEA  _PCA0CP0                           lab3_2steering
+     0000FBEB  G$PCA0CP1$0$0                      lab3_2steering
+     0000FBEB  _PCA0CP1                           lab3_2steering
+     0000FCEC  G$PCA0CP2$0$0                      lab3_2steering
+     0000FCEC  _PCA0CP2                           lab3_2steering
+     0000FDED  G$PCA0CP3$0$0                      lab3_2steering
+     0000FDED  _PCA0CP3                           lab3_2steering
+     0000FEEE  G$PCA0CP4$0$0                      lab3_2steering
+     0000FEEE  _PCA0CP4                           lab3_2steering
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 15.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+BSEG_BYTES                          00000020    00000002 =           2. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 16.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+REG_BANK_0                          00000000    00000008 =           8. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 17.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+DSEG                                00000000    0000007D =         125. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000008  _vsprintf_PARM_2                   sprintf
+     0000000B  _vsprintf_PARM_3                   sprintf
+     0000000F  _bp                                _bp
+     00000010  _vprintf_PARM_2                    vprintf
+     00000022  Llab3_2steering.lcd_clear$NumByt   lab3_2steering
+     00000023  Llab3_2steering.lcd_clear$Cmd$1$   lab3_2steering
+     00000025  Llab3_2steering.read_keypad$Data   lab3_2steering
+     00000027  Llab3_2steering.i2c_write_data$s   lab3_2steering
+     00000027  _i2c_write_data_PARM_2             lab3_2steering
+     00000028  Llab3_2steering.i2c_write_data$b   lab3_2steering
+     00000028  _i2c_write_data_PARM_3             lab3_2steering
+     0000002B  Llab3_2steering.i2c_write_data$n   lab3_2steering
+     0000002B  _i2c_write_data_PARM_4             lab3_2steering
+     0000002C  Llab3_2steering.i2c_read_data$st   lab3_2steering
+     0000002C  _i2c_read_data_PARM_2              lab3_2steering
+     0000002D  Llab3_2steering.i2c_read_data$bu   lab3_2steering
+     0000002D  _i2c_read_data_PARM_3              lab3_2steering
+     00000030  Llab3_2steering.i2c_read_data$nu   lab3_2steering
+     00000030  _i2c_read_data_PARM_4              lab3_2steering
+     00000031  Llab3_2steering.Accel_Init$Data2   lab3_2steering
+     00000032  G$STR_PW$0$0                       lab3_2steering
+     00000032  _STR_PW                            lab3_2steering
+     00000034  G$count$0$0                        lab3_2steering
+     00000034  _count                             lab3_2steering
+     00000036  G$input$0$0                        lab3_2steering
+     00000036  _input                             lab3_2steering
+     00000037  G$answer$0$0                       lab3_2steering
+     00000037  _answer                            lab3_2steering
+     00000039  Llab3_2steering.ReadCompass$Data   lab3_2steering
+     00000047  __print_format_PARM_2              printf_large
+     0000004A  __print_format_PARM_3              printf_large
+     0000004D  __print_format_PARM_4              printf_large
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+OSEG                                00000011    00000006 =           6. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000011  __gptrput_PARM_2                   _gptrput
+     00000011  __mulint_PARM_2                    _mulint
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+ISEG                                00000017    00000006 =           6. bytes (REL,CON)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+SSEG                                00000055    000000AB =         171. bytes (REL,OVR)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+     00000055  __start__stack                     lab3_2steering
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 21.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+XSEG                                00000001    00000050 =          80. bytes (REL,CON,XDATA)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+D:   00000001  Llab3_2steering.lcd_print$text$1   lab3_2steering
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+HOME                                00000000    00000051 =          81. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000000  A$lab3-2steering$1034              lab3_2steering
+C:   00000003  A$lab3-2steering$1035              lab3_2steering
+C:   0000000B  A$lab3-2steering$1037              lab3_2steering
+C:   00000013  A$lab3-2steering$1039              lab3_2steering
+C:   0000001B  A$lab3-2steering$1041              lab3_2steering
+C:   00000023  A$lab3-2steering$1043              lab3_2steering
+C:   0000002B  A$lab3-2steering$1045              lab3_2steering
+C:   00000033  A$lab3-2steering$1047              lab3_2steering
+C:   0000003B  A$lab3-2steering$1049              lab3_2steering
+C:   00000043  A$lab3-2steering$1051              lab3_2steering
+C:   0000004B  A$lab3-2steering$1053              lab3_2steering
+C:   0000004E  A$lab3-2steering$1084              lab3_2steering
+C:   0000004E  __sdcc_program_startup             lab3_2steering
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 23.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT0                             00000051    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000051  __sdcc_gsinit_startup              
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT2                             00000054    0000000A =          10. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+ASxxxx Linker V03.00 + NoICE + sdld,  page 25.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT3                             0000005E    00000022 =          34. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000005E  __mcs51_genXINIT                   
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 26.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT4                             00000080    0000002A =          42. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000080  __mcs51_genRAMCLEAR                
+C:   00000086  __mcs51_genXRAMCLEAR               
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 27.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSINIT                              000000AA    00000009 =           9. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000AA  A$lab3-2steering$1069              lab3_2steering
+C:   000000AA  C$lab3_2steering.c$17$1$124        lab3_2steering
+C:   000000AB  A$lab3-2steering$1070              lab3_2steering
+C:   000000AD  A$lab3-2steering$1071              lab3_2steering
+C:   000000AF  A$lab3-2steering$1074              lab3_2steering
+C:   000000AF  C$lab3_2steering.c$18$1$124        lab3_2steering
+C:   000000B1  A$lab3-2steering$1075              lab3_2steering
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+GSFINAL                             000000B3    00000003 =           3. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000B3  A$lab3-2steering$1077              lab3_2steering
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000B6  A$lab3-2steering$1112              lab3_2steering
+C:   000000B6  C$c8051_SDCC.h$42$0$0              lab3_2steering
+C:   000000B6  C$c8051_SDCC.h$46$1$16             lab3_2steering
+C:   000000B6  G$SYSCLK_Init$0$0                  lab3_2steering
+C:   000000B6  _SYSCLK_Init                       lab3_2steering
+C:   000000B9  A$lab3-2steering$1115              lab3_2steering
+C:   000000B9  C$c8051_SDCC.h$49$1$16             lab3_2steering
+C:   000000BB  A$lab3-2steering$1116              lab3_2steering
+C:   000000BD  A$lab3-2steering$1118              lab3_2steering
+C:   000000BE  A$lab3-2steering$1119              lab3_2steering
+C:   000000C1  A$lab3-2steering$1120              lab3_2steering
+C:   000000C2  A$lab3-2steering$1122              lab3_2steering
+C:   000000C3  A$lab3-2steering$1123              lab3_2steering
+C:   000000C4  A$lab3-2steering$1124              lab3_2steering
+C:   000000C6  A$lab3-2steering$1128              lab3_2steering
+C:   000000C6  C$c8051_SDCC.h$51$1$16             lab3_2steering
+C:   000000C8  A$lab3-2steering$1129              lab3_2steering
+C:   000000CB  A$lab3-2steering$1132              lab3_2steering
+C:   000000CB  C$c8051_SDCC.h$53$1$16             lab3_2steering
+C:   000000CE  A$lab3-2steering$1135              lab3_2steering
+C:   000000CE  C$c8051_SDCC.h$56$1$16             lab3_2steering
+C:   000000CE  XG$SYSCLK_Init$0$0                 lab3_2steering
+C:   000000CF  A$lab3-2steering$1148              lab3_2steering
+C:   000000CF  C$c8051_SDCC.h$64$1$16             lab3_2steering
+C:   000000CF  C$c8051_SDCC.h$66$1$18             lab3_2steering
+C:   000000CF  G$UART0_Init$0$0                   lab3_2steering
+C:   000000CF  _UART0_Init                        lab3_2steering
+C:   000000D2  A$lab3-2steering$1151              lab3_2steering
+C:   000000D2  C$c8051_SDCC.h$67$1$18             lab3_2steering
+C:   000000D5  A$lab3-2steering$1154              lab3_2steering
+C:   000000D5  C$c8051_SDCC.h$68$1$18             lab3_2steering
+C:   000000D8  A$lab3-2steering$1157              lab3_2steering
+C:   000000D8  C$c8051_SDCC.h$69$1$18             lab3_2steering
+C:   000000DA  A$lab3-2steering$1160              lab3_2steering
+C:   000000DA  C$c8051_SDCC.h$70$1$18             lab3_2steering
+C:   000000DD  A$lab3-2steering$1163              lab3_2steering
+C:   000000DD  C$c8051_SDCC.h$71$1$18             lab3_2steering
+C:   000000E0  A$lab3-2steering$1166              lab3_2steering
+C:   000000E0  C$c8051_SDCC.h$73$1$18             lab3_2steering
+C:   000000E2  A$lab3-2steering$1169              lab3_2steering
+C:   000000E2  C$c8051_SDCC.h$74$1$18             lab3_2steering
+C:   000000E5  A$lab3-2steering$1172              lab3_2steering
+C:   000000E5  C$c8051_SDCC.h$75$1$18             lab3_2steering
+C:   000000E5  XG$UART0_Init$0$0                  lab3_2steering
+C:   000000E6  A$lab3-2steering$1185              lab3_2steering
+C:   000000E6  C$c8051_SDCC.h$83$1$18             lab3_2steering
+C:   000000E6  C$c8051_SDCC.h$85$1$20             lab3_2steering
+C:   000000E6  G$Sys_Init$0$0                     lab3_2steering
+C:   000000E6  _Sys_Init                          lab3_2steering
+C:   000000E9  A$lab3-2steering$1188              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000000E9  C$c8051_SDCC.h$86$1$20             lab3_2steering
+C:   000000EC  A$lab3-2steering$1191              lab3_2steering
+C:   000000EC  C$c8051_SDCC.h$88$1$20             lab3_2steering
+C:   000000EF  A$lab3-2steering$1194              lab3_2steering
+C:   000000EF  C$c8051_SDCC.h$89$1$20             lab3_2steering
+C:   000000F2  A$lab3-2steering$1197              lab3_2steering
+C:   000000F2  C$c8051_SDCC.h$91$1$20             lab3_2steering
+C:   000000F5  A$lab3-2steering$1200              lab3_2steering
+C:   000000F5  C$c8051_SDCC.h$92$1$20             lab3_2steering
+C:   000000F8  A$lab3-2steering$1203              lab3_2steering
+C:   000000F8  C$c8051_SDCC.h$93$1$20             lab3_2steering
+C:   000000F8  XG$Sys_Init$0$0                    lab3_2steering
+C:   000000F9  A$lab3-2steering$1216              lab3_2steering
+C:   000000F9  C$c8051_SDCC.h$98$1$20             lab3_2steering
+C:   000000F9  G$putchar$0$0                      lab3_2steering
+C:   000000F9  _putchar                           lab3_2steering
+C:   000000FB  A$lab3-2steering$1222              lab3_2steering
+C:   000000FB  C$c8051_SDCC.h$100$1$22            lab3_2steering
+C:   000000FB  C$c8051_SDCC.h$101$1$22            lab3_2steering
+C:   000000FE  A$lab3-2steering$1223              lab3_2steering
+C:   00000100  A$lab3-2steering$1227              lab3_2steering
+C:   00000100  C$c8051_SDCC.h$102$1$22            lab3_2steering
+C:   00000102  A$lab3-2steering$1230              lab3_2steering
+C:   00000102  C$c8051_SDCC.h$103$1$22            lab3_2steering
+C:   00000102  XG$putchar$0$0                     lab3_2steering
+C:   00000103  A$lab3-2steering$1248              lab3_2steering
+C:   00000103  C$c8051_SDCC.h$108$1$22            lab3_2steering
+C:   00000103  C$c8051_SDCC.h$111$1$24            lab3_2steering
+C:   00000103  C$c8051_SDCC.h$112$1$24            lab3_2steering
+C:   00000103  G$getchar$0$0                      lab3_2steering
+C:   00000103  _getchar                           lab3_2steering
+C:   00000106  A$lab3-2steering$1249              lab3_2steering
+C:   00000108  A$lab3-2steering$1253              lab3_2steering
+C:   00000108  C$c8051_SDCC.h$113$1$24            lab3_2steering
+C:   0000010B  A$lab3-2steering$1256              lab3_2steering
+C:   0000010B  C$c8051_SDCC.h$114$1$24            lab3_2steering
+C:   0000010E  A$lab3-2steering$1259              lab3_2steering
+C:   0000010E  C$c8051_SDCC.h$115$1$24            lab3_2steering
+C:   00000111  A$lab3-2steering$1262              lab3_2steering
+C:   00000111  C$c8051_SDCC.h$116$1$24            lab3_2steering
+C:   00000111  XG$getchar$0$0                     lab3_2steering
+C:   00000112  A$lab3-2steering$1279              lab3_2steering
+C:   00000112  C$i2c.h$81$1$24                    lab3_2steering
+C:   00000112  G$lcd_print$0$0                    lab3_2steering
+C:   00000112  _lcd_print                         lab3_2steering
+C:   00000114  A$lab3-2steering$1280              lab3_2steering
+C:   00000117  A$lab3-2steering$1283              lab3_2steering
+C:   00000117  C$i2c.h$87$1$73                    lab3_2steering
+C:   00000119  A$lab3-2steering$1284              lab3_2steering
+C:   0000011B  A$lab3-2steering$1285              lab3_2steering
+C:   0000011C  A$lab3-2steering$1286              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000011E  A$lab3-2steering$1287              lab3_2steering
+C:   0000011F  A$lab3-2steering$1288              lab3_2steering
+C:   00000121  A$lab3-2steering$1289              lab3_2steering
+C:   00000122  A$lab3-2steering$1290              lab3_2steering
+C:   00000124  A$lab3-2steering$1291              lab3_2steering
+C:   00000127  A$lab3-2steering$1292              lab3_2steering
+C:   00000129  A$lab3-2steering$1293              lab3_2steering
+C:   0000012C  A$lab3-2steering$1294              lab3_2steering
+C:   0000012E  A$lab3-2steering$1295              lab3_2steering
+C:   00000130  A$lab3-2steering$1296              lab3_2steering
+C:   00000132  A$lab3-2steering$1300              lab3_2steering
+C:   00000132  C$i2c.h$89$2$74                    lab3_2steering
+C:   00000134  A$lab3-2steering$1301              lab3_2steering
+C:   00000136  A$lab3-2steering$1302              lab3_2steering
+C:   00000137  A$lab3-2steering$1303              lab3_2steering
+C:   00000139  A$lab3-2steering$1306              lab3_2steering
+C:   00000139  C$i2c.h$90$1$73                    lab3_2steering
+C:   0000013B  A$lab3-2steering$1307              lab3_2steering
+C:   0000013D  A$lab3-2steering$1308              lab3_2steering
+C:   0000013E  A$lab3-2steering$1309              lab3_2steering
+C:   00000140  A$lab3-2steering$1310              lab3_2steering
+C:   00000141  A$lab3-2steering$1311              lab3_2steering
+C:   00000143  A$lab3-2steering$1312              lab3_2steering
+C:   00000144  A$lab3-2steering$1313              lab3_2steering
+C:   00000146  A$lab3-2steering$1314              lab3_2steering
+C:   00000149  A$lab3-2steering$1315              lab3_2steering
+C:   0000014C  A$lab3-2steering$1316              lab3_2steering
+C:   0000014F  A$lab3-2steering$1319              lab3_2steering
+C:   0000014F  C$i2c.h$93$1$73                    lab3_2steering
+C:   00000152  A$lab3-2steering$1320              lab3_2steering
+C:   00000155  A$lab3-2steering$1321              lab3_2steering
+C:   00000158  A$lab3-2steering$1322              lab3_2steering
+C:   0000015A  A$lab3-2steering$1325              lab3_2steering
+C:   0000015C  A$lab3-2steering$1327              lab3_2steering
+C:   0000015D  A$lab3-2steering$1328              lab3_2steering
+C:   0000015E  A$lab3-2steering$1329              lab3_2steering
+C:   0000015F  A$lab3-2steering$1330              lab3_2steering
+C:   00000161  A$lab3-2steering$1333              lab3_2steering
+C:   00000161  C$i2c.h$96$2$76                    lab3_2steering
+C:   00000162  A$lab3-2steering$1334              lab3_2steering
+C:   00000164  A$lab3-2steering$1335              lab3_2steering
+C:   00000166  A$lab3-2steering$1336              lab3_2steering
+C:   00000167  A$lab3-2steering$1337              lab3_2steering
+C:   00000169  A$lab3-2steering$1338              lab3_2steering
+C:   0000016B  A$lab3-2steering$1339              lab3_2steering
+C:   0000016C  A$lab3-2steering$1340              lab3_2steering
+C:   0000016D  A$lab3-2steering$1341              lab3_2steering
+C:   00000170  A$lab3-2steering$1342              lab3_2steering
+C:   00000171  A$lab3-2steering$1343              lab3_2steering
+C:   00000173  A$lab3-2steering$1344              lab3_2steering
+C:   00000175  A$lab3-2steering$1345              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000176  A$lab3-2steering$1346              lab3_2steering
+C:   00000178  A$lab3-2steering$1347              lab3_2steering
+C:   0000017A  A$lab3-2steering$1348              lab3_2steering
+C:   0000017C  A$lab3-2steering$1349              lab3_2steering
+C:   0000017D  A$lab3-2steering$1353              lab3_2steering
+C:   0000017D  C$i2c.h$94$1$73                    lab3_2steering
+C:   0000017E  A$lab3-2steering$1354              lab3_2steering
+C:   00000180  A$lab3-2steering$1358              lab3_2steering
+C:   00000180  C$i2c.h$99$1$73                    lab3_2steering
+C:   00000183  A$lab3-2steering$1359              lab3_2steering
+C:   00000186  A$lab3-2steering$1360              lab3_2steering
+C:   00000189  A$lab3-2steering$1361              lab3_2steering
+C:   0000018C  A$lab3-2steering$1362              lab3_2steering
+C:   0000018E  A$lab3-2steering$1363              lab3_2steering
+C:   00000191  A$lab3-2steering$1364              lab3_2steering
+C:   00000194  A$lab3-2steering$1366              lab3_2steering
+C:   00000196  A$lab3-2steering$1369              lab3_2steering
+C:   00000196  C$i2c.h$100$1$73                   lab3_2steering
+C:   00000196  XG$lcd_print$0$0                   lab3_2steering
+C:   00000197  A$lab3-2steering$1385              lab3_2steering
+C:   00000197  C$i2c.h$103$1$73                   lab3_2steering
+C:   00000197  C$i2c.h$105$1$73                   lab3_2steering
+C:   00000197  G$lcd_clear$0$0                    lab3_2steering
+C:   00000197  _lcd_clear                         lab3_2steering
+C:   0000019A  A$lab3-2steering$1389              lab3_2steering
+C:   0000019A  C$i2c.h$107$1$77                   lab3_2steering
+C:   0000019C  A$lab3-2steering$1390              lab3_2steering
+C:   0000019E  A$lab3-2steering$1391              lab3_2steering
+C:   000001A0  A$lab3-2steering$1392              lab3_2steering
+C:   000001A3  A$lab3-2steering$1393              lab3_2steering
+C:   000001A6  A$lab3-2steering$1394              lab3_2steering
+C:   000001A9  A$lab3-2steering$1395              lab3_2steering
+C:   000001AC  A$lab3-2steering$1396              lab3_2steering
+C:   000001AF  A$lab3-2steering$1397              lab3_2steering
+C:   000001B2  A$lab3-2steering$1398              lab3_2steering
+C:   000001B5  A$lab3-2steering$1399              lab3_2steering
+C:   000001B7  A$lab3-2steering$1403              lab3_2steering
+C:   000001B7  C$i2c.h$109$1$77                   lab3_2steering
+C:   000001BA  A$lab3-2steering$1406              lab3_2steering
+C:   000001BA  C$i2c.h$110$1$77                   lab3_2steering
+C:   000001BD  A$lab3-2steering$1407              lab3_2steering
+C:   000001C0  A$lab3-2steering$1408              lab3_2steering
+C:   000001C3  A$lab3-2steering$1409              lab3_2steering
+C:   000001C6  A$lab3-2steering$1410              lab3_2steering
+C:   000001C9  A$lab3-2steering$1411              lab3_2steering
+C:   000001CC  A$lab3-2steering$1412              lab3_2steering
+C:   000001CF  A$lab3-2steering$1415              lab3_2steering
+C:   000001CF  C$i2c.h$111$1$77                   lab3_2steering
+C:   000001CF  XG$lcd_clear$0$0                   lab3_2steering
+C:   000001D0  A$lab3-2steering$1431              lab3_2steering
+C:   000001D0  C$i2c.h$114$1$77                   lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000001D0  C$i2c.h$118$1$78                   lab3_2steering
+C:   000001D0  G$read_keypad$0$0                  lab3_2steering
+C:   000001D0  _read_keypad                       lab3_2steering
+C:   000001D3  A$lab3-2steering$1432              lab3_2steering
+C:   000001D6  A$lab3-2steering$1433              lab3_2steering
+C:   000001D9  A$lab3-2steering$1434              lab3_2steering
+C:   000001DC  A$lab3-2steering$1435              lab3_2steering
+C:   000001DF  A$lab3-2steering$1436              lab3_2steering
+C:   000001E2  A$lab3-2steering$1437              lab3_2steering
+C:   000001E5  A$lab3-2steering$1440              lab3_2steering
+C:   000001E5  C$i2c.h$119$1$78                   lab3_2steering
+C:   000001E7  A$lab3-2steering$1441              lab3_2steering
+C:   000001EA  A$lab3-2steering$1442              lab3_2steering
+C:   000001ED  A$lab3-2steering$1443              lab3_2steering
+C:   000001EF  A$lab3-2steering$1447              lab3_2steering
+C:   000001F1  A$lab3-2steering$1448              lab3_2steering
+C:   000001F3  A$lab3-2steering$1452              lab3_2steering
+C:   000001F3  C$i2c.h$123$2$79                   lab3_2steering
+C:   000001F5  A$lab3-2steering$1453              lab3_2steering
+C:   000001F7  A$lab3-2steering$1454              lab3_2steering
+C:   000001F9  A$lab3-2steering$1455              lab3_2steering
+C:   000001FB  A$lab3-2steering$1456              lab3_2steering
+C:   000001FD  A$lab3-2steering$1458              lab3_2steering
+C:   000001FE  A$lab3-2steering$1459              lab3_2steering
+C:   000001FF  A$lab3-2steering$1460              lab3_2steering
+C:   00000200  A$lab3-2steering$1461              lab3_2steering
+C:   00000201  A$lab3-2steering$1462              lab3_2steering
+C:   00000202  A$lab3-2steering$1463              lab3_2steering
+C:   00000203  A$lab3-2steering$1465              lab3_2steering
+C:   00000206  A$lab3-2steering$1466              lab3_2steering
+C:   00000208  A$lab3-2steering$1467              lab3_2steering
+C:   0000020A  A$lab3-2steering$1468              lab3_2steering
+C:   0000020B  A$lab3-2steering$1469              lab3_2steering
+C:   0000020D  A$lab3-2steering$1470              lab3_2steering
+C:   0000020E  A$lab3-2steering$1471              lab3_2steering
+C:   00000210  A$lab3-2steering$1472              lab3_2steering
+C:   00000211  A$lab3-2steering$1473              lab3_2steering
+C:   00000212  A$lab3-2steering$1474              lab3_2steering
+C:   00000214  A$lab3-2steering$1477              lab3_2steering
+C:   00000214  C$i2c.h$124$2$79                   lab3_2steering
+C:   00000216  A$lab3-2steering$1478              lab3_2steering
+C:   00000217  A$lab3-2steering$1479              lab3_2steering
+C:   00000219  A$lab3-2steering$1480              lab3_2steering
+C:   0000021B  A$lab3-2steering$1484              lab3_2steering
+C:   0000021B  C$i2c.h$121$1$78                   lab3_2steering
+C:   0000021C  A$lab3-2steering$1485              lab3_2steering
+C:   0000021E  A$lab3-2steering$1486              lab3_2steering
+C:   00000221  A$lab3-2steering$1488              lab3_2steering
+C:   00000223  A$lab3-2steering$1491              lab3_2steering
+C:   00000223  C$i2c.h$127$1$78                   lab3_2steering
+C:   00000225  A$lab3-2steering$1492              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000228  A$lab3-2steering$1493              lab3_2steering
+C:   0000022B  A$lab3-2steering$1494              lab3_2steering
+C:   0000022D  A$lab3-2steering$1498              lab3_2steering
+C:   0000022D  C$i2c.h$129$1$78                   lab3_2steering
+C:   0000022F  A$lab3-2steering$1499              lab3_2steering
+C:   00000232  A$lab3-2steering$1500              lab3_2steering
+C:   00000235  A$lab3-2steering$1501              lab3_2steering
+C:   00000237  A$lab3-2steering$1505              lab3_2steering
+C:   00000237  C$i2c.h$131$1$78                   lab3_2steering
+C:   00000239  A$lab3-2steering$1506              lab3_2steering
+C:   0000023C  A$lab3-2steering$1507              lab3_2steering
+C:   0000023F  A$lab3-2steering$1508              lab3_2steering
+C:   00000241  A$lab3-2steering$1512              lab3_2steering
+C:   00000241  C$i2c.h$133$1$78                   lab3_2steering
+C:   00000243  A$lab3-2steering$1513              lab3_2steering
+C:   00000246  A$lab3-2steering$1514              lab3_2steering
+C:   00000249  A$lab3-2steering$1515              lab3_2steering
+C:   0000024B  A$lab3-2steering$1519              lab3_2steering
+C:   0000024B  C$i2c.h$135$1$78                   lab3_2steering
+C:   0000024E  A$lab3-2steering$1523              lab3_2steering
+C:   0000024E  C$i2c.h$136$1$78                   lab3_2steering
+C:   0000024E  XG$read_keypad$0$0                 lab3_2steering
+C:   0000024F  A$lab3-2steering$1539              lab3_2steering
+C:   0000024F  C$i2c.h$148$1$78                   lab3_2steering
+C:   0000024F  G$kpd_input$0$0                    lab3_2steering
+C:   0000024F  _kpd_input                         lab3_2steering
+C:   00000251  A$lab3-2steering$1544              lab3_2steering
+C:   00000251  C$i2c.h$153$1$81                   lab3_2steering
+C:   00000251  C$i2c.h$156$1$81                   lab3_2steering
+C:   00000252  A$lab3-2steering$1545              lab3_2steering
+C:   00000253  A$lab3-2steering$1546              lab3_2steering
+C:   00000254  A$lab3-2steering$1547              lab3_2steering
+C:   00000255  A$lab3-2steering$1548              lab3_2steering
+C:   00000257  A$lab3-2steering$1549              lab3_2steering
+C:   00000259  A$lab3-2steering$1550              lab3_2steering
+C:   0000025B  A$lab3-2steering$1551              lab3_2steering
+C:   0000025D  A$lab3-2steering$1552              lab3_2steering
+C:   0000025F  A$lab3-2steering$1553              lab3_2steering
+C:   00000261  A$lab3-2steering$1554              lab3_2steering
+C:   00000263  A$lab3-2steering$1555              lab3_2steering
+C:   00000265  A$lab3-2steering$1556              lab3_2steering
+C:   00000267  A$lab3-2steering$1557              lab3_2steering
+C:   0000026A  A$lab3-2steering$1558              lab3_2steering
+C:   0000026C  A$lab3-2steering$1559              lab3_2steering
+C:   0000026E  A$lab3-2steering$1560              lab3_2steering
+C:   00000270  A$lab3-2steering$1561              lab3_2steering
+C:   00000272  A$lab3-2steering$1562              lab3_2steering
+C:   00000274  A$lab3-2steering$1566              lab3_2steering
+C:   00000274  C$i2c.h$158$1$81                   lab3_2steering
+C:   00000276  A$lab3-2steering$1567              lab3_2steering
+C:   00000278  A$lab3-2steering$1568              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 35.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000027A  A$lab3-2steering$1569              lab3_2steering
+C:   0000027C  A$lab3-2steering$1570              lab3_2steering
+C:   0000027D  A$lab3-2steering$1571              lab3_2steering
+C:   0000027F  A$lab3-2steering$1572              lab3_2steering
+C:   00000281  A$lab3-2steering$1573              lab3_2steering
+C:   00000283  A$lab3-2steering$1574              lab3_2steering
+C:   00000284  A$lab3-2steering$1575              lab3_2steering
+C:   00000286  A$lab3-2steering$1576              lab3_2steering
+C:   00000288  A$lab3-2steering$1577              lab3_2steering
+C:   0000028A  A$lab3-2steering$1578              lab3_2steering
+C:   0000028B  A$lab3-2steering$1579              lab3_2steering
+C:   0000028D  A$lab3-2steering$1580              lab3_2steering
+C:   0000028F  A$lab3-2steering$1581              lab3_2steering
+C:   00000291  A$lab3-2steering$1582              lab3_2steering
+C:   00000292  A$lab3-2steering$1583              lab3_2steering
+C:   00000294  A$lab3-2steering$1584              lab3_2steering
+C:   00000296  A$lab3-2steering$1585              lab3_2steering
+C:   00000298  A$lab3-2steering$1586              lab3_2steering
+C:   00000299  A$lab3-2steering$1587              lab3_2steering
+C:   0000029B  A$lab3-2steering$1588              lab3_2steering
+C:   0000029D  A$lab3-2steering$1589              lab3_2steering
+C:   0000029F  A$lab3-2steering$1590              lab3_2steering
+C:   000002A1  A$lab3-2steering$1591              lab3_2steering
+C:   000002A3  A$lab3-2steering$1592              lab3_2steering
+C:   000002A5  A$lab3-2steering$1593              lab3_2steering
+C:   000002A7  A$lab3-2steering$1594              lab3_2steering
+C:   000002AA  A$lab3-2steering$1595              lab3_2steering
+C:   000002AC  A$lab3-2steering$1596              lab3_2steering
+C:   000002AE  A$lab3-2steering$1597              lab3_2steering
+C:   000002B0  A$lab3-2steering$1600              lab3_2steering
+C:   000002B0  C$i2c.h$160$1$81                   lab3_2steering
+C:   000002B3  A$lab3-2steering$1601              lab3_2steering
+C:   000002B6  A$lab3-2steering$1602              lab3_2steering
+C:   000002B7  A$lab3-2steering$1603              lab3_2steering
+C:   000002BA  A$lab3-2steering$1604              lab3_2steering
+C:   000002BC  A$lab3-2steering$1605              lab3_2steering
+C:   000002BE  A$lab3-2steering$1608              lab3_2steering
+C:   000002C0  A$lab3-2steering$1612              lab3_2steering
+C:   000002C0  C$i2c.h$166$3$84                   lab3_2steering
+C:   000002C2  A$lab3-2steering$1613              lab3_2steering
+C:   000002C4  A$lab3-2steering$1614              lab3_2steering
+C:   000002C6  A$lab3-2steering$1615              lab3_2steering
+C:   000002C9  A$lab3-2steering$1616              lab3_2steering
+C:   000002CB  A$lab3-2steering$1617              lab3_2steering
+C:   000002CD  A$lab3-2steering$1618              lab3_2steering
+C:   000002CF  A$lab3-2steering$1619              lab3_2steering
+C:   000002D1  A$lab3-2steering$1620              lab3_2steering
+C:   000002D3  A$lab3-2steering$1621              lab3_2steering
+C:   000002D6  A$lab3-2steering$1622              lab3_2steering
+C:   000002D8  A$lab3-2steering$1624              lab3_2steering
+C:   000002DB  A$lab3-2steering$1626              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 36.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000002DE  A$lab3-2steering$1627              lab3_2steering
+C:   000002DF  A$lab3-2steering$1628              lab3_2steering
+C:   000002E1  A$lab3-2steering$1629              lab3_2steering
+C:   000002E3  A$lab3-2steering$1630              lab3_2steering
+C:   000002E5  A$lab3-2steering$1631              lab3_2steering
+C:   000002E7  A$lab3-2steering$1632              lab3_2steering
+C:   000002EA  A$lab3-2steering$1633              lab3_2steering
+C:   000002EC  A$lab3-2steering$1634              lab3_2steering
+C:   000002EE  A$lab3-2steering$1635              lab3_2steering
+C:   000002F0  A$lab3-2steering$1636              lab3_2steering
+C:   000002F2  A$lab3-2steering$1640              lab3_2steering
+C:   000002F2  C$i2c.h$167$2$82                   lab3_2steering
+C:   000002F5  A$lab3-2steering$1644              lab3_2steering
+C:   000002F5  C$i2c.h$169$3$83                   lab3_2steering
+C:   000002F7  A$lab3-2steering$1645              lab3_2steering
+C:   000002F9  A$lab3-2steering$1646              lab3_2steering
+C:   000002FC  A$lab3-2steering$1647              lab3_2steering
+C:   000002FE  A$lab3-2steering$1648              lab3_2steering
+C:   00000300  A$lab3-2steering$1649              lab3_2steering
+C:   00000302  A$lab3-2steering$1650              lab3_2steering
+C:   00000305  A$lab3-2steering$1651              lab3_2steering
+C:   00000308  A$lab3-2steering$1652              lab3_2steering
+C:   00000309  A$lab3-2steering$1653              lab3_2steering
+C:   0000030B  A$lab3-2steering$1654              lab3_2steering
+C:   0000030D  A$lab3-2steering$1655              lab3_2steering
+C:   0000030F  A$lab3-2steering$1656              lab3_2steering
+C:   00000312  A$lab3-2steering$1657              lab3_2steering
+C:   00000314  A$lab3-2steering$1658              lab3_2steering
+C:   00000316  A$lab3-2steering$1659              lab3_2steering
+C:   00000318  A$lab3-2steering$1663              lab3_2steering
+C:   00000318  C$i2c.h$170$3$83                   lab3_2steering
+C:   0000031A  A$lab3-2steering$1664              lab3_2steering
+C:   0000031C  A$lab3-2steering$1665              lab3_2steering
+C:   0000031F  A$lab3-2steering$1669              lab3_2steering
+C:   0000031F  C$i2c.h$174$3$84                   lab3_2steering
+C:   00000320  A$lab3-2steering$1670              lab3_2steering
+C:   00000321  A$lab3-2steering$1671              lab3_2steering
+C:   00000322  A$lab3-2steering$1672              lab3_2steering
+C:   00000324  A$lab3-2steering$1673              lab3_2steering
+C:   00000325  A$lab3-2steering$1674              lab3_2steering
+C:   00000327  A$lab3-2steering$1675              lab3_2steering
+C:   00000329  A$lab3-2steering$1676              lab3_2steering
+C:   0000032B  A$lab3-2steering$1677              lab3_2steering
+C:   0000032D  A$lab3-2steering$1678              lab3_2steering
+C:   0000032F  A$lab3-2steering$1679              lab3_2steering
+C:   00000331  A$lab3-2steering$1680              lab3_2steering
+C:   00000333  A$lab3-2steering$1681              lab3_2steering
+C:   00000335  A$lab3-2steering$1682              lab3_2steering
+C:   00000337  A$lab3-2steering$1683              lab3_2steering
+C:   00000339  A$lab3-2steering$1684              lab3_2steering
+C:   0000033B  A$lab3-2steering$1685              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 37.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000033D  A$lab3-2steering$1686              lab3_2steering
+C:   0000033F  A$lab3-2steering$1687              lab3_2steering
+C:   00000341  A$lab3-2steering$1688              lab3_2steering
+C:   00000344  A$lab3-2steering$1689              lab3_2steering
+C:   00000346  A$lab3-2steering$1690              lab3_2steering
+C:   00000348  A$lab3-2steering$1691              lab3_2steering
+C:   0000034A  A$lab3-2steering$1692              lab3_2steering
+C:   0000034C  A$lab3-2steering$1693              lab3_2steering
+C:   0000034E  A$lab3-2steering$1694              lab3_2steering
+C:   00000350  A$lab3-2steering$1695              lab3_2steering
+C:   00000352  A$lab3-2steering$1696              lab3_2steering
+C:   00000354  A$lab3-2steering$1699              lab3_2steering
+C:   00000354  C$i2c.h$175$1$81                   lab3_2steering
+C:   00000356  A$lab3-2steering$1700              lab3_2steering
+C:   00000358  A$lab3-2steering$1701              lab3_2steering
+C:   0000035B  A$lab3-2steering$1702              lab3_2steering
+C:   0000035D  A$lab3-2steering$1703              lab3_2steering
+C:   0000035F  A$lab3-2steering$1704              lab3_2steering
+C:   00000361  A$lab3-2steering$1705              lab3_2steering
+C:   00000364  A$lab3-2steering$1706              lab3_2steering
+C:   00000366  A$lab3-2steering$1707              lab3_2steering
+C:   00000368  A$lab3-2steering$1708              lab3_2steering
+C:   0000036A  A$lab3-2steering$1709              lab3_2steering
+C:   0000036C  A$lab3-2steering$1710              lab3_2steering
+C:   0000036E  A$lab3-2steering$1711              lab3_2steering
+C:   00000370  A$lab3-2steering$1712              lab3_2steering
+C:   00000371  A$lab3-2steering$1713              lab3_2steering
+C:   00000372  A$lab3-2steering$1714              lab3_2steering
+C:   00000373  A$lab3-2steering$1715              lab3_2steering
+C:   00000374  A$lab3-2steering$1716              lab3_2steering
+C:   00000375  A$lab3-2steering$1717              lab3_2steering
+C:   00000376  A$lab3-2steering$1718              lab3_2steering
+C:   00000377  A$lab3-2steering$1719              lab3_2steering
+C:   00000379  A$lab3-2steering$1720              lab3_2steering
+C:   0000037A  A$lab3-2steering$1721              lab3_2steering
+C:   0000037B  A$lab3-2steering$1722              lab3_2steering
+C:   0000037D  A$lab3-2steering$1723              lab3_2steering
+C:   0000037E  A$lab3-2steering$1727              lab3_2steering
+C:   0000037E  C$i2c.h$176$3$84                   lab3_2steering
+C:   00000380  A$lab3-2steering$1728              lab3_2steering
+C:   00000382  A$lab3-2steering$1729              lab3_2steering
+C:   00000384  A$lab3-2steering$1730              lab3_2steering
+C:   00000386  A$lab3-2steering$1731              lab3_2steering
+C:   00000389  A$lab3-2steering$1732              lab3_2steering
+C:   0000038B  A$lab3-2steering$1733              lab3_2steering
+C:   0000038D  A$lab3-2steering$1734              lab3_2steering
+C:   0000038F  A$lab3-2steering$1735              lab3_2steering
+C:   00000391  A$lab3-2steering$1736              lab3_2steering
+C:   00000393  A$lab3-2steering$1737              lab3_2steering
+C:   00000394  A$lab3-2steering$1738              lab3_2steering
+C:   00000397  A$lab3-2steering$1739              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 38.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000039A  A$lab3-2steering$1740              lab3_2steering
+C:   0000039B  A$lab3-2steering$1741              lab3_2steering
+C:   0000039D  A$lab3-2steering$1742              lab3_2steering
+C:   0000039F  A$lab3-2steering$1743              lab3_2steering
+C:   000003A1  A$lab3-2steering$1744              lab3_2steering
+C:   000003A3  A$lab3-2steering$1745              lab3_2steering
+C:   000003A5  A$lab3-2steering$1746              lab3_2steering
+C:   000003A8  A$lab3-2steering$1747              lab3_2steering
+C:   000003AA  A$lab3-2steering$1748              lab3_2steering
+C:   000003AC  A$lab3-2steering$1749              lab3_2steering
+C:   000003AE  A$lab3-2steering$1750              lab3_2steering
+C:   000003B0  A$lab3-2steering$1751              lab3_2steering
+C:   000003B2  A$lab3-2steering$1755              lab3_2steering
+C:   000003B2  C$i2c.h$164$1$81                   lab3_2steering
+C:   000003B3  A$lab3-2steering$1756              lab3_2steering
+C:   000003B4  A$lab3-2steering$1757              lab3_2steering
+C:   000003B5  A$lab3-2steering$1758              lab3_2steering
+C:   000003B7  A$lab3-2steering$1759              lab3_2steering
+C:   000003B9  A$lab3-2steering$1760              lab3_2steering
+C:   000003BB  A$lab3-2steering$1761              lab3_2steering
+C:   000003BE  A$lab3-2steering$1765              lab3_2steering
+C:   000003BE  C$i2c.h$179$1$81                   lab3_2steering
+C:   000003C0  A$lab3-2steering$1766              lab3_2steering
+C:   000003C2  A$lab3-2steering$1770              lab3_2steering
+C:   000003C2  C$i2c.h$180$1$81                   lab3_2steering
+C:   000003C2  XG$kpd_input$0$0                   lab3_2steering
+C:   000003C3  A$lab3-2steering$1784              lab3_2steering
+C:   000003C3  C$i2c.h$189$1$81                   lab3_2steering
+C:   000003C3  G$delay_time$0$0                   lab3_2steering
+C:   000003C3  _delay_time                        lab3_2steering
+C:   000003C5  A$lab3-2steering$1785              lab3_2steering
+C:   000003C7  A$lab3-2steering$1786              lab3_2steering
+C:   000003C9  A$lab3-2steering$1787              lab3_2steering
+C:   000003CA  A$lab3-2steering$1790              lab3_2steering
+C:   000003CA  C$i2c.h$192$1$86                   lab3_2steering
+C:   000003CC  A$lab3-2steering$1791              lab3_2steering
+C:   000003CE  A$lab3-2steering$1792              lab3_2steering
+C:   000003D0  A$lab3-2steering$1793              lab3_2steering
+C:   000003D2  A$lab3-2steering$1795              lab3_2steering
+C:   000003D3  A$lab3-2steering$1796              lab3_2steering
+C:   000003D4  A$lab3-2steering$1797              lab3_2steering
+C:   000003D5  A$lab3-2steering$1798              lab3_2steering
+C:   000003D6  A$lab3-2steering$1799              lab3_2steering
+C:   000003D7  A$lab3-2steering$1800              lab3_2steering
+C:   000003D8  A$lab3-2steering$1801              lab3_2steering
+C:   000003D9  A$lab3-2steering$1802              lab3_2steering
+C:   000003DA  A$lab3-2steering$1803              lab3_2steering
+C:   000003DB  A$lab3-2steering$1804              lab3_2steering
+C:   000003DD  A$lab3-2steering$1805              lab3_2steering
+C:   000003DE  A$lab3-2steering$1806              lab3_2steering
+C:   000003E1  A$lab3-2steering$1807              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 39.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000003E2  A$lab3-2steering$1808              lab3_2steering
+C:   000003E5  A$lab3-2steering$1809              lab3_2steering
+C:   000003E6  A$lab3-2steering$1810              lab3_2steering
+C:   000003E9  A$lab3-2steering$1811              lab3_2steering
+C:   000003EA  A$lab3-2steering$1813              lab3_2steering
+C:   000003EC  A$lab3-2steering$1817              lab3_2steering
+C:   000003EC  C$i2c.h$193$1$86                   lab3_2steering
+C:   000003EC  XG$delay_time$0$0                  lab3_2steering
+C:   000003ED  A$lab3-2steering$1831              lab3_2steering
+C:   000003ED  C$i2c.h$196$1$86                   lab3_2steering
+C:   000003ED  C$i2c.h$198$1$88                   lab3_2steering
+C:   000003ED  G$i2c_start$0$0                    lab3_2steering
+C:   000003ED  _i2c_start                         lab3_2steering
+C:   000003F0  A$lab3-2steering$1834              lab3_2steering
+C:   000003F0  C$i2c.h$199$1$88                   lab3_2steering
+C:   000003F2  A$lab3-2steering$1838              lab3_2steering
+C:   000003F2  C$i2c.h$200$1$88                   lab3_2steering
+C:   000003F5  A$lab3-2steering$1841              lab3_2steering
+C:   000003F5  C$i2c.h$201$1$88                   lab3_2steering
+C:   000003F7  A$lab3-2steering$1844              lab3_2steering
+C:   000003F7  C$i2c.h$202$1$88                   lab3_2steering
+C:   000003F9  A$lab3-2steering$1847              lab3_2steering
+C:   000003F9  C$i2c.h$203$1$88                   lab3_2steering
+C:   000003F9  XG$i2c_start$0$0                   lab3_2steering
+C:   000003FA  A$lab3-2steering$1860              lab3_2steering
+C:   000003FA  C$i2c.h$206$1$88                   lab3_2steering
+C:   000003FA  G$i2c_write$0$0                    lab3_2steering
+C:   000003FA  _i2c_write                         lab3_2steering
+C:   000003FD  A$lab3-2steering$1866              lab3_2steering
+C:   000003FD  C$i2c.h$209$1$90                   lab3_2steering
+C:   000003FD  C$i2c.h$210$1$90                   lab3_2steering
+C:   00000400  A$lab3-2steering$1867              lab3_2steering
+C:   00000402  A$lab3-2steering$1871              lab3_2steering
+C:   00000402  C$i2c.h$211$1$90                   lab3_2steering
+C:   00000402  XG$i2c_write$0$0                   lab3_2steering
+C:   00000403  A$lab3-2steering$1884              lab3_2steering
+C:   00000403  C$i2c.h$214$1$90                   lab3_2steering
+C:   00000403  G$i2c_write_and_stop$0$0           lab3_2steering
+C:   00000403  _i2c_write_and_stop                lab3_2steering
+C:   00000406  A$lab3-2steering$1887              lab3_2steering
+C:   00000406  C$i2c.h$217$1$92                   lab3_2steering
+C:   00000408  A$lab3-2steering$1893              lab3_2steering
+C:   00000408  C$i2c.h$218$1$92                   lab3_2steering
+C:   00000408  C$i2c.h$219$1$92                   lab3_2steering
+C:   0000040B  A$lab3-2steering$1894              lab3_2steering
+C:   0000040D  A$lab3-2steering$1898              lab3_2steering
+C:   0000040D  C$i2c.h$220$1$92                   lab3_2steering
+C:   0000040D  XG$i2c_write_and_stop$0$0          lab3_2steering
+C:   0000040E  A$lab3-2steering$1914              lab3_2steering
+C:   0000040E  C$i2c.h$223$1$92                   lab3_2steering
+C:   0000040E  C$i2c.h$226$1$94                   lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 40.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000040E  G$i2c_read$0$0                     lab3_2steering
+C:   0000040E  _i2c_read                          lab3_2steering
+C:   00000411  A$lab3-2steering$1917              lab3_2steering
+C:   00000411  C$i2c.h$227$1$94                   lab3_2steering
+C:   00000414  A$lab3-2steering$1920              lab3_2steering
+C:   00000414  C$i2c.h$228$1$94                   lab3_2steering
+C:   00000416  A$lab3-2steering$1925              lab3_2steering
+C:   00000416  C$i2c.h$229$1$94                   lab3_2steering
+C:   00000416  C$i2c.h$230$1$94                   lab3_2steering
+C:   00000416  XG$i2c_read$0$0                    lab3_2steering
+C:   00000417  A$lab3-2steering$1941              lab3_2steering
+C:   00000417  C$i2c.h$233$1$94                   lab3_2steering
+C:   00000417  C$i2c.h$236$1$96                   lab3_2steering
+C:   00000417  G$i2c_read_and_stop$0$0            lab3_2steering
+C:   00000417  _i2c_read_and_stop                 lab3_2steering
+C:   0000041A  A$lab3-2steering$1944              lab3_2steering
+C:   0000041A  C$i2c.h$237$1$96                   lab3_2steering
+C:   0000041C  A$lab3-2steering$1947              lab3_2steering
+C:   0000041C  C$i2c.h$238$1$96                   lab3_2steering
+C:   0000041E  A$lab3-2steering$1950              lab3_2steering
+C:   0000041E  C$i2c.h$239$1$96                   lab3_2steering
+C:   00000420  A$lab3-2steering$1956              lab3_2steering
+C:   00000420  C$i2c.h$240$1$96                   lab3_2steering
+C:   00000420  C$i2c.h$241$1$96                   lab3_2steering
+C:   00000423  A$lab3-2steering$1957              lab3_2steering
+C:   00000425  A$lab3-2steering$1961              lab3_2steering
+C:   00000425  C$i2c.h$242$1$96                   lab3_2steering
+C:   00000427  A$lab3-2steering$1964              lab3_2steering
+C:   00000427  C$i2c.h$243$1$96                   lab3_2steering
+C:   00000427  XG$i2c_read_and_stop$0$0           lab3_2steering
+C:   00000428  A$lab3-2steering$1981              lab3_2steering
+C:   00000428  C$i2c.h$246$1$96                   lab3_2steering
+C:   00000428  G$i2c_write_data$0$0               lab3_2steering
+C:   00000428  _i2c_write_data                    lab3_2steering
+C:   0000042A  A$lab3-2steering$1984              lab3_2steering
+C:   0000042A  C$i2c.h$250$1$98                   lab3_2steering
+C:   0000042C  A$lab3-2steering$1985              lab3_2steering
+C:   0000042F  A$lab3-2steering$1986              lab3_2steering
+C:   00000431  A$lab3-2steering$1989              lab3_2steering
+C:   00000431  C$i2c.h$251$1$98                   lab3_2steering
+C:   00000433  A$lab3-2steering$1990              lab3_2steering
+C:   00000434  A$lab3-2steering$1991              lab3_2steering
+C:   00000436  A$lab3-2steering$1992              lab3_2steering
+C:   00000439  A$lab3-2steering$1995              lab3_2steering
+C:   00000439  C$i2c.h$252$1$98                   lab3_2steering
+C:   0000043C  A$lab3-2steering$1996              lab3_2steering
+C:   0000043F  A$lab3-2steering$1999              lab3_2steering
+C:   00000441  A$lab3-2steering$2001              lab3_2steering
+C:   00000443  A$lab3-2steering$2002              lab3_2steering
+C:   00000445  A$lab3-2steering$2003              lab3_2steering
+C:   00000446  A$lab3-2steering$2004              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 41.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000449  A$lab3-2steering$2005              lab3_2steering
+C:   0000044A  A$lab3-2steering$2007              lab3_2steering
+C:   0000044C  A$lab3-2steering$2008              lab3_2steering
+C:   0000044E  A$lab3-2steering$2009              lab3_2steering
+C:   0000044F  A$lab3-2steering$2010              lab3_2steering
+C:   00000450  A$lab3-2steering$2011              lab3_2steering
+C:   00000451  A$lab3-2steering$2012              lab3_2steering
+C:   00000452  A$lab3-2steering$2013              lab3_2steering
+C:   00000454  A$lab3-2steering$2014              lab3_2steering
+C:   00000456  A$lab3-2steering$2015              lab3_2steering
+C:   00000459  A$lab3-2steering$2016              lab3_2steering
+C:   0000045B  A$lab3-2steering$2017              lab3_2steering
+C:   0000045D  A$lab3-2steering$2020              lab3_2steering
+C:   0000045D  C$i2c.h$254$1$98                   lab3_2steering
+C:   0000045E  A$lab3-2steering$2021              lab3_2steering
+C:   00000460  A$lab3-2steering$2022              lab3_2steering
+C:   00000461  A$lab3-2steering$2023              lab3_2steering
+C:   00000462  A$lab3-2steering$2024              lab3_2steering
+C:   00000464  A$lab3-2steering$2025              lab3_2steering
+C:   00000465  A$lab3-2steering$2026              lab3_2steering
+C:   00000467  A$lab3-2steering$2027              lab3_2steering
+C:   00000469  A$lab3-2steering$2028              lab3_2steering
+C:   0000046B  A$lab3-2steering$2029              lab3_2steering
+C:   0000046D  A$lab3-2steering$2030              lab3_2steering
+C:   00000470  A$lab3-2steering$2031              lab3_2steering
+C:   00000472  A$lab3-2steering$2032              lab3_2steering
+C:   00000474  A$lab3-2steering$2033              lab3_2steering
+C:   00000477  A$lab3-2steering$2034              lab3_2steering
+C:   00000479  A$lab3-2steering$2037              lab3_2steering
+C:   00000479  C$i2c.h$253$1$98                   lab3_2steering
+C:   0000047A  A$lab3-2steering$2038              lab3_2steering
+C:   0000047C  A$lab3-2steering$2042              lab3_2steering
+C:   0000047C  C$i2c.h$255$1$98                   lab3_2steering
+C:   0000047E  A$lab3-2steering$2043              lab3_2steering
+C:   00000480  A$lab3-2steering$2044              lab3_2steering
+C:   00000481  A$lab3-2steering$2045              lab3_2steering
+C:   00000484  A$lab3-2steering$2046              lab3_2steering
+C:   00000485  A$lab3-2steering$2048              lab3_2steering
+C:   00000486  A$lab3-2steering$2049              lab3_2steering
+C:   00000488  A$lab3-2steering$2050              lab3_2steering
+C:   00000489  A$lab3-2steering$2051              lab3_2steering
+C:   0000048A  A$lab3-2steering$2052              lab3_2steering
+C:   0000048C  A$lab3-2steering$2053              lab3_2steering
+C:   0000048D  A$lab3-2steering$2054              lab3_2steering
+C:   0000048F  A$lab3-2steering$2055              lab3_2steering
+C:   00000491  A$lab3-2steering$2056              lab3_2steering
+C:   00000493  A$lab3-2steering$2057              lab3_2steering
+C:   00000495  A$lab3-2steering$2058              lab3_2steering
+C:   00000498  A$lab3-2steering$2059              lab3_2steering
+C:   0000049A  A$lab3-2steering$2060              lab3_2steering
+C:   0000049D  A$lab3-2steering$2063              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 42.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000049D  C$i2c.h$256$1$98                   lab3_2steering
+C:   0000049D  XG$i2c_write_data$0$0              lab3_2steering
+C:   0000049E  A$lab3-2steering$2080              lab3_2steering
+C:   0000049E  C$i2c.h$259$1$98                   lab3_2steering
+C:   0000049E  G$i2c_read_data$0$0                lab3_2steering
+C:   0000049E  _i2c_read_data                     lab3_2steering
+C:   000004A0  A$lab3-2steering$2083              lab3_2steering
+C:   000004A0  C$i2c.h$262$1$100                  lab3_2steering
+C:   000004A2  A$lab3-2steering$2084              lab3_2steering
+C:   000004A5  A$lab3-2steering$2085              lab3_2steering
+C:   000004A7  A$lab3-2steering$2088              lab3_2steering
+C:   000004A7  C$i2c.h$263$1$100                  lab3_2steering
+C:   000004A9  A$lab3-2steering$2089              lab3_2steering
+C:   000004AB  A$lab3-2steering$2090              lab3_2steering
+C:   000004AC  A$lab3-2steering$2091              lab3_2steering
+C:   000004AE  A$lab3-2steering$2092              lab3_2steering
+C:   000004B0  A$lab3-2steering$2093              lab3_2steering
+C:   000004B3  A$lab3-2steering$2096              lab3_2steering
+C:   000004B3  C$i2c.h$264$1$100                  lab3_2steering
+C:   000004B6  A$lab3-2steering$2097              lab3_2steering
+C:   000004B9  A$lab3-2steering$2100              lab3_2steering
+C:   000004B9  C$i2c.h$265$1$100                  lab3_2steering
+C:   000004BC  A$lab3-2steering$2101              lab3_2steering
+C:   000004BE  A$lab3-2steering$2104              lab3_2steering
+C:   000004BE  C$i2c.h$266$1$100                  lab3_2steering
+C:   000004C0  A$lab3-2steering$2105              lab3_2steering
+C:   000004C1  A$lab3-2steering$2106              lab3_2steering
+C:   000004C3  A$lab3-2steering$2107              lab3_2steering
+C:   000004C6  A$lab3-2steering$2110              lab3_2steering
+C:   000004C8  A$lab3-2steering$2112              lab3_2steering
+C:   000004CA  A$lab3-2steering$2113              lab3_2steering
+C:   000004CC  A$lab3-2steering$2114              lab3_2steering
+C:   000004CD  A$lab3-2steering$2115              lab3_2steering
+C:   000004D0  A$lab3-2steering$2116              lab3_2steering
+C:   000004D1  A$lab3-2steering$2118              lab3_2steering
+C:   000004D3  A$lab3-2steering$2119              lab3_2steering
+C:   000004D5  A$lab3-2steering$2120              lab3_2steering
+C:   000004D6  A$lab3-2steering$2121              lab3_2steering
+C:   000004D7  A$lab3-2steering$2122              lab3_2steering
+C:   000004D8  A$lab3-2steering$2123              lab3_2steering
+C:   000004D9  A$lab3-2steering$2124              lab3_2steering
+C:   000004DB  A$lab3-2steering$2125              lab3_2steering
+C:   000004DD  A$lab3-2steering$2126              lab3_2steering
+C:   000004E0  A$lab3-2steering$2127              lab3_2steering
+C:   000004E2  A$lab3-2steering$2128              lab3_2steering
+C:   000004E4  A$lab3-2steering$2131              lab3_2steering
+C:   000004E4  C$i2c.h$269$2$101                  lab3_2steering
+C:   000004E6  A$lab3-2steering$2134              lab3_2steering
+C:   000004E6  C$i2c.h$270$2$101                  lab3_2steering
+C:   000004E7  A$lab3-2steering$2135              lab3_2steering
+C:   000004E9  A$lab3-2steering$2136              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 43.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000004EA  A$lab3-2steering$2137              lab3_2steering
+C:   000004EB  A$lab3-2steering$2138              lab3_2steering
+C:   000004ED  A$lab3-2steering$2139              lab3_2steering
+C:   000004EE  A$lab3-2steering$2140              lab3_2steering
+C:   000004F0  A$lab3-2steering$2141              lab3_2steering
+C:   000004F2  A$lab3-2steering$2142              lab3_2steering
+C:   000004F4  A$lab3-2steering$2143              lab3_2steering
+C:   000004F6  A$lab3-2steering$2144              lab3_2steering
+C:   000004F8  A$lab3-2steering$2145              lab3_2steering
+C:   000004FB  A$lab3-2steering$2146              lab3_2steering
+C:   000004FD  A$lab3-2steering$2147              lab3_2steering
+C:   000004FF  A$lab3-2steering$2148              lab3_2steering
+C:   00000501  A$lab3-2steering$2149              lab3_2steering
+C:   00000503  A$lab3-2steering$2150              lab3_2steering
+C:   00000505  A$lab3-2steering$2151              lab3_2steering
+C:   00000507  A$lab3-2steering$2152              lab3_2steering
+C:   00000509  A$lab3-2steering$2153              lab3_2steering
+C:   0000050B  A$lab3-2steering$2154              lab3_2steering
+C:   0000050C  A$lab3-2steering$2155              lab3_2steering
+C:   0000050F  A$lab3-2steering$2158              lab3_2steering
+C:   0000050F  C$i2c.h$267$1$100                  lab3_2steering
+C:   00000510  A$lab3-2steering$2159              lab3_2steering
+C:   00000512  A$lab3-2steering$2163              lab3_2steering
+C:   00000512  C$i2c.h$272$1$100                  lab3_2steering
+C:   00000514  A$lab3-2steering$2166              lab3_2steering
+C:   00000514  C$i2c.h$273$1$100                  lab3_2steering
+C:   00000516  A$lab3-2steering$2167              lab3_2steering
+C:   00000518  A$lab3-2steering$2168              lab3_2steering
+C:   00000519  A$lab3-2steering$2169              lab3_2steering
+C:   0000051C  A$lab3-2steering$2170              lab3_2steering
+C:   0000051D  A$lab3-2steering$2172              lab3_2steering
+C:   0000051E  A$lab3-2steering$2173              lab3_2steering
+C:   00000520  A$lab3-2steering$2174              lab3_2steering
+C:   00000521  A$lab3-2steering$2175              lab3_2steering
+C:   00000522  A$lab3-2steering$2176              lab3_2steering
+C:   00000524  A$lab3-2steering$2177              lab3_2steering
+C:   00000525  A$lab3-2steering$2178              lab3_2steering
+C:   00000527  A$lab3-2steering$2179              lab3_2steering
+C:   00000529  A$lab3-2steering$2180              lab3_2steering
+C:   0000052B  A$lab3-2steering$2181              lab3_2steering
+C:   0000052D  A$lab3-2steering$2182              lab3_2steering
+C:   00000530  A$lab3-2steering$2183              lab3_2steering
+C:   00000532  A$lab3-2steering$2184              lab3_2steering
+C:   00000534  A$lab3-2steering$2185              lab3_2steering
+C:   00000536  A$lab3-2steering$2186              lab3_2steering
+C:   00000538  A$lab3-2steering$2187              lab3_2steering
+C:   0000053A  A$lab3-2steering$2188              lab3_2steering
+C:   0000053C  A$lab3-2steering$2189              lab3_2steering
+C:   0000053E  A$lab3-2steering$2190              lab3_2steering
+C:   0000053F  A$lab3-2steering$2191              lab3_2steering
+C:   00000542  A$lab3-2steering$2194              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 44.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000542  C$i2c.h$274$1$100                  lab3_2steering
+C:   00000542  XG$i2c_read_data$0$0               lab3_2steering
+C:   00000543  A$lab3-2steering$2209              lab3_2steering
+C:   00000543  C$i2c.h$283$1$100                  lab3_2steering
+C:   00000543  C$i2c.h$287$1$103                  lab3_2steering
+C:   00000543  G$Accel_Init$0$0                   lab3_2steering
+C:   00000543  _Accel_Init                        lab3_2steering
+C:   00000546  A$lab3-2steering$2212              lab3_2steering
+C:   00000546  C$i2c.h$289$1$103                  lab3_2steering
+C:   00000549  A$lab3-2steering$2213              lab3_2steering
+C:   0000054C  A$lab3-2steering$2214              lab3_2steering
+C:   0000054F  A$lab3-2steering$2215              lab3_2steering
+C:   00000552  A$lab3-2steering$2216              lab3_2steering
+C:   00000555  A$lab3-2steering$2217              lab3_2steering
+C:   00000558  A$lab3-2steering$2218              lab3_2steering
+C:   0000055B  A$lab3-2steering$2221              lab3_2steering
+C:   0000055B  C$i2c.h$290$1$103                  lab3_2steering
+C:   0000055E  A$lab3-2steering$2224              lab3_2steering
+C:   0000055E  C$i2c.h$292$1$103                  lab3_2steering
+C:   00000561  A$lab3-2steering$2225              lab3_2steering
+C:   00000564  A$lab3-2steering$2226              lab3_2steering
+C:   00000567  A$lab3-2steering$2227              lab3_2steering
+C:   0000056A  A$lab3-2steering$2228              lab3_2steering
+C:   0000056D  A$lab3-2steering$2229              lab3_2steering
+C:   00000570  A$lab3-2steering$2230              lab3_2steering
+C:   00000573  A$lab3-2steering$2233              lab3_2steering
+C:   00000573  C$i2c.h$293$1$103                  lab3_2steering
+C:   00000576  A$lab3-2steering$2236              lab3_2steering
+C:   00000576  C$i2c.h$294$1$103                  lab3_2steering
+C:   00000579  A$lab3-2steering$2237              lab3_2steering
+C:   0000057C  A$lab3-2steering$2238              lab3_2steering
+C:   0000057F  A$lab3-2steering$2239              lab3_2steering
+C:   00000582  A$lab3-2steering$2240              lab3_2steering
+C:   00000585  A$lab3-2steering$2241              lab3_2steering
+C:   00000588  A$lab3-2steering$2242              lab3_2steering
+C:   0000058B  A$lab3-2steering$2245              lab3_2steering
+C:   0000058B  C$i2c.h$298$1$103                  lab3_2steering
+C:   0000058B  XG$Accel_Init$0$0                  lab3_2steering
+C:   0000058C  A$lab3-2steering$2258              lab3_2steering
+C:   0000058C  C$lab3_2steering.c$25$1$103        lab3_2steering
+C:   0000058C  C$lab3_2steering.c$28$1$111        lab3_2steering
+C:   0000058C  G$main$0$0                         lab3_2steering
+C:   0000058C  _main                              lab3_2steering
+C:   0000058F  A$lab3-2steering$2261              lab3_2steering
+C:   0000058F  C$lab3_2steering.c$29$1$111        lab3_2steering
+C:   00000592  A$lab3-2steering$2262              lab3_2steering
+C:   00000595  A$lab3-2steering$2265              lab3_2steering
+C:   00000595  C$lab3_2steering.c$30$1$111        lab3_2steering
+C:   00000598  A$lab3-2steering$2268              lab3_2steering
+C:   00000598  C$lab3_2steering.c$31$1$111        lab3_2steering
+C:   0000059B  A$lab3-2steering$2271              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 45.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000059B  C$lab3_2steering.c$32$1$111        lab3_2steering
+C:   0000059E  A$lab3-2steering$2274              lab3_2steering
+C:   0000059E  C$lab3_2steering.c$33$1$111        lab3_2steering
+C:   000005A1  A$lab3-2steering$2277              lab3_2steering
+C:   000005A1  C$lab3_2steering.c$36$1$111        lab3_2steering
+C:   000005A3  A$lab3-2steering$2278              lab3_2steering
+C:   000005A5  A$lab3-2steering$2279              lab3_2steering
+C:   000005A7  A$lab3-2steering$2280              lab3_2steering
+C:   000005A9  A$lab3-2steering$2281              lab3_2steering
+C:   000005AB  A$lab3-2steering$2282              lab3_2steering
+C:   000005AD  A$lab3-2steering$2283              lab3_2steering
+C:   000005B0  A$lab3-2steering$2284              lab3_2steering
+C:   000005B2  A$lab3-2steering$2285              lab3_2steering
+C:   000005B4  A$lab3-2steering$2286              lab3_2steering
+C:   000005B6  A$lab3-2steering$2289              lab3_2steering
+C:   000005B6  C$lab3_2steering.c$40$1$111        lab3_2steering
+C:   000005B9  A$lab3-2steering$2290              lab3_2steering
+C:   000005BC  A$lab3-2steering$2293              lab3_2steering
+C:   000005BC  C$lab3_2steering.c$42$1$111        lab3_2steering
+C:   000005BF  A$lab3-2steering$2296              lab3_2steering
+C:   000005BF  C$lab3_2steering.c$43$1$111        lab3_2steering
+C:   000005C2  A$lab3-2steering$2299              lab3_2steering
+C:   000005C2  C$lab3_2steering.c$44$1$111        lab3_2steering
+C:   000005C3  A$lab3-2steering$2300              lab3_2steering
+C:   000005C5  A$lab3-2steering$2301              lab3_2steering
+C:   000005C7  A$lab3-2steering$2305              lab3_2steering
+C:   000005C7  C$lab3_2steering.c$45$1$111        lab3_2steering
+C:   000005C8  A$lab3-2steering$2306              lab3_2steering
+C:   000005CA  A$lab3-2steering$2307              lab3_2steering
+C:   000005CC  A$lab3-2steering$2308              lab3_2steering
+C:   000005CE  A$lab3-2steering$2309              lab3_2steering
+C:   000005D0  A$lab3-2steering$2310              lab3_2steering
+C:   000005D2  A$lab3-2steering$2316              lab3_2steering
+C:   000005D2  C$lab3_2steering.c$46$1$111        lab3_2steering
+C:   000005D2  C$lab3_2steering.c$48$2$112        lab3_2steering
+C:   000005D3  A$lab3-2steering$2317              lab3_2steering
+C:   000005D5  A$lab3-2steering$2318              lab3_2steering
+C:   000005D7  A$lab3-2steering$2322              lab3_2steering
+C:   000005D7  C$lab3_2steering.c$49$2$112        lab3_2steering
+C:   000005D8  A$lab3-2steering$2323              lab3_2steering
+C:   000005DA  A$lab3-2steering$2324              lab3_2steering
+C:   000005DC  A$lab3-2steering$2325              lab3_2steering
+C:   000005DE  A$lab3-2steering$2326              lab3_2steering
+C:   000005E0  A$lab3-2steering$2327              lab3_2steering
+C:   000005E2  A$lab3-2steering$2330              lab3_2steering
+C:   000005E2  C$lab3_2steering.c$50$2$112        lab3_2steering
+C:   000005E5  A$lab3-2steering$2331              lab3_2steering
+C:   000005E8  A$lab3-2steering$2332              lab3_2steering
+C:   000005EB  A$lab3-2steering$2335              lab3_2steering
+C:   000005EB  C$lab3_2steering.c$51$2$112        lab3_2steering
+C:   000005ED  A$lab3-2steering$2336              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 46.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000005EF  A$lab3-2steering$2337              lab3_2steering
+C:   000005F1  A$lab3-2steering$2338              lab3_2steering
+C:   000005F3  A$lab3-2steering$2339              lab3_2steering
+C:   000005F5  A$lab3-2steering$2340              lab3_2steering
+C:   000005F7  A$lab3-2steering$2341              lab3_2steering
+C:   000005F9  A$lab3-2steering$2342              lab3_2steering
+C:   000005FB  A$lab3-2steering$2343              lab3_2steering
+C:   000005FE  A$lab3-2steering$2344              lab3_2steering
+C:   00000600  A$lab3-2steering$2345              lab3_2steering
+C:   00000602  A$lab3-2steering$2346              lab3_2steering
+C:   00000604  A$lab3-2steering$2347              lab3_2steering
+C:   00000606  A$lab3-2steering$2350              lab3_2steering
+C:   00000606  C$lab3_2steering.c$56$1$111        lab3_2steering
+C:   00000606  XG$main$0$0                        lab3_2steering
+C:   00000607  A$lab3-2steering$2363              lab3_2steering
+C:   00000607  C$lab3_2steering.c$58$1$111        lab3_2steering
+C:   00000607  C$lab3_2steering.c$60$1$113        lab3_2steering
+C:   00000607  G$Port_Init$0$0                    lab3_2steering
+C:   00000607  _Port_Init                         lab3_2steering
+C:   0000060A  A$lab3-2steering$2366              lab3_2steering
+C:   0000060A  C$lab3_2steering.c$61$1$113        lab3_2steering
+C:   0000060C  A$lab3-2steering$2367              lab3_2steering
+C:   0000060E  A$lab3-2steering$2368              lab3_2steering
+C:   0000060F  A$lab3-2steering$2369              lab3_2steering
+C:   00000611  A$lab3-2steering$2372              lab3_2steering
+C:   00000611  C$lab3_2steering.c$62$1$113        lab3_2steering
+C:   00000611  XG$Port_Init$0$0                   lab3_2steering
+C:   00000612  A$lab3-2steering$2389              lab3_2steering
+C:   00000612  C$lab3_2steering.c$64$1$113        lab3_2steering
+C:   00000612  C$lab3_2steering.c$69$1$115        lab3_2steering
+C:   00000612  G$ReadCompass$0$0                  lab3_2steering
+C:   00000612  _ReadCompass                       lab3_2steering
+C:   00000615  A$lab3-2steering$2390              lab3_2steering
+C:   00000618  A$lab3-2steering$2391              lab3_2steering
+C:   0000061B  A$lab3-2steering$2392              lab3_2steering
+C:   0000061E  A$lab3-2steering$2393              lab3_2steering
+C:   00000621  A$lab3-2steering$2394              lab3_2steering
+C:   00000624  A$lab3-2steering$2395              lab3_2steering
+C:   00000627  A$lab3-2steering$2398              lab3_2steering
+C:   00000627  C$lab3_2steering.c$70$1$115        lab3_2steering
+C:   00000629  A$lab3-2steering$2399              lab3_2steering
+C:   0000062B  A$lab3-2steering$2400              lab3_2steering
+C:   0000062D  A$lab3-2steering$2401              lab3_2steering
+C:   0000062F  A$lab3-2steering$2402              lab3_2steering
+C:   00000630  A$lab3-2steering$2403              lab3_2steering
+C:   00000631  A$lab3-2steering$2404              lab3_2steering
+C:   00000633  A$lab3-2steering$2405              lab3_2steering
+C:   00000634  A$lab3-2steering$2406              lab3_2steering
+C:   00000635  A$lab3-2steering$2407              lab3_2steering
+C:   00000637  A$lab3-2steering$2412              lab3_2steering
+C:   00000637  C$lab3_2steering.c$71$1$115        lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 47.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000637  C$lab3_2steering.c$73$1$115        lab3_2steering
+C:   00000637  XG$ReadCompass$0$0                 lab3_2steering
+C:   00000638  A$lab3-2steering$2425              lab3_2steering
+C:   00000638  C$lab3_2steering.c$81$1$115        lab3_2steering
+C:   00000638  C$lab3_2steering.c$84$1$116        lab3_2steering
+C:   00000638  G$XBR0_Init$0$0                    lab3_2steering
+C:   00000638  _XBR0_Init                         lab3_2steering
+C:   0000063B  A$lab3-2steering$2428              lab3_2steering
+C:   0000063B  C$lab3_2steering.c$86$1$116        lab3_2steering
+C:   0000063B  XG$XBR0_Init$0$0                   lab3_2steering
+C:   0000063C  A$lab3-2steering$2441              lab3_2steering
+C:   0000063C  C$lab3_2steering.c$88$1$116        lab3_2steering
+C:   0000063C  C$lab3_2steering.c$90$1$118        lab3_2steering
+C:   0000063C  G$SMB_Init$0$0                     lab3_2steering
+C:   0000063C  _SMB_Init                          lab3_2steering
+C:   0000063F  A$lab3-2steering$2444              lab3_2steering
+C:   0000063F  C$lab3_2steering.c$91$1$118        lab3_2steering
+C:   00000641  A$lab3-2steering$2447              lab3_2steering
+C:   00000641  C$lab3_2steering.c$92$1$118        lab3_2steering
+C:   00000641  XG$SMB_Init$0$0                    lab3_2steering
+C:   00000642  A$lab3-2steering$2460              lab3_2steering
+C:   00000642  C$lab3_2steering.c$100$1$118       lab3_2steering
+C:   00000642  C$lab3_2steering.c$104$1$120       lab3_2steering
+C:   00000642  G$PCA_Init$0$0                     lab3_2steering
+C:   00000642  _PCA_Init                          lab3_2steering
+C:   00000645  A$lab3-2steering$2463              lab3_2steering
+C:   00000645  C$lab3_2steering.c$105$1$120       lab3_2steering
+C:   00000648  A$lab3-2steering$2466              lab3_2steering
+C:   00000648  C$lab3_2steering.c$106$1$120       lab3_2steering
+C:   0000064B  A$lab3-2steering$2469              lab3_2steering
+C:   0000064B  C$lab3_2steering.c$107$1$120       lab3_2steering
+C:   0000064E  A$lab3-2steering$2472              lab3_2steering
+C:   0000064E  C$lab3_2steering.c$108$1$120       lab3_2steering
+C:   00000650  A$lab3-2steering$2475              lab3_2steering
+C:   00000650  C$lab3_2steering.c$109$1$120       lab3_2steering
+C:   00000650  XG$PCA_Init$0$0                    lab3_2steering
+C:   00000651  A$lab3-2steering$2486              lab3_2steering
+C:   00000651  C$lab3_2steering.c$117$1$120       lab3_2steering
+C:   00000651  G$PCA_ISR$0$0                      lab3_2steering
+C:   00000651  _PCA_ISR                           lab3_2steering
+C:   00000653  A$lab3-2steering$2487              lab3_2steering
+C:   00000655  A$lab3-2steering$2492              lab3_2steering
+C:   00000655  C$lab3_2steering.c$120$1$122       lab3_2steering
+C:   00000655  C$lab3_2steering.c$122$2$123       lab3_2steering
+C:   00000658  A$lab3-2steering$2493              lab3_2steering
+C:   0000065A  A$lab3-2steering$2497              lab3_2steering
+C:   0000065A  C$lab3_2steering.c$123$2$123       lab3_2steering
+C:   0000065D  A$lab3-2steering$2498              lab3_2steering
+C:   00000660  A$lab3-2steering$2501              lab3_2steering
+C:   00000660  C$lab3_2steering.c$124$2$123       lab3_2steering
+C:   00000662  A$lab3-2steering$2502              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 48.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000663  A$lab3-2steering$2503              lab3_2steering
+C:   00000666  A$lab3-2steering$2504              lab3_2steering
+C:   00000668  A$lab3-2steering$2509              lab3_2steering
+C:   00000668  C$lab3_2steering.c$127$1$122       lab3_2steering
+C:   0000066B  A$lab3-2steering$2510              lab3_2steering
+C:   0000066D  A$lab3-2steering$2511              lab3_2steering
+C:   0000066F  A$lab3-2steering$2514              lab3_2steering
+C:   0000066F  C$lab3_2steering.c$130$1$122       lab3_2steering
+C:   0000066F  XG$PCA_ISR$0$0                     lab3_2steering
+C:   00000670  A$lab3-2steering$2531              lab3_2steering
+C:   00000670  C$lab3_2steering.c$132$1$122       lab3_2steering
+C:   00000670  C$lab3_2steering.c$137$1$124       lab3_2steering
+C:   00000670  G$Steering_Servo$0$0               lab3_2steering
+C:   00000670  _Steering_Servo                    lab3_2steering
+C:   00000672  A$lab3-2steering$2532              lab3_2steering
+C:   00000675  A$lab3-2steering$2535              lab3_2steering
+C:   00000675  C$lab3_2steering.c$141$2$125       lab3_2steering
+C:   00000676  A$lab3-2steering$2536              lab3_2steering
+C:   00000678  A$lab3-2steering$2537              lab3_2steering
+C:   0000067A  A$lab3-2steering$2538              lab3_2steering
+C:   0000067C  A$lab3-2steering$2539              lab3_2steering
+C:   0000067E  A$lab3-2steering$2540              lab3_2steering
+C:   00000680  A$lab3-2steering$2543              lab3_2steering
+C:   00000680  C$lab3_2steering.c$143$3$126       lab3_2steering
+C:   00000683  A$lab3-2steering$2544              lab3_2steering
+C:   00000686  A$lab3-2steering$2545              lab3_2steering
+C:   00000688  A$lab3-2steering$2549              lab3_2steering
+C:   00000688  C$lab3_2steering.c$147$3$127       lab3_2steering
+C:   0000068A  A$lab3-2steering$2550              lab3_2steering
+C:   0000068C  A$lab3-2steering$2551              lab3_2steering
+C:   0000068E  A$lab3-2steering$2552              lab3_2steering
+C:   00000690  A$lab3-2steering$2553              lab3_2steering
+C:   00000692  A$lab3-2steering$2554              lab3_2steering
+C:   00000694  A$lab3-2steering$2555              lab3_2steering
+C:   00000696  A$lab3-2steering$2559              lab3_2steering
+C:   00000696  C$lab3_2steering.c$150$1$124       lab3_2steering
+C:   00000698  A$lab3-2steering$2560              lab3_2steering
+C:   0000069B  A$lab3-2steering$2563              lab3_2steering
+C:   0000069B  C$lab3_2steering.c$154$2$128       lab3_2steering
+C:   0000069C  A$lab3-2steering$2564              lab3_2steering
+C:   0000069E  A$lab3-2steering$2565              lab3_2steering
+C:   000006A0  A$lab3-2steering$2566              lab3_2steering
+C:   000006A2  A$lab3-2steering$2567              lab3_2steering
+C:   000006A4  A$lab3-2steering$2568              lab3_2steering
+C:   000006A6  A$lab3-2steering$2571              lab3_2steering
+C:   000006A6  C$lab3_2steering.c$156$3$129       lab3_2steering
+C:   000006A9  A$lab3-2steering$2572              lab3_2steering
+C:   000006AC  A$lab3-2steering$2573              lab3_2steering
+C:   000006AE  A$lab3-2steering$2577              lab3_2steering
+C:   000006AE  C$lab3_2steering.c$160$3$130       lab3_2steering
+C:   000006B0  A$lab3-2steering$2578              lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 49.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000B6    00000D9C =        3484. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000006B2  A$lab3-2steering$2579              lab3_2steering
+C:   000006B4  A$lab3-2steering$2580              lab3_2steering
+C:   000006B5  A$lab3-2steering$2581              lab3_2steering
+C:   000006B7  A$lab3-2steering$2582              lab3_2steering
+C:   000006B9  A$lab3-2steering$2586              lab3_2steering
+C:   000006B9  C$lab3_2steering.c$163$1$124       lab3_2steering
+C:   000006BB  A$lab3-2steering$2587              lab3_2steering
+C:   000006BD  A$lab3-2steering$2588              lab3_2steering
+C:   000006BF  A$lab3-2steering$2589              lab3_2steering
+C:   000006C1  A$lab3-2steering$2590              lab3_2steering
+C:   000006C3  A$lab3-2steering$2591              lab3_2steering
+C:   000006C5  A$lab3-2steering$2592              lab3_2steering
+C:   000006C7  A$lab3-2steering$2593              lab3_2steering
+C:   000006C9  A$lab3-2steering$2594              lab3_2steering
+C:   000006CC  A$lab3-2steering$2595              lab3_2steering
+C:   000006CE  A$lab3-2steering$2596              lab3_2steering
+C:   000006D0  A$lab3-2steering$2597              lab3_2steering
+C:   000006D2  A$lab3-2steering$2600              lab3_2steering
+C:   000006D2  C$lab3_2steering.c$164$1$124       lab3_2steering
+C:   000006D4  A$lab3-2steering$2601              lab3_2steering
+C:   000006D6  A$lab3-2steering$2602              lab3_2steering
+C:   000006D7  A$lab3-2steering$2603              lab3_2steering
+C:   000006D8  A$lab3-2steering$2604              lab3_2steering
+C:   000006DA  A$lab3-2steering$2607              lab3_2steering
+C:   000006DA  C$lab3_2steering.c$165$1$124       lab3_2steering
+C:   000006DC  A$lab3-2steering$2608              lab3_2steering
+C:   000006DD  A$lab3-2steering$2609              lab3_2steering
+C:   000006DF  A$lab3-2steering$2610              lab3_2steering
+C:   000006E1  A$lab3-2steering$2611              lab3_2steering
+C:   000006E3  A$lab3-2steering$2612              lab3_2steering
+C:   000006E4  A$lab3-2steering$2613              lab3_2steering
+C:   000006E6  A$lab3-2steering$2616              lab3_2steering
+C:   000006E6  C$lab3_2steering.c$167$1$124       lab3_2steering
+C:   000006E6  XG$Steering_Servo$0$0              lab3_2steering
+C:   000006E7  __gptrput                          _gptrput
+C:   00000702  __mulint                           _mulint
+C:   00000702  __mulint_dummy                     _mulint
+C:   0000078F  _vsprintf                          sprintf
+C:   000007CC  _sprintf                           sprintf
+C:   00000825  _vprintf                           vprintf
+C:   0000083E  _printf                            vprintf
+C:   00000910  __print_format                     printf_large
+C:   00000E1A  _strlen                            _strlen
+C:   00000E32  __gptrget                          _gptrget
+C:   00000E4E  __sdcc_external_startup            _startup
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 50.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CONST                               00000E52    0000006D =         109. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000E52  Flab3_2steering$__str_0$0$0        lab3_2steering
+C:   00000E68  Flab3_2steering$__str_1$0$0        lab3_2steering
+C:   00000E78  Flab3_2steering$__str_2$0$0        lab3_2steering
+C:   00000E7B  Flab3_2steering$__str_3$0$0        lab3_2steering
+C:   00000EA2  Flab3_2steering$__str_4$0$0        lab3_2steering
+C:   00000EA7  Flab3_2steering$__str_5$0$0        lab3_2steering
+ASxxxx Linker V03.00 + NoICE + sdld,  page 51.
+
+Files Linked                              [ module(s) ]
+
+C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.rel
+                                          [  ]
+
+
+Libraries Linked                          [ object file ]
+
+C:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtclear.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtxinit.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _gptrput.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libint.lib
+                                          [ _mulint.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ sprintf.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtxclear.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _bp.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ vprintf.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ printf_large.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _strlen.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
+                                          [ crtstart.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _gptrget.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ _startup.rel ]
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 52.
+
+User Base Address Definitions
+
+HOME = 0x0000
+XSEG = 0x0001
+PSEG = 0x0001
+ISEG = 0x0000
+BSEG = 0x0000
+
+
