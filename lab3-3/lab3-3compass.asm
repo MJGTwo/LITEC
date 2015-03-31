@@ -1,9 +1,9 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Tue Mar 31 09:21:54 2015
+; This file was generated Tue Mar 31 10:45:22 2015
 ;--------------------------------------------------------
-	.module lab3_2steering
+	.module lab3_3compass
 	.optsdcc -mmcs51 --model-small
 	
 ;--------------------------------------------------------
@@ -303,10 +303,14 @@
 	.globl _DPL
 	.globl _SP
 	.globl _P0
-	.globl _answer
+	.globl _offset
+	.globl _error
+	.globl _desired_heading
+	.globl _actual_heading
 	.globl _input
 	.globl _count
 	.globl _STR_PW
+	.globl _tmp0_lo_to_hi
 	.globl _i2c_read_data_PARM_4
 	.globl _i2c_read_data_PARM_3
 	.globl _i2c_read_data_PARM_2
@@ -922,36 +926,39 @@ _BUS_SCL	=	0x0083
 ; internal ram data
 ;--------------------------------------------------------
 	.area DSEG    (DATA)
-Llab3_2steering.lcd_clear$NumBytes$1$77==.
+Llab3_3compass.lcd_clear$NumBytes$1$77==.
 _lcd_clear_NumBytes_1_77:
 	.ds 1
-Llab3_2steering.lcd_clear$Cmd$1$77==.
+Llab3_3compass.lcd_clear$Cmd$1$77==.
 _lcd_clear_Cmd_1_77:
 	.ds 2
-Llab3_2steering.read_keypad$Data$1$78==.
+Llab3_3compass.read_keypad$Data$1$78==.
 _read_keypad_Data_1_78:
 	.ds 2
-Llab3_2steering.i2c_write_data$start_reg$1$97==.
+Llab3_3compass.i2c_write_data$start_reg$1$97==.
 _i2c_write_data_PARM_2:
 	.ds 1
-Llab3_2steering.i2c_write_data$buffer$1$97==.
+Llab3_3compass.i2c_write_data$buffer$1$97==.
 _i2c_write_data_PARM_3:
 	.ds 3
-Llab3_2steering.i2c_write_data$num_bytes$1$97==.
+Llab3_3compass.i2c_write_data$num_bytes$1$97==.
 _i2c_write_data_PARM_4:
 	.ds 1
-Llab3_2steering.i2c_read_data$start_reg$1$99==.
+Llab3_3compass.i2c_read_data$start_reg$1$99==.
 _i2c_read_data_PARM_2:
 	.ds 1
-Llab3_2steering.i2c_read_data$buffer$1$99==.
+Llab3_3compass.i2c_read_data$buffer$1$99==.
 _i2c_read_data_PARM_3:
 	.ds 3
-Llab3_2steering.i2c_read_data$num_bytes$1$99==.
+Llab3_3compass.i2c_read_data$num_bytes$1$99==.
 _i2c_read_data_PARM_4:
 	.ds 1
-Llab3_2steering.Accel_Init$Data2$1$103==.
+Llab3_3compass.Accel_Init$Data2$1$103==.
 _Accel_Init_Data2_1_103:
 	.ds 1
+G$tmp0_lo_to_hi$0$0==.
+_tmp0_lo_to_hi::
+	.ds 2
 G$STR_PW$0$0==.
 _STR_PW::
 	.ds 2
@@ -961,10 +968,19 @@ _count::
 G$input$0$0==.
 _input::
 	.ds 1
-G$answer$0$0==.
-_answer::
+G$actual_heading$0$0==.
+_actual_heading::
 	.ds 2
-Llab3_2steering.ReadCompass$Data$1$115==.
+G$desired_heading$0$0==.
+_desired_heading::
+	.ds 2
+G$error$0$0==.
+_error::
+	.ds 2
+G$offset$0$0==.
+_offset::
+	.ds 2
+Llab3_3compass.ReadCompass$Data$1$115==.
 _ReadCompass_Data_1_115:
 	.ds 2
 ;--------------------------------------------------------
@@ -1005,7 +1021,7 @@ __start__stack:
 ; external ram data
 ;--------------------------------------------------------
 	.area XSEG    (XDATA)
-Llab3_2steering.lcd_print$text$1$73==.
+Llab3_3compass.lcd_print$text$1$73==.
 _lcd_print_text_1_73:
 	.ds 80
 ;--------------------------------------------------------
@@ -1064,15 +1080,19 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab3_2steering.c$25$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:25: unsigned int STR_PW   = 0;
+	C$lab3_3compass.c$26$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:26: unsigned int STR_PW   = 0;
 	clr	a
 	mov	_STR_PW,a
 	mov	(_STR_PW + 1),a
-	C$lab3_2steering.c$26$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:26: unsigned int count = 0;
+	C$lab3_3compass.c$27$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:27: unsigned int count = 0;
 	mov	_count,a
 	mov	(_count + 1),a
+	C$lab3_3compass.c$30$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:30: unsigned int desired_heading = 900; //East
+	mov	_desired_heading,#0x84
+	mov	(_desired_heading + 1),#0x03
 	.area GSFINAL (CODE)
 	ljmp	__sdcc_program_startup
 ;--------------------------------------------------------
@@ -2247,33 +2267,33 @@ _Accel_Init:
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
 	G$main$0$0 ==.
-	C$lab3_2steering.c$33$1$103 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:33: void main(void)
+	C$lab3_3compass.c$37$1$103 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:37: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	C$lab3_2steering.c$36$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:36: Sys_Init();
+	C$lab3_3compass.c$40$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:40: Sys_Init();
 	lcall	_Sys_Init
-	C$lab3_2steering.c$37$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:37: putchar(' '); //the quotes in this line may not format correctly
+	C$lab3_3compass.c$41$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:41: putchar(' '); //the quotes in this line may not format correctly
 	mov	dpl,#0x20
 	lcall	_putchar
-	C$lab3_2steering.c$38$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:38: Port_Init();
+	C$lab3_3compass.c$42$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:42: Port_Init();
 	lcall	_Port_Init
-	C$lab3_2steering.c$39$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:39: XBR0_Init();
+	C$lab3_3compass.c$43$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:43: XBR0_Init();
 	lcall	_XBR0_Init
-	C$lab3_2steering.c$40$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:40: PCA_Init();
+	C$lab3_3compass.c$44$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:44: PCA_Init();
 	lcall	_PCA_Init
-	C$lab3_2steering.c$41$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:41: SMB_Init();
+	C$lab3_3compass.c$45$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:45: SMB_Init();
 	lcall	_SMB_Init
-	C$lab3_2steering.c$44$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:44: printf("Embedded Control Steering Calibration\n");
+	C$lab3_3compass.c$48$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:48: printf("Embedded Control Steering Calibration\n");
 	mov	a,#___str_3
 	push	acc
 	mov	a,#(___str_3 >> 8)
@@ -2284,23 +2304,25 @@ _main:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab3_2steering.c$48$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:48: STR_PW = PW_CENTER_STR;
+	C$lab3_3compass.c$52$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:52: STR_PW = PW_CENTER_STR;
 	mov	_STR_PW,#0xCD
 	mov	(_STR_PW + 1),#0x0A
-	C$lab3_2steering.c$50$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:50: PCA0CPL0 = 0xFFFF - STR_PW;
-	mov	_PCA0CPL0,#0x32
-	C$lab3_2steering.c$51$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:51: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
-	mov	_PCA0CPH0,#0xF5
-	C$lab3_2steering.c$52$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:52: count=0;
+	C$lab3_3compass.c$53$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:53: tmp0_lo_to_hi= 0xFFFF - STR_PW;
+	mov	_tmp0_lo_to_hi,#0x32
+	mov	(_tmp0_lo_to_hi + 1),#0xF5
+	C$lab3_3compass.c$54$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:54: PCA0CP0 = tmp0_lo_to_hi;
+	mov	((_PCA0CP0 >> 0) & 0xFF),#0x32
+	mov	((_PCA0CP0 >> 8) & 0xFF),#0xF5
+	C$lab3_3compass.c$55$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:55: count=0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab3_2steering.c$53$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:53: while (count < 50);
+	C$lab3_3compass.c$56$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:56: while (count < 50);
 00101$:
 	clr	c
 	mov	a,_count
@@ -2308,16 +2330,16 @@ _main:
 	mov	a,(_count + 1)
 	subb	a,#0x00
 	jc	00101$
-	C$lab3_2steering.c$54$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:54: while (1)
+	C$lab3_3compass.c$57$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:57: while (1)
 00108$:
-	C$lab3_2steering.c$56$2$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:56: count =0;
+	C$lab3_3compass.c$59$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:59: count =0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab3_2steering.c$57$2$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:57: while (count < 2);
+	C$lab3_3compass.c$60$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:60: while (count < 2);
 00104$:
 	clr	c
 	mov	a,_count
@@ -2325,15 +2347,31 @@ _main:
 	mov	a,(_count + 1)
 	subb	a,#0x00
 	jc	00104$
-	C$lab3_2steering.c$58$2$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:58: answer = ReadCompass();
+	C$lab3_3compass.c$61$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:61: actual_heading = ReadCompass();
 	lcall	_ReadCompass
-	mov	_answer,dpl
-	mov	(_answer + 1),dph
-	C$lab3_2steering.c$59$2$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:59: printf("\r\n%d",answer);
-	push	_answer
-	push	(_answer + 1)
+	mov	_actual_heading,dpl
+	mov	(_actual_heading + 1),dph
+	C$lab3_3compass.c$63$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:63: offset = (actual_heading - desired_heading) % 3600;
+	mov	a,_actual_heading
+	clr	c
+	subb	a,_desired_heading
+	mov	dpl,a
+	mov	a,(_actual_heading + 1)
+	subb	a,(_desired_heading + 1)
+	mov	dph,a
+	mov	__moduint_PARM_2,#0x10
+	mov	(__moduint_PARM_2 + 1),#0x0E
+	lcall	__moduint
+	mov	_offset,dpl
+	mov	(_offset + 1),dph
+	C$lab3_3compass.c$64$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:64: printf("\r\n%d\t%d",actual_heading,offset);
+	push	_offset
+	push	(_offset + 1)
+	push	_actual_heading
+	push	(_actual_heading + 1)
 	mov	a,#___str_4
 	push	acc
 	mov	a,#(___str_4 >> 8)
@@ -2342,32 +2380,32 @@ _main:
 	push	acc
 	lcall	_printf
 	mov	a,sp
-	add	a,#0xfb
+	add	a,#0xf9
 	mov	sp,a
 	sjmp	00108$
-	C$lab3_2steering.c$64$1$111 ==.
+	C$lab3_3compass.c$70$1$111 ==.
 	XG$main$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Port_Init'
 ;------------------------------------------------------------
 	G$Port_Init$0$0 ==.
-	C$lab3_2steering.c$66$1$111 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:66: void Port_Init()
+	C$lab3_3compass.c$72$1$111 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:72: void Port_Init()
 ;	-----------------------------------------
 ;	 function Port_Init
 ;	-----------------------------------------
 _Port_Init:
-	C$lab3_2steering.c$68$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:68: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
+	C$lab3_3compass.c$74$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:74: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
 	mov	_P1MDOUT,#0x0F
-	C$lab3_2steering.c$69$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:69: P0MDOUT &= ~0x32;
+	C$lab3_3compass.c$75$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:75: P0MDOUT &= ~0x32;
 	mov	r7,_P0MDOUT
 	mov	a,#0xCD
 	anl	a,r7
 	mov	_P0MDOUT,a
-	C$lab3_2steering.c$70$1$113 ==.
+	C$lab3_3compass.c$76$1$113 ==.
 	XG$Port_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2378,14 +2416,14 @@ _Port_Init:
 ;addr                      Allocated to registers 
 ;------------------------------------------------------------
 	G$ReadCompass$0$0 ==.
-	C$lab3_2steering.c$72$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:72: unsigned int ReadCompass(void)
+	C$lab3_3compass.c$78$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:78: unsigned int ReadCompass(void)
 ;	-----------------------------------------
 ;	 function ReadCompass
 ;	-----------------------------------------
 _ReadCompass:
-	C$lab3_2steering.c$77$1$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:77: i2c_read_data(addr, 2,Data,2);
+	C$lab3_3compass.c$83$1$115 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:83: i2c_read_data(addr, 2,Data,2);
 	mov	_i2c_read_data_PARM_3,#_ReadCompass_Data_1_115
 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
@@ -2393,8 +2431,8 @@ _ReadCompass:
 	mov	_i2c_read_data_PARM_4,#0x02
 	mov	dpl,#0xC0
 	lcall	_i2c_read_data
-	C$lab3_2steering.c$78$1$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:78: range = ((unsigned int) Data[0] << 8 | Data[1]);
+	C$lab3_3compass.c$84$1$115 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:84: range = ((unsigned int) Data[0] << 8 | Data[1]);
 	mov	r7,_ReadCompass_Data_1_115
 	mov	r6,#0x00
 	mov	r4,(_ReadCompass_Data_1_115 + 0x0001)
@@ -2405,111 +2443,111 @@ _ReadCompass:
 	mov	a,r5
 	orl	a,r7
 	mov	dph,a
-	C$lab3_2steering.c$79$1$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:79: return range;
-	C$lab3_2steering.c$81$1$115 ==.
+	C$lab3_3compass.c$85$1$115 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:85: return range;
+	C$lab3_3compass.c$87$1$115 ==.
 	XG$ReadCompass$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'XBR0_Init'
 ;------------------------------------------------------------
 	G$XBR0_Init$0$0 ==.
-	C$lab3_2steering.c$89$1$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:89: void XBR0_Init()
+	C$lab3_3compass.c$95$1$115 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:95: void XBR0_Init()
 ;	-----------------------------------------
 ;	 function XBR0_Init
 ;	-----------------------------------------
 _XBR0_Init:
-	C$lab3_2steering.c$92$1$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:92: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
+	C$lab3_3compass.c$98$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:98: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
 	mov	_XBR0,#0x27
-	C$lab3_2steering.c$94$1$116 ==.
+	C$lab3_3compass.c$100$1$116 ==.
 	XG$XBR0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'SMB_Init'
 ;------------------------------------------------------------
 	G$SMB_Init$0$0 ==.
-	C$lab3_2steering.c$96$1$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:96: void SMB_Init(void)
+	C$lab3_3compass.c$102$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:102: void SMB_Init(void)
 ;	-----------------------------------------
 ;	 function SMB_Init
 ;	-----------------------------------------
 _SMB_Init:
-	C$lab3_2steering.c$98$1$118 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:98: SMB0CR =0x93;
+	C$lab3_3compass.c$104$1$118 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:104: SMB0CR =0x93;
 	mov	_SMB0CR,#0x93
-	C$lab3_2steering.c$99$1$118 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:99: ENSMB =1;
+	C$lab3_3compass.c$105$1$118 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:105: ENSMB =1;
 	setb	_ENSMB
-	C$lab3_2steering.c$100$1$118 ==.
+	C$lab3_3compass.c$106$1$118 ==.
 	XG$SMB_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_Init'
 ;------------------------------------------------------------
 	G$PCA_Init$0$0 ==.
-	C$lab3_2steering.c$108$1$118 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:108: void PCA_Init(void)
+	C$lab3_3compass.c$114$1$118 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:114: void PCA_Init(void)
 ;	-----------------------------------------
 ;	 function PCA_Init
 ;	-----------------------------------------
 _PCA_Init:
-	C$lab3_2steering.c$112$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:112: PCA0MD = 0x81;
+	C$lab3_3compass.c$118$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:118: PCA0MD = 0x81;
 	mov	_PCA0MD,#0x81
-	C$lab3_2steering.c$113$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:113: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
+	C$lab3_3compass.c$119$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:119: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
 	mov	_PCA0CPM0,#0xC2
-	C$lab3_2steering.c$114$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:114: PCA0CN = 0x40;      //Enable PCA counter
+	C$lab3_3compass.c$120$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:120: PCA0CN = 0x40;      //Enable PCA counter
 	mov	_PCA0CN,#0x40
-	C$lab3_2steering.c$115$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:115: EIE1 |= 0x08;       //Enable PCA interrupt
+	C$lab3_3compass.c$121$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:121: EIE1 |= 0x08;       //Enable PCA interrupt
 	orl	_EIE1,#0x08
-	C$lab3_2steering.c$116$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:116: EA = 1;             //Enable global interrupts
+	C$lab3_3compass.c$122$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:122: EA = 1;             //Enable global interrupts
 	setb	_EA
-	C$lab3_2steering.c$117$1$120 ==.
+	C$lab3_3compass.c$123$1$120 ==.
 	XG$PCA_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_ISR'
 ;------------------------------------------------------------
 	G$PCA_ISR$0$0 ==.
-	C$lab3_2steering.c$125$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:125: void PCA_ISR ( void ) __interrupt 9
+	C$lab3_3compass.c$131$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:131: void PCA_ISR ( void ) __interrupt 9
 ;	-----------------------------------------
 ;	 function PCA_ISR
 ;	-----------------------------------------
 _PCA_ISR:
 	push	acc
 	push	psw
-	C$lab3_2steering.c$128$1$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:128: if (CF)
-	C$lab3_2steering.c$130$2$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:130: CF =0;
+	C$lab3_3compass.c$134$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:134: if (CF)
+	C$lab3_3compass.c$136$2$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:136: CF =0;
 	jbc	_CF,00108$
 	sjmp	00102$
 00108$:
-	C$lab3_2steering.c$131$2$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:131: PCA0 = 0x7000;
+	C$lab3_3compass.c$137$2$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:137: PCA0 = 0x7000;
 	mov	((_PCA0 >> 0) & 0xFF),#0x00
 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-	C$lab3_2steering.c$132$2$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:132: count++;
+	C$lab3_3compass.c$138$2$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:138: count++;
 	inc	_count
 	clr	a
 	cjne	a,_count,00109$
 	inc	(_count + 1)
 00109$:
 00102$:
-	C$lab3_2steering.c$135$1$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:135: PCA0CN &= 0xC0;
+	C$lab3_3compass.c$141$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:141: PCA0CN &= 0xC0;
 	anl	_PCA0CN,#0xC0
 	pop	psw
 	pop	acc
-	C$lab3_2steering.c$138$1$122 ==.
+	C$lab3_3compass.c$144$1$122 ==.
 	XG$PCA_ISR$0$0 ==.
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
@@ -2520,32 +2558,32 @@ _PCA_ISR:
 ;Allocation info for local variables in function 'Steering_Servo'
 ;------------------------------------------------------------
 	G$Steering_Servo$0$0 ==.
-	C$lab3_2steering.c$140$1$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:140: void Steering_Servo()
+	C$lab3_3compass.c$146$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:146: void Steering_Servo()
 ;	-----------------------------------------
 ;	 function Steering_Servo
 ;	-----------------------------------------
 _Steering_Servo:
-	C$lab3_2steering.c$145$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:145: if(input == 'r')  // single character input to increase the pulsewidth
+	C$lab3_3compass.c$151$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:151: if(input == 'r')  // single character input to increase the pulsewidth
 	mov	a,#0x72
 	cjne	a,_input,00110$
-	C$lab3_2steering.c$149$2$125 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:149: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
+	C$lab3_3compass.c$155$2$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:155: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
 	clr	c
 	mov	a,#0xD9
 	subb	a,_STR_PW
 	mov	a,#0x08
 	subb	a,(_STR_PW + 1)
 	jc	00102$
-	C$lab3_2steering.c$151$3$126 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:151: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
+	C$lab3_3compass.c$157$3$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:157: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
 	mov	_STR_PW,#0xD9
 	mov	(_STR_PW + 1),#0x08
 	sjmp	00111$
 00102$:
-	C$lab3_2steering.c$155$3$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:155: STR_PW-= 10;
+	C$lab3_3compass.c$161$3$127 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:161: STR_PW-= 10;
 	mov	a,_STR_PW
 	add	a,#0xF6
 	mov	_STR_PW,a
@@ -2554,26 +2592,26 @@ _Steering_Servo:
 	mov	(_STR_PW + 1),a
 	sjmp	00111$
 00110$:
-	C$lab3_2steering.c$158$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:158: else if(input == 'l')  // single character input to decrease the pulsewidth
+	C$lab3_3compass.c$164$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:164: else if(input == 'l')  // single character input to decrease the pulsewidth
 	mov	a,#0x6C
 	cjne	a,_input,00111$
-	C$lab3_2steering.c$162$2$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:162: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
+	C$lab3_3compass.c$168$2$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:168: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
 	clr	c
 	mov	a,#0xCB
 	subb	a,_STR_PW
 	mov	a,#0x0C
 	subb	a,(_STR_PW + 1)
 	jnc	00105$
-	C$lab3_2steering.c$164$3$129 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:164: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
+	C$lab3_3compass.c$170$3$129 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:170: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
 	mov	_STR_PW,#0xCB
 	mov	(_STR_PW + 1),#0x0C
 	sjmp	00111$
 00105$:
-	C$lab3_2steering.c$168$3$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:168: STR_PW+= 10;
+	C$lab3_3compass.c$174$3$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:174: STR_PW+= 10;
 	mov	a,#0x0A
 	add	a,_STR_PW
 	mov	_STR_PW,a
@@ -2581,8 +2619,8 @@ _Steering_Servo:
 	addc	a,(_STR_PW + 1)
 	mov	(_STR_PW + 1),a
 00111$:
-	C$lab3_2steering.c$171$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:171: printf("\r\nSTR_PW: %u", STR_PW);
+	C$lab3_3compass.c$177$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:177: printf("\r\nSTR_PW: %u", STR_PW);
 	push	_STR_PW
 	push	(_STR_PW + 1)
 	mov	a,#___str_5
@@ -2595,52 +2633,51 @@ _Steering_Servo:
 	mov	a,sp
 	add	a,#0xfb
 	mov	sp,a
-	C$lab3_2steering.c$172$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:172: PCA0CPL0 = 0xFFFF - STR_PW;
-	mov	r7,_STR_PW
-	mov	a,#0xFF
-	clr	c
-	subb	a,r7
-	mov	_PCA0CPL0,a
-	C$lab3_2steering.c$173$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:173: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+	C$lab3_3compass.c$178$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:178: tmp0_lo_to_hi= 0xFFFF - STR_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_STR_PW
+	mov	_tmp0_lo_to_hi,a
 	mov	a,#0xFF
 	subb	a,(_STR_PW + 1)
-	mov	r7,a
-	mov	_PCA0CPH0,r7
-	C$lab3_2steering.c$175$1$124 ==.
+	mov	(_tmp0_lo_to_hi + 1),a
+	C$lab3_3compass.c$179$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:179: PCA0CP0 = tmp0_lo_to_hi;
+	mov	((_PCA0CP0 >> 0) & 0xFF),_tmp0_lo_to_hi
+	mov	((_PCA0CP0 >> 8) & 0xFF),(_tmp0_lo_to_hi + 1)
+	C$lab3_3compass.c$182$1$124 ==.
 	XG$Steering_Servo$0$0 ==.
 	ret
 	.area CSEG    (CODE)
 	.area CONST   (CODE)
-Flab3_2steering$__str_0$0$0 == .
+Flab3_3compass$__str_0$0$0 == .
 ___str_0:
 	.db 0x0A
 	.ascii "Type digits; end w/#"
 	.db 0x00
-Flab3_2steering$__str_1$0$0 == .
+Flab3_3compass$__str_1$0$0 == .
 ___str_1:
 	.ascii "     %c%c%c%c%c"
 	.db 0x00
-Flab3_2steering$__str_2$0$0 == .
+Flab3_3compass$__str_2$0$0 == .
 ___str_2:
 	.ascii "%c"
 	.db 0x00
-Flab3_2steering$__str_3$0$0 == .
+Flab3_3compass$__str_3$0$0 == .
 ___str_3:
 	.ascii "Embedded Control Steering Calibration"
 	.db 0x0A
 	.db 0x00
-Flab3_2steering$__str_4$0$0 == .
+Flab3_3compass$__str_4$0$0 == .
 ___str_4:
 	.db 0x0D
 	.db 0x0A
 	.ascii "%d"
+	.db 0x09
+	.ascii "%d"
 	.db 0x00
-Flab3_2steering$__str_5$0$0 == .
+Flab3_3compass$__str_5$0$0 == .
 ___str_5:
 	.db 0x0D
 	.db 0x0A

@@ -25,7 +25,9 @@ void Steering_Servo(void);
 unsigned int STR_PW   = 0;
 unsigned int count = 0;
 char input;
-unsigned int answer;
+unsigned int actual_heading;
+unsigned int desired_heading = 900; //East
+unsigned int error;
 //-----------------------------------------------------------------------------
 // Main Function
 //-----------------------------------------------------------------------------
@@ -55,9 +57,12 @@ void main(void)
 	{
 		count =0;
 		while (count < 2);
-		answer = ReadCompass();
-		printf("\r\n%d",answer);
-	}
+		actual_heading = ReadCompass();
+        
+        error = desired_heading- actual_heading;
+		printf("\r\n%d\t%d",actual_heading);
+
+    }
 	
 
         

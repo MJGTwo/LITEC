@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-                                      4 ; This file was generated Fri Mar 20 10:09:59 2015
+                                      4 ; This file was generated Tue Mar 31 09:21:54 2015
                                       5 ;--------------------------------------------------------
                                       6 	.module lab3_2steering
                                       7 	.optsdcc -mmcs51 --model-small
@@ -1064,13 +1064,13 @@
                                    1064 	.globl __mcs51_genXINIT
                                    1065 	.globl __mcs51_genXRAMCLEAR
                                    1066 	.globl __mcs51_genRAMCLEAR
-                           000000  1067 	C$lab3_2steering.c$17$1$124 ==.
-                                   1068 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:17: unsigned int STR_PW   = 0;
+                           000000  1067 	C$lab3_2steering.c$25$1$124 ==.
+                                   1068 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:25: unsigned int STR_PW   = 0;
       0000AA E4               [12] 1069 	clr	a
       0000AB F5 32            [12] 1070 	mov	_STR_PW,a
       0000AD F5 33            [12] 1071 	mov	(_STR_PW + 1),a
-                           000005  1072 	C$lab3_2steering.c$18$1$124 ==.
-                                   1073 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:18: unsigned int count = 0;
+                           000005  1072 	C$lab3_2steering.c$26$1$124 ==.
+                                   1073 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:26: unsigned int count = 0;
       0000AF F5 34            [12] 1074 	mov	_count,a
       0000B1 F5 35            [12] 1075 	mov	(_count + 1),a
                                    1076 	.area GSFINAL (CODE)
@@ -2247,33 +2247,33 @@
                                    2247 ;Allocation info for local variables in function 'main'
                                    2248 ;------------------------------------------------------------
                            0004D6  2249 	G$main$0$0 ==.
-                           0004D6  2250 	C$lab3_2steering.c$25$1$103 ==.
-                                   2251 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:25: void main(void)
+                           0004D6  2250 	C$lab3_2steering.c$33$1$103 ==.
+                                   2251 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:33: void main(void)
                                    2252 ;	-----------------------------------------
                                    2253 ;	 function main
                                    2254 ;	-----------------------------------------
       00058C                       2255 _main:
-                           0004D6  2256 	C$lab3_2steering.c$28$1$111 ==.
-                                   2257 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:28: Sys_Init();
+                           0004D6  2256 	C$lab3_2steering.c$36$1$111 ==.
+                                   2257 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:36: Sys_Init();
       00058C 12 00 E6         [24] 2258 	lcall	_Sys_Init
-                           0004D9  2259 	C$lab3_2steering.c$29$1$111 ==.
-                                   2260 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:29: putchar(' '); //the quotes in this line may not format correctly
+                           0004D9  2259 	C$lab3_2steering.c$37$1$111 ==.
+                                   2260 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:37: putchar(' '); //the quotes in this line may not format correctly
       00058F 75 82 20         [24] 2261 	mov	dpl,#0x20
       000592 12 00 F9         [24] 2262 	lcall	_putchar
-                           0004DF  2263 	C$lab3_2steering.c$30$1$111 ==.
-                                   2264 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:30: Port_Init();
+                           0004DF  2263 	C$lab3_2steering.c$38$1$111 ==.
+                                   2264 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:38: Port_Init();
       000595 12 06 07         [24] 2265 	lcall	_Port_Init
-                           0004E2  2266 	C$lab3_2steering.c$31$1$111 ==.
-                                   2267 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:31: XBR0_Init();
+                           0004E2  2266 	C$lab3_2steering.c$39$1$111 ==.
+                                   2267 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:39: XBR0_Init();
       000598 12 06 38         [24] 2268 	lcall	_XBR0_Init
-                           0004E5  2269 	C$lab3_2steering.c$32$1$111 ==.
-                                   2270 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:32: PCA_Init();
+                           0004E5  2269 	C$lab3_2steering.c$40$1$111 ==.
+                                   2270 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:40: PCA_Init();
       00059B 12 06 42         [24] 2271 	lcall	_PCA_Init
-                           0004E8  2272 	C$lab3_2steering.c$33$1$111 ==.
-                                   2273 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:33: SMB_Init();
+                           0004E8  2272 	C$lab3_2steering.c$41$1$111 ==.
+                                   2273 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:41: SMB_Init();
       00059E 12 06 3C         [24] 2274 	lcall	_SMB_Init
-                           0004EB  2275 	C$lab3_2steering.c$36$1$111 ==.
-                                   2276 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:36: printf("Embedded Control Steering Calibration\n");
+                           0004EB  2275 	C$lab3_2steering.c$44$1$111 ==.
+                                   2276 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:44: printf("Embedded Control Steering Calibration\n");
       0005A1 74 7B            [12] 2277 	mov	a,#___str_3
       0005A3 C0 E0            [24] 2278 	push	acc
       0005A5 74 0E            [12] 2279 	mov	a,#(___str_3 >> 8)
@@ -2284,23 +2284,23 @@
       0005B0 15 81            [12] 2284 	dec	sp
       0005B2 15 81            [12] 2285 	dec	sp
       0005B4 15 81            [12] 2286 	dec	sp
-                           000500  2287 	C$lab3_2steering.c$40$1$111 ==.
-                                   2288 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:40: STR_PW = PW_CENTER_STR;
+                           000500  2287 	C$lab3_2steering.c$48$1$111 ==.
+                                   2288 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:48: STR_PW = PW_CENTER_STR;
       0005B6 75 32 CD         [24] 2289 	mov	_STR_PW,#0xCD
       0005B9 75 33 0A         [24] 2290 	mov	(_STR_PW + 1),#0x0A
-                           000506  2291 	C$lab3_2steering.c$42$1$111 ==.
-                                   2292 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:42: PCA0CPL0 = 0xFFFF - STR_PW;
+                           000506  2291 	C$lab3_2steering.c$50$1$111 ==.
+                                   2292 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:50: PCA0CPL0 = 0xFFFF - STR_PW;
       0005BC 75 EA 32         [24] 2293 	mov	_PCA0CPL0,#0x32
-                           000509  2294 	C$lab3_2steering.c$43$1$111 ==.
-                                   2295 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:43: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+                           000509  2294 	C$lab3_2steering.c$51$1$111 ==.
+                                   2295 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:51: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
       0005BF 75 FA F5         [24] 2296 	mov	_PCA0CPH0,#0xF5
-                           00050C  2297 	C$lab3_2steering.c$44$1$111 ==.
-                                   2298 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:44: count=0;
+                           00050C  2297 	C$lab3_2steering.c$52$1$111 ==.
+                                   2298 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:52: count=0;
       0005C2 E4               [12] 2299 	clr	a
       0005C3 F5 34            [12] 2300 	mov	_count,a
       0005C5 F5 35            [12] 2301 	mov	(_count + 1),a
-                           000511  2302 	C$lab3_2steering.c$45$1$111 ==.
-                                   2303 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:45: while (count < 50);
+                           000511  2302 	C$lab3_2steering.c$53$1$111 ==.
+                                   2303 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:53: while (count < 50);
       0005C7                       2304 00101$:
       0005C7 C3               [12] 2305 	clr	c
       0005C8 E5 34            [12] 2306 	mov	a,_count
@@ -2308,16 +2308,16 @@
       0005CC E5 35            [12] 2308 	mov	a,(_count + 1)
       0005CE 94 00            [12] 2309 	subb	a,#0x00
       0005D0 40 F5            [24] 2310 	jc	00101$
-                           00051C  2311 	C$lab3_2steering.c$46$1$111 ==.
-                                   2312 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:46: while (1)
+                           00051C  2311 	C$lab3_2steering.c$54$1$111 ==.
+                                   2312 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:54: while (1)
       0005D2                       2313 00108$:
-                           00051C  2314 	C$lab3_2steering.c$48$2$112 ==.
-                                   2315 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:48: count =0;
+                           00051C  2314 	C$lab3_2steering.c$56$2$112 ==.
+                                   2315 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:56: count =0;
       0005D2 E4               [12] 2316 	clr	a
       0005D3 F5 34            [12] 2317 	mov	_count,a
       0005D5 F5 35            [12] 2318 	mov	(_count + 1),a
-                           000521  2319 	C$lab3_2steering.c$49$2$112 ==.
-                                   2320 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:49: while (count < 2);
+                           000521  2319 	C$lab3_2steering.c$57$2$112 ==.
+                                   2320 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:57: while (count < 2);
       0005D7                       2321 00104$:
       0005D7 C3               [12] 2322 	clr	c
       0005D8 E5 34            [12] 2323 	mov	a,_count
@@ -2325,13 +2325,13 @@
       0005DC E5 35            [12] 2325 	mov	a,(_count + 1)
       0005DE 94 00            [12] 2326 	subb	a,#0x00
       0005E0 40 F5            [24] 2327 	jc	00104$
-                           00052C  2328 	C$lab3_2steering.c$50$2$112 ==.
-                                   2329 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:50: answer = ReadCompass();
+                           00052C  2328 	C$lab3_2steering.c$58$2$112 ==.
+                                   2329 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:58: answer = ReadCompass();
       0005E2 12 06 12         [24] 2330 	lcall	_ReadCompass
       0005E5 85 82 37         [24] 2331 	mov	_answer,dpl
       0005E8 85 83 38         [24] 2332 	mov	(_answer + 1),dph
-                           000535  2333 	C$lab3_2steering.c$51$2$112 ==.
-                                   2334 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:51: printf("\r\n%d",answer);
+                           000535  2333 	C$lab3_2steering.c$59$2$112 ==.
+                                   2334 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:59: printf("\r\n%d",answer);
       0005EB C0 37            [24] 2335 	push	_answer
       0005ED C0 38            [24] 2336 	push	(_answer + 1)
       0005EF 74 A2            [12] 2337 	mov	a,#___str_4
@@ -2345,29 +2345,29 @@
       000600 24 FB            [12] 2345 	add	a,#0xfb
       000602 F5 81            [12] 2346 	mov	sp,a
       000604 80 CC            [24] 2347 	sjmp	00108$
-                           000550  2348 	C$lab3_2steering.c$56$1$111 ==.
+                           000550  2348 	C$lab3_2steering.c$64$1$111 ==.
                            000550  2349 	XG$main$0$0 ==.
       000606 22               [24] 2350 	ret
                                    2351 ;------------------------------------------------------------
                                    2352 ;Allocation info for local variables in function 'Port_Init'
                                    2353 ;------------------------------------------------------------
                            000551  2354 	G$Port_Init$0$0 ==.
-                           000551  2355 	C$lab3_2steering.c$58$1$111 ==.
-                                   2356 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:58: void Port_Init()
+                           000551  2355 	C$lab3_2steering.c$66$1$111 ==.
+                                   2356 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:66: void Port_Init()
                                    2357 ;	-----------------------------------------
                                    2358 ;	 function Port_Init
                                    2359 ;	-----------------------------------------
       000607                       2360 _Port_Init:
-                           000551  2361 	C$lab3_2steering.c$60$1$113 ==.
-                                   2362 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:60: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
+                           000551  2361 	C$lab3_2steering.c$68$1$113 ==.
+                                   2362 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:68: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
       000607 75 A5 0F         [24] 2363 	mov	_P1MDOUT,#0x0F
-                           000554  2364 	C$lab3_2steering.c$61$1$113 ==.
-                                   2365 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:61: P0MDOUT &= ~0x32;
+                           000554  2364 	C$lab3_2steering.c$69$1$113 ==.
+                                   2365 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:69: P0MDOUT &= ~0x32;
       00060A AF A4            [24] 2366 	mov	r7,_P0MDOUT
       00060C 74 CD            [12] 2367 	mov	a,#0xCD
       00060E 5F               [12] 2368 	anl	a,r7
       00060F F5 A4            [12] 2369 	mov	_P0MDOUT,a
-                           00055B  2370 	C$lab3_2steering.c$62$1$113 ==.
+                           00055B  2370 	C$lab3_2steering.c$70$1$113 ==.
                            00055B  2371 	XG$Port_Init$0$0 ==.
       000611 22               [24] 2372 	ret
                                    2373 ;------------------------------------------------------------
@@ -2378,14 +2378,14 @@
                                    2378 ;addr                      Allocated to registers 
                                    2379 ;------------------------------------------------------------
                            00055C  2380 	G$ReadCompass$0$0 ==.
-                           00055C  2381 	C$lab3_2steering.c$64$1$113 ==.
-                                   2382 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:64: unsigned int ReadCompass(void)
+                           00055C  2381 	C$lab3_2steering.c$72$1$113 ==.
+                                   2382 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:72: unsigned int ReadCompass(void)
                                    2383 ;	-----------------------------------------
                                    2384 ;	 function ReadCompass
                                    2385 ;	-----------------------------------------
       000612                       2386 _ReadCompass:
-                           00055C  2387 	C$lab3_2steering.c$69$1$115 ==.
-                                   2388 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:69: i2c_read_data(addr, 2,Data,2);
+                           00055C  2387 	C$lab3_2steering.c$77$1$115 ==.
+                                   2388 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:77: i2c_read_data(addr, 2,Data,2);
       000612 75 2D 39         [24] 2389 	mov	_i2c_read_data_PARM_3,#_ReadCompass_Data_1_115
       000615 75 2E 00         [24] 2390 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
       000618 75 2F 40         [24] 2391 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
@@ -2393,8 +2393,8 @@
       00061E 75 30 02         [24] 2393 	mov	_i2c_read_data_PARM_4,#0x02
       000621 75 82 C0         [24] 2394 	mov	dpl,#0xC0
       000624 12 04 9E         [24] 2395 	lcall	_i2c_read_data
-                           000571  2396 	C$lab3_2steering.c$70$1$115 ==.
-                                   2397 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:70: range = ((unsigned int) Data[0] << 8 | Data[1]);
+                           000571  2396 	C$lab3_2steering.c$78$1$115 ==.
+                                   2397 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:78: range = ((unsigned int) Data[0] << 8 | Data[1]);
       000627 AF 39            [24] 2398 	mov	r7,_ReadCompass_Data_1_115
       000629 7E 00            [12] 2399 	mov	r6,#0x00
       00062B AC 3A            [24] 2400 	mov	r4,(_ReadCompass_Data_1_115 + 0x0001)
@@ -2405,111 +2405,111 @@
       000633 ED               [12] 2405 	mov	a,r5
       000634 4F               [12] 2406 	orl	a,r7
       000635 F5 83            [12] 2407 	mov	dph,a
-                           000581  2408 	C$lab3_2steering.c$71$1$115 ==.
-                                   2409 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:71: return range;
-                           000581  2410 	C$lab3_2steering.c$73$1$115 ==.
+                           000581  2408 	C$lab3_2steering.c$79$1$115 ==.
+                                   2409 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:79: return range;
+                           000581  2410 	C$lab3_2steering.c$81$1$115 ==.
                            000581  2411 	XG$ReadCompass$0$0 ==.
       000637 22               [24] 2412 	ret
                                    2413 ;------------------------------------------------------------
                                    2414 ;Allocation info for local variables in function 'XBR0_Init'
                                    2415 ;------------------------------------------------------------
                            000582  2416 	G$XBR0_Init$0$0 ==.
-                           000582  2417 	C$lab3_2steering.c$81$1$115 ==.
-                                   2418 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:81: void XBR0_Init()
+                           000582  2417 	C$lab3_2steering.c$89$1$115 ==.
+                                   2418 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:89: void XBR0_Init()
                                    2419 ;	-----------------------------------------
                                    2420 ;	 function XBR0_Init
                                    2421 ;	-----------------------------------------
       000638                       2422 _XBR0_Init:
-                           000582  2423 	C$lab3_2steering.c$84$1$116 ==.
-                                   2424 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:84: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
+                           000582  2423 	C$lab3_2steering.c$92$1$116 ==.
+                                   2424 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:92: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
       000638 75 E1 27         [24] 2425 	mov	_XBR0,#0x27
-                           000585  2426 	C$lab3_2steering.c$86$1$116 ==.
+                           000585  2426 	C$lab3_2steering.c$94$1$116 ==.
                            000585  2427 	XG$XBR0_Init$0$0 ==.
       00063B 22               [24] 2428 	ret
                                    2429 ;------------------------------------------------------------
                                    2430 ;Allocation info for local variables in function 'SMB_Init'
                                    2431 ;------------------------------------------------------------
                            000586  2432 	G$SMB_Init$0$0 ==.
-                           000586  2433 	C$lab3_2steering.c$88$1$116 ==.
-                                   2434 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:88: void SMB_Init(void)
+                           000586  2433 	C$lab3_2steering.c$96$1$116 ==.
+                                   2434 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:96: void SMB_Init(void)
                                    2435 ;	-----------------------------------------
                                    2436 ;	 function SMB_Init
                                    2437 ;	-----------------------------------------
       00063C                       2438 _SMB_Init:
-                           000586  2439 	C$lab3_2steering.c$90$1$118 ==.
-                                   2440 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:90: SMB0CR =0x93;
+                           000586  2439 	C$lab3_2steering.c$98$1$118 ==.
+                                   2440 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:98: SMB0CR =0x93;
       00063C 75 CF 93         [24] 2441 	mov	_SMB0CR,#0x93
-                           000589  2442 	C$lab3_2steering.c$91$1$118 ==.
-                                   2443 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:91: ENSMB =1;
+                           000589  2442 	C$lab3_2steering.c$99$1$118 ==.
+                                   2443 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:99: ENSMB =1;
       00063F D2 C6            [12] 2444 	setb	_ENSMB
-                           00058B  2445 	C$lab3_2steering.c$92$1$118 ==.
+                           00058B  2445 	C$lab3_2steering.c$100$1$118 ==.
                            00058B  2446 	XG$SMB_Init$0$0 ==.
       000641 22               [24] 2447 	ret
                                    2448 ;------------------------------------------------------------
                                    2449 ;Allocation info for local variables in function 'PCA_Init'
                                    2450 ;------------------------------------------------------------
                            00058C  2451 	G$PCA_Init$0$0 ==.
-                           00058C  2452 	C$lab3_2steering.c$100$1$118 ==.
-                                   2453 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:100: void PCA_Init(void)
+                           00058C  2452 	C$lab3_2steering.c$108$1$118 ==.
+                                   2453 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:108: void PCA_Init(void)
                                    2454 ;	-----------------------------------------
                                    2455 ;	 function PCA_Init
                                    2456 ;	-----------------------------------------
       000642                       2457 _PCA_Init:
-                           00058C  2458 	C$lab3_2steering.c$104$1$120 ==.
-                                   2459 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:104: PCA0MD = 0x81;
+                           00058C  2458 	C$lab3_2steering.c$112$1$120 ==.
+                                   2459 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:112: PCA0MD = 0x81;
       000642 75 D9 81         [24] 2460 	mov	_PCA0MD,#0x81
-                           00058F  2461 	C$lab3_2steering.c$105$1$120 ==.
-                                   2462 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:105: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
+                           00058F  2461 	C$lab3_2steering.c$113$1$120 ==.
+                                   2462 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:113: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
       000645 75 DA C2         [24] 2463 	mov	_PCA0CPM0,#0xC2
-                           000592  2464 	C$lab3_2steering.c$106$1$120 ==.
-                                   2465 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:106: PCA0CN = 0x40;      //Enable PCA counter
+                           000592  2464 	C$lab3_2steering.c$114$1$120 ==.
+                                   2465 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:114: PCA0CN = 0x40;      //Enable PCA counter
       000648 75 D8 40         [24] 2466 	mov	_PCA0CN,#0x40
-                           000595  2467 	C$lab3_2steering.c$107$1$120 ==.
-                                   2468 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:107: EIE1 |= 0x08;       //Enable PCA interrupt
+                           000595  2467 	C$lab3_2steering.c$115$1$120 ==.
+                                   2468 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:115: EIE1 |= 0x08;       //Enable PCA interrupt
       00064B 43 E6 08         [24] 2469 	orl	_EIE1,#0x08
-                           000598  2470 	C$lab3_2steering.c$108$1$120 ==.
-                                   2471 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:108: EA = 1;             //Enable global interrupts
+                           000598  2470 	C$lab3_2steering.c$116$1$120 ==.
+                                   2471 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:116: EA = 1;             //Enable global interrupts
       00064E D2 AF            [12] 2472 	setb	_EA
-                           00059A  2473 	C$lab3_2steering.c$109$1$120 ==.
+                           00059A  2473 	C$lab3_2steering.c$117$1$120 ==.
                            00059A  2474 	XG$PCA_Init$0$0 ==.
       000650 22               [24] 2475 	ret
                                    2476 ;------------------------------------------------------------
                                    2477 ;Allocation info for local variables in function 'PCA_ISR'
                                    2478 ;------------------------------------------------------------
                            00059B  2479 	G$PCA_ISR$0$0 ==.
-                           00059B  2480 	C$lab3_2steering.c$117$1$120 ==.
-                                   2481 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:117: void PCA_ISR ( void ) __interrupt 9
+                           00059B  2480 	C$lab3_2steering.c$125$1$120 ==.
+                                   2481 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:125: void PCA_ISR ( void ) __interrupt 9
                                    2482 ;	-----------------------------------------
                                    2483 ;	 function PCA_ISR
                                    2484 ;	-----------------------------------------
       000651                       2485 _PCA_ISR:
       000651 C0 E0            [24] 2486 	push	acc
       000653 C0 D0            [24] 2487 	push	psw
-                           00059F  2488 	C$lab3_2steering.c$120$1$122 ==.
-                                   2489 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:120: if (CF)
-                           00059F  2490 	C$lab3_2steering.c$122$2$123 ==.
-                                   2491 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:122: CF =0;
+                           00059F  2488 	C$lab3_2steering.c$128$1$122 ==.
+                                   2489 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:128: if (CF)
+                           00059F  2490 	C$lab3_2steering.c$130$2$123 ==.
+                                   2491 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:130: CF =0;
       000655 10 DF 02         [24] 2492 	jbc	_CF,00108$
       000658 80 0E            [24] 2493 	sjmp	00102$
       00065A                       2494 00108$:
-                           0005A4  2495 	C$lab3_2steering.c$123$2$123 ==.
-                                   2496 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:123: PCA0 = 0x7000;
+                           0005A4  2495 	C$lab3_2steering.c$131$2$123 ==.
+                                   2496 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:131: PCA0 = 0x7000;
       00065A 75 E9 00         [24] 2497 	mov	((_PCA0 >> 0) & 0xFF),#0x00
       00065D 75 F9 70         [24] 2498 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-                           0005AA  2499 	C$lab3_2steering.c$124$2$123 ==.
-                                   2500 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:124: count++;
+                           0005AA  2499 	C$lab3_2steering.c$132$2$123 ==.
+                                   2500 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:132: count++;
       000660 05 34            [12] 2501 	inc	_count
       000662 E4               [12] 2502 	clr	a
       000663 B5 34 02         [24] 2503 	cjne	a,_count,00109$
       000666 05 35            [12] 2504 	inc	(_count + 1)
       000668                       2505 00109$:
       000668                       2506 00102$:
-                           0005B2  2507 	C$lab3_2steering.c$127$1$122 ==.
-                                   2508 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:127: PCA0CN &= 0xC0;
+                           0005B2  2507 	C$lab3_2steering.c$135$1$122 ==.
+                                   2508 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:135: PCA0CN &= 0xC0;
       000668 53 D8 C0         [24] 2509 	anl	_PCA0CN,#0xC0
       00066B D0 D0            [24] 2510 	pop	psw
       00066D D0 E0            [24] 2511 	pop	acc
-                           0005B9  2512 	C$lab3_2steering.c$130$1$122 ==.
+                           0005B9  2512 	C$lab3_2steering.c$138$1$122 ==.
                            0005B9  2513 	XG$PCA_ISR$0$0 ==.
       00066F 32               [24] 2514 	reti
                                    2515 ;	eliminated unneeded mov psw,# (no regs used in bank)
@@ -2520,32 +2520,32 @@
                                    2520 ;Allocation info for local variables in function 'Steering_Servo'
                                    2521 ;------------------------------------------------------------
                            0005BA  2522 	G$Steering_Servo$0$0 ==.
-                           0005BA  2523 	C$lab3_2steering.c$132$1$122 ==.
-                                   2524 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:132: void Steering_Servo()
+                           0005BA  2523 	C$lab3_2steering.c$140$1$122 ==.
+                                   2524 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:140: void Steering_Servo()
                                    2525 ;	-----------------------------------------
                                    2526 ;	 function Steering_Servo
                                    2527 ;	-----------------------------------------
       000670                       2528 _Steering_Servo:
-                           0005BA  2529 	C$lab3_2steering.c$137$1$124 ==.
-                                   2530 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:137: if(input == 'r')  // single character input to increase the pulsewidth
+                           0005BA  2529 	C$lab3_2steering.c$145$1$124 ==.
+                                   2530 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:145: if(input == 'r')  // single character input to increase the pulsewidth
       000670 74 72            [12] 2531 	mov	a,#0x72
       000672 B5 36 21         [24] 2532 	cjne	a,_input,00110$
-                           0005BF  2533 	C$lab3_2steering.c$141$2$125 ==.
-                                   2534 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:141: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
+                           0005BF  2533 	C$lab3_2steering.c$149$2$125 ==.
+                                   2534 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:149: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
       000675 C3               [12] 2535 	clr	c
       000676 74 D9            [12] 2536 	mov	a,#0xD9
       000678 95 32            [12] 2537 	subb	a,_STR_PW
       00067A 74 08            [12] 2538 	mov	a,#0x08
       00067C 95 33            [12] 2539 	subb	a,(_STR_PW + 1)
       00067E 40 08            [24] 2540 	jc	00102$
-                           0005CA  2541 	C$lab3_2steering.c$143$3$126 ==.
-                                   2542 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:143: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
+                           0005CA  2541 	C$lab3_2steering.c$151$3$126 ==.
+                                   2542 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:151: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
       000680 75 32 D9         [24] 2543 	mov	_STR_PW,#0xD9
       000683 75 33 08         [24] 2544 	mov	(_STR_PW + 1),#0x08
       000686 80 31            [24] 2545 	sjmp	00111$
       000688                       2546 00102$:
-                           0005D2  2547 	C$lab3_2steering.c$147$3$127 ==.
-                                   2548 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:147: STR_PW-= 10;
+                           0005D2  2547 	C$lab3_2steering.c$155$3$127 ==.
+                                   2548 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:155: STR_PW-= 10;
       000688 E5 32            [12] 2549 	mov	a,_STR_PW
       00068A 24 F6            [12] 2550 	add	a,#0xF6
       00068C F5 32            [12] 2551 	mov	_STR_PW,a
@@ -2554,26 +2554,26 @@
       000692 F5 33            [12] 2554 	mov	(_STR_PW + 1),a
       000694 80 23            [24] 2555 	sjmp	00111$
       000696                       2556 00110$:
-                           0005E0  2557 	C$lab3_2steering.c$150$1$124 ==.
-                                   2558 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:150: else if(input == 'l')  // single character input to decrease the pulsewidth
+                           0005E0  2557 	C$lab3_2steering.c$158$1$124 ==.
+                                   2558 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:158: else if(input == 'l')  // single character input to decrease the pulsewidth
       000696 74 6C            [12] 2559 	mov	a,#0x6C
       000698 B5 36 1E         [24] 2560 	cjne	a,_input,00111$
-                           0005E5  2561 	C$lab3_2steering.c$154$2$128 ==.
-                                   2562 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:154: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
+                           0005E5  2561 	C$lab3_2steering.c$162$2$128 ==.
+                                   2562 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:162: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
       00069B C3               [12] 2563 	clr	c
       00069C 74 CB            [12] 2564 	mov	a,#0xCB
       00069E 95 32            [12] 2565 	subb	a,_STR_PW
       0006A0 74 0C            [12] 2566 	mov	a,#0x0C
       0006A2 95 33            [12] 2567 	subb	a,(_STR_PW + 1)
       0006A4 50 08            [24] 2568 	jnc	00105$
-                           0005F0  2569 	C$lab3_2steering.c$156$3$129 ==.
-                                   2570 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:156: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
+                           0005F0  2569 	C$lab3_2steering.c$164$3$129 ==.
+                                   2570 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:164: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
       0006A6 75 32 CB         [24] 2571 	mov	_STR_PW,#0xCB
       0006A9 75 33 0C         [24] 2572 	mov	(_STR_PW + 1),#0x0C
       0006AC 80 0B            [24] 2573 	sjmp	00111$
       0006AE                       2574 00105$:
-                           0005F8  2575 	C$lab3_2steering.c$160$3$130 ==.
-                                   2576 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:160: STR_PW+= 10;
+                           0005F8  2575 	C$lab3_2steering.c$168$3$130 ==.
+                                   2576 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:168: STR_PW+= 10;
       0006AE 74 0A            [12] 2577 	mov	a,#0x0A
       0006B0 25 32            [12] 2578 	add	a,_STR_PW
       0006B2 F5 32            [12] 2579 	mov	_STR_PW,a
@@ -2581,8 +2581,8 @@
       0006B5 35 33            [12] 2581 	addc	a,(_STR_PW + 1)
       0006B7 F5 33            [12] 2582 	mov	(_STR_PW + 1),a
       0006B9                       2583 00111$:
-                           000603  2584 	C$lab3_2steering.c$163$1$124 ==.
-                                   2585 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:163: printf("\r\nSTR_PW: %u", STR_PW);
+                           000603  2584 	C$lab3_2steering.c$171$1$124 ==.
+                                   2585 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:171: printf("\r\nSTR_PW: %u", STR_PW);
       0006B9 C0 32            [24] 2586 	push	_STR_PW
       0006BB C0 33            [24] 2587 	push	(_STR_PW + 1)
       0006BD 74 A7            [12] 2588 	mov	a,#___str_5
@@ -2595,15 +2595,15 @@
       0006CC E5 81            [12] 2595 	mov	a,sp
       0006CE 24 FB            [12] 2596 	add	a,#0xfb
       0006D0 F5 81            [12] 2597 	mov	sp,a
-                           00061C  2598 	C$lab3_2steering.c$164$1$124 ==.
-                                   2599 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:164: PCA0CPL0 = 0xFFFF - STR_PW;
+                           00061C  2598 	C$lab3_2steering.c$172$1$124 ==.
+                                   2599 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:172: PCA0CPL0 = 0xFFFF - STR_PW;
       0006D2 AF 32            [24] 2600 	mov	r7,_STR_PW
       0006D4 74 FF            [12] 2601 	mov	a,#0xFF
       0006D6 C3               [12] 2602 	clr	c
       0006D7 9F               [12] 2603 	subb	a,r7
       0006D8 F5 EA            [12] 2604 	mov	_PCA0CPL0,a
-                           000624  2605 	C$lab3_2steering.c$165$1$124 ==.
-                                   2606 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:165: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+                           000624  2605 	C$lab3_2steering.c$173$1$124 ==.
+                                   2606 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-2\lab3-2steering.c:173: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
       0006DA 74 FF            [12] 2607 	mov	a,#0xFF
       0006DC C3               [12] 2608 	clr	c
       0006DD 95 32            [12] 2609 	subb	a,_STR_PW
@@ -2611,7 +2611,7 @@
       0006E1 95 33            [12] 2611 	subb	a,(_STR_PW + 1)
       0006E3 FF               [12] 2612 	mov	r7,a
       0006E4 8F FA            [24] 2613 	mov	_PCA0CPH0,r7
-                           000630  2614 	C$lab3_2steering.c$167$1$124 ==.
+                           000630  2614 	C$lab3_2steering.c$175$1$124 ==.
                            000630  2615 	XG$Steering_Servo$0$0 ==.
       0006E6 22               [24] 2616 	ret
                                    2617 	.area CSEG    (CODE)

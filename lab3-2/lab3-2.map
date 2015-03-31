@@ -946,11 +946,11 @@ GSINIT                              000000AA    00000009 =           9. bytes (R
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   000000AA  A$lab3-2steering$1069              lab3_2steering
-C:   000000AA  C$lab3_2steering.c$17$1$124        lab3_2steering
+C:   000000AA  C$lab3_2steering.c$25$1$124        lab3_2steering
 C:   000000AB  A$lab3-2steering$1070              lab3_2steering
 C:   000000AD  A$lab3-2steering$1071              lab3_2steering
 C:   000000AF  A$lab3-2steering$1074              lab3_2steering
-C:   000000AF  C$lab3_2steering.c$18$1$124        lab3_2steering
+C:   000000AF  C$lab3_2steering.c$26$1$124        lab3_2steering
 C:   000000B1  A$lab3-2steering$1075              lab3_2steering
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 28.
@@ -1911,17 +1911,17 @@ C:   0000058B  A$lab3-2steering$2245              lab3_2steering
 C:   0000058B  C$i2c.h$298$1$103                  lab3_2steering
 C:   0000058B  XG$Accel_Init$0$0                  lab3_2steering
 C:   0000058C  A$lab3-2steering$2258              lab3_2steering
-C:   0000058C  C$lab3_2steering.c$25$1$103        lab3_2steering
-C:   0000058C  C$lab3_2steering.c$28$1$111        lab3_2steering
+C:   0000058C  C$lab3_2steering.c$33$1$103        lab3_2steering
+C:   0000058C  C$lab3_2steering.c$36$1$111        lab3_2steering
 C:   0000058C  G$main$0$0                         lab3_2steering
 C:   0000058C  _main                              lab3_2steering
 C:   0000058F  A$lab3-2steering$2261              lab3_2steering
-C:   0000058F  C$lab3_2steering.c$29$1$111        lab3_2steering
+C:   0000058F  C$lab3_2steering.c$37$1$111        lab3_2steering
 C:   00000592  A$lab3-2steering$2262              lab3_2steering
 C:   00000595  A$lab3-2steering$2265              lab3_2steering
-C:   00000595  C$lab3_2steering.c$30$1$111        lab3_2steering
+C:   00000595  C$lab3_2steering.c$38$1$111        lab3_2steering
 C:   00000598  A$lab3-2steering$2268              lab3_2steering
-C:   00000598  C$lab3_2steering.c$31$1$111        lab3_2steering
+C:   00000598  C$lab3_2steering.c$39$1$111        lab3_2steering
 C:   0000059B  A$lab3-2steering$2271              lab3_2steering
 ASxxxx Linker V03.00 + NoICE + sdld,  page 45.
 Hexadecimal  [32-Bits]
@@ -1932,11 +1932,11 @@ CSEG                                000000B6    00000D9C =        3484. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000059B  C$lab3_2steering.c$32$1$111        lab3_2steering
+C:   0000059B  C$lab3_2steering.c$40$1$111        lab3_2steering
 C:   0000059E  A$lab3-2steering$2274              lab3_2steering
-C:   0000059E  C$lab3_2steering.c$33$1$111        lab3_2steering
+C:   0000059E  C$lab3_2steering.c$41$1$111        lab3_2steering
 C:   000005A1  A$lab3-2steering$2277              lab3_2steering
-C:   000005A1  C$lab3_2steering.c$36$1$111        lab3_2steering
+C:   000005A1  C$lab3_2steering.c$44$1$111        lab3_2steering
 C:   000005A3  A$lab3-2steering$2278              lab3_2steering
 C:   000005A5  A$lab3-2steering$2279              lab3_2steering
 C:   000005A7  A$lab3-2steering$2280              lab3_2steering
@@ -1947,41 +1947,41 @@ C:   000005B0  A$lab3-2steering$2284              lab3_2steering
 C:   000005B2  A$lab3-2steering$2285              lab3_2steering
 C:   000005B4  A$lab3-2steering$2286              lab3_2steering
 C:   000005B6  A$lab3-2steering$2289              lab3_2steering
-C:   000005B6  C$lab3_2steering.c$40$1$111        lab3_2steering
+C:   000005B6  C$lab3_2steering.c$48$1$111        lab3_2steering
 C:   000005B9  A$lab3-2steering$2290              lab3_2steering
 C:   000005BC  A$lab3-2steering$2293              lab3_2steering
-C:   000005BC  C$lab3_2steering.c$42$1$111        lab3_2steering
+C:   000005BC  C$lab3_2steering.c$50$1$111        lab3_2steering
 C:   000005BF  A$lab3-2steering$2296              lab3_2steering
-C:   000005BF  C$lab3_2steering.c$43$1$111        lab3_2steering
+C:   000005BF  C$lab3_2steering.c$51$1$111        lab3_2steering
 C:   000005C2  A$lab3-2steering$2299              lab3_2steering
-C:   000005C2  C$lab3_2steering.c$44$1$111        lab3_2steering
+C:   000005C2  C$lab3_2steering.c$52$1$111        lab3_2steering
 C:   000005C3  A$lab3-2steering$2300              lab3_2steering
 C:   000005C5  A$lab3-2steering$2301              lab3_2steering
 C:   000005C7  A$lab3-2steering$2305              lab3_2steering
-C:   000005C7  C$lab3_2steering.c$45$1$111        lab3_2steering
+C:   000005C7  C$lab3_2steering.c$53$1$111        lab3_2steering
 C:   000005C8  A$lab3-2steering$2306              lab3_2steering
 C:   000005CA  A$lab3-2steering$2307              lab3_2steering
 C:   000005CC  A$lab3-2steering$2308              lab3_2steering
 C:   000005CE  A$lab3-2steering$2309              lab3_2steering
 C:   000005D0  A$lab3-2steering$2310              lab3_2steering
 C:   000005D2  A$lab3-2steering$2316              lab3_2steering
-C:   000005D2  C$lab3_2steering.c$46$1$111        lab3_2steering
-C:   000005D2  C$lab3_2steering.c$48$2$112        lab3_2steering
+C:   000005D2  C$lab3_2steering.c$54$1$111        lab3_2steering
+C:   000005D2  C$lab3_2steering.c$56$2$112        lab3_2steering
 C:   000005D3  A$lab3-2steering$2317              lab3_2steering
 C:   000005D5  A$lab3-2steering$2318              lab3_2steering
 C:   000005D7  A$lab3-2steering$2322              lab3_2steering
-C:   000005D7  C$lab3_2steering.c$49$2$112        lab3_2steering
+C:   000005D7  C$lab3_2steering.c$57$2$112        lab3_2steering
 C:   000005D8  A$lab3-2steering$2323              lab3_2steering
 C:   000005DA  A$lab3-2steering$2324              lab3_2steering
 C:   000005DC  A$lab3-2steering$2325              lab3_2steering
 C:   000005DE  A$lab3-2steering$2326              lab3_2steering
 C:   000005E0  A$lab3-2steering$2327              lab3_2steering
 C:   000005E2  A$lab3-2steering$2330              lab3_2steering
-C:   000005E2  C$lab3_2steering.c$50$2$112        lab3_2steering
+C:   000005E2  C$lab3_2steering.c$58$2$112        lab3_2steering
 C:   000005E5  A$lab3-2steering$2331              lab3_2steering
 C:   000005E8  A$lab3-2steering$2332              lab3_2steering
 C:   000005EB  A$lab3-2steering$2335              lab3_2steering
-C:   000005EB  C$lab3_2steering.c$51$2$112        lab3_2steering
+C:   000005EB  C$lab3_2steering.c$59$2$112        lab3_2steering
 C:   000005ED  A$lab3-2steering$2336              lab3_2steering
 ASxxxx Linker V03.00 + NoICE + sdld,  page 46.
 Hexadecimal  [32-Bits]
@@ -2004,24 +2004,24 @@ C:   00000600  A$lab3-2steering$2345              lab3_2steering
 C:   00000602  A$lab3-2steering$2346              lab3_2steering
 C:   00000604  A$lab3-2steering$2347              lab3_2steering
 C:   00000606  A$lab3-2steering$2350              lab3_2steering
-C:   00000606  C$lab3_2steering.c$56$1$111        lab3_2steering
+C:   00000606  C$lab3_2steering.c$64$1$111        lab3_2steering
 C:   00000606  XG$main$0$0                        lab3_2steering
 C:   00000607  A$lab3-2steering$2363              lab3_2steering
-C:   00000607  C$lab3_2steering.c$58$1$111        lab3_2steering
-C:   00000607  C$lab3_2steering.c$60$1$113        lab3_2steering
+C:   00000607  C$lab3_2steering.c$66$1$111        lab3_2steering
+C:   00000607  C$lab3_2steering.c$68$1$113        lab3_2steering
 C:   00000607  G$Port_Init$0$0                    lab3_2steering
 C:   00000607  _Port_Init                         lab3_2steering
 C:   0000060A  A$lab3-2steering$2366              lab3_2steering
-C:   0000060A  C$lab3_2steering.c$61$1$113        lab3_2steering
+C:   0000060A  C$lab3_2steering.c$69$1$113        lab3_2steering
 C:   0000060C  A$lab3-2steering$2367              lab3_2steering
 C:   0000060E  A$lab3-2steering$2368              lab3_2steering
 C:   0000060F  A$lab3-2steering$2369              lab3_2steering
 C:   00000611  A$lab3-2steering$2372              lab3_2steering
-C:   00000611  C$lab3_2steering.c$62$1$113        lab3_2steering
+C:   00000611  C$lab3_2steering.c$70$1$113        lab3_2steering
 C:   00000611  XG$Port_Init$0$0                   lab3_2steering
 C:   00000612  A$lab3-2steering$2389              lab3_2steering
-C:   00000612  C$lab3_2steering.c$64$1$113        lab3_2steering
-C:   00000612  C$lab3_2steering.c$69$1$115        lab3_2steering
+C:   00000612  C$lab3_2steering.c$72$1$113        lab3_2steering
+C:   00000612  C$lab3_2steering.c$77$1$115        lab3_2steering
 C:   00000612  G$ReadCompass$0$0                  lab3_2steering
 C:   00000612  _ReadCompass                       lab3_2steering
 C:   00000615  A$lab3-2steering$2390              lab3_2steering
@@ -2031,7 +2031,7 @@ C:   0000061E  A$lab3-2steering$2393              lab3_2steering
 C:   00000621  A$lab3-2steering$2394              lab3_2steering
 C:   00000624  A$lab3-2steering$2395              lab3_2steering
 C:   00000627  A$lab3-2steering$2398              lab3_2steering
-C:   00000627  C$lab3_2steering.c$70$1$115        lab3_2steering
+C:   00000627  C$lab3_2steering.c$78$1$115        lab3_2steering
 C:   00000629  A$lab3-2steering$2399              lab3_2steering
 C:   0000062B  A$lab3-2steering$2400              lab3_2steering
 C:   0000062D  A$lab3-2steering$2401              lab3_2steering
@@ -2042,7 +2042,7 @@ C:   00000633  A$lab3-2steering$2405              lab3_2steering
 C:   00000634  A$lab3-2steering$2406              lab3_2steering
 C:   00000635  A$lab3-2steering$2407              lab3_2steering
 C:   00000637  A$lab3-2steering$2412              lab3_2steering
-C:   00000637  C$lab3_2steering.c$71$1$115        lab3_2steering
+C:   00000637  C$lab3_2steering.c$79$1$115        lab3_2steering
 ASxxxx Linker V03.00 + NoICE + sdld,  page 47.
 Hexadecimal  [32-Bits]
 
@@ -2052,56 +2052,56 @@ CSEG                                000000B6    00000D9C =        3484. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000637  C$lab3_2steering.c$73$1$115        lab3_2steering
+C:   00000637  C$lab3_2steering.c$81$1$115        lab3_2steering
 C:   00000637  XG$ReadCompass$0$0                 lab3_2steering
 C:   00000638  A$lab3-2steering$2425              lab3_2steering
-C:   00000638  C$lab3_2steering.c$81$1$115        lab3_2steering
-C:   00000638  C$lab3_2steering.c$84$1$116        lab3_2steering
+C:   00000638  C$lab3_2steering.c$89$1$115        lab3_2steering
+C:   00000638  C$lab3_2steering.c$92$1$116        lab3_2steering
 C:   00000638  G$XBR0_Init$0$0                    lab3_2steering
 C:   00000638  _XBR0_Init                         lab3_2steering
 C:   0000063B  A$lab3-2steering$2428              lab3_2steering
-C:   0000063B  C$lab3_2steering.c$86$1$116        lab3_2steering
+C:   0000063B  C$lab3_2steering.c$94$1$116        lab3_2steering
 C:   0000063B  XG$XBR0_Init$0$0                   lab3_2steering
 C:   0000063C  A$lab3-2steering$2441              lab3_2steering
-C:   0000063C  C$lab3_2steering.c$88$1$116        lab3_2steering
-C:   0000063C  C$lab3_2steering.c$90$1$118        lab3_2steering
+C:   0000063C  C$lab3_2steering.c$96$1$116        lab3_2steering
+C:   0000063C  C$lab3_2steering.c$98$1$118        lab3_2steering
 C:   0000063C  G$SMB_Init$0$0                     lab3_2steering
 C:   0000063C  _SMB_Init                          lab3_2steering
 C:   0000063F  A$lab3-2steering$2444              lab3_2steering
-C:   0000063F  C$lab3_2steering.c$91$1$118        lab3_2steering
+C:   0000063F  C$lab3_2steering.c$99$1$118        lab3_2steering
 C:   00000641  A$lab3-2steering$2447              lab3_2steering
-C:   00000641  C$lab3_2steering.c$92$1$118        lab3_2steering
+C:   00000641  C$lab3_2steering.c$100$1$118       lab3_2steering
 C:   00000641  XG$SMB_Init$0$0                    lab3_2steering
 C:   00000642  A$lab3-2steering$2460              lab3_2steering
-C:   00000642  C$lab3_2steering.c$100$1$118       lab3_2steering
-C:   00000642  C$lab3_2steering.c$104$1$120       lab3_2steering
+C:   00000642  C$lab3_2steering.c$108$1$118       lab3_2steering
+C:   00000642  C$lab3_2steering.c$112$1$120       lab3_2steering
 C:   00000642  G$PCA_Init$0$0                     lab3_2steering
 C:   00000642  _PCA_Init                          lab3_2steering
 C:   00000645  A$lab3-2steering$2463              lab3_2steering
-C:   00000645  C$lab3_2steering.c$105$1$120       lab3_2steering
+C:   00000645  C$lab3_2steering.c$113$1$120       lab3_2steering
 C:   00000648  A$lab3-2steering$2466              lab3_2steering
-C:   00000648  C$lab3_2steering.c$106$1$120       lab3_2steering
+C:   00000648  C$lab3_2steering.c$114$1$120       lab3_2steering
 C:   0000064B  A$lab3-2steering$2469              lab3_2steering
-C:   0000064B  C$lab3_2steering.c$107$1$120       lab3_2steering
+C:   0000064B  C$lab3_2steering.c$115$1$120       lab3_2steering
 C:   0000064E  A$lab3-2steering$2472              lab3_2steering
-C:   0000064E  C$lab3_2steering.c$108$1$120       lab3_2steering
+C:   0000064E  C$lab3_2steering.c$116$1$120       lab3_2steering
 C:   00000650  A$lab3-2steering$2475              lab3_2steering
-C:   00000650  C$lab3_2steering.c$109$1$120       lab3_2steering
+C:   00000650  C$lab3_2steering.c$117$1$120       lab3_2steering
 C:   00000650  XG$PCA_Init$0$0                    lab3_2steering
 C:   00000651  A$lab3-2steering$2486              lab3_2steering
-C:   00000651  C$lab3_2steering.c$117$1$120       lab3_2steering
+C:   00000651  C$lab3_2steering.c$125$1$120       lab3_2steering
 C:   00000651  G$PCA_ISR$0$0                      lab3_2steering
 C:   00000651  _PCA_ISR                           lab3_2steering
 C:   00000653  A$lab3-2steering$2487              lab3_2steering
 C:   00000655  A$lab3-2steering$2492              lab3_2steering
-C:   00000655  C$lab3_2steering.c$120$1$122       lab3_2steering
-C:   00000655  C$lab3_2steering.c$122$2$123       lab3_2steering
+C:   00000655  C$lab3_2steering.c$128$1$122       lab3_2steering
+C:   00000655  C$lab3_2steering.c$130$2$123       lab3_2steering
 C:   00000658  A$lab3-2steering$2493              lab3_2steering
 C:   0000065A  A$lab3-2steering$2497              lab3_2steering
-C:   0000065A  C$lab3_2steering.c$123$2$123       lab3_2steering
+C:   0000065A  C$lab3_2steering.c$131$2$123       lab3_2steering
 C:   0000065D  A$lab3-2steering$2498              lab3_2steering
 C:   00000660  A$lab3-2steering$2501              lab3_2steering
-C:   00000660  C$lab3_2steering.c$124$2$123       lab3_2steering
+C:   00000660  C$lab3_2steering.c$132$2$123       lab3_2steering
 C:   00000662  A$lab3-2steering$2502              lab3_2steering
 ASxxxx Linker V03.00 + NoICE + sdld,  page 48.
 Hexadecimal  [32-Bits]
@@ -2115,31 +2115,31 @@ CSEG                                000000B6    00000D9C =        3484. bytes (R
 C:   00000663  A$lab3-2steering$2503              lab3_2steering
 C:   00000666  A$lab3-2steering$2504              lab3_2steering
 C:   00000668  A$lab3-2steering$2509              lab3_2steering
-C:   00000668  C$lab3_2steering.c$127$1$122       lab3_2steering
+C:   00000668  C$lab3_2steering.c$135$1$122       lab3_2steering
 C:   0000066B  A$lab3-2steering$2510              lab3_2steering
 C:   0000066D  A$lab3-2steering$2511              lab3_2steering
 C:   0000066F  A$lab3-2steering$2514              lab3_2steering
-C:   0000066F  C$lab3_2steering.c$130$1$122       lab3_2steering
+C:   0000066F  C$lab3_2steering.c$138$1$122       lab3_2steering
 C:   0000066F  XG$PCA_ISR$0$0                     lab3_2steering
 C:   00000670  A$lab3-2steering$2531              lab3_2steering
-C:   00000670  C$lab3_2steering.c$132$1$122       lab3_2steering
-C:   00000670  C$lab3_2steering.c$137$1$124       lab3_2steering
+C:   00000670  C$lab3_2steering.c$140$1$122       lab3_2steering
+C:   00000670  C$lab3_2steering.c$145$1$124       lab3_2steering
 C:   00000670  G$Steering_Servo$0$0               lab3_2steering
 C:   00000670  _Steering_Servo                    lab3_2steering
 C:   00000672  A$lab3-2steering$2532              lab3_2steering
 C:   00000675  A$lab3-2steering$2535              lab3_2steering
-C:   00000675  C$lab3_2steering.c$141$2$125       lab3_2steering
+C:   00000675  C$lab3_2steering.c$149$2$125       lab3_2steering
 C:   00000676  A$lab3-2steering$2536              lab3_2steering
 C:   00000678  A$lab3-2steering$2537              lab3_2steering
 C:   0000067A  A$lab3-2steering$2538              lab3_2steering
 C:   0000067C  A$lab3-2steering$2539              lab3_2steering
 C:   0000067E  A$lab3-2steering$2540              lab3_2steering
 C:   00000680  A$lab3-2steering$2543              lab3_2steering
-C:   00000680  C$lab3_2steering.c$143$3$126       lab3_2steering
+C:   00000680  C$lab3_2steering.c$151$3$126       lab3_2steering
 C:   00000683  A$lab3-2steering$2544              lab3_2steering
 C:   00000686  A$lab3-2steering$2545              lab3_2steering
 C:   00000688  A$lab3-2steering$2549              lab3_2steering
-C:   00000688  C$lab3_2steering.c$147$3$127       lab3_2steering
+C:   00000688  C$lab3_2steering.c$155$3$127       lab3_2steering
 C:   0000068A  A$lab3-2steering$2550              lab3_2steering
 C:   0000068C  A$lab3-2steering$2551              lab3_2steering
 C:   0000068E  A$lab3-2steering$2552              lab3_2steering
@@ -2147,21 +2147,21 @@ C:   00000690  A$lab3-2steering$2553              lab3_2steering
 C:   00000692  A$lab3-2steering$2554              lab3_2steering
 C:   00000694  A$lab3-2steering$2555              lab3_2steering
 C:   00000696  A$lab3-2steering$2559              lab3_2steering
-C:   00000696  C$lab3_2steering.c$150$1$124       lab3_2steering
+C:   00000696  C$lab3_2steering.c$158$1$124       lab3_2steering
 C:   00000698  A$lab3-2steering$2560              lab3_2steering
 C:   0000069B  A$lab3-2steering$2563              lab3_2steering
-C:   0000069B  C$lab3_2steering.c$154$2$128       lab3_2steering
+C:   0000069B  C$lab3_2steering.c$162$2$128       lab3_2steering
 C:   0000069C  A$lab3-2steering$2564              lab3_2steering
 C:   0000069E  A$lab3-2steering$2565              lab3_2steering
 C:   000006A0  A$lab3-2steering$2566              lab3_2steering
 C:   000006A2  A$lab3-2steering$2567              lab3_2steering
 C:   000006A4  A$lab3-2steering$2568              lab3_2steering
 C:   000006A6  A$lab3-2steering$2571              lab3_2steering
-C:   000006A6  C$lab3_2steering.c$156$3$129       lab3_2steering
+C:   000006A6  C$lab3_2steering.c$164$3$129       lab3_2steering
 C:   000006A9  A$lab3-2steering$2572              lab3_2steering
 C:   000006AC  A$lab3-2steering$2573              lab3_2steering
 C:   000006AE  A$lab3-2steering$2577              lab3_2steering
-C:   000006AE  C$lab3_2steering.c$160$3$130       lab3_2steering
+C:   000006AE  C$lab3_2steering.c$168$3$130       lab3_2steering
 C:   000006B0  A$lab3-2steering$2578              lab3_2steering
 ASxxxx Linker V03.00 + NoICE + sdld,  page 49.
 Hexadecimal  [32-Bits]
@@ -2177,7 +2177,7 @@ C:   000006B4  A$lab3-2steering$2580              lab3_2steering
 C:   000006B5  A$lab3-2steering$2581              lab3_2steering
 C:   000006B7  A$lab3-2steering$2582              lab3_2steering
 C:   000006B9  A$lab3-2steering$2586              lab3_2steering
-C:   000006B9  C$lab3_2steering.c$163$1$124       lab3_2steering
+C:   000006B9  C$lab3_2steering.c$171$1$124       lab3_2steering
 C:   000006BB  A$lab3-2steering$2587              lab3_2steering
 C:   000006BD  A$lab3-2steering$2588              lab3_2steering
 C:   000006BF  A$lab3-2steering$2589              lab3_2steering
@@ -2190,13 +2190,13 @@ C:   000006CC  A$lab3-2steering$2595              lab3_2steering
 C:   000006CE  A$lab3-2steering$2596              lab3_2steering
 C:   000006D0  A$lab3-2steering$2597              lab3_2steering
 C:   000006D2  A$lab3-2steering$2600              lab3_2steering
-C:   000006D2  C$lab3_2steering.c$164$1$124       lab3_2steering
+C:   000006D2  C$lab3_2steering.c$172$1$124       lab3_2steering
 C:   000006D4  A$lab3-2steering$2601              lab3_2steering
 C:   000006D6  A$lab3-2steering$2602              lab3_2steering
 C:   000006D7  A$lab3-2steering$2603              lab3_2steering
 C:   000006D8  A$lab3-2steering$2604              lab3_2steering
 C:   000006DA  A$lab3-2steering$2607              lab3_2steering
-C:   000006DA  C$lab3_2steering.c$165$1$124       lab3_2steering
+C:   000006DA  C$lab3_2steering.c$173$1$124       lab3_2steering
 C:   000006DC  A$lab3-2steering$2608              lab3_2steering
 C:   000006DD  A$lab3-2steering$2609              lab3_2steering
 C:   000006DF  A$lab3-2steering$2610              lab3_2steering
@@ -2204,7 +2204,7 @@ C:   000006E1  A$lab3-2steering$2611              lab3_2steering
 C:   000006E3  A$lab3-2steering$2612              lab3_2steering
 C:   000006E4  A$lab3-2steering$2613              lab3_2steering
 C:   000006E6  A$lab3-2steering$2616              lab3_2steering
-C:   000006E6  C$lab3_2steering.c$167$1$124       lab3_2steering
+C:   000006E6  C$lab3_2steering.c$175$1$124       lab3_2steering
 C:   000006E6  XG$Steering_Servo$0$0              lab3_2steering
 C:   000006E7  __gptrput                          _gptrput
 C:   00000702  __mulint                           _mulint
