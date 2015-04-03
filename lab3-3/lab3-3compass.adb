@@ -53,13 +53,14 @@ S:G$tmp0_lo_to_hi$0$0({2}SI:U),E,0,0
 S:G$STR_PW$0$0({2}SI:U),E,0,0
 S:G$count$0$0({2}SI:U),E,0,0
 S:G$input$0$0({1}SC:S),E,0,0
-S:G$actual_heading$0$0({2}SI:U),E,0,0
-S:G$desired_heading$0$0({2}SI:U),E,0,0
+S:G$actual_heading$0$0({2}SI:S),E,0,0
+S:G$desired_heading$0$0({2}SI:S),E,0,0
 S:G$error$0$0({2}SI:U),E,0,0
 S:G$offset$0$0({2}SI:U),E,0,0
 S:Llab3_3compass.ReadCompass$Data$1$115({2}DA2d,SC:U),E,0,0
 S:Llab3_3compass.ReadCompass$range$1$115({2}SI:U),R,0,0,[]
 S:Llab3_3compass.ReadCompass$addr$1$115({1}SC:U),R,0,0,[]
+S:Llab3_3compass.Steering_Servo$direction$1$124({2}SI:U),E,0,0
 S:Llab3_3compass.lcd_print$text$1$73({80}DA80d,SC:U),F,0,0
 S:G$P0$0$0({1}SC:U),I,0,0
 S:G$SP$0$0({1}SC:U),I,0,0
@@ -404,5 +405,5 @@ S:Flab3_3compass$__str_0$0$0({22}DA22d,SC:S),D,0,0
 S:Flab3_3compass$__str_1$0$0({16}DA16d,SC:S),D,0,0
 S:Flab3_3compass$__str_2$0$0({3}DA3d,SC:S),D,0,0
 S:Flab3_3compass$__str_3$0$0({39}DA39d,SC:S),D,0,0
-S:Flab3_3compass$__str_4$0$0({8}DA8d,SC:S),D,0,0
+S:Flab3_3compass$__str_4$0$0({9}DA9d,SC:S),D,0,0
 S:Flab3_3compass$__str_5$0$0({13}DA13d,SC:S),D,0,0

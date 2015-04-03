@@ -1,9 +1,9 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Fri Apr 03 08:32:49 2015
+; This file was generated Fri Apr 03 08:34:46 2015
 ;--------------------------------------------------------
-	.module lab3_1
+	.module lab3_1steering
 	.optsdcc -mmcs51 --model-small
 	
 ;--------------------------------------------------------
@@ -969,13 +969,13 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab3_1.c$14$1$39 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:14: unsigned int STR_PW   = 0;
+	C$lab3_1steering.c$14$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:14: unsigned int STR_PW   = 0;
 	clr	a
 	mov	_STR_PW,a
 	mov	(_STR_PW + 1),a
-	C$lab3_1.c$15$1$39 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:15: unsigned int count = 0;
+	C$lab3_1steering.c$15$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:15: unsigned int count = 0;
 	mov	_count,a
 	mov	(_count + 1),a
 	.area GSFINAL (CODE)
@@ -1169,30 +1169,30 @@ _getchar:
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
 	G$main$0$0 ==.
-	C$lab3_1.c$21$1$24 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:21: void main(void)
+	C$lab3_1steering.c$21$1$24 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:21: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	C$lab3_1.c$24$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:24: Sys_Init();
+	C$lab3_1steering.c$24$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:24: Sys_Init();
 	lcall	_Sys_Init
-	C$lab3_1.c$25$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:25: putchar(' '); //the quotes in this line may not format correctly
+	C$lab3_1steering.c$25$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:25: putchar(' '); //the quotes in this line may not format correctly
 	mov	dpl,#0x20
 	lcall	_putchar
-	C$lab3_1.c$26$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:26: Port_Init();
+	C$lab3_1steering.c$26$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:26: Port_Init();
 	lcall	_Port_Init
-	C$lab3_1.c$27$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:27: XBR0_Init();
+	C$lab3_1steering.c$27$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:27: XBR0_Init();
 	lcall	_XBR0_Init
-	C$lab3_1.c$28$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:28: PCA_Init();
+	C$lab3_1steering.c$28$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:28: PCA_Init();
 	lcall	_PCA_Init
-	C$lab3_1.c$31$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:31: printf("Embedded Control Steering Calibration\n");
+	C$lab3_1steering.c$31$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:31: printf("Embedded Control Steering Calibration\n");
 	mov	a,#___str_0
 	push	acc
 	mov	a,#(___str_0 >> 8)
@@ -1203,18 +1203,18 @@ _main:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab3_1.c$35$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:35: STR_PW = PW_CENTER_STR;
+	C$lab3_1steering.c$35$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:35: STR_PW = PW_CENTER_STR;
 	mov	_STR_PW,#0xCD
 	mov	(_STR_PW + 1),#0x0A
-	C$lab3_1.c$37$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:37: PCA0CPL0 = 0xFFFF - STR_PW;
+	C$lab3_1steering.c$37$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:37: PCA0CPL0 = 0xFFFF - STR_PW;
 	mov	_PCA0CPL0,#0x32
-	C$lab3_1.c$38$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:38: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+	C$lab3_1steering.c$38$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:38: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
 	mov	_PCA0CPH0,#0xF5
-	C$lab3_1.c$39$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:39: while (count < 29);
+	C$lab3_1steering.c$39$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:39: while (count < 29);
 00101$:
 	clr	c
 	mov	a,_count
@@ -1222,117 +1222,117 @@ _main:
 	mov	a,(_count + 1)
 	subb	a,#0x00
 	jc	00101$
-	C$lab3_1.c$40$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:40: while(1)
+	C$lab3_1steering.c$40$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:40: while(1)
 00105$:
-	C$lab3_1.c$42$2$31 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:42: input = (char)getchar();
+	C$lab3_1steering.c$42$2$31 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:42: input = (char)getchar();
 	lcall	_getchar
 	mov	_input,dpl
-	C$lab3_1.c$43$2$31 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:43: Steering_Servo();
+	C$lab3_1steering.c$43$2$31 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:43: Steering_Servo();
 	lcall	_Steering_Servo
 	sjmp	00105$
-	C$lab3_1.c$47$1$30 ==.
+	C$lab3_1steering.c$47$1$30 ==.
 	XG$main$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Port_Init'
 ;------------------------------------------------------------
 	G$Port_Init$0$0 ==.
-	C$lab3_1.c$49$1$30 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:49: void Port_Init()
+	C$lab3_1steering.c$49$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:49: void Port_Init()
 ;	-----------------------------------------
 ;	 function Port_Init
 ;	-----------------------------------------
 _Port_Init:
-	C$lab3_1.c$51$1$32 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:51: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
+	C$lab3_1steering.c$51$1$32 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:51: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
 	mov	_P1MDOUT,#0x0F
-	C$lab3_1.c$53$1$32 ==.
+	C$lab3_1steering.c$53$1$32 ==.
 	XG$Port_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'XBR0_Init'
 ;------------------------------------------------------------
 	G$XBR0_Init$0$0 ==.
-	C$lab3_1.c$61$1$32 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:61: void XBR0_Init()
+	C$lab3_1steering.c$61$1$32 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:61: void XBR0_Init()
 ;	-----------------------------------------
 ;	 function XBR0_Init
 ;	-----------------------------------------
 _XBR0_Init:
-	C$lab3_1.c$64$1$33 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:64: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
+	C$lab3_1steering.c$64$1$33 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:64: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
 	mov	_XBR0,#0x27
-	C$lab3_1.c$66$1$33 ==.
+	C$lab3_1steering.c$66$1$33 ==.
 	XG$XBR0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_Init'
 ;------------------------------------------------------------
 	G$PCA_Init$0$0 ==.
-	C$lab3_1.c$74$1$33 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:74: void PCA_Init(void)
+	C$lab3_1steering.c$74$1$33 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:74: void PCA_Init(void)
 ;	-----------------------------------------
 ;	 function PCA_Init
 ;	-----------------------------------------
 _PCA_Init:
-	C$lab3_1.c$78$1$35 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:78: PCA0MD = 0x81;
+	C$lab3_1steering.c$78$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:78: PCA0MD = 0x81;
 	mov	_PCA0MD,#0x81
-	C$lab3_1.c$79$1$35 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:79: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
+	C$lab3_1steering.c$79$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:79: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
 	mov	_PCA0CPM0,#0xC2
-	C$lab3_1.c$80$1$35 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:80: PCA0CN = 0x40;      //Enable PCA counter
+	C$lab3_1steering.c$80$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:80: PCA0CN = 0x40;      //Enable PCA counter
 	mov	_PCA0CN,#0x40
-	C$lab3_1.c$81$1$35 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:81: EIE1 |= 0x08;       //Enable PCA interrupt
+	C$lab3_1steering.c$81$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:81: EIE1 |= 0x08;       //Enable PCA interrupt
 	orl	_EIE1,#0x08
-	C$lab3_1.c$82$1$35 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:82: EA = 1;             //Enable global interrupts
+	C$lab3_1steering.c$82$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:82: EA = 1;             //Enable global interrupts
 	setb	_EA
-	C$lab3_1.c$83$1$35 ==.
+	C$lab3_1steering.c$83$1$35 ==.
 	XG$PCA_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_ISR'
 ;------------------------------------------------------------
 	G$PCA_ISR$0$0 ==.
-	C$lab3_1.c$91$1$35 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:91: void PCA_ISR ( void ) __interrupt 9
+	C$lab3_1steering.c$91$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:91: void PCA_ISR ( void ) __interrupt 9
 ;	-----------------------------------------
 ;	 function PCA_ISR
 ;	-----------------------------------------
 _PCA_ISR:
 	push	acc
 	push	psw
-	C$lab3_1.c$94$1$37 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:94: if (CF)
-	C$lab3_1.c$96$2$38 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:96: CF =0;
+	C$lab3_1steering.c$94$1$37 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:94: if (CF)
+	C$lab3_1steering.c$96$2$38 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:96: CF =0;
 	jbc	_CF,00108$
 	sjmp	00102$
 00108$:
-	C$lab3_1.c$97$2$38 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:97: PCA0 = 0x7000;
+	C$lab3_1steering.c$97$2$38 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:97: PCA0 = 0x7000;
 	mov	((_PCA0 >> 0) & 0xFF),#0x00
 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-	C$lab3_1.c$98$2$38 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:98: count++;
+	C$lab3_1steering.c$98$2$38 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:98: count++;
 	inc	_count
 	clr	a
 	cjne	a,_count,00109$
 	inc	(_count + 1)
 00109$:
 00102$:
-	C$lab3_1.c$101$1$37 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:101: PCA0CN &= 0xC0;
+	C$lab3_1steering.c$101$1$37 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:101: PCA0CN &= 0xC0;
 	anl	_PCA0CN,#0xC0
 	pop	psw
 	pop	acc
-	C$lab3_1.c$104$1$37 ==.
+	C$lab3_1steering.c$104$1$37 ==.
 	XG$PCA_ISR$0$0 ==.
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
@@ -1343,32 +1343,32 @@ _PCA_ISR:
 ;Allocation info for local variables in function 'Steering_Servo'
 ;------------------------------------------------------------
 	G$Steering_Servo$0$0 ==.
-	C$lab3_1.c$106$1$37 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:106: void Steering_Servo()
+	C$lab3_1steering.c$106$1$37 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:106: void Steering_Servo()
 ;	-----------------------------------------
 ;	 function Steering_Servo
 ;	-----------------------------------------
 _Steering_Servo:
-	C$lab3_1.c$111$1$39 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:111: if(input == 'r')  // single character input to increase the pulsewidth
+	C$lab3_1steering.c$111$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:111: if(input == 'r')  // single character input to increase the pulsewidth
 	mov	a,#0x72
 	cjne	a,_input,00110$
-	C$lab3_1.c$115$2$40 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
+	C$lab3_1steering.c$115$2$40 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
 	clr	c
 	mov	a,#0xD9
 	subb	a,_STR_PW
 	mov	a,#0x08
 	subb	a,(_STR_PW + 1)
 	jc	00102$
-	C$lab3_1.c$117$3$41 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
+	C$lab3_1steering.c$117$3$41 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
 	mov	_STR_PW,#0xD9
 	mov	(_STR_PW + 1),#0x08
 	sjmp	00111$
 00102$:
-	C$lab3_1.c$121$3$42 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:121: STR_PW-= 10;
+	C$lab3_1steering.c$121$3$42 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:121: STR_PW-= 10;
 	mov	a,_STR_PW
 	add	a,#0xF6
 	mov	_STR_PW,a
@@ -1377,26 +1377,26 @@ _Steering_Servo:
 	mov	(_STR_PW + 1),a
 	sjmp	00111$
 00110$:
-	C$lab3_1.c$124$1$39 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:124: else if(input == 'l')  // single character input to decrease the pulsewidth
+	C$lab3_1steering.c$124$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:124: else if(input == 'l')  // single character input to decrease the pulsewidth
 	mov	a,#0x6C
 	cjne	a,_input,00111$
-	C$lab3_1.c$128$2$43 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
+	C$lab3_1steering.c$128$2$43 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
 	clr	c
 	mov	a,#0xCB
 	subb	a,_STR_PW
 	mov	a,#0x0C
 	subb	a,(_STR_PW + 1)
 	jnc	00105$
-	C$lab3_1.c$130$3$44 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
+	C$lab3_1steering.c$130$3$44 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
 	mov	_STR_PW,#0xCB
 	mov	(_STR_PW + 1),#0x0C
 	sjmp	00111$
 00105$:
-	C$lab3_1.c$134$3$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:134: STR_PW+= 10;
+	C$lab3_1steering.c$134$3$45 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:134: STR_PW+= 10;
 	mov	a,#0x0A
 	add	a,_STR_PW
 	mov	_STR_PW,a
@@ -1404,8 +1404,8 @@ _Steering_Servo:
 	addc	a,(_STR_PW + 1)
 	mov	(_STR_PW + 1),a
 00111$:
-	C$lab3_1.c$137$1$39 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:137: printf("\r\nSTR_PW: %u", STR_PW);
+	C$lab3_1steering.c$137$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:137: printf("\r\nSTR_PW: %u", STR_PW);
 	push	_STR_PW
 	push	(_STR_PW + 1)
 	mov	a,#___str_1
@@ -1418,15 +1418,15 @@ _Steering_Servo:
 	mov	a,sp
 	add	a,#0xfb
 	mov	sp,a
-	C$lab3_1.c$138$1$39 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:138: PCA0CPL0 = 0xFFFF - STR_PW;
+	C$lab3_1steering.c$138$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:138: PCA0CPL0 = 0xFFFF - STR_PW;
 	mov	r7,_STR_PW
 	mov	a,#0xFF
 	clr	c
 	subb	a,r7
 	mov	_PCA0CPL0,a
-	C$lab3_1.c$139$1$39 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:139: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+	C$lab3_1steering.c$139$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:139: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_STR_PW
@@ -1434,17 +1434,17 @@ _Steering_Servo:
 	subb	a,(_STR_PW + 1)
 	mov	r7,a
 	mov	_PCA0CPH0,r7
-	C$lab3_1.c$141$1$39 ==.
+	C$lab3_1steering.c$141$1$39 ==.
 	XG$Steering_Servo$0$0 ==.
 	ret
 	.area CSEG    (CODE)
 	.area CONST   (CODE)
-Flab3_1$__str_0$0$0 == .
+Flab3_1steering$__str_0$0$0 == .
 ___str_0:
 	.ascii "Embedded Control Steering Calibration"
 	.db 0x0A
 	.db 0x00
-Flab3_1$__str_1$0$0 == .
+Flab3_1steering$__str_1$0$0 == .
 ___str_1:
 	.db 0x0D
 	.db 0x0A

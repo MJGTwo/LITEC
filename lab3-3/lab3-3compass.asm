@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Tue Mar 31 10:45:22 2015
+; This file was generated Fri Apr 03 09:46:29 2015
 ;--------------------------------------------------------
 	.module lab3_3compass
 	.optsdcc -mmcs51 --model-small
@@ -983,6 +983,9 @@ _offset::
 Llab3_3compass.ReadCompass$Data$1$115==.
 _ReadCompass_Data_1_115:
 	.ds 2
+Llab3_3compass.Steering_Servo$direction$1$124==.
+_Steering_Servo_direction_1_124:
+	.ds 2
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
 ;--------------------------------------------------------
@@ -1080,17 +1083,17 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab3_3compass.c$26$1$124 ==.
+	C$lab3_3compass.c$26$1$125 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:26: unsigned int STR_PW   = 0;
 	clr	a
 	mov	_STR_PW,a
 	mov	(_STR_PW + 1),a
-	C$lab3_3compass.c$27$1$124 ==.
+	C$lab3_3compass.c$27$1$125 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:27: unsigned int count = 0;
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab3_3compass.c$30$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:30: unsigned int desired_heading = 900; //East
+	C$lab3_3compass.c$30$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:30: int desired_heading = 900; //East
 	mov	_desired_heading,#0x84
 	mov	(_desired_heading + 1),#0x03
 	.area GSFINAL (CODE)
@@ -2306,15 +2309,15 @@ _main:
 	dec	sp
 	C$lab3_3compass.c$52$1$111 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:52: STR_PW = PW_CENTER_STR;
-	mov	_STR_PW,#0xCD
+	mov	_STR_PW,#0x7D
 	mov	(_STR_PW + 1),#0x0A
 	C$lab3_3compass.c$53$1$111 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:53: tmp0_lo_to_hi= 0xFFFF - STR_PW;
-	mov	_tmp0_lo_to_hi,#0x32
+	mov	_tmp0_lo_to_hi,#0x82
 	mov	(_tmp0_lo_to_hi + 1),#0xF5
 	C$lab3_3compass.c$54$1$111 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:54: PCA0CP0 = tmp0_lo_to_hi;
-	mov	((_PCA0CP0 >> 0) & 0xFF),#0x32
+	mov	((_PCA0CP0 >> 0) & 0xFF),#0x82
 	mov	((_PCA0CP0 >> 8) & 0xFF),#0xF5
 	C$lab3_3compass.c$55$1$111 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:55: count=0;
@@ -2352,22 +2355,30 @@ _main:
 	lcall	_ReadCompass
 	mov	_actual_heading,dpl
 	mov	(_actual_heading + 1),dph
-	C$lab3_3compass.c$63$2$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:63: offset = (actual_heading - desired_heading) % 3600;
-	mov	a,_actual_heading
+	C$lab3_3compass.c$62$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:62: offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
+	mov	a,#0x10
+	add	a,_actual_heading
+	mov	r6,a
+	mov	a,#0x0E
+	addc	a,(_actual_heading + 1)
+	mov	r7,a
+	mov	a,r6
 	clr	c
 	subb	a,_desired_heading
 	mov	dpl,a
-	mov	a,(_actual_heading + 1)
+	mov	a,r7
 	subb	a,(_desired_heading + 1)
 	mov	dph,a
-	mov	__moduint_PARM_2,#0x10
-	mov	(__moduint_PARM_2 + 1),#0x0E
-	lcall	__moduint
-	mov	_offset,dpl
-	mov	(_offset + 1),dph
-	C$lab3_3compass.c$64$2$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:64: printf("\r\n%d\t%d",actual_heading,offset);
+	mov	__modsint_PARM_2,#0x10
+	mov	(__modsint_PARM_2 + 1),#0x0E
+	lcall	__modsint
+	mov	r6,dpl
+	mov	r7,dph
+	mov	_offset,r6
+	mov	(_offset + 1),r7
+	C$lab3_3compass.c$63$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:63: printf("\r\n%d||%d",actual_heading,offset);
 	push	_offset
 	push	(_offset + 1)
 	push	_actual_heading
@@ -2382,6 +2393,11 @@ _main:
 	mov	a,sp
 	add	a,#0xf9
 	mov	sp,a
+	C$lab3_3compass.c$64$2$112 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:64: Steering_Servo(offset);
+	mov	dpl,_offset
+	mov	dph,(_offset + 1)
+	lcall	_Steering_Servo
 	sjmp	00108$
 	C$lab3_3compass.c$70$1$111 ==.
 	XG$main$0$0 ==.
@@ -2557,70 +2573,334 @@ _PCA_ISR:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Steering_Servo'
 ;------------------------------------------------------------
+;direction                 Allocated with name '_Steering_Servo_direction_1_124'
+;------------------------------------------------------------
 	G$Steering_Servo$0$0 ==.
 	C$lab3_3compass.c$146$1$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:146: void Steering_Servo()
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:146: void Steering_Servo(unsigned int direction)
 ;	-----------------------------------------
 ;	 function Steering_Servo
 ;	-----------------------------------------
 _Steering_Servo:
-	C$lab3_3compass.c$151$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:151: if(input == 'r')  // single character input to increase the pulsewidth
-	mov	a,#0x72
-	cjne	a,_input,00110$
-	C$lab3_3compass.c$155$2$125 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:155: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
+	mov	_Steering_Servo_direction_1_124,dpl
+	mov	(_Steering_Servo_direction_1_124 + 1),dph
+	C$lab3_3compass.c$150$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:150: if (direction < 1800)
 	clr	c
-	mov	a,#0xD9
-	subb	a,_STR_PW
-	mov	a,#0x08
-	subb	a,(_STR_PW + 1)
-	jc	00102$
-	C$lab3_3compass.c$157$3$126 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:157: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
-	mov	_STR_PW,#0xD9
-	mov	(_STR_PW + 1),#0x08
-	sjmp	00111$
+	mov	a,_Steering_Servo_direction_1_124
+	subb	a,#0x08
+	mov	a,(_Steering_Servo_direction_1_124 + 1)
+	subb	a,#0x07
+	jc	00128$
+	ljmp	00112$
+00128$:
+	C$lab3_3compass.c$152$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:152: if (STR_PW <= PW_CENTER_STR - (float)(direction)/4.2)
+	mov	dpl,_Steering_Servo_direction_1_124
+	mov	dph,(_Steering_Servo_direction_1_124 + 1)
+	lcall	___uint2fs
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
+	mov	a,#0x66
+	push	acc
+	push	acc
+	mov	a,#0x86
+	push	acc
+	mov	a,#0x40
+	push	acc
+	mov	dpl,r2
+	mov	dph,r3
+	mov	b,r4
+	mov	a,r5
+	lcall	___fsdiv
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
+	mov	dptr,#0xD000
+	mov	b,#0x27
+	mov	a,#0x45
+	lcall	___fssub
+	mov	r2,dpl
+	mov	r3,dph
+	mov	r4,b
+	mov	r5,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	mov	dpl,_STR_PW
+	mov	dph,(_STR_PW + 1)
+	push	ar5
+	push	ar4
+	push	ar3
+	push	ar2
+	lcall	___uint2fs
+	mov	r0,dpl
+	mov	r1,dph
+	mov	r6,b
+	mov	r7,a
+	pop	ar2
+	pop	ar3
+	pop	ar4
+	pop	ar5
+	push	ar2
+	push	ar3
+	push	ar4
+	push	ar5
+	mov	dpl,r0
+	mov	dph,r1
+	mov	b,r6
+	mov	a,r7
+	lcall	___fsgt
+	mov	r7,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	mov	a,r7
+	jnz	00102$
+	C$lab3_3compass.c$154$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:154: STR_PW = PW_CENTER_STR - (float)(direction)/4.2;
+	mov	dpl,_Steering_Servo_direction_1_124
+	mov	dph,(_Steering_Servo_direction_1_124 + 1)
+	lcall	___uint2fs
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,#0x66
+	push	acc
+	push	acc
+	mov	a,#0x86
+	push	acc
+	mov	a,#0x40
+	push	acc
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	lcall	___fsdiv
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	push	ar4
+	push	ar5
+	push	ar6
+	push	ar7
+	mov	dptr,#0xD000
+	mov	b,#0x27
+	mov	a,#0x45
+	lcall	___fssub
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	lcall	___fs2uint
+	mov	_STR_PW,dpl
+	mov	(_STR_PW + 1),dph
+	ljmp	00113$
 00102$:
-	C$lab3_3compass.c$161$3$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:161: STR_PW-= 10;
+	C$lab3_3compass.c$158$3$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:158: STR_PW -= 10;
 	mov	a,_STR_PW
 	add	a,#0xF6
 	mov	_STR_PW,a
 	mov	a,(_STR_PW + 1)
 	addc	a,#0xFF
 	mov	(_STR_PW + 1),a
-	sjmp	00111$
-00110$:
-	C$lab3_3compass.c$164$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:164: else if(input == 'l')  // single character input to decrease the pulsewidth
-	mov	a,#0x6C
-	cjne	a,_input,00111$
-	C$lab3_3compass.c$168$2$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:168: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
+	ljmp	00113$
+00112$:
+	C$lab3_3compass.c$161$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:161: else if ( direction == 0 || direction ==3600)
+	mov	a,_Steering_Servo_direction_1_124
+	orl	a,(_Steering_Servo_direction_1_124 + 1)
+	jz	00107$
+	mov	a,#0x10
+	cjne	a,_Steering_Servo_direction_1_124,00108$
+	mov	a,#0x0E
+	cjne	a,(_Steering_Servo_direction_1_124 + 1),00108$
+00107$:
+	C$lab3_3compass.c$163$2$129 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:163: STR_PW=PW_CENTER_STR;
+	mov	_STR_PW,#0x7D
+	mov	(_STR_PW + 1),#0x0A
+	ljmp	00113$
+00108$:
+	C$lab3_3compass.c$167$2$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:167: if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/1.9)
+	mov	a,#0x10
 	clr	c
-	mov	a,#0xCB
-	subb	a,_STR_PW
-	mov	a,#0x0C
-	subb	a,(_STR_PW + 1)
-	jnc	00105$
-	C$lab3_3compass.c$170$3$129 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:170: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
-	mov	_STR_PW,#0xCB
-	mov	(_STR_PW + 1),#0x0C
-	sjmp	00111$
+	subb	a,_Steering_Servo_direction_1_124
+	mov	dpl,a
+	mov	a,#0x0E
+	subb	a,(_Steering_Servo_direction_1_124 + 1)
+	mov	dph,a
+	lcall	___uint2fs
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,#0x33
+	push	acc
+	push	acc
+	mov	a,#0xF3
+	push	acc
+	swap	a
+	push	acc
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	lcall	___fsdiv
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	clr	a
+	push	acc
+	mov	a,#0xD0
+	push	acc
+	mov	a,#0x27
+	push	acc
+	mov	a,#0x45
+	push	acc
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	lcall	___fsadd
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	mov	dpl,_STR_PW
+	mov	dph,(_STR_PW + 1)
+	push	ar7
+	push	ar6
+	push	ar5
+	push	ar4
+	lcall	___uint2fs
+	mov	r0,dpl
+	mov	r1,dph
+	mov	r2,b
+	mov	r3,a
+	pop	ar4
+	pop	ar5
+	pop	ar6
+	pop	ar7
+	push	ar4
+	push	ar5
+	push	ar6
+	push	ar7
+	mov	dpl,r0
+	mov	dph,r1
+	mov	b,r2
+	mov	a,r3
+	lcall	___fslt
+	mov	r7,dpl
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	mov	a,r7
+	jnz	00105$
+	C$lab3_3compass.c$169$3$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:169: STR_PW = PW_CENTER_STR + (float)(3600-direction)/1.9;
+	mov	a,#0x10
+	clr	c
+	subb	a,_Steering_Servo_direction_1_124
+	mov	dpl,a
+	mov	a,#0x0E
+	subb	a,(_Steering_Servo_direction_1_124 + 1)
+	mov	dph,a
+	lcall	___uint2fs
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,#0x33
+	push	acc
+	push	acc
+	mov	a,#0xF3
+	push	acc
+	swap	a
+	push	acc
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	lcall	___fsdiv
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	clr	a
+	push	acc
+	mov	a,#0xD0
+	push	acc
+	mov	a,#0x27
+	push	acc
+	mov	a,#0x45
+	push	acc
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	lcall	___fsadd
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	mov	a,sp
+	add	a,#0xfc
+	mov	sp,a
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	lcall	___fs2uint
+	mov	_STR_PW,dpl
+	mov	(_STR_PW + 1),dph
+	sjmp	00113$
 00105$:
-	C$lab3_3compass.c$174$3$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:174: STR_PW+= 10;
+	C$lab3_3compass.c$173$3$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:173: STR_PW += 10;
 	mov	a,#0x0A
 	add	a,_STR_PW
 	mov	_STR_PW,a
 	clr	a
 	addc	a,(_STR_PW + 1)
 	mov	(_STR_PW + 1),a
-00111$:
-	C$lab3_3compass.c$177$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:177: printf("\r\nSTR_PW: %u", STR_PW);
+00113$:
+	C$lab3_3compass.c$178$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:178: printf("\r\nSTR_PW: %u", STR_PW);
 	push	_STR_PW
 	push	(_STR_PW + 1)
 	mov	a,#___str_5
@@ -2633,8 +2913,8 @@ _Steering_Servo:
 	mov	a,sp
 	add	a,#0xfb
 	mov	sp,a
-	C$lab3_3compass.c$178$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:178: tmp0_lo_to_hi= 0xFFFF - STR_PW;
+	C$lab3_3compass.c$179$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:179: tmp0_lo_to_hi= 0xFFFF - STR_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_STR_PW
@@ -2642,11 +2922,11 @@ _Steering_Servo:
 	mov	a,#0xFF
 	subb	a,(_STR_PW + 1)
 	mov	(_tmp0_lo_to_hi + 1),a
-	C$lab3_3compass.c$179$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:179: PCA0CP0 = tmp0_lo_to_hi;
+	C$lab3_3compass.c$180$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-3\lab3-3compass.c:180: PCA0CP0 = tmp0_lo_to_hi;
 	mov	((_PCA0CP0 >> 0) & 0xFF),_tmp0_lo_to_hi
 	mov	((_PCA0CP0 >> 8) & 0xFF),(_tmp0_lo_to_hi + 1)
-	C$lab3_3compass.c$182$1$124 ==.
+	C$lab3_3compass.c$183$1$125 ==.
 	XG$Steering_Servo$0$0 ==.
 	ret
 	.area CSEG    (CODE)
@@ -2673,9 +2953,7 @@ Flab3_3compass$__str_4$0$0 == .
 ___str_4:
 	.db 0x0D
 	.db 0x0A
-	.ascii "%d"
-	.db 0x09
-	.ascii "%d"
+	.ascii "%d||%d"
 	.db 0x00
 Flab3_3compass$__str_5$0$0 == .
 ___str_5:

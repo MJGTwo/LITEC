@@ -10,9 +10,9 @@ The goal of this code is to read values from the compass via i2c
 #include <stdio.h>
 #include <c8051_SDCC.h>
 #include <i2c.h>
-#define PW_CENTER_STR 2765
+#define PW_CENTER_STR 2685
 #define PW_MIN_STR    2265
-#define PW_MAX_STR    3275
+#define PW_MAX_STR    3195
 //-----------------------------------------------------------------------------
 // 8051 Initialization Functions
 //-----------------------------------------------------------------------------
@@ -21,13 +21,15 @@ void PCA_Init (void);
 void XBR0_Init(void);
 void SMB_Init(void);
 unsigned int ReadCompass(void);
-void Steering_Servo(void);
+void Steering_Servo(unsigned int direction);
+unsigned int tmp0_lo_to_hi;
 unsigned int STR_PW   = 0;
 unsigned int count = 0;
 char input;
-const unsigned int actual_heading;
-unsigned int desired_heading = 900; //East
+ int actual_heading;
+ int desired_heading = 900; //East
 unsigned int error;
+unsigned int offset;
 //-----------------------------------------------------------------------------
 // Main Function
 //-----------------------------------------------------------------------------
@@ -48,9 +50,8 @@ void main(void)
     //__________________________________________
     //__________________________________________
     STR_PW = PW_CENTER_STR;
-    
-    PCA0CPL0 = 0xFFFF - STR_PW;
-    PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+    tmp0_lo_to_hi= 0xFFFF - STR_PW;
+    PCA0CP0 = tmp0_lo_to_hi;
     count=0;
 	while (count < 50);
 	while (1)
@@ -58,9 +59,9 @@ void main(void)
 		count =0;
 		while (count < 2);
 		actual_heading = ReadCompass();
-        
-        error = desired_heading- actual_heading;
-		printf("\r\n%d\t%d",actual_heading);
+        offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
+        printf("\r\n%d||%d",actual_heading,offset);
+		Steering_Servo(offset);
 
     }
 	
@@ -142,40 +143,42 @@ void PCA_ISR ( void ) __interrupt 9
     // implemented using the PCA (Programmable Counter Array), p. 50 in Lab Manual.
 }
 
-void Steering_Servo()
+void Steering_Servo(unsigned int direction)
 {
     
     //wait for a key to be pressed
+	if (direction < 1800)
+	{
+		if (STR_PW <= PW_CENTER_STR - (float)(direction)/4.2)
+		{
+			STR_PW = PW_CENTER_STR - (float)(direction)/4.2;
+		}
+		else
+		{
+			STR_PW -= 10;
+		}
+	}
+	else if ( direction == 0 || direction ==3600)
+	{
+		STR_PW=PW_CENTER_STR;
+	}
+	else
+	{
+		if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/3.6)
+		{
+			STR_PW = PW_CENTER_STR + (float)(3600-direction)/3.6;
+		}
+		else
+		{
+			STR_PW += 10;
+		}			
+	}		
 
-    if(input == 'r')  // single character input to increase the pulsewidth
-    {
-        // ___________________________
-        // ___________________________
-        if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
-        {   
-            STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
-        }
-        else
-        {
-            STR_PW-= 10;
-        }
-    }
-    else if(input == 'l')  // single character input to decrease the pulsewidth
-    {
-        // ___________________________
-        // ___________________________
-        if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
-        {
-            STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
-        }
-        else
-        {
-            STR_PW+= 10;
-        }
-    }
+
     printf("\r\nSTR_PW: %u", STR_PW);
-    PCA0CPL0 = 0xFFFF - STR_PW;
-    PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+    tmp0_lo_to_hi= 0xFFFF - STR_PW;
+    PCA0CP0 = tmp0_lo_to_hi;
+
 
 }
 

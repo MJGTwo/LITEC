@@ -1,9 +1,9 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-                                      4 ; This file was generated Fri Apr 03 08:32:49 2015
+                                      4 ; This file was generated Fri Apr 03 08:34:46 2015
                                       5 ;--------------------------------------------------------
-                                      6 	.module lab3_1
+                                      6 	.module lab3_1steering
                                       7 	.optsdcc -mmcs51 --model-small
                                       8 	
                                       9 ;--------------------------------------------------------
@@ -872,14 +872,14 @@
                                     872 ;--------------------------------------------------------
                                     873 	.area DSEG    (DATA)
                            000000   874 G$STR_PW$0$0==.
-      000000                        875 _STR_PW::
-      000000                        876 	.ds 2
+      000008                        875 _STR_PW::
+      000008                        876 	.ds 2
                            000002   877 G$count$0$0==.
-      000002                        878 _count::
-      000002                        879 	.ds 2
+      00000A                        878 _count::
+      00000A                        879 	.ds 2
                            000004   880 G$input$0$0==.
-      000004                        881 _input::
-      000004                        882 	.ds 1
+      00000C                        881 _input::
+      00000C                        882 	.ds 1
                                     883 ;--------------------------------------------------------
                                     884 ; overlayable items in internal ram 
                                     885 ;--------------------------------------------------------
@@ -889,8 +889,8 @@
                                     889 ; Stack segment in internal ram 
                                     890 ;--------------------------------------------------------
                                     891 	.area	SSEG
-      000000                        892 __start__stack:
-      000000                        893 	.ds	1
+      00003C                        892 __start__stack:
+      00003C                        893 	.ds	1
                                     894 
                                     895 ;--------------------------------------------------------
                                     896 ; indirectly addressable internal ram data
@@ -936,7 +936,7 @@
                                     936 ;--------------------------------------------------------
                                     937 	.area HOME    (CODE)
       000000                        938 __interrupt_vect:
-      000000 02r00r00         [24]  939 	ljmp	__sdcc_gsinit_startup
+      000000 02 00 51         [24]  939 	ljmp	__sdcc_gsinit_startup
       000003 32               [24]  940 	reti
       000004                        941 	.ds	7
       00000B 32               [24]  942 	reti
@@ -955,7 +955,7 @@
       00003C                        955 	.ds	7
       000043 32               [24]  956 	reti
       000044                        957 	.ds	7
-      00004B 02r00rBD         [24]  958 	ljmp	_PCA_ISR
+      00004B 02 01 73         [24]  958 	ljmp	_PCA_ISR
                                     959 ;--------------------------------------------------------
                                     960 ; global & static initialisations
                                     961 ;--------------------------------------------------------
@@ -969,24 +969,24 @@
                                     969 	.globl __mcs51_genXINIT
                                     970 	.globl __mcs51_genXRAMCLEAR
                                     971 	.globl __mcs51_genRAMCLEAR
-                           000000   972 	C$lab3_1.c$14$1$39 ==.
-                                    973 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:14: unsigned int STR_PW   = 0;
-      000000 E4               [12]  974 	clr	a
-      000001 F5*00            [12]  975 	mov	_STR_PW,a
-      000003 F5*01            [12]  976 	mov	(_STR_PW + 1),a
-                           000005   977 	C$lab3_1.c$15$1$39 ==.
-                                    978 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:15: unsigned int count = 0;
-      000005 F5*02            [12]  979 	mov	_count,a
-      000007 F5*03            [12]  980 	mov	(_count + 1),a
+                           000000   972 	C$lab3_1steering.c$14$1$39 ==.
+                                    973 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:14: unsigned int STR_PW   = 0;
+      0000AA E4               [12]  974 	clr	a
+      0000AB F5 08            [12]  975 	mov	_STR_PW,a
+      0000AD F5 09            [12]  976 	mov	(_STR_PW + 1),a
+                           000005   977 	C$lab3_1steering.c$15$1$39 ==.
+                                    978 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:15: unsigned int count = 0;
+      0000AF F5 0A            [12]  979 	mov	_count,a
+      0000B1 F5 0B            [12]  980 	mov	(_count + 1),a
                                     981 	.area GSFINAL (CODE)
-      000000 02r00r4E         [24]  982 	ljmp	__sdcc_program_startup
+      0000B3 02 00 4E         [24]  982 	ljmp	__sdcc_program_startup
                                     983 ;--------------------------------------------------------
                                     984 ; Home
                                     985 ;--------------------------------------------------------
                                     986 	.area HOME    (CODE)
                                     987 	.area HOME    (CODE)
       00004E                        988 __sdcc_program_startup:
-      00004E 02r00r5C         [24]  989 	ljmp	_main
+      00004E 02 01 12         [24]  989 	ljmp	_main
                                     990 ;	return from main will return to caller
                                     991 ;--------------------------------------------------------
                                     992 ; code
@@ -1003,7 +1003,7 @@
                                    1003 ;	-----------------------------------------
                                    1004 ;	 function SYSCLK_Init
                                    1005 ;	-----------------------------------------
-      000000                       1006 _SYSCLK_Init:
+      0000B6                       1006 _SYSCLK_Init:
                            000007  1007 	ar7 = 0x07
                            000006  1008 	ar6 = 0x06
                            000005  1009 	ar5 = 0x05
@@ -1014,30 +1014,30 @@
                            000000  1014 	ar0 = 0x00
                            000000  1015 	C$c8051_SDCC.h$46$1$16 ==.
                                    1016 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:46: OSCXCN = 0x67;                      // start external oscillator with
-      000000 75 B1 67         [24] 1017 	mov	_OSCXCN,#0x67
+      0000B6 75 B1 67         [24] 1017 	mov	_OSCXCN,#0x67
                            000003  1018 	C$c8051_SDCC.h$49$1$16 ==.
                                    1019 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:49: for (i=0; i < 256; i++);            // wait for oscillator to start
-      000003 7E 00            [12] 1020 	mov	r6,#0x00
-      000005 7F 01            [12] 1021 	mov	r7,#0x01
-      000007                       1022 00107$:
-      000007 1E               [12] 1023 	dec	r6
-      000008 BE FF 01         [24] 1024 	cjne	r6,#0xFF,00121$
-      00000B 1F               [12] 1025 	dec	r7
-      00000C                       1026 00121$:
-      00000C EE               [12] 1027 	mov	a,r6
-      00000D 4F               [12] 1028 	orl	a,r7
-      00000E 70 F7            [24] 1029 	jnz	00107$
+      0000B9 7E 00            [12] 1020 	mov	r6,#0x00
+      0000BB 7F 01            [12] 1021 	mov	r7,#0x01
+      0000BD                       1022 00107$:
+      0000BD 1E               [12] 1023 	dec	r6
+      0000BE BE FF 01         [24] 1024 	cjne	r6,#0xFF,00121$
+      0000C1 1F               [12] 1025 	dec	r7
+      0000C2                       1026 00121$:
+      0000C2 EE               [12] 1027 	mov	a,r6
+      0000C3 4F               [12] 1028 	orl	a,r7
+      0000C4 70 F7            [24] 1029 	jnz	00107$
                            000010  1030 	C$c8051_SDCC.h$51$1$16 ==.
                                    1031 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:51: while (!(OSCXCN & 0x80));           // Wait for crystal osc. to settle
-      000010                       1032 00102$:
-      000010 E5 B1            [12] 1033 	mov	a,_OSCXCN
-      000012 30 E7 FB         [24] 1034 	jnb	acc.7,00102$
+      0000C6                       1032 00102$:
+      0000C6 E5 B1            [12] 1033 	mov	a,_OSCXCN
+      0000C8 30 E7 FB         [24] 1034 	jnb	acc.7,00102$
                            000015  1035 	C$c8051_SDCC.h$53$1$16 ==.
                                    1036 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:53: OSCICN = 0x88;                      // select external oscillator as SYSCLK
-      000015 75 B2 88         [24] 1037 	mov	_OSCICN,#0x88
+      0000CB 75 B2 88         [24] 1037 	mov	_OSCICN,#0x88
                            000018  1038 	C$c8051_SDCC.h$56$1$16 ==.
                            000018  1039 	XG$SYSCLK_Init$0$0 ==.
-      000018 22               [24] 1040 	ret
+      0000CE 22               [24] 1040 	ret
                                    1041 ;------------------------------------------------------------
                                    1042 ;Allocation info for local variables in function 'UART0_Init'
                                    1043 ;------------------------------------------------------------
@@ -1047,34 +1047,34 @@
                                    1047 ;	-----------------------------------------
                                    1048 ;	 function UART0_Init
                                    1049 ;	-----------------------------------------
-      000019                       1050 _UART0_Init:
+      0000CF                       1050 _UART0_Init:
                            000019  1051 	C$c8051_SDCC.h$66$1$18 ==.
                                    1052 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:66: SCON0  = 0x50;                      // SCON0: mode 1, 8-bit UART, enable RX
-      000019 75 98 50         [24] 1053 	mov	_SCON0,#0x50
+      0000CF 75 98 50         [24] 1053 	mov	_SCON0,#0x50
                            00001C  1054 	C$c8051_SDCC.h$67$1$18 ==.
                                    1055 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:67: TMOD   = 0x20;                      // TMOD: timer 1, mode 2, 8-bit reload
-      00001C 75 89 20         [24] 1056 	mov	_TMOD,#0x20
+      0000D2 75 89 20         [24] 1056 	mov	_TMOD,#0x20
                            00001F  1057 	C$c8051_SDCC.h$68$1$18 ==.
                                    1058 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:68: TH1    = -(SYSCLK/BAUDRATE/16);     // set Timer1 reload value for baudrate
-      00001F 75 8D DC         [24] 1059 	mov	_TH1,#0xDC
+      0000D5 75 8D DC         [24] 1059 	mov	_TH1,#0xDC
                            000022  1060 	C$c8051_SDCC.h$69$1$18 ==.
                                    1061 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:69: TR1    = 1;                         // start Timer1
-      000022 D2 8E            [12] 1062 	setb	_TR1
+      0000D8 D2 8E            [12] 1062 	setb	_TR1
                            000024  1063 	C$c8051_SDCC.h$70$1$18 ==.
                                    1064 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:70: CKCON |= 0x10;                      // Timer1 uses SYSCLK as time base
-      000024 43 8E 10         [24] 1065 	orl	_CKCON,#0x10
+      0000DA 43 8E 10         [24] 1065 	orl	_CKCON,#0x10
                            000027  1066 	C$c8051_SDCC.h$71$1$18 ==.
                                    1067 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:71: PCON  |= 0x80;                      // SMOD00 = 1 (disable baud rate 
-      000027 43 87 80         [24] 1068 	orl	_PCON,#0x80
+      0000DD 43 87 80         [24] 1068 	orl	_PCON,#0x80
                            00002A  1069 	C$c8051_SDCC.h$73$1$18 ==.
                                    1070 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:73: TI0    = 1;                         // Indicate TX0 ready
-      00002A D2 99            [12] 1071 	setb	_TI0
+      0000E0 D2 99            [12] 1071 	setb	_TI0
                            00002C  1072 	C$c8051_SDCC.h$74$1$18 ==.
                                    1073 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:74: P0MDOUT |= 0x01;                    // Set TX0 to push/pull
-      00002C 43 A4 01         [24] 1074 	orl	_P0MDOUT,#0x01
+      0000E2 43 A4 01         [24] 1074 	orl	_P0MDOUT,#0x01
                            00002F  1075 	C$c8051_SDCC.h$75$1$18 ==.
                            00002F  1076 	XG$UART0_Init$0$0 ==.
-      00002F 22               [24] 1077 	ret
+      0000E5 22               [24] 1077 	ret
                                    1078 ;------------------------------------------------------------
                                    1079 ;Allocation info for local variables in function 'Sys_Init'
                                    1080 ;------------------------------------------------------------
@@ -1084,28 +1084,28 @@
                                    1084 ;	-----------------------------------------
                                    1085 ;	 function Sys_Init
                                    1086 ;	-----------------------------------------
-      000030                       1087 _Sys_Init:
+      0000E6                       1087 _Sys_Init:
                            000030  1088 	C$c8051_SDCC.h$85$1$20 ==.
                                    1089 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:85: WDTCN = 0xde;			// disable watchdog timer
-      000030 75 FF DE         [24] 1090 	mov	_WDTCN,#0xDE
+      0000E6 75 FF DE         [24] 1090 	mov	_WDTCN,#0xDE
                            000033  1091 	C$c8051_SDCC.h$86$1$20 ==.
                                    1092 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:86: WDTCN = 0xad;
-      000033 75 FF AD         [24] 1093 	mov	_WDTCN,#0xAD
+      0000E9 75 FF AD         [24] 1093 	mov	_WDTCN,#0xAD
                            000036  1094 	C$c8051_SDCC.h$88$1$20 ==.
                                    1095 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:88: SYSCLK_Init();			// initialize oscillator
-      000036 12r00r00         [24] 1096 	lcall	_SYSCLK_Init
+      0000EC 12 00 B6         [24] 1096 	lcall	_SYSCLK_Init
                            000039  1097 	C$c8051_SDCC.h$89$1$20 ==.
                                    1098 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:89: UART0_Init();			// initialize UART0
-      000039 12r00r19         [24] 1099 	lcall	_UART0_Init
+      0000EF 12 00 CF         [24] 1099 	lcall	_UART0_Init
                            00003C  1100 	C$c8051_SDCC.h$91$1$20 ==.
                                    1101 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:91: XBR0 |= 0x04;
-      00003C 43 E1 04         [24] 1102 	orl	_XBR0,#0x04
+      0000F2 43 E1 04         [24] 1102 	orl	_XBR0,#0x04
                            00003F  1103 	C$c8051_SDCC.h$92$1$20 ==.
                                    1104 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:92: XBR2 |= 0x40;                    	// Enable crossbar and weak pull-ups
-      00003F 43 E3 40         [24] 1105 	orl	_XBR2,#0x40
+      0000F5 43 E3 40         [24] 1105 	orl	_XBR2,#0x40
                            000042  1106 	C$c8051_SDCC.h$93$1$20 ==.
                            000042  1107 	XG$Sys_Init$0$0 ==.
-      000042 22               [24] 1108 	ret
+      0000F8 22               [24] 1108 	ret
                                    1109 ;------------------------------------------------------------
                                    1110 ;Allocation info for local variables in function 'putchar'
                                    1111 ;------------------------------------------------------------
@@ -1117,22 +1117,22 @@
                                    1117 ;	-----------------------------------------
                                    1118 ;	 function putchar
                                    1119 ;	-----------------------------------------
-      000043                       1120 _putchar:
-      000043 AF 82            [24] 1121 	mov	r7,dpl
+      0000F9                       1120 _putchar:
+      0000F9 AF 82            [24] 1121 	mov	r7,dpl
                            000045  1122 	C$c8051_SDCC.h$100$1$22 ==.
                                    1123 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:100: while (!TI0); 
-      000045                       1124 00101$:
+      0000FB                       1124 00101$:
                            000045  1125 	C$c8051_SDCC.h$101$1$22 ==.
                                    1126 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:101: TI0 = 0;
-      000045 10 99 02         [24] 1127 	jbc	_TI0,00112$
-      000048 80 FB            [24] 1128 	sjmp	00101$
-      00004A                       1129 00112$:
+      0000FB 10 99 02         [24] 1127 	jbc	_TI0,00112$
+      0000FE 80 FB            [24] 1128 	sjmp	00101$
+      000100                       1129 00112$:
                            00004A  1130 	C$c8051_SDCC.h$102$1$22 ==.
                                    1131 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:102: SBUF0 = c;
-      00004A 8F 99            [24] 1132 	mov	_SBUF0,r7
+      000100 8F 99            [24] 1132 	mov	_SBUF0,r7
                            00004C  1133 	C$c8051_SDCC.h$103$1$22 ==.
                            00004C  1134 	XG$putchar$0$0 ==.
-      00004C 22               [24] 1135 	ret
+      000102 22               [24] 1135 	ret
                                    1136 ;------------------------------------------------------------
                                    1137 ;Allocation info for local variables in function 'getchar'
                                    1138 ;------------------------------------------------------------
@@ -1144,197 +1144,197 @@
                                    1144 ;	-----------------------------------------
                                    1145 ;	 function getchar
                                    1146 ;	-----------------------------------------
-      00004D                       1147 _getchar:
+      000103                       1147 _getchar:
                            00004D  1148 	C$c8051_SDCC.h$111$1$24 ==.
                                    1149 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:111: while (!RI0);
-      00004D                       1150 00101$:
+      000103                       1150 00101$:
                            00004D  1151 	C$c8051_SDCC.h$112$1$24 ==.
                                    1152 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:112: RI0 = 0;
-      00004D 10 98 02         [24] 1153 	jbc	_RI0,00112$
-      000050 80 FB            [24] 1154 	sjmp	00101$
-      000052                       1155 00112$:
+      000103 10 98 02         [24] 1153 	jbc	_RI0,00112$
+      000106 80 FB            [24] 1154 	sjmp	00101$
+      000108                       1155 00112$:
                            000052  1156 	C$c8051_SDCC.h$113$1$24 ==.
                                    1157 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:113: c = SBUF0;
-      000052 85 99 82         [24] 1158 	mov	dpl,_SBUF0
+      000108 85 99 82         [24] 1158 	mov	dpl,_SBUF0
                            000055  1159 	C$c8051_SDCC.h$114$1$24 ==.
                                    1160 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:114: putchar(c);                          // echo to terminal
-      000055 12r00r43         [24] 1161 	lcall	_putchar
+      00010B 12 00 F9         [24] 1161 	lcall	_putchar
                            000058  1162 	C$c8051_SDCC.h$115$1$24 ==.
                                    1163 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:115: return SBUF0;
-      000058 85 99 82         [24] 1164 	mov	dpl,_SBUF0
+      00010E 85 99 82         [24] 1164 	mov	dpl,_SBUF0
                            00005B  1165 	C$c8051_SDCC.h$116$1$24 ==.
                            00005B  1166 	XG$getchar$0$0 ==.
-      00005B 22               [24] 1167 	ret
+      000111 22               [24] 1167 	ret
                                    1168 ;------------------------------------------------------------
                                    1169 ;Allocation info for local variables in function 'main'
                                    1170 ;------------------------------------------------------------
                            00005C  1171 	G$main$0$0 ==.
-                           00005C  1172 	C$lab3_1.c$21$1$24 ==.
-                                   1173 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:21: void main(void)
+                           00005C  1172 	C$lab3_1steering.c$21$1$24 ==.
+                                   1173 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:21: void main(void)
                                    1174 ;	-----------------------------------------
                                    1175 ;	 function main
                                    1176 ;	-----------------------------------------
-      00005C                       1177 _main:
-                           00005C  1178 	C$lab3_1.c$24$1$30 ==.
-                                   1179 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:24: Sys_Init();
-      00005C 12r00r30         [24] 1180 	lcall	_Sys_Init
-                           00005F  1181 	C$lab3_1.c$25$1$30 ==.
-                                   1182 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:25: putchar(' '); //the quotes in this line may not format correctly
-      00005F 75 82 20         [24] 1183 	mov	dpl,#0x20
-      000062 12r00r43         [24] 1184 	lcall	_putchar
-                           000065  1185 	C$lab3_1.c$26$1$30 ==.
-                                   1186 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:26: Port_Init();
-      000065 12r00rA6         [24] 1187 	lcall	_Port_Init
-                           000068  1188 	C$lab3_1.c$27$1$30 ==.
-                                   1189 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:27: XBR0_Init();
-      000068 12r00rAA         [24] 1190 	lcall	_XBR0_Init
-                           00006B  1191 	C$lab3_1.c$28$1$30 ==.
-                                   1192 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:28: PCA_Init();
-      00006B 12r00rAE         [24] 1193 	lcall	_PCA_Init
-                           00006E  1194 	C$lab3_1.c$31$1$30 ==.
-                                   1195 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:31: printf("Embedded Control Steering Calibration\n");
-      00006E 74r00            [12] 1196 	mov	a,#___str_0
-      000070 C0 E0            [24] 1197 	push	acc
-      000072 74s00            [12] 1198 	mov	a,#(___str_0 >> 8)
-      000074 C0 E0            [24] 1199 	push	acc
-      000076 74 80            [12] 1200 	mov	a,#0x80
-      000078 C0 E0            [24] 1201 	push	acc
-      00007A 12r00r00         [24] 1202 	lcall	_printf
-      00007D 15 81            [12] 1203 	dec	sp
-      00007F 15 81            [12] 1204 	dec	sp
-      000081 15 81            [12] 1205 	dec	sp
-                           000083  1206 	C$lab3_1.c$35$1$30 ==.
-                                   1207 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:35: STR_PW = PW_CENTER_STR;
-      000083 75*00 CD         [24] 1208 	mov	_STR_PW,#0xCD
-      000086 75*01 0A         [24] 1209 	mov	(_STR_PW + 1),#0x0A
-                           000089  1210 	C$lab3_1.c$37$1$30 ==.
-                                   1211 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:37: PCA0CPL0 = 0xFFFF - STR_PW;
-      000089 75 EA 32         [24] 1212 	mov	_PCA0CPL0,#0x32
-                           00008C  1213 	C$lab3_1.c$38$1$30 ==.
-                                   1214 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:38: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
-      00008C 75 FA F5         [24] 1215 	mov	_PCA0CPH0,#0xF5
-                           00008F  1216 	C$lab3_1.c$39$1$30 ==.
-                                   1217 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:39: while (count < 29);
-      00008F                       1218 00101$:
-      00008F C3               [12] 1219 	clr	c
-      000090 E5*02            [12] 1220 	mov	a,_count
-      000092 94 1D            [12] 1221 	subb	a,#0x1D
-      000094 E5*03            [12] 1222 	mov	a,(_count + 1)
-      000096 94 00            [12] 1223 	subb	a,#0x00
-      000098 40 F5            [24] 1224 	jc	00101$
-                           00009A  1225 	C$lab3_1.c$40$1$30 ==.
-                                   1226 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:40: while(1)
-      00009A                       1227 00105$:
-                           00009A  1228 	C$lab3_1.c$42$2$31 ==.
-                                   1229 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:42: input = (char)getchar();
-      00009A 12r00r4D         [24] 1230 	lcall	_getchar
-      00009D 85 82*04         [24] 1231 	mov	_input,dpl
-                           0000A0  1232 	C$lab3_1.c$43$2$31 ==.
-                                   1233 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:43: Steering_Servo();
-      0000A0 12r00rDC         [24] 1234 	lcall	_Steering_Servo
-      0000A3 80 F5            [24] 1235 	sjmp	00105$
-                           0000A5  1236 	C$lab3_1.c$47$1$30 ==.
+      000112                       1177 _main:
+                           00005C  1178 	C$lab3_1steering.c$24$1$30 ==.
+                                   1179 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:24: Sys_Init();
+      000112 12 00 E6         [24] 1180 	lcall	_Sys_Init
+                           00005F  1181 	C$lab3_1steering.c$25$1$30 ==.
+                                   1182 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:25: putchar(' '); //the quotes in this line may not format correctly
+      000115 75 82 20         [24] 1183 	mov	dpl,#0x20
+      000118 12 00 F9         [24] 1184 	lcall	_putchar
+                           000065  1185 	C$lab3_1steering.c$26$1$30 ==.
+                                   1186 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:26: Port_Init();
+      00011B 12 01 5C         [24] 1187 	lcall	_Port_Init
+                           000068  1188 	C$lab3_1steering.c$27$1$30 ==.
+                                   1189 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:27: XBR0_Init();
+      00011E 12 01 60         [24] 1190 	lcall	_XBR0_Init
+                           00006B  1191 	C$lab3_1steering.c$28$1$30 ==.
+                                   1192 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:28: PCA_Init();
+      000121 12 01 64         [24] 1193 	lcall	_PCA_Init
+                           00006E  1194 	C$lab3_1steering.c$31$1$30 ==.
+                                   1195 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:31: printf("Embedded Control Steering Calibration\n");
+      000124 74 41            [12] 1196 	mov	a,#___str_0
+      000126 C0 E0            [24] 1197 	push	acc
+      000128 74 08            [12] 1198 	mov	a,#(___str_0 >> 8)
+      00012A C0 E0            [24] 1199 	push	acc
+      00012C 74 80            [12] 1200 	mov	a,#0x80
+      00012E C0 E0            [24] 1201 	push	acc
+      000130 12 02 2D         [24] 1202 	lcall	_printf
+      000133 15 81            [12] 1203 	dec	sp
+      000135 15 81            [12] 1204 	dec	sp
+      000137 15 81            [12] 1205 	dec	sp
+                           000083  1206 	C$lab3_1steering.c$35$1$30 ==.
+                                   1207 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:35: STR_PW = PW_CENTER_STR;
+      000139 75 08 CD         [24] 1208 	mov	_STR_PW,#0xCD
+      00013C 75 09 0A         [24] 1209 	mov	(_STR_PW + 1),#0x0A
+                           000089  1210 	C$lab3_1steering.c$37$1$30 ==.
+                                   1211 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:37: PCA0CPL0 = 0xFFFF - STR_PW;
+      00013F 75 EA 32         [24] 1212 	mov	_PCA0CPL0,#0x32
+                           00008C  1213 	C$lab3_1steering.c$38$1$30 ==.
+                                   1214 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:38: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+      000142 75 FA F5         [24] 1215 	mov	_PCA0CPH0,#0xF5
+                           00008F  1216 	C$lab3_1steering.c$39$1$30 ==.
+                                   1217 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:39: while (count < 29);
+      000145                       1218 00101$:
+      000145 C3               [12] 1219 	clr	c
+      000146 E5 0A            [12] 1220 	mov	a,_count
+      000148 94 1D            [12] 1221 	subb	a,#0x1D
+      00014A E5 0B            [12] 1222 	mov	a,(_count + 1)
+      00014C 94 00            [12] 1223 	subb	a,#0x00
+      00014E 40 F5            [24] 1224 	jc	00101$
+                           00009A  1225 	C$lab3_1steering.c$40$1$30 ==.
+                                   1226 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:40: while(1)
+      000150                       1227 00105$:
+                           00009A  1228 	C$lab3_1steering.c$42$2$31 ==.
+                                   1229 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:42: input = (char)getchar();
+      000150 12 01 03         [24] 1230 	lcall	_getchar
+      000153 85 82 0C         [24] 1231 	mov	_input,dpl
+                           0000A0  1232 	C$lab3_1steering.c$43$2$31 ==.
+                                   1233 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:43: Steering_Servo();
+      000156 12 01 92         [24] 1234 	lcall	_Steering_Servo
+      000159 80 F5            [24] 1235 	sjmp	00105$
+                           0000A5  1236 	C$lab3_1steering.c$47$1$30 ==.
                            0000A5  1237 	XG$main$0$0 ==.
-      0000A5 22               [24] 1238 	ret
+      00015B 22               [24] 1238 	ret
                                    1239 ;------------------------------------------------------------
                                    1240 ;Allocation info for local variables in function 'Port_Init'
                                    1241 ;------------------------------------------------------------
                            0000A6  1242 	G$Port_Init$0$0 ==.
-                           0000A6  1243 	C$lab3_1.c$49$1$30 ==.
-                                   1244 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:49: void Port_Init()
+                           0000A6  1243 	C$lab3_1steering.c$49$1$30 ==.
+                                   1244 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:49: void Port_Init()
                                    1245 ;	-----------------------------------------
                                    1246 ;	 function Port_Init
                                    1247 ;	-----------------------------------------
-      0000A6                       1248 _Port_Init:
-                           0000A6  1249 	C$lab3_1.c$51$1$32 ==.
-                                   1250 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:51: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
-      0000A6 75 A5 0F         [24] 1251 	mov	_P1MDOUT,#0x0F
-                           0000A9  1252 	C$lab3_1.c$53$1$32 ==.
+      00015C                       1248 _Port_Init:
+                           0000A6  1249 	C$lab3_1steering.c$51$1$32 ==.
+                                   1250 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:51: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
+      00015C 75 A5 0F         [24] 1251 	mov	_P1MDOUT,#0x0F
+                           0000A9  1252 	C$lab3_1steering.c$53$1$32 ==.
                            0000A9  1253 	XG$Port_Init$0$0 ==.
-      0000A9 22               [24] 1254 	ret
+      00015F 22               [24] 1254 	ret
                                    1255 ;------------------------------------------------------------
                                    1256 ;Allocation info for local variables in function 'XBR0_Init'
                                    1257 ;------------------------------------------------------------
                            0000AA  1258 	G$XBR0_Init$0$0 ==.
-                           0000AA  1259 	C$lab3_1.c$61$1$32 ==.
-                                   1260 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:61: void XBR0_Init()
+                           0000AA  1259 	C$lab3_1steering.c$61$1$32 ==.
+                                   1260 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:61: void XBR0_Init()
                                    1261 ;	-----------------------------------------
                                    1262 ;	 function XBR0_Init
                                    1263 ;	-----------------------------------------
-      0000AA                       1264 _XBR0_Init:
-                           0000AA  1265 	C$lab3_1.c$64$1$33 ==.
-                                   1266 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:64: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
-      0000AA 75 E1 27         [24] 1267 	mov	_XBR0,#0x27
-                           0000AD  1268 	C$lab3_1.c$66$1$33 ==.
+      000160                       1264 _XBR0_Init:
+                           0000AA  1265 	C$lab3_1steering.c$64$1$33 ==.
+                                   1266 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:64: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
+      000160 75 E1 27         [24] 1267 	mov	_XBR0,#0x27
+                           0000AD  1268 	C$lab3_1steering.c$66$1$33 ==.
                            0000AD  1269 	XG$XBR0_Init$0$0 ==.
-      0000AD 22               [24] 1270 	ret
+      000163 22               [24] 1270 	ret
                                    1271 ;------------------------------------------------------------
                                    1272 ;Allocation info for local variables in function 'PCA_Init'
                                    1273 ;------------------------------------------------------------
                            0000AE  1274 	G$PCA_Init$0$0 ==.
-                           0000AE  1275 	C$lab3_1.c$74$1$33 ==.
-                                   1276 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:74: void PCA_Init(void)
+                           0000AE  1275 	C$lab3_1steering.c$74$1$33 ==.
+                                   1276 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:74: void PCA_Init(void)
                                    1277 ;	-----------------------------------------
                                    1278 ;	 function PCA_Init
                                    1279 ;	-----------------------------------------
-      0000AE                       1280 _PCA_Init:
-                           0000AE  1281 	C$lab3_1.c$78$1$35 ==.
-                                   1282 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:78: PCA0MD = 0x81;
-      0000AE 75 D9 81         [24] 1283 	mov	_PCA0MD,#0x81
-                           0000B1  1284 	C$lab3_1.c$79$1$35 ==.
-                                   1285 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:79: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
-      0000B1 75 DA C2         [24] 1286 	mov	_PCA0CPM0,#0xC2
-                           0000B4  1287 	C$lab3_1.c$80$1$35 ==.
-                                   1288 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:80: PCA0CN = 0x40;      //Enable PCA counter
-      0000B4 75 D8 40         [24] 1289 	mov	_PCA0CN,#0x40
-                           0000B7  1290 	C$lab3_1.c$81$1$35 ==.
-                                   1291 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:81: EIE1 |= 0x08;       //Enable PCA interrupt
-      0000B7 43 E6 08         [24] 1292 	orl	_EIE1,#0x08
-                           0000BA  1293 	C$lab3_1.c$82$1$35 ==.
-                                   1294 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:82: EA = 1;             //Enable global interrupts
-      0000BA D2 AF            [12] 1295 	setb	_EA
-                           0000BC  1296 	C$lab3_1.c$83$1$35 ==.
+      000164                       1280 _PCA_Init:
+                           0000AE  1281 	C$lab3_1steering.c$78$1$35 ==.
+                                   1282 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:78: PCA0MD = 0x81;
+      000164 75 D9 81         [24] 1283 	mov	_PCA0MD,#0x81
+                           0000B1  1284 	C$lab3_1steering.c$79$1$35 ==.
+                                   1285 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:79: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
+      000167 75 DA C2         [24] 1286 	mov	_PCA0CPM0,#0xC2
+                           0000B4  1287 	C$lab3_1steering.c$80$1$35 ==.
+                                   1288 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:80: PCA0CN = 0x40;      //Enable PCA counter
+      00016A 75 D8 40         [24] 1289 	mov	_PCA0CN,#0x40
+                           0000B7  1290 	C$lab3_1steering.c$81$1$35 ==.
+                                   1291 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:81: EIE1 |= 0x08;       //Enable PCA interrupt
+      00016D 43 E6 08         [24] 1292 	orl	_EIE1,#0x08
+                           0000BA  1293 	C$lab3_1steering.c$82$1$35 ==.
+                                   1294 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:82: EA = 1;             //Enable global interrupts
+      000170 D2 AF            [12] 1295 	setb	_EA
+                           0000BC  1296 	C$lab3_1steering.c$83$1$35 ==.
                            0000BC  1297 	XG$PCA_Init$0$0 ==.
-      0000BC 22               [24] 1298 	ret
+      000172 22               [24] 1298 	ret
                                    1299 ;------------------------------------------------------------
                                    1300 ;Allocation info for local variables in function 'PCA_ISR'
                                    1301 ;------------------------------------------------------------
                            0000BD  1302 	G$PCA_ISR$0$0 ==.
-                           0000BD  1303 	C$lab3_1.c$91$1$35 ==.
-                                   1304 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:91: void PCA_ISR ( void ) __interrupt 9
+                           0000BD  1303 	C$lab3_1steering.c$91$1$35 ==.
+                                   1304 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:91: void PCA_ISR ( void ) __interrupt 9
                                    1305 ;	-----------------------------------------
                                    1306 ;	 function PCA_ISR
                                    1307 ;	-----------------------------------------
-      0000BD                       1308 _PCA_ISR:
-      0000BD C0 E0            [24] 1309 	push	acc
-      0000BF C0 D0            [24] 1310 	push	psw
-                           0000C1  1311 	C$lab3_1.c$94$1$37 ==.
-                                   1312 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:94: if (CF)
-                           0000C1  1313 	C$lab3_1.c$96$2$38 ==.
-                                   1314 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:96: CF =0;
-      0000C1 10 DF 02         [24] 1315 	jbc	_CF,00108$
-      0000C4 80 0E            [24] 1316 	sjmp	00102$
-      0000C6                       1317 00108$:
-                           0000C6  1318 	C$lab3_1.c$97$2$38 ==.
-                                   1319 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:97: PCA0 = 0x7000;
-      0000C6 75 E9 00         [24] 1320 	mov	((_PCA0 >> 0) & 0xFF),#0x00
-      0000C9 75 F9 70         [24] 1321 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-                           0000CC  1322 	C$lab3_1.c$98$2$38 ==.
-                                   1323 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:98: count++;
-      0000CC 05*02            [12] 1324 	inc	_count
-      0000CE E4               [12] 1325 	clr	a
-      0000CF B5*02 02         [24] 1326 	cjne	a,_count,00109$
-      0000D2 05*03            [12] 1327 	inc	(_count + 1)
-      0000D4                       1328 00109$:
-      0000D4                       1329 00102$:
-                           0000D4  1330 	C$lab3_1.c$101$1$37 ==.
-                                   1331 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:101: PCA0CN &= 0xC0;
-      0000D4 53 D8 C0         [24] 1332 	anl	_PCA0CN,#0xC0
-      0000D7 D0 D0            [24] 1333 	pop	psw
-      0000D9 D0 E0            [24] 1334 	pop	acc
-                           0000DB  1335 	C$lab3_1.c$104$1$37 ==.
+      000173                       1308 _PCA_ISR:
+      000173 C0 E0            [24] 1309 	push	acc
+      000175 C0 D0            [24] 1310 	push	psw
+                           0000C1  1311 	C$lab3_1steering.c$94$1$37 ==.
+                                   1312 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:94: if (CF)
+                           0000C1  1313 	C$lab3_1steering.c$96$2$38 ==.
+                                   1314 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:96: CF =0;
+      000177 10 DF 02         [24] 1315 	jbc	_CF,00108$
+      00017A 80 0E            [24] 1316 	sjmp	00102$
+      00017C                       1317 00108$:
+                           0000C6  1318 	C$lab3_1steering.c$97$2$38 ==.
+                                   1319 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:97: PCA0 = 0x7000;
+      00017C 75 E9 00         [24] 1320 	mov	((_PCA0 >> 0) & 0xFF),#0x00
+      00017F 75 F9 70         [24] 1321 	mov	((_PCA0 >> 8) & 0xFF),#0x70
+                           0000CC  1322 	C$lab3_1steering.c$98$2$38 ==.
+                                   1323 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:98: count++;
+      000182 05 0A            [12] 1324 	inc	_count
+      000184 E4               [12] 1325 	clr	a
+      000185 B5 0A 02         [24] 1326 	cjne	a,_count,00109$
+      000188 05 0B            [12] 1327 	inc	(_count + 1)
+      00018A                       1328 00109$:
+      00018A                       1329 00102$:
+                           0000D4  1330 	C$lab3_1steering.c$101$1$37 ==.
+                                   1331 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:101: PCA0CN &= 0xC0;
+      00018A 53 D8 C0         [24] 1332 	anl	_PCA0CN,#0xC0
+      00018D D0 D0            [24] 1333 	pop	psw
+      00018F D0 E0            [24] 1334 	pop	acc
+                           0000DB  1335 	C$lab3_1steering.c$104$1$37 ==.
                            0000DB  1336 	XG$PCA_ISR$0$0 ==.
-      0000DB 32               [24] 1337 	reti
+      000191 32               [24] 1337 	reti
                                    1338 ;	eliminated unneeded mov psw,# (no regs used in bank)
                                    1339 ;	eliminated unneeded push/pop dpl
                                    1340 ;	eliminated unneeded push/pop dph
@@ -1343,118 +1343,118 @@
                                    1343 ;Allocation info for local variables in function 'Steering_Servo'
                                    1344 ;------------------------------------------------------------
                            0000DC  1345 	G$Steering_Servo$0$0 ==.
-                           0000DC  1346 	C$lab3_1.c$106$1$37 ==.
-                                   1347 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:106: void Steering_Servo()
+                           0000DC  1346 	C$lab3_1steering.c$106$1$37 ==.
+                                   1347 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:106: void Steering_Servo()
                                    1348 ;	-----------------------------------------
                                    1349 ;	 function Steering_Servo
                                    1350 ;	-----------------------------------------
-      0000DC                       1351 _Steering_Servo:
-                           0000DC  1352 	C$lab3_1.c$111$1$39 ==.
-                                   1353 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:111: if(input == 'r')  // single character input to increase the pulsewidth
-      0000DC 74 72            [12] 1354 	mov	a,#0x72
-      0000DE B5*04 21         [24] 1355 	cjne	a,_input,00110$
-                           0000E1  1356 	C$lab3_1.c$115$2$40 ==.
-                                   1357 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
-      0000E1 C3               [12] 1358 	clr	c
-      0000E2 74 D9            [12] 1359 	mov	a,#0xD9
-      0000E4 95*00            [12] 1360 	subb	a,_STR_PW
-      0000E6 74 08            [12] 1361 	mov	a,#0x08
-      0000E8 95*01            [12] 1362 	subb	a,(_STR_PW + 1)
-      0000EA 40 08            [24] 1363 	jc	00102$
-                           0000EC  1364 	C$lab3_1.c$117$3$41 ==.
-                                   1365 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
-      0000EC 75*00 D9         [24] 1366 	mov	_STR_PW,#0xD9
-      0000EF 75*01 08         [24] 1367 	mov	(_STR_PW + 1),#0x08
-      0000F2 80 31            [24] 1368 	sjmp	00111$
-      0000F4                       1369 00102$:
-                           0000F4  1370 	C$lab3_1.c$121$3$42 ==.
-                                   1371 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:121: STR_PW-= 10;
-      0000F4 E5*00            [12] 1372 	mov	a,_STR_PW
-      0000F6 24 F6            [12] 1373 	add	a,#0xF6
-      0000F8 F5*00            [12] 1374 	mov	_STR_PW,a
-      0000FA E5*01            [12] 1375 	mov	a,(_STR_PW + 1)
-      0000FC 34 FF            [12] 1376 	addc	a,#0xFF
-      0000FE F5*01            [12] 1377 	mov	(_STR_PW + 1),a
-      000100 80 23            [24] 1378 	sjmp	00111$
-      000102                       1379 00110$:
-                           000102  1380 	C$lab3_1.c$124$1$39 ==.
-                                   1381 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:124: else if(input == 'l')  // single character input to decrease the pulsewidth
-      000102 74 6C            [12] 1382 	mov	a,#0x6C
-      000104 B5*04 1E         [24] 1383 	cjne	a,_input,00111$
-                           000107  1384 	C$lab3_1.c$128$2$43 ==.
-                                   1385 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
-      000107 C3               [12] 1386 	clr	c
-      000108 74 CB            [12] 1387 	mov	a,#0xCB
-      00010A 95*00            [12] 1388 	subb	a,_STR_PW
-      00010C 74 0C            [12] 1389 	mov	a,#0x0C
-      00010E 95*01            [12] 1390 	subb	a,(_STR_PW + 1)
-      000110 50 08            [24] 1391 	jnc	00105$
-                           000112  1392 	C$lab3_1.c$130$3$44 ==.
-                                   1393 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
-      000112 75*00 CB         [24] 1394 	mov	_STR_PW,#0xCB
-      000115 75*01 0C         [24] 1395 	mov	(_STR_PW + 1),#0x0C
-      000118 80 0B            [24] 1396 	sjmp	00111$
-      00011A                       1397 00105$:
-                           00011A  1398 	C$lab3_1.c$134$3$45 ==.
-                                   1399 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:134: STR_PW+= 10;
-      00011A 74 0A            [12] 1400 	mov	a,#0x0A
-      00011C 25*00            [12] 1401 	add	a,_STR_PW
-      00011E F5*00            [12] 1402 	mov	_STR_PW,a
-      000120 E4               [12] 1403 	clr	a
-      000121 35*01            [12] 1404 	addc	a,(_STR_PW + 1)
-      000123 F5*01            [12] 1405 	mov	(_STR_PW + 1),a
-      000125                       1406 00111$:
-                           000125  1407 	C$lab3_1.c$137$1$39 ==.
-                                   1408 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:137: printf("\r\nSTR_PW: %u", STR_PW);
-      000125 C0*00            [24] 1409 	push	_STR_PW
-      000127 C0*01            [24] 1410 	push	(_STR_PW + 1)
-      000129 74r27            [12] 1411 	mov	a,#___str_1
-      00012B C0 E0            [24] 1412 	push	acc
-      00012D 74s00            [12] 1413 	mov	a,#(___str_1 >> 8)
-      00012F C0 E0            [24] 1414 	push	acc
-      000131 74 80            [12] 1415 	mov	a,#0x80
-      000133 C0 E0            [24] 1416 	push	acc
-      000135 12r00r00         [24] 1417 	lcall	_printf
-      000138 E5 81            [12] 1418 	mov	a,sp
-      00013A 24 FB            [12] 1419 	add	a,#0xfb
-      00013C F5 81            [12] 1420 	mov	sp,a
-                           00013E  1421 	C$lab3_1.c$138$1$39 ==.
-                                   1422 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:138: PCA0CPL0 = 0xFFFF - STR_PW;
-      00013E AF*00            [24] 1423 	mov	r7,_STR_PW
-      000140 74 FF            [12] 1424 	mov	a,#0xFF
-      000142 C3               [12] 1425 	clr	c
-      000143 9F               [12] 1426 	subb	a,r7
-      000144 F5 EA            [12] 1427 	mov	_PCA0CPL0,a
-                           000146  1428 	C$lab3_1.c$139$1$39 ==.
-                                   1429 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:139: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
-      000146 74 FF            [12] 1430 	mov	a,#0xFF
-      000148 C3               [12] 1431 	clr	c
-      000149 95*00            [12] 1432 	subb	a,_STR_PW
-      00014B 74 FF            [12] 1433 	mov	a,#0xFF
-      00014D 95*01            [12] 1434 	subb	a,(_STR_PW + 1)
-      00014F FF               [12] 1435 	mov	r7,a
-      000150 8F FA            [24] 1436 	mov	_PCA0CPH0,r7
-                           000152  1437 	C$lab3_1.c$141$1$39 ==.
+      000192                       1351 _Steering_Servo:
+                           0000DC  1352 	C$lab3_1steering.c$111$1$39 ==.
+                                   1353 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:111: if(input == 'r')  // single character input to increase the pulsewidth
+      000192 74 72            [12] 1354 	mov	a,#0x72
+      000194 B5 0C 21         [24] 1355 	cjne	a,_input,00110$
+                           0000E1  1356 	C$lab3_1steering.c$115$2$40 ==.
+                                   1357 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
+      000197 C3               [12] 1358 	clr	c
+      000198 74 D9            [12] 1359 	mov	a,#0xD9
+      00019A 95 08            [12] 1360 	subb	a,_STR_PW
+      00019C 74 08            [12] 1361 	mov	a,#0x08
+      00019E 95 09            [12] 1362 	subb	a,(_STR_PW + 1)
+      0001A0 40 08            [24] 1363 	jc	00102$
+                           0000EC  1364 	C$lab3_1steering.c$117$3$41 ==.
+                                   1365 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
+      0001A2 75 08 D9         [24] 1366 	mov	_STR_PW,#0xD9
+      0001A5 75 09 08         [24] 1367 	mov	(_STR_PW + 1),#0x08
+      0001A8 80 31            [24] 1368 	sjmp	00111$
+      0001AA                       1369 00102$:
+                           0000F4  1370 	C$lab3_1steering.c$121$3$42 ==.
+                                   1371 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:121: STR_PW-= 10;
+      0001AA E5 08            [12] 1372 	mov	a,_STR_PW
+      0001AC 24 F6            [12] 1373 	add	a,#0xF6
+      0001AE F5 08            [12] 1374 	mov	_STR_PW,a
+      0001B0 E5 09            [12] 1375 	mov	a,(_STR_PW + 1)
+      0001B2 34 FF            [12] 1376 	addc	a,#0xFF
+      0001B4 F5 09            [12] 1377 	mov	(_STR_PW + 1),a
+      0001B6 80 23            [24] 1378 	sjmp	00111$
+      0001B8                       1379 00110$:
+                           000102  1380 	C$lab3_1steering.c$124$1$39 ==.
+                                   1381 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:124: else if(input == 'l')  // single character input to decrease the pulsewidth
+      0001B8 74 6C            [12] 1382 	mov	a,#0x6C
+      0001BA B5 0C 1E         [24] 1383 	cjne	a,_input,00111$
+                           000107  1384 	C$lab3_1steering.c$128$2$43 ==.
+                                   1385 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
+      0001BD C3               [12] 1386 	clr	c
+      0001BE 74 CB            [12] 1387 	mov	a,#0xCB
+      0001C0 95 08            [12] 1388 	subb	a,_STR_PW
+      0001C2 74 0C            [12] 1389 	mov	a,#0x0C
+      0001C4 95 09            [12] 1390 	subb	a,(_STR_PW + 1)
+      0001C6 50 08            [24] 1391 	jnc	00105$
+                           000112  1392 	C$lab3_1steering.c$130$3$44 ==.
+                                   1393 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
+      0001C8 75 08 CB         [24] 1394 	mov	_STR_PW,#0xCB
+      0001CB 75 09 0C         [24] 1395 	mov	(_STR_PW + 1),#0x0C
+      0001CE 80 0B            [24] 1396 	sjmp	00111$
+      0001D0                       1397 00105$:
+                           00011A  1398 	C$lab3_1steering.c$134$3$45 ==.
+                                   1399 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:134: STR_PW+= 10;
+      0001D0 74 0A            [12] 1400 	mov	a,#0x0A
+      0001D2 25 08            [12] 1401 	add	a,_STR_PW
+      0001D4 F5 08            [12] 1402 	mov	_STR_PW,a
+      0001D6 E4               [12] 1403 	clr	a
+      0001D7 35 09            [12] 1404 	addc	a,(_STR_PW + 1)
+      0001D9 F5 09            [12] 1405 	mov	(_STR_PW + 1),a
+      0001DB                       1406 00111$:
+                           000125  1407 	C$lab3_1steering.c$137$1$39 ==.
+                                   1408 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:137: printf("\r\nSTR_PW: %u", STR_PW);
+      0001DB C0 08            [24] 1409 	push	_STR_PW
+      0001DD C0 09            [24] 1410 	push	(_STR_PW + 1)
+      0001DF 74 68            [12] 1411 	mov	a,#___str_1
+      0001E1 C0 E0            [24] 1412 	push	acc
+      0001E3 74 08            [12] 1413 	mov	a,#(___str_1 >> 8)
+      0001E5 C0 E0            [24] 1414 	push	acc
+      0001E7 74 80            [12] 1415 	mov	a,#0x80
+      0001E9 C0 E0            [24] 1416 	push	acc
+      0001EB 12 02 2D         [24] 1417 	lcall	_printf
+      0001EE E5 81            [12] 1418 	mov	a,sp
+      0001F0 24 FB            [12] 1419 	add	a,#0xfb
+      0001F2 F5 81            [12] 1420 	mov	sp,a
+                           00013E  1421 	C$lab3_1steering.c$138$1$39 ==.
+                                   1422 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:138: PCA0CPL0 = 0xFFFF - STR_PW;
+      0001F4 AF 08            [24] 1423 	mov	r7,_STR_PW
+      0001F6 74 FF            [12] 1424 	mov	a,#0xFF
+      0001F8 C3               [12] 1425 	clr	c
+      0001F9 9F               [12] 1426 	subb	a,r7
+      0001FA F5 EA            [12] 1427 	mov	_PCA0CPL0,a
+                           000146  1428 	C$lab3_1steering.c$139$1$39 ==.
+                                   1429 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:139: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+      0001FC 74 FF            [12] 1430 	mov	a,#0xFF
+      0001FE C3               [12] 1431 	clr	c
+      0001FF 95 08            [12] 1432 	subb	a,_STR_PW
+      000201 74 FF            [12] 1433 	mov	a,#0xFF
+      000203 95 09            [12] 1434 	subb	a,(_STR_PW + 1)
+      000205 FF               [12] 1435 	mov	r7,a
+      000206 8F FA            [24] 1436 	mov	_PCA0CPH0,r7
+                           000152  1437 	C$lab3_1steering.c$141$1$39 ==.
                            000152  1438 	XG$Steering_Servo$0$0 ==.
-      000152 22               [24] 1439 	ret
+      000208 22               [24] 1439 	ret
                                    1440 	.area CSEG    (CODE)
                                    1441 	.area CONST   (CODE)
-                           000000  1442 Flab3_1$__str_0$0$0 == .
-      000000                       1443 ___str_0:
-      000000 45 6D 62 65 64 64 65  1444 	.ascii "Embedded Control Steering Calibration"
+                           000000  1442 Flab3_1steering$__str_0$0$0 == .
+      000841                       1443 ___str_0:
+      000841 45 6D 62 65 64 64 65  1444 	.ascii "Embedded Control Steering Calibration"
              64 20 43 6F 6E 74 72
              6F 6C 20 53 74 65 65
              72 69 6E 67 20 43 61
              6C 69 62 72 61 74 69
              6F 6E
-      000025 0A                    1445 	.db 0x0A
-      000026 00                    1446 	.db 0x00
-                           000027  1447 Flab3_1$__str_1$0$0 == .
-      000027                       1448 ___str_1:
-      000027 0D                    1449 	.db 0x0D
-      000028 0A                    1450 	.db 0x0A
-      000029 53 54 52 5F 50 57 3A  1451 	.ascii "STR_PW: %u"
+      000866 0A                    1445 	.db 0x0A
+      000867 00                    1446 	.db 0x00
+                           000027  1447 Flab3_1steering$__str_1$0$0 == .
+      000868                       1448 ___str_1:
+      000868 0D                    1449 	.db 0x0D
+      000869 0A                    1450 	.db 0x0A
+      00086A 53 54 52 5F 50 57 3A  1451 	.ascii "STR_PW: %u"
              20 25 75
-      000033 00                    1452 	.db 0x00
+      000874 00                    1452 	.db 0x00
                                    1453 	.area XINIT   (CODE)
                                    1454 	.area CABS    (ABS,CODE)

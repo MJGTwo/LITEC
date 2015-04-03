@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-                                      4 ; This file was generated Tue Mar 31 09:21:54 2015
+                                      4 ; This file was generated Fri Apr 03 08:24:14 2015
                                       5 ;--------------------------------------------------------
                                       6 	.module lab3_2steering
                                       7 	.optsdcc -mmcs51 --model-small
