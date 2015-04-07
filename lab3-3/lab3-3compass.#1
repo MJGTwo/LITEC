@@ -1,4 +1,4 @@
-/*  Lab3-2
+/*  Lab3-3
 Michael J. Gardner II && Chrstine Marini
 Section 03
 Side B
@@ -71,7 +71,7 @@ void main(void)
 
 void Port_Init()
 {
-    P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
+    P1MDOUT = 0x0F;  //set output pin for CEX0 and CEX2 in push-pull mode
 	P0MDOUT &= ~0x32;
 }
 

@@ -71,7 +71,7 @@ void main(void)
 
 void Port_Init()
 {
-    P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
+    P1MDOUT = 0x0F;  //set output pin for CEX0 and CEX2 in push-pull mode
 	P0MDOUT &= ~0x32;
 }
 
@@ -164,9 +164,9 @@ void Steering_Servo(unsigned int direction)
 	}
 	else
 	{
-		if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/3.6)
+		if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/1.9)
 		{
-			STR_PW = PW_CENTER_STR + (float)(3600-direction)/3.6;
+			STR_PW = PW_CENTER_STR + (float)(3600-direction)/1.9;
 		}
 		else
 		{

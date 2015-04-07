@@ -1,11 +1,11 @@
-/*  Lab3-2
+/*  Lab3-3
 Michael J. Gardner II && Chrstine Marini
 Section 03
 Side B
 Date: 04/03/15
 
 The goal of this code is to read values from the compass via i2c
-
+and steer the wheels toward a desired direction.
  */
 #include <stdio.h>
 #include <c8051_SDCC.h>

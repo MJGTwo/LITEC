@@ -59,7 +59,7 @@ void main(void)
 		count =0;
 		while (count < 2);
 		actual_heading = ReadCompass();
-        offset = (unsigned int)((actual_heading - desired_heading + 3600) % 3600);
+        offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
         printf("\r\n%d||%d",actual_heading,offset);
 		Steering_Servo(offset);
 
@@ -164,9 +164,9 @@ void Steering_Servo(unsigned int direction)
 	}
 	else
 	{
-		if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/3.6)
+		if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/1.9)
 		{
-			STR_PW = PW_CENTER_STR + (float)(3600-direction)/3.6;
+			STR_PW = PW_CENTER_STR + (float)(3600-direction)/1.9;
 		}
 		else
 		{
