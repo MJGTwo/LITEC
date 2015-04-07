@@ -1,4 +1,4 @@
-M:lab3_1
+M:lab3_1steering
 F:G$SYSCLK_Init$0$0({2}DF,SV:S),C,0,0,0,0,0
 F:G$UART0_Init$0$0({2}DF,SV:S),C,0,0,0,0,0
 F:G$Sys_Init$0$0({2}DF,SV:S),C,0,0,0,0,0
@@ -10,7 +10,7 @@ F:G$XBR0_Init$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$PCA_Init$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$PCA_ISR$0$0({2}DF,SV:S),C,0,0,1,9,0
 F:G$Steering_Servo$0$0({2}DF,SV:S),Z,0,0,0,0,0
-S:Llab3_1.getchar$c$1$24({1}SC:S),R,0,0,[]
+S:Llab3_1steering.getchar$c$1$24({1}SC:S),R,0,0,[]
 S:G$STR_PW$0$0({2}SI:U),E,0,0
 S:G$count$0$0({2}SI:U),E,0,0
 S:G$input$0$0({1}SC:S),E,0,0
@@ -306,5 +306,5 @@ S:G$UART0_Init$0$0({2}DF,SV:S),C,0,0
 S:G$Sys_Init$0$0({2}DF,SV:S),C,0,0
 S:G$main$0$0({2}DF,SV:S),C,0,0
 S:G$PCA_ISR$0$0({2}DF,SV:S),C,0,0
-S:Flab3_1$__str_0$0$0({39}DA39d,SC:S),D,0,0
-S:Flab3_1$__str_1$0$0({13}DA13d,SC:S),D,0,0
+S:Flab3_1steering$__str_0$0$0({39}DA39d,SC:S),D,0,0
+S:Flab3_1steering$__str_1$0$0({13}DA13d,SC:S),D,0,0
