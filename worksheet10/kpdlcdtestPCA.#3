@@ -38,7 +38,7 @@ void main(void)
 {
     char keypad;
 	char times;
-	unsigned int value;
+	int value;
     Sys_Init();     // System Initialization - MUST BE 1st EXECUTABLE STATEMENT
     Port_Init();    // Initialize ports 2 and 3 - XBR0 set to 0x05, UART0 & SMB
     Interrupt_Init();   // You may want to change XBR0 to match your SMB wiring

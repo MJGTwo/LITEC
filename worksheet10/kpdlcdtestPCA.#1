@@ -58,7 +58,7 @@ void main(void)
     {
 		while(read_keypad() != '*'){Counts =0; while(Counts < 1);}
 		lcd_clear();
-		value=	kpd_input(0);
+		value=	kpd_input(1);
 		    // This pauses for 1 PCA0 counter clock cycle (20ms) 
                     // If the keypad is read too frequently (no delay), it will
                     // lock up and stop responding. Must power down to reset.
