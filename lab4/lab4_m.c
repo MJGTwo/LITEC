@@ -1,4 +1,4 @@
-/*  Lab3-3
+/*  Lab4
 Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
 Section 03
 Side B
@@ -17,7 +17,7 @@ and steer the wheels toward a desired direction.
 #define PW_MAX_DRIVE  3503
 #define PW_MIN_DRIVE  2028
 #define PW_NUET_DRIVE 2765
-#define PCA_START 	  28672  // 20ms PERIOD
+#define PCA_START 	  28672  // 20ms PERIOD at sysclock/12
 
 
 //-----------------------------------------------------------------------------
@@ -27,6 +27,7 @@ void Port_Init(void);
 void PCA_Init (void);
 void XBR0_Init(void);
 void SMB_Init(void);
+void ADC_Init(void);
 							/////COMPASS/////
 unsigned int ReadCompass(void);
 void Steering_Servo(unsigned int direction);
@@ -39,6 +40,12 @@ void Drive_func(void);
 void wait(void);
 void start(void);
 unsigned int direction(void);
+
+unsigned long read_AD_input(unsigned char n);
+void Battery_func(void);
+
+void avoid_crash(void);
+
 
 //-----------------------------------------------------------------------------
 // Global Variables
@@ -53,16 +60,12 @@ unsigned int error;
 unsigned int offset;
 
 unsigned int range = 0;
-unsigned char r_counts = 0;
-unsigned char c_counts = 0;
 unsigned char r_addr;
-unsigned char new_range;
 unsigned char r_data[2];
 unsigned int MOTOR_PW = 0;
-unsigned char new_heading;
 
 char r_input;
-__sbit __at 0xB6 SS0;
+__sbit __at 0xB7 SS0;
 
 
 
@@ -83,6 +86,7 @@ void main(void)
     XBR0_Init();
     PCA_Init();
 	SMB_Init();
+	ADC_Init();
 	
     
     printf("\r\nEmbedded Control Car Calibration");
@@ -97,9 +101,9 @@ void main(void)
     DRV_lo_to_hi = 0xFFFF - MOTOR_PW;
     PCA0CP2 = DRV_lo_to_hi;
 
-    c_counts=0; //1 count = 20 milliseconds
+    count=0; //1 count = 20 milliseconds
 
-	while (c_counts < 50);
+	while (count < 50);
 	//-----------------------------------------------------------------------------
 	// Start program 
 	//-----------------------------------------------------------------------------
@@ -108,19 +112,26 @@ void main(void)
 	desired_heading = direction();
 	while (1)
 	{
-		c_counts=r_counts=0;
+		count=0;
 		if (!SS0)
 		{
+			
 
-
-			if (c_counts == 2  && new_heading)
+			if (count % 4==0)
+			{
+				Drive_func();
+			}
+			if (count%2==0)
 			{
 				Steering_func();			
 			}
-
-			if (r_counts == 4 && new_range)
+			if (count % 50 ==0)
 			{
-				Drive_func();
+				Battery_func();
+			}
+			if (range <= 20)
+			{
+				avoid_crash();
 			}
 		}
 
@@ -129,7 +140,7 @@ void main(void)
 }
 
 //******************************************************************************
-// Drive and Steering Control Functions
+
 
 //------------------------------------------------------------------------------
 // Drive Motor Control
@@ -171,11 +182,11 @@ unsigned int Read_Ranger(void)
 unsigned int ReadCompass(void)
 {
 	unsigned char Data[2];
-	unsigned int range = 0;
+	unsigned int Crange = 0;
 	unsigned char addr = 0xC0;
 	i2c_read_data(addr, 2,Data,2);
-	range = ((unsigned int) Data[0] << 8 | Data[1]);
-	return range;
+	Crange = ((unsigned int) Data[0] << 8 | Data[1]);
+	return Crange;
 }
 
 //------------------------------------------------------------------------------
@@ -228,9 +239,12 @@ void Port_Init()
 {
 	P0MDOUT &= ~0x32;
     P1MDOUT = 0x0F;  //set output pin for CEX0 and CEX2 in push-pull mode
+    P1MDIN &= ~0x10;
+    P1MDOUT |= 0x10;
+    P1 		 = 0x10;
 
-	P3MDOUT &= ~0x40;
-	P3 |= 0x40;
+	P3MDOUT &= ~0x80;
+	P3 = 0x80;
 }
 
 //------------------------------------------------------------------------------
@@ -272,13 +286,7 @@ void PCA_ISR ( void ) __interrupt 9
     {
         CF =0;
         PCA0 = PCA_START;
-        c_counts++;
-        r_counts++;
-        if (r_counts > 4)
-        {
-        	new_range = 1;
-        	r_counts = 0;
-        }
+        count++;
     }
 
     PCA0CN &= 0xC0;
@@ -291,7 +299,6 @@ void PCA_ISR ( void ) __interrupt 9
 
 unsigned int direction(void)
 {
-	char count;
 	int value;
 	count =0;
 	while (count < 1);
@@ -300,9 +307,9 @@ unsigned int direction(void)
 	start();
 	lcd_clear();
 	value = kpd_input(0);
-
-	lcd_print("The desired direction is:\n %d", value);
-	printf("\r\nThe desired direction is:\n %d", value);
+	lcd_clear();
+	lcd_print("\r\nThe desired direction is: %d", value);
+	printf("\r\nThe desired direction is: %d", value);
     
 	return value;
 
@@ -325,19 +332,57 @@ void Steering_func(void)
 	offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
 	printf("\r\n%d||%d",actual_heading,offset);
 	Steering_Servo(offset);
-	c_counts=0;
 
 }
 
 void Drive_func(void)
 {
-	
 	range = Read_Ranger();
-	r_counts = 0;
-	new_range = 0;
 	r_data[0] = 0x51;
 	i2c_write_data(r_addr, 0, r_data, 1);
-	printf("\r\n The range is: %d", range);
+	printf("\r\n The range is: %u", range);
 	Drive_Motor();
 
+}
+
+unsigned long read_AD_input(unsigned char n)
+{
+	AMX1SL = n;
+	ADC1CN = ADC1CN & ~0x20;
+	ADC1CN = ADC1CN | 0x10;
+	while ((ADC1CN & 0x20)== 0x00);
+
+	return ADC1;
+
+}
+
+void ADC_Init(void)								/////SETS ADC 
+{
+	REF0CN = 0x03;
+	ADC1CN = 0x80;
+	ADC1CF |= 0x01;
+}
+
+
+void Battery_func(void)
+{
+	lcd_print( "\r\nBattery is: %ld",read_AD_input(4));
+}
+
+void avoid_crash(void)
+{
+	while(range < 45)
+	{
+		STR_PW = PW_MIN_STR;
+
+		printf("\r\nSTR_PW: %u", STR_PW);
+    	STR_lo_to_hi= 0xFFFF - STR_PW;
+    	PCA0CP0 = STR_lo_to_hi;
+    	if (count % 4==0)
+    	{
+    		Drive_func();    		
+    	}
+
+
+	}
 }

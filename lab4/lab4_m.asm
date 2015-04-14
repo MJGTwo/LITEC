@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Mon Apr 13 23:25:21 2015
+; This file was generated Tue Apr 14 10:47:00 2015
 ;--------------------------------------------------------
 	.module lab4_m
 	.optsdcc -mmcs51 --model-small
@@ -304,14 +304,11 @@
 	.globl _DPL
 	.globl _SP
 	.globl _P0
+	.globl _DRV_lo_to_hi
 	.globl _r_input
-	.globl _new_heading
 	.globl _MOTOR_PW
 	.globl _r_data
-	.globl _new_range
 	.globl _r_addr
-	.globl _c_counts
-	.globl _r_counts
 	.globl _range
 	.globl _offset
 	.globl _error
@@ -320,7 +317,7 @@
 	.globl _input
 	.globl _count
 	.globl _STR_PW
-	.globl _tmp0_lo_to_hi
+	.globl _STR_lo_to_hi
 	.globl _i2c_read_data_PARM_4
 	.globl _i2c_read_data_PARM_3
 	.globl _i2c_read_data_PARM_2
@@ -349,6 +346,15 @@
 	.globl _XBR0_Init
 	.globl _SMB_Init
 	.globl _PCA_Init
+	.globl _direction
+	.globl _start
+	.globl _wait
+	.globl _Steering_func
+	.globl _Drive_func
+	.globl _read_AD_input
+	.globl _ADC_Init
+	.globl _Battery_func
+	.globl _avoid_crash
 ;--------------------------------------------------------
 ; special function registers
 ;--------------------------------------------------------
@@ -929,8 +935,8 @@ G$BUS_TOE$0$0 == 0x00c0
 _BUS_TOE	=	0x00c0
 G$BUS_SCL$0$0 == 0x0083
 _BUS_SCL	=	0x0083
-G$SS0$0$0 == 0x00b6
-_SS0	=	0x00b6
+G$SS0$0$0 == 0x00b7
+_SS0	=	0x00b7
 ;--------------------------------------------------------
 ; overlayable register banks
 ;--------------------------------------------------------
@@ -970,8 +976,8 @@ _i2c_read_data_PARM_4:
 Llab4_m.Accel_Init$Data2$1$103==.
 _Accel_Init_Data2_1_103:
 	.ds 1
-G$tmp0_lo_to_hi$0$0==.
-_tmp0_lo_to_hi::
+G$STR_lo_to_hi$0$0==.
+_STR_lo_to_hi::
 	.ds 2
 G$STR_PW$0$0==.
 _STR_PW::
@@ -997,17 +1003,8 @@ _offset::
 G$range$0$0==.
 _range::
 	.ds 2
-G$r_counts$0$0==.
-_r_counts::
-	.ds 1
-G$c_counts$0$0==.
-_c_counts::
-	.ds 1
 G$r_addr$0$0==.
 _r_addr::
-	.ds 1
-G$new_range$0$0==.
-_new_range::
 	.ds 1
 G$r_data$0$0==.
 _r_data::
@@ -1015,21 +1012,22 @@ _r_data::
 G$MOTOR_PW$0$0==.
 _MOTOR_PW::
 	.ds 2
-G$new_heading$0$0==.
-_new_heading::
-	.ds 1
 G$r_input$0$0==.
 _r_input::
 	.ds 1
-Llab4_m.ReadCompass$Data$1$129==.
-_ReadCompass_Data_1_129:
+G$DRV_lo_to_hi$0$0==.
+_DRV_lo_to_hi::
 	.ds 2
-Llab4_m.Steering_Servo$direction$1$130==.
-_Steering_Servo_direction_1_130:
+Llab4_m.ReadCompass$Data$1$140==.
+_ReadCompass_Data_1_140:
+	.ds 2
+Llab4_m.Steering_Servo$direction$1$141==.
+_Steering_Servo_direction_1_141:
 	.ds 2
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
 ;--------------------------------------------------------
+	.area	OSEG    (OVR,DATA)
 	.area	OSEG    (OVR,DATA)
 	.area	OSEG    (OVR,DATA)
 	.area	OSEG    (OVR,DATA)
@@ -1124,33 +1122,21 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab4_m.c$37$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:37: unsigned int STR_PW   = 0;
+	C$lab4_m.c$54$1$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:54: unsigned int STR_PW   = 0;
 	clr	a
 	mov	_STR_PW,a
 	mov	(_STR_PW + 1),a
-	C$lab4_m.c$38$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:38: unsigned int count = 0;
+	C$lab4_m.c$55$1$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:55: unsigned int count = 0;
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab4_m.c$41$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:41: int desired_heading = 900; //East
-	mov	_desired_heading,#0x84
-	mov	(_desired_heading + 1),#0x03
-	C$lab4_m.c$45$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:45: unsigned int range = 0;
+	C$lab4_m.c$62$1$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:62: unsigned int range = 0;
 	mov	_range,a
 	mov	(_range + 1),a
-	C$lab4_m.c$46$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:46: unsigned char r_counts = 0;
-;	1-genFromRTrack replaced	mov	_r_counts,#0x00
-	mov	_r_counts,a
-	C$lab4_m.c$47$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:47: unsigned char c_counts = 0;
-;	1-genFromRTrack replaced	mov	_c_counts,#0x00
-	mov	_c_counts,a
-	C$lab4_m.c$51$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:51: unsigned int MOTOR_PW = 0;
+	C$lab4_m.c$65$1$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:65: unsigned int MOTOR_PW = 0;
 	mov	_MOTOR_PW,a
 	mov	(_MOTOR_PW + 1),a
 	.area GSFINAL (CODE)
@@ -1187,10 +1173,10 @@ _SYSCLK_Init:
 	ar2 = 0x02
 	ar1 = 0x01
 	ar0 = 0x00
-	C$c8051_SDCC.h$46$1$16 ==.
+	C$c8051_SDCC.h$46$1$31 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:46: OSCXCN = 0x67;                      // start external oscillator with
 	mov	_OSCXCN,#0x67
-	C$c8051_SDCC.h$49$1$16 ==.
+	C$c8051_SDCC.h$49$1$31 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:49: for (i=0; i < 256; i++);            // wait for oscillator to start
 	mov	r6,#0x00
 	mov	r7,#0x01
@@ -1202,83 +1188,83 @@ _SYSCLK_Init:
 	mov	a,r6
 	orl	a,r7
 	jnz	00107$
-	C$c8051_SDCC.h$51$1$16 ==.
+	C$c8051_SDCC.h$51$1$31 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:51: while (!(OSCXCN & 0x80));           // Wait for crystal osc. to settle
 00102$:
 	mov	a,_OSCXCN
 	jnb	acc.7,00102$
-	C$c8051_SDCC.h$53$1$16 ==.
+	C$c8051_SDCC.h$53$1$31 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:53: OSCICN = 0x88;                      // select external oscillator as SYSCLK
 	mov	_OSCICN,#0x88
-	C$c8051_SDCC.h$56$1$16 ==.
+	C$c8051_SDCC.h$56$1$31 ==.
 	XG$SYSCLK_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'UART0_Init'
 ;------------------------------------------------------------
 	G$UART0_Init$0$0 ==.
-	C$c8051_SDCC.h$64$1$16 ==.
+	C$c8051_SDCC.h$64$1$31 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:64: void UART0_Init(void)
 ;	-----------------------------------------
 ;	 function UART0_Init
 ;	-----------------------------------------
 _UART0_Init:
-	C$c8051_SDCC.h$66$1$18 ==.
+	C$c8051_SDCC.h$66$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:66: SCON0  = 0x50;                      // SCON0: mode 1, 8-bit UART, enable RX
 	mov	_SCON0,#0x50
-	C$c8051_SDCC.h$67$1$18 ==.
+	C$c8051_SDCC.h$67$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:67: TMOD   = 0x20;                      // TMOD: timer 1, mode 2, 8-bit reload
 	mov	_TMOD,#0x20
-	C$c8051_SDCC.h$68$1$18 ==.
+	C$c8051_SDCC.h$68$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:68: TH1    = -(SYSCLK/BAUDRATE/16);     // set Timer1 reload value for baudrate
 	mov	_TH1,#0xDC
-	C$c8051_SDCC.h$69$1$18 ==.
+	C$c8051_SDCC.h$69$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:69: TR1    = 1;                         // start Timer1
 	setb	_TR1
-	C$c8051_SDCC.h$70$1$18 ==.
+	C$c8051_SDCC.h$70$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:70: CKCON |= 0x10;                      // Timer1 uses SYSCLK as time base
 	orl	_CKCON,#0x10
-	C$c8051_SDCC.h$71$1$18 ==.
+	C$c8051_SDCC.h$71$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:71: PCON  |= 0x80;                      // SMOD00 = 1 (disable baud rate 
 	orl	_PCON,#0x80
-	C$c8051_SDCC.h$73$1$18 ==.
+	C$c8051_SDCC.h$73$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:73: TI0    = 1;                         // Indicate TX0 ready
 	setb	_TI0
-	C$c8051_SDCC.h$74$1$18 ==.
+	C$c8051_SDCC.h$74$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:74: P0MDOUT |= 0x01;                    // Set TX0 to push/pull
 	orl	_P0MDOUT,#0x01
-	C$c8051_SDCC.h$75$1$18 ==.
+	C$c8051_SDCC.h$75$1$33 ==.
 	XG$UART0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Sys_Init'
 ;------------------------------------------------------------
 	G$Sys_Init$0$0 ==.
-	C$c8051_SDCC.h$83$1$18 ==.
+	C$c8051_SDCC.h$83$1$33 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:83: void Sys_Init(void)
 ;	-----------------------------------------
 ;	 function Sys_Init
 ;	-----------------------------------------
 _Sys_Init:
-	C$c8051_SDCC.h$85$1$20 ==.
+	C$c8051_SDCC.h$85$1$35 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:85: WDTCN = 0xde;			// disable watchdog timer
 	mov	_WDTCN,#0xDE
-	C$c8051_SDCC.h$86$1$20 ==.
+	C$c8051_SDCC.h$86$1$35 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:86: WDTCN = 0xad;
 	mov	_WDTCN,#0xAD
-	C$c8051_SDCC.h$88$1$20 ==.
+	C$c8051_SDCC.h$88$1$35 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:88: SYSCLK_Init();			// initialize oscillator
 	lcall	_SYSCLK_Init
-	C$c8051_SDCC.h$89$1$20 ==.
+	C$c8051_SDCC.h$89$1$35 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:89: UART0_Init();			// initialize UART0
 	lcall	_UART0_Init
-	C$c8051_SDCC.h$91$1$20 ==.
+	C$c8051_SDCC.h$91$1$35 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:91: XBR0 |= 0x04;
 	orl	_XBR0,#0x04
-	C$c8051_SDCC.h$92$1$20 ==.
+	C$c8051_SDCC.h$92$1$35 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:92: XBR2 |= 0x40;                    	// Enable crossbar and weak pull-ups
 	orl	_XBR2,#0x40
-	C$c8051_SDCC.h$93$1$20 ==.
+	C$c8051_SDCC.h$93$1$35 ==.
 	XG$Sys_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -1287,25 +1273,25 @@ _Sys_Init:
 ;c                         Allocated to registers r7 
 ;------------------------------------------------------------
 	G$putchar$0$0 ==.
-	C$c8051_SDCC.h$98$1$20 ==.
+	C$c8051_SDCC.h$98$1$35 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:98: void putchar(char c)
 ;	-----------------------------------------
 ;	 function putchar
 ;	-----------------------------------------
 _putchar:
 	mov	r7,dpl
-	C$c8051_SDCC.h$100$1$22 ==.
+	C$c8051_SDCC.h$100$1$37 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:100: while (!TI0); 
 00101$:
-	C$c8051_SDCC.h$101$1$22 ==.
+	C$c8051_SDCC.h$101$1$37 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:101: TI0 = 0;
 	jbc	_TI0,00112$
 	sjmp	00101$
 00112$:
-	C$c8051_SDCC.h$102$1$22 ==.
+	C$c8051_SDCC.h$102$1$37 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:102: SBUF0 = c;
 	mov	_SBUF0,r7
-	C$c8051_SDCC.h$103$1$22 ==.
+	C$c8051_SDCC.h$103$1$37 ==.
 	XG$putchar$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -1314,30 +1300,30 @@ _putchar:
 ;c                         Allocated to registers 
 ;------------------------------------------------------------
 	G$getchar$0$0 ==.
-	C$c8051_SDCC.h$108$1$22 ==.
+	C$c8051_SDCC.h$108$1$37 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:108: char getchar(void)
 ;	-----------------------------------------
 ;	 function getchar
 ;	-----------------------------------------
 _getchar:
-	C$c8051_SDCC.h$111$1$24 ==.
+	C$c8051_SDCC.h$111$1$39 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:111: while (!RI0);
 00101$:
-	C$c8051_SDCC.h$112$1$24 ==.
+	C$c8051_SDCC.h$112$1$39 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:112: RI0 = 0;
 	jbc	_RI0,00112$
 	sjmp	00101$
 00112$:
-	C$c8051_SDCC.h$113$1$24 ==.
+	C$c8051_SDCC.h$113$1$39 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:113: c = SBUF0;
 	mov	dpl,_SBUF0
-	C$c8051_SDCC.h$114$1$24 ==.
+	C$c8051_SDCC.h$114$1$39 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:114: putchar(c);                          // echo to terminal
 	lcall	_putchar
-	C$c8051_SDCC.h$115$1$24 ==.
+	C$c8051_SDCC.h$115$1$39 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:115: return SBUF0;
 	mov	dpl,_SBUF0
-	C$c8051_SDCC.h$116$1$24 ==.
+	C$c8051_SDCC.h$116$1$39 ==.
 	XG$getchar$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -1350,7 +1336,7 @@ _getchar:
 ;text                      Allocated with name '_lcd_print_text_1_73'
 ;------------------------------------------------------------
 	G$lcd_print$0$0 ==.
-	C$i2c.h$81$1$24 ==.
+	C$i2c.h$81$1$39 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/i2c.h:81: void lcd_print(const char *fmt, ...)
 ;	-----------------------------------------
 ;	 function lcd_print
@@ -2327,33 +2313,36 @@ _Accel_Init:
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
 	G$main$0$0 ==.
-	C$lab4_m.c$61$1$103 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:61: void main(void)
+	C$lab4_m.c$78$1$103 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:78: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	C$lab4_m.c$64$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:64: Sys_Init();
+	C$lab4_m.c$83$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:83: Sys_Init();
 	lcall	_Sys_Init
-	C$lab4_m.c$65$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:65: putchar(' '); //the quotes in this line may not format correctly
+	C$lab4_m.c$84$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:84: putchar(' '); //the quotes in this line may not format correctly
 	mov	dpl,#0x20
 	lcall	_putchar
-	C$lab4_m.c$66$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:66: Port_Init();
+	C$lab4_m.c$85$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:85: Port_Init();
 	lcall	_Port_Init
-	C$lab4_m.c$67$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:67: XBR0_Init();
+	C$lab4_m.c$86$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:86: XBR0_Init();
 	lcall	_XBR0_Init
-	C$lab4_m.c$68$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:68: PCA_Init();
+	C$lab4_m.c$87$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:87: PCA_Init();
 	lcall	_PCA_Init
-	C$lab4_m.c$69$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:69: SMB_Init();
+	C$lab4_m.c$88$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:88: SMB_Init();
 	lcall	_SMB_Init
-	C$lab4_m.c$72$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:72: printf("Embedded Control Car Calibration\n");
+	C$lab4_m.c$89$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:89: ADC_Init();
+	lcall	_ADC_Init
+	C$lab4_m.c$92$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:92: printf("\r\nEmbedded Control Car Calibration");
 	mov	a,#___str_3
 	push	acc
 	mov	a,#(___str_3 >> 8)
@@ -2364,35 +2353,37 @@ _main:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab4_m.c$74$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:74: STR_PW = PW_CENTER_STR;
+	C$lab4_m.c$94$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:94: STR_PW = PW_CENTER_STR;
 	mov	_STR_PW,#0x7D
 	mov	(_STR_PW + 1),#0x0A
-	C$lab4_m.c$76$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:76: tmp0_lo_to_hi= 0xFFFF - STR_PW;
-	mov	_tmp0_lo_to_hi,#0x82
-	mov	(_tmp0_lo_to_hi + 1),#0xF5
-	C$lab4_m.c$77$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:77: PCA0CP0 = tmp0_lo_to_hi;
+	C$lab4_m.c$97$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:97: STR_lo_to_hi= 0xFFFF - STR_PW;
+	mov	_STR_lo_to_hi,#0x82
+	mov	(_STR_lo_to_hi + 1),#0xF5
+	C$lab4_m.c$98$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:98: PCA0CP0 = STR_lo_to_hi;
 	mov	((_PCA0CP0 >> 0) & 0xFF),#0x82
 	mov	((_PCA0CP0 >> 8) & 0xFF),#0xF5
-	C$lab4_m.c$79$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:79: MOTOR_PW = PW_NUET_DRIVE;
+	C$lab4_m.c$100$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:100: MOTOR_PW = PW_NUET_DRIVE;
 	mov	_MOTOR_PW,#0xCD
 	mov	(_MOTOR_PW + 1),#0x0A
-	C$lab4_m.c$80$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:80: PCA0CPL2 = 0xFFFF - MOTOR_PW;
-	mov	_PCA0CPL2,#0x32
-	C$lab4_m.c$81$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:81: PCA0CPH2 = (0xFFFF - MOTOR_PW) >> 8;
-	mov	_PCA0CPH2,#0xF5
-	C$lab4_m.c$83$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:83: count=0;
+	C$lab4_m.c$101$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:101: DRV_lo_to_hi = 0xFFFF - MOTOR_PW;
+	mov	_DRV_lo_to_hi,#0x32
+	mov	(_DRV_lo_to_hi + 1),#0xF5
+	C$lab4_m.c$102$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:102: PCA0CP2 = DRV_lo_to_hi;
+	mov	((_PCA0CP2 >> 0) & 0xFF),#0x32
+	mov	((_PCA0CP2 >> 8) & 0xFF),#0xF5
+	C$lab4_m.c$104$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:104: count=0; //1 count = 20 milliseconds
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab4_m.c$85$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:85: while (count < 50);
+	C$lab4_m.c$106$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:106: while (count < 50);
 00101$:
 	clr	c
 	mov	a,_count
@@ -2400,67 +2391,8 @@ _main:
 	mov	a,(_count + 1)
 	subb	a,#0x00
 	jc	00101$
-	C$lab4_m.c$86$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:86: while (1)
-00118$:
-	C$lab4_m.c$88$2$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:88: if (!SS0)
-	jnb	_SS0,00153$
-	ljmp	00114$
-00153$:
-	C$lab4_m.c$90$3$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:90: count =0;
-	clr	a
-	mov	_count,a
-	mov	(_count + 1),a
-	C$lab4_m.c$92$3$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:92: while (count < 2);
-00104$:
-	clr	c
-	mov	a,_count
-	subb	a,#0x02
-	mov	a,(_count + 1)
-	subb	a,#0x00
-	jc	00104$
-	C$lab4_m.c$93$3$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:93: if (c_counts == 2  && new_heading)
-	mov	a,#0x02
-	cjne	a,_c_counts,00108$
-	mov	a,_new_heading
-	jz	00108$
-	C$lab4_m.c$95$4$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:95: actual_heading = ReadCompass();
-	lcall	_ReadCompass
-	mov	_actual_heading,dpl
-	mov	(_actual_heading + 1),dph
-	C$lab4_m.c$96$4$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:96: offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
-	mov	a,#0x10
-	add	a,_actual_heading
-	mov	r6,a
-	mov	a,#0x0E
-	addc	a,(_actual_heading + 1)
-	mov	r7,a
-	mov	a,r6
-	clr	c
-	subb	a,_desired_heading
-	mov	dpl,a
-	mov	a,r7
-	subb	a,(_desired_heading + 1)
-	mov	dph,a
-	mov	__modsint_PARM_2,#0x10
-	mov	(__modsint_PARM_2 + 1),#0x0E
-	lcall	__modsint
-	mov	r6,dpl
-	mov	r7,dph
-	mov	_offset,r6
-	mov	(_offset + 1),r7
-	C$lab4_m.c$97$4$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:97: printf("\r\n%d||%d",actual_heading,offset);
-	push	_offset
-	push	(_offset + 1)
-	push	_actual_heading
-	push	(_actual_heading + 1)
+	C$lab4_m.c$111$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:111: printf("\r\nEmbedded Control Car ready!");
 	mov	a,#___str_4
 	push	acc
 	mov	a,#(___str_4 >> 8)
@@ -2468,48 +2400,74 @@ _main:
 	mov	a,#0x80
 	push	acc
 	lcall	_printf
-	mov	a,sp
-	add	a,#0xf9
-	mov	sp,a
-	C$lab4_m.c$98$4$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:98: Steering_Servo(offset);				
-	mov	dpl,_offset
-	mov	dph,(_offset + 1)
-	lcall	_Steering_Servo
-00108$:
-	C$lab4_m.c$101$3$115 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:101: if (r_counts == 4 && new_range)
-	mov	a,#0x04
-	cjne	a,_r_counts,00114$
-	mov	a,_new_range
-	jz	00114$
-	C$lab4_m.c$103$4$117 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:103: range = Read_Ranger();
-	lcall	_Read_Ranger
-	mov	_range,dpl
-	mov	(_range + 1),dph
-	C$lab4_m.c$104$4$117 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:104: r_counts = 0;
-	mov	_r_counts,#0x00
-	C$lab4_m.c$105$4$117 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:105: new_range = 0;
-	mov	_new_range,#0x00
-	C$lab4_m.c$106$4$117 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:106: r_data[0] = 0x51;
-	mov	_r_data,#0x51
-	C$lab4_m.c$107$4$117 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:107: i2c_write_data(r_addr, 0, r_data, 1);
-	mov	_i2c_write_data_PARM_3,#_r_data
-	mov	(_i2c_write_data_PARM_3 + 1),#0x00
-	mov	(_i2c_write_data_PARM_3 + 2),#0x40
-	mov	_i2c_write_data_PARM_2,#0x00
-	mov	_i2c_write_data_PARM_4,#0x01
-	mov	dpl,_r_addr
-	lcall	_i2c_write_data
-	C$lab4_m.c$108$4$117 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:108: printf("\r\n The range is: %d", range);
-	push	_range
-	push	(_range + 1)
+	dec	sp
+	dec	sp
+	dec	sp
+	C$lab4_m.c$112$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:112: desired_heading = direction();
+	lcall	_direction
+	mov	_desired_heading,dpl
+	mov	(_desired_heading + 1),dph
+	C$lab4_m.c$113$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:113: while (1)
+00117$:
+	C$lab4_m.c$115$2$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:115: count=0;
+	clr	a
+	mov	_count,a
+	mov	(_count + 1),a
+	C$lab4_m.c$116$2$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:116: if (!SS0)
+	jb	_SS0,00113$
+	C$lab4_m.c$120$3$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:120: if (count % 4==0)
+	mov	a,_count
+	anl	a,#0x03
+	jz	00151$
+	sjmp	00105$
+00151$:
+	C$lab4_m.c$122$4$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:122: Drive_func();
+	lcall	_Drive_func
+00105$:
+	C$lab4_m.c$124$3$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:124: if (count%2==0)
+	mov	a,_count
+	jb	acc.0,00107$
+	C$lab4_m.c$126$4$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:126: Steering_func();			
+	lcall	_Steering_func
+00107$:
+	C$lab4_m.c$128$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:128: if (count % 50 ==0)
+	mov	__moduint_PARM_2,#0x32
+	mov	(__moduint_PARM_2 + 1),#0x00
+	mov	dpl,_count
+	mov	dph,(_count + 1)
+	lcall	__moduint
+	mov	a,dpl
+	mov	b,dph
+	orl	a,b
+	jnz	00109$
+	C$lab4_m.c$130$4$127 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:130: Battery_func();
+	lcall	_Battery_func
+00109$:
+	C$lab4_m.c$132$3$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:132: if (range <= 20)
+	clr	c
+	mov	a,#0x14
+	subb	a,_range
+	clr	a
+	subb	a,(_range + 1)
+	jc	00113$
+	C$lab4_m.c$134$4$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:134: avoid_crash();
+	lcall	_avoid_crash
+00113$:
+	C$lab4_m.c$138$2$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:138: if (SS0) {printf("\r\n The control is paused");}
+	jnb	_SS0,00117$
 	mov	a,#___str_5
 	push	acc
 	mov	a,#(___str_5 >> 8)
@@ -2517,44 +2475,25 @@ _main:
 	mov	a,#0x80
 	push	acc
 	lcall	_printf
-	mov	a,sp
-	add	a,#0xfb
-	mov	sp,a
-	C$lab4_m.c$109$4$117 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:109: Drive_Motor();
-	lcall	_Drive_Motor
-00114$:
-	C$lab4_m.c$113$2$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:113: if (SS0) {printf("\r\n The control is paused");}
-	jb	_SS0,00161$
-	ljmp	00118$
-00161$:
-	mov	a,#___str_6
-	push	acc
-	mov	a,#(___str_6 >> 8)
-	push	acc
-	mov	a,#0x80
-	push	acc
-	lcall	_printf
 	dec	sp
 	dec	sp
 	dec	sp
-	ljmp	00118$
-	C$lab4_m.c$115$1$113 ==.
+	sjmp	00117$
+	C$lab4_m.c$140$1$122 ==.
 	XG$main$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Drive_Motor'
 ;------------------------------------------------------------
 	G$Drive_Motor$0$0 ==.
-	C$lab4_m.c$123$1$113 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:123: void Drive_Motor(void)
+	C$lab4_m.c$148$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:148: void Drive_Motor(void)
 ;	-----------------------------------------
 ;	 function Drive_Motor
 ;	-----------------------------------------
 _Drive_Motor:
-	C$lab4_m.c$125$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:125: if (range <= 10) {MOTOR_PW = PW_MAX_DRIVE;}
+	C$lab4_m.c$150$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:150: if (range <= 10) {MOTOR_PW = PW_MAX_DRIVE;}
 	clr	c
 	mov	a,#0x0A
 	subb	a,_range
@@ -2564,8 +2503,8 @@ _Drive_Motor:
 	mov	_MOTOR_PW,#0xAF
 	mov	(_MOTOR_PW + 1),#0x0D
 00102$:
-	C$lab4_m.c$126$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:126: if (range >= 90) {MOTOR_PW = PW_MIN_DRIVE;}
+	C$lab4_m.c$151$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:151: if (range >= 90) {MOTOR_PW = PW_MIN_DRIVE;}
 	clr	c
 	mov	a,_range
 	subb	a,#0x5A
@@ -2575,8 +2514,8 @@ _Drive_Motor:
 	mov	_MOTOR_PW,#0xEC
 	mov	(_MOTOR_PW + 1),#0x07
 00104$:
-	C$lab4_m.c$127$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:127: if (range <= 50 && range >= 40) {MOTOR_PW = PW_NUET_DRIVE;}
+	C$lab4_m.c$152$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:152: if (range <= 50 && range >= 40) {MOTOR_PW = PW_NUET_DRIVE;}
 	clr	c
 	mov	a,#0x32
 	subb	a,_range
@@ -2591,8 +2530,8 @@ _Drive_Motor:
 	mov	_MOTOR_PW,#0xCD
 	mov	(_MOTOR_PW + 1),#0x0A
 00106$:
-	C$lab4_m.c$129$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:129: if (range < 40 && range > 10)
+	C$lab4_m.c$154$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:154: if (range < 40 && range > 10)
 	clr	c
 	mov	a,_range
 	subb	a,#0x28
@@ -2605,8 +2544,8 @@ _Drive_Motor:
 	clr	a
 	subb	a,(_range + 1)
 	jnc	00109$
-	C$lab4_m.c$131$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:131: MOTOR_PW = -24.6 * range + 3749;
+	C$lab4_m.c$156$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:156: MOTOR_PW = -24.6 * range + 3749;
 	mov	dpl,_range
 	mov	dph,(_range + 1)
 	lcall	___uint2fs
@@ -2657,8 +2596,8 @@ _Drive_Motor:
 	mov	_MOTOR_PW,dpl
 	mov	(_MOTOR_PW + 1),dph
 00109$:
-	C$lab4_m.c$134$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:134: if (range > 50 && range < 90)
+	C$lab4_m.c$159$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:159: if (range > 50 && range < 90)
 	clr	c
 	mov	a,#0x32
 	subb	a,_range
@@ -2671,8 +2610,8 @@ _Drive_Motor:
 	mov	a,(_range + 1)
 	subb	a,#0x00
 	jnc	00112$
-	C$lab4_m.c$136$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:136: MOTOR_PW = 3686.25 - (18.425 * range);
+	C$lab4_m.c$161$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:161: MOTOR_PW = 3686.25 - (18.425 * range);
 	mov	dpl,_range
 	mov	dph,(_range + 1)
 	lcall	___uint2fs
@@ -2718,13 +2657,13 @@ _Drive_Motor:
 	mov	_MOTOR_PW,dpl
 	mov	(_MOTOR_PW + 1),dph
 00112$:
-	C$lab4_m.c$138$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:138: printf("\r\n Motor Power is %u", MOTOR_PW);
+	C$lab4_m.c$163$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:163: printf("\r\n Motor Power is %u", MOTOR_PW);
 	push	_MOTOR_PW
 	push	(_MOTOR_PW + 1)
-	mov	a,#___str_7
+	mov	a,#___str_6
 	push	acc
-	mov	a,#(___str_7 >> 8)
+	mov	a,#(___str_6 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
@@ -2732,8 +2671,8 @@ _Drive_Motor:
 	mov	a,sp
 	add	a,#0xfb
 	mov	sp,a
-	C$lab4_m.c$139$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:139: PCA0CP2 = 0xFFFF - MOTOR_PW;
+	C$lab4_m.c$164$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:164: PCA0CP2 = 0xFFFF - MOTOR_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_MOTOR_PW
@@ -2741,7 +2680,7 @@ _Drive_Motor:
 	mov	a,#0xFF
 	subb	a,(_MOTOR_PW + 1)
 	mov	((_PCA0CP2 >> 8) & 0xFF),a
-	C$lab4_m.c$140$1$120 ==.
+	C$lab4_m.c$165$1$131 ==.
 	XG$Drive_Motor$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2750,17 +2689,17 @@ _Drive_Motor:
 ;read                      Allocated to registers 
 ;------------------------------------------------------------
 	G$Read_Ranger$0$0 ==.
-	C$lab4_m.c$145$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:145: unsigned int Read_Ranger(void)
+	C$lab4_m.c$170$1$131 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:170: unsigned int Read_Ranger(void)
 ;	-----------------------------------------
 ;	 function Read_Ranger
 ;	-----------------------------------------
 _Read_Ranger:
-	C$lab4_m.c$148$1$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:148: r_addr = 0xE0;
+	C$lab4_m.c$173$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:173: r_addr = 0xE0;
 	mov	_r_addr,#0xE0
-	C$lab4_m.c$149$1$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:149: i2c_read_data(r_addr, 2, r_data, 2);
+	C$lab4_m.c$174$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:174: i2c_read_data(r_addr, 2, r_data, 2);
 	mov	_i2c_read_data_PARM_3,#_r_data
 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
@@ -2768,8 +2707,8 @@ _Read_Ranger:
 	mov	_i2c_read_data_PARM_4,#0x02
 	mov	dpl,#0xE0
 	lcall	_i2c_read_data
-	C$lab4_m.c$150$1$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:150: read = (((unsigned int) r_data[0] <<8) | r_data[1]);
+	C$lab4_m.c$175$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:175: read = (((unsigned int) r_data[0] <<8) | r_data[1]);
 	mov	r7,_r_data
 	mov	r6,#0x00
 	mov	r4,(_r_data + 0x0001)
@@ -2780,39 +2719,39 @@ _Read_Ranger:
 	mov	a,r5
 	orl	a,r7
 	mov	dph,a
-	C$lab4_m.c$151$1$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:151: return read;
-	C$lab4_m.c$152$1$127 ==.
+	C$lab4_m.c$176$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:176: return read;
+	C$lab4_m.c$177$1$138 ==.
 	XG$Read_Ranger$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'ReadCompass'
 ;------------------------------------------------------------
-;Data                      Allocated with name '_ReadCompass_Data_1_129'
-;range                     Allocated to registers 
+;Data                      Allocated with name '_ReadCompass_Data_1_140'
+;Crange                    Allocated to registers 
 ;addr                      Allocated to registers 
 ;------------------------------------------------------------
 	G$ReadCompass$0$0 ==.
-	C$lab4_m.c$157$1$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:157: unsigned int ReadCompass(void)
+	C$lab4_m.c$182$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:182: unsigned int ReadCompass(void)
 ;	-----------------------------------------
 ;	 function ReadCompass
 ;	-----------------------------------------
 _ReadCompass:
-	C$lab4_m.c$162$1$129 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:162: i2c_read_data(addr, 2,Data,2);
-	mov	_i2c_read_data_PARM_3,#_ReadCompass_Data_1_129
+	C$lab4_m.c$187$1$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:187: i2c_read_data(addr, 2,Data,2);
+	mov	_i2c_read_data_PARM_3,#_ReadCompass_Data_1_140
 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
 	mov	_i2c_read_data_PARM_2,#0x02
 	mov	_i2c_read_data_PARM_4,#0x02
 	mov	dpl,#0xC0
 	lcall	_i2c_read_data
-	C$lab4_m.c$163$1$129 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:163: range = ((unsigned int) Data[0] << 8 | Data[1]);
-	mov	r7,_ReadCompass_Data_1_129
+	C$lab4_m.c$188$1$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:188: Crange = ((unsigned int) Data[0] << 8 | Data[1]);
+	mov	r7,_ReadCompass_Data_1_140
 	mov	r6,#0x00
-	mov	r4,(_ReadCompass_Data_1_129 + 0x0001)
+	mov	r4,(_ReadCompass_Data_1_140 + 0x0001)
 	mov	r5,#0x00
 	mov	a,r4
 	orl	a,r6
@@ -2820,39 +2759,39 @@ _ReadCompass:
 	mov	a,r5
 	orl	a,r7
 	mov	dph,a
-	C$lab4_m.c$164$1$129 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:164: return range;
-	C$lab4_m.c$165$1$129 ==.
+	C$lab4_m.c$189$1$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:189: return Crange;
+	C$lab4_m.c$190$1$140 ==.
 	XG$ReadCompass$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Steering_Servo'
 ;------------------------------------------------------------
-;direction                 Allocated with name '_Steering_Servo_direction_1_130'
+;direction                 Allocated with name '_Steering_Servo_direction_1_141'
 ;------------------------------------------------------------
 	G$Steering_Servo$0$0 ==.
-	C$lab4_m.c$170$1$129 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:170: void Steering_Servo(unsigned int direction)
+	C$lab4_m.c$195$1$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:195: void Steering_Servo(unsigned int direction)
 ;	-----------------------------------------
 ;	 function Steering_Servo
 ;	-----------------------------------------
 _Steering_Servo:
-	mov	_Steering_Servo_direction_1_130,dpl
-	mov	(_Steering_Servo_direction_1_130 + 1),dph
-	C$lab4_m.c$174$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:174: if (direction < 1800)
+	mov	_Steering_Servo_direction_1_141,dpl
+	mov	(_Steering_Servo_direction_1_141 + 1),dph
+	C$lab4_m.c$199$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:199: if (direction < 1800)
 	clr	c
-	mov	a,_Steering_Servo_direction_1_130
+	mov	a,_Steering_Servo_direction_1_141
 	subb	a,#0x08
-	mov	a,(_Steering_Servo_direction_1_130 + 1)
+	mov	a,(_Steering_Servo_direction_1_141 + 1)
 	subb	a,#0x07
 	jc	00128$
 	ljmp	00112$
 00128$:
-	C$lab4_m.c$176$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:176: if (STR_PW <= PW_CENTER_STR - (float)(direction)/4.2)
-	mov	dpl,_Steering_Servo_direction_1_130
-	mov	dph,(_Steering_Servo_direction_1_130 + 1)
+	C$lab4_m.c$201$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:201: if (STR_PW <= PW_CENTER_STR - (float)(direction)/4.2)
+	mov	dpl,_Steering_Servo_direction_1_141
+	mov	dph,(_Steering_Servo_direction_1_141 + 1)
 	lcall	___uint2fs
 	mov	r2,dpl
 	mov	r3,dph
@@ -2922,10 +2861,10 @@ _Steering_Servo:
 	mov	sp,a
 	mov	a,r7
 	jnz	00102$
-	C$lab4_m.c$178$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:178: STR_PW = PW_CENTER_STR - (float)(direction)/4.2;
-	mov	dpl,_Steering_Servo_direction_1_130
-	mov	dph,(_Steering_Servo_direction_1_130 + 1)
+	C$lab4_m.c$203$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:203: STR_PW = PW_CENTER_STR - (float)(direction)/4.2;
+	mov	dpl,_Steering_Servo_direction_1_141
+	mov	dph,(_Steering_Servo_direction_1_141 + 1)
 	lcall	___uint2fs
 	mov	r4,dpl
 	mov	r5,dph
@@ -2974,8 +2913,8 @@ _Steering_Servo:
 	mov	(_STR_PW + 1),dph
 	ljmp	00113$
 00102$:
-	C$lab4_m.c$182$3$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:182: STR_PW -= 10;
+	C$lab4_m.c$207$3$145 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:207: STR_PW -= 10;
 	mov	a,_STR_PW
 	add	a,#0xF6
 	mov	_STR_PW,a
@@ -2984,30 +2923,30 @@ _Steering_Servo:
 	mov	(_STR_PW + 1),a
 	ljmp	00113$
 00112$:
-	C$lab4_m.c$185$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:185: else if ( direction == 0 || direction ==3600)
-	mov	a,_Steering_Servo_direction_1_130
-	orl	a,(_Steering_Servo_direction_1_130 + 1)
+	C$lab4_m.c$210$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:210: else if ( direction == 0 || direction ==3600)
+	mov	a,_Steering_Servo_direction_1_141
+	orl	a,(_Steering_Servo_direction_1_141 + 1)
 	jz	00107$
 	mov	a,#0x10
-	cjne	a,_Steering_Servo_direction_1_130,00108$
+	cjne	a,_Steering_Servo_direction_1_141,00108$
 	mov	a,#0x0E
-	cjne	a,(_Steering_Servo_direction_1_130 + 1),00108$
+	cjne	a,(_Steering_Servo_direction_1_141 + 1),00108$
 00107$:
-	C$lab4_m.c$187$2$135 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:187: STR_PW=PW_CENTER_STR;
+	C$lab4_m.c$212$2$146 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:212: STR_PW=PW_CENTER_STR;
 	mov	_STR_PW,#0x7D
 	mov	(_STR_PW + 1),#0x0A
 	ljmp	00113$
 00108$:
-	C$lab4_m.c$191$2$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:191: if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/1.9)
+	C$lab4_m.c$216$2$147 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:216: if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/1.9)
 	mov	a,#0x10
 	clr	c
-	subb	a,_Steering_Servo_direction_1_130
+	subb	a,_Steering_Servo_direction_1_141
 	mov	dpl,a
 	mov	a,#0x0E
-	subb	a,(_Steering_Servo_direction_1_130 + 1)
+	subb	a,(_Steering_Servo_direction_1_141 + 1)
 	mov	dph,a
 	lcall	___uint2fs
 	mov	r4,dpl
@@ -3083,14 +3022,14 @@ _Steering_Servo:
 	mov	sp,a
 	mov	a,r7
 	jnz	00105$
-	C$lab4_m.c$193$3$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:193: STR_PW = PW_CENTER_STR + (float)(3600-direction)/1.9;
+	C$lab4_m.c$218$3$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:218: STR_PW = PW_CENTER_STR + (float)(3600-direction)/1.9;
 	mov	a,#0x10
 	clr	c
-	subb	a,_Steering_Servo_direction_1_130
+	subb	a,_Steering_Servo_direction_1_141
 	mov	dpl,a
 	mov	a,#0x0E
-	subb	a,(_Steering_Servo_direction_1_130 + 1)
+	subb	a,(_Steering_Servo_direction_1_141 + 1)
 	mov	dph,a
 	lcall	___uint2fs
 	mov	r4,dpl
@@ -3145,8 +3084,8 @@ _Steering_Servo:
 	mov	(_STR_PW + 1),dph
 	sjmp	00113$
 00105$:
-	C$lab4_m.c$197$3$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:197: STR_PW += 10;
+	C$lab4_m.c$222$3$149 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:222: STR_PW += 10;
 	mov	a,#0x0A
 	add	a,_STR_PW
 	mov	_STR_PW,a
@@ -3154,13 +3093,13 @@ _Steering_Servo:
 	addc	a,(_STR_PW + 1)
 	mov	(_STR_PW + 1),a
 00113$:
-	C$lab4_m.c$202$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:202: printf("\r\nSTR_PW: %u", STR_PW);
+	C$lab4_m.c$227$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:227: printf("\r\nSTR_PW: %u", STR_PW);
 	push	_STR_PW
 	push	(_STR_PW + 1)
-	mov	a,#___str_8
+	mov	a,#___str_7
 	push	acc
-	mov	a,#(___str_8 >> 8)
+	mov	a,#(___str_7 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
@@ -3168,173 +3107,597 @@ _Steering_Servo:
 	mov	a,sp
 	add	a,#0xfb
 	mov	sp,a
-	C$lab4_m.c$203$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:203: tmp0_lo_to_hi= 0xFFFF - STR_PW;
+	C$lab4_m.c$228$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:228: STR_lo_to_hi= 0xFFFF - STR_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_STR_PW
-	mov	_tmp0_lo_to_hi,a
+	mov	_STR_lo_to_hi,a
 	mov	a,#0xFF
 	subb	a,(_STR_PW + 1)
-	mov	(_tmp0_lo_to_hi + 1),a
-	C$lab4_m.c$204$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:204: PCA0CP0 = tmp0_lo_to_hi;
-	mov	((_PCA0CP0 >> 0) & 0xFF),_tmp0_lo_to_hi
-	mov	((_PCA0CP0 >> 8) & 0xFF),(_tmp0_lo_to_hi + 1)
-	C$lab4_m.c$205$1$131 ==.
+	mov	(_STR_lo_to_hi + 1),a
+	C$lab4_m.c$229$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:229: PCA0CP0 = STR_lo_to_hi;
+	mov	((_PCA0CP0 >> 0) & 0xFF),_STR_lo_to_hi
+	mov	((_PCA0CP0 >> 8) & 0xFF),(_STR_lo_to_hi + 1)
+	C$lab4_m.c$230$1$142 ==.
 	XG$Steering_Servo$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Port_Init'
 ;------------------------------------------------------------
 	G$Port_Init$0$0 ==.
-	C$lab4_m.c$213$1$131 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:213: void Port_Init()
+	C$lab4_m.c$238$1$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:238: void Port_Init()
 ;	-----------------------------------------
 ;	 function Port_Init
 ;	-----------------------------------------
 _Port_Init:
-	C$lab4_m.c$215$1$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:215: P0MDOUT &= ~0x32;
+	C$lab4_m.c$240$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:240: P0MDOUT &= ~0x32;
 	mov	r7,_P0MDOUT
 	mov	a,#0xCD
 	anl	a,r7
 	mov	_P0MDOUT,a
-	C$lab4_m.c$216$1$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:216: P1MDOUT = 0x0F;  //set output pin for CEX0 and CEX2 in push-pull mode
+	C$lab4_m.c$241$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:241: P1MDOUT = 0x0F;  //set output pin for CEX0 and CEX2 in push-pull mode
 	mov	_P1MDOUT,#0x0F
-	C$lab4_m.c$218$1$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:218: P3MDOUT &= ~0x40;
+	C$lab4_m.c$242$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:242: P1MDIN &= ~0x10;
+	mov	r7,_P1MDIN
+	mov	a,#0xEF
+	anl	a,r7
+	mov	_P1MDIN,a
+	C$lab4_m.c$243$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:243: P1MDOUT |= 0x10;
+	orl	_P1MDOUT,#0x10
+	C$lab4_m.c$244$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:244: P1 		 = 0x10;
+	mov	_P1,#0x10
+	C$lab4_m.c$246$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:246: P3MDOUT &= ~0x80;
 	mov	r7,_P3MDOUT
-	mov	a,#0xBF
+	mov	a,#0x7F
 	anl	a,r7
 	mov	_P3MDOUT,a
-	C$lab4_m.c$219$1$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:219: P3 |= 0x40;
-	orl	_P3,#0x40
-	C$lab4_m.c$220$1$139 ==.
+	C$lab4_m.c$247$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:247: P3 = 0x80;
+	mov	_P3,#0x80
+	C$lab4_m.c$248$1$150 ==.
 	XG$Port_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'XBR0_Init'
 ;------------------------------------------------------------
 	G$XBR0_Init$0$0 ==.
-	C$lab4_m.c$225$1$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:225: void XBR0_Init()
+	C$lab4_m.c$253$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:253: void XBR0_Init()
 ;	-----------------------------------------
 ;	 function XBR0_Init
 ;	-----------------------------------------
 _XBR0_Init:
-	C$lab4_m.c$227$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:227: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
+	C$lab4_m.c$255$1$151 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:255: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
 	mov	_XBR0,#0x27
-	C$lab4_m.c$228$1$140 ==.
+	C$lab4_m.c$256$1$151 ==.
 	XG$XBR0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'SMB_Init'
 ;------------------------------------------------------------
 	G$SMB_Init$0$0 ==.
-	C$lab4_m.c$233$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:233: void SMB_Init(void)
+	C$lab4_m.c$261$1$151 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:261: void SMB_Init(void)
 ;	-----------------------------------------
 ;	 function SMB_Init
 ;	-----------------------------------------
 _SMB_Init:
-	C$lab4_m.c$235$1$142 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:235: SMB0CR =0x93;
+	C$lab4_m.c$263$1$153 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:263: SMB0CR =0x93;
 	mov	_SMB0CR,#0x93
-	C$lab4_m.c$236$1$142 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:236: ENSMB =1;
+	C$lab4_m.c$264$1$153 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:264: ENSMB =1;
 	setb	_ENSMB
-	C$lab4_m.c$237$1$142 ==.
+	C$lab4_m.c$265$1$153 ==.
 	XG$SMB_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_Init'
 ;------------------------------------------------------------
 	G$PCA_Init$0$0 ==.
-	C$lab4_m.c$242$1$142 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:242: void PCA_Init(void)
+	C$lab4_m.c$270$1$153 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:270: void PCA_Init(void)
 ;	-----------------------------------------
 ;	 function PCA_Init
 ;	-----------------------------------------
 _PCA_Init:
-	C$lab4_m.c$244$1$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:244: PCA0MD = 0x81;
+	C$lab4_m.c$272$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:272: PCA0MD = 0x81;
 	mov	_PCA0MD,#0x81
-	C$lab4_m.c$245$1$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:245: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
+	C$lab4_m.c$273$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:273: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
 	mov	_PCA0CPM0,#0xC2
-	C$lab4_m.c$246$1$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:246: PCA0CN = 0x40;      //Enable PCA counter
+	C$lab4_m.c$274$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:274: PCA0CN = 0x40;      //Enable PCA counter
 	mov	_PCA0CN,#0x40
-	C$lab4_m.c$247$1$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:247: EIE1 |= 0x08;       //Enable PCA interrupt
+	C$lab4_m.c$275$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:275: EIE1 |= 0x08;       //Enable PCA interrupt
 	orl	_EIE1,#0x08
-	C$lab4_m.c$248$1$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:248: EA = 1;             //Enable global interrupts
+	C$lab4_m.c$276$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:276: EA = 1;             //Enable global interrupts
 	setb	_EA
-	C$lab4_m.c$249$1$144 ==.
+	C$lab4_m.c$277$1$155 ==.
 	XG$PCA_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_ISR'
 ;------------------------------------------------------------
 	G$PCA_ISR$0$0 ==.
-	C$lab4_m.c$254$1$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:254: void PCA_ISR ( void ) __interrupt 9
+	C$lab4_m.c$282$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:282: void PCA_ISR ( void ) __interrupt 9
 ;	-----------------------------------------
 ;	 function PCA_ISR
 ;	-----------------------------------------
 _PCA_ISR:
 	push	acc
 	push	psw
-	C$lab4_m.c$257$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:257: if (CF)
-	C$lab4_m.c$259$2$147 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:259: CF =0;
-	jbc	_CF,00113$
-	sjmp	00104$
-00113$:
-	C$lab4_m.c$260$2$147 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:260: PCA0 = 0x7000;
+	C$lab4_m.c$285$1$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:285: if (CF)
+	C$lab4_m.c$287$2$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:287: CF =0;
+	jbc	_CF,00108$
+	sjmp	00102$
+00108$:
+	C$lab4_m.c$288$2$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:288: PCA0 = PCA_START;
 	mov	((_PCA0 >> 0) & 0xFF),#0x00
 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-	C$lab4_m.c$261$2$147 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:261: count++;
+	C$lab4_m.c$289$2$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:289: count++;
 	inc	_count
 	clr	a
-	cjne	a,_count,00114$
+	cjne	a,_count,00109$
 	inc	(_count + 1)
-00114$:
-	C$lab4_m.c$262$2$147 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:262: r_counts++;
-	inc	_r_counts
-	C$lab4_m.c$263$2$147 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:263: if (r_counts > 4)
-	mov	a,_r_counts
-	add	a,#0xff - 0x04
-	jnc	00104$
-	C$lab4_m.c$265$3$148 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:265: new_range = 1;
-	mov	_new_range,#0x01
-	C$lab4_m.c$266$3$148 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:266: r_counts = 0;
-	mov	_r_counts,#0x00
-00104$:
-	C$lab4_m.c$270$1$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:270: PCA0CN &= 0xC0;
+00109$:
+00102$:
+	C$lab4_m.c$292$1$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:292: PCA0CN &= 0xC0;
 	anl	_PCA0CN,#0xC0
 	pop	psw
 	pop	acc
-	C$lab4_m.c$271$1$146 ==.
+	C$lab4_m.c$293$1$157 ==.
 	XG$PCA_ISR$0$0 ==.
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
 ;	eliminated unneeded push/pop dpl
 ;	eliminated unneeded push/pop dph
 ;	eliminated unneeded push/pop b
+;------------------------------------------------------------
+;Allocation info for local variables in function 'direction'
+;------------------------------------------------------------
+;value                     Allocated to registers r6 r7 
+;------------------------------------------------------------
+	G$direction$0$0 ==.
+	C$lab4_m.c$300$1$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:300: unsigned int direction(void)
+;	-----------------------------------------
+;	 function direction
+;	-----------------------------------------
+_direction:
+	C$lab4_m.c$303$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:303: count =0;
+	clr	a
+	mov	_count,a
+	mov	(_count + 1),a
+	C$lab4_m.c$304$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:304: while (count < 1);
+00101$:
+	clr	c
+	mov	a,_count
+	subb	a,#0x01
+	mov	a,(_count + 1)
+	subb	a,#0x00
+	jc	00101$
+	C$lab4_m.c$305$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:305: lcd_clear();
+	lcall	_lcd_clear
+	C$lab4_m.c$306$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:306: lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij");
+	mov	a,#___str_8
+	push	acc
+	mov	a,#(___str_8 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_lcd_print
+	dec	sp
+	dec	sp
+	dec	sp
+	C$lab4_m.c$307$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:307: start();
+	lcall	_start
+	C$lab4_m.c$308$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:308: lcd_clear();
+	lcall	_lcd_clear
+	C$lab4_m.c$309$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:309: value = kpd_input(0);
+	mov	dpl,#0x00
+	lcall	_kpd_input
+	mov	r6,dpl
+	mov	r7,dph
+	C$lab4_m.c$310$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:310: lcd_clear();
+	push	ar7
+	push	ar6
+	lcall	_lcd_clear
+	pop	ar6
+	pop	ar7
+	C$lab4_m.c$311$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:311: lcd_print("\r\nThe desired direction is: %d", value);
+	push	ar7
+	push	ar6
+	push	ar6
+	push	ar7
+	mov	a,#___str_9
+	push	acc
+	mov	a,#(___str_9 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_lcd_print
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	pop	ar6
+	pop	ar7
+	C$lab4_m.c$312$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:312: printf("\r\nThe desired direction is: %d", value);
+	push	ar7
+	push	ar6
+	push	ar6
+	push	ar7
+	mov	a,#___str_9
+	push	acc
+	mov	a,#(___str_9 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	pop	ar6
+	pop	ar7
+	C$lab4_m.c$314$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:314: return value;
+	mov	dpl,r6
+	mov	dph,r7
+	C$lab4_m.c$316$1$160 ==.
+	XG$direction$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'start'
+;------------------------------------------------------------
+	G$start$0$0 ==.
+	C$lab4_m.c$318$1$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:318: void start(void)
+;	-----------------------------------------
+;	 function start
+;	-----------------------------------------
+_start:
+	C$lab4_m.c$320$1$162 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:320: while (read_keypad() != '*') wait();
+00101$:
+	lcall	_read_keypad
+	mov	r7,dpl
+	cjne	r7,#0x2A,00112$
+	sjmp	00104$
+00112$:
+	lcall	_wait
+	sjmp	00101$
+00104$:
+	C$lab4_m.c$321$1$162 ==.
+	XG$start$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'wait'
+;------------------------------------------------------------
+	G$wait$0$0 ==.
+	C$lab4_m.c$323$1$162 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:323: void wait(void)
+;	-----------------------------------------
+;	 function wait
+;	-----------------------------------------
+_wait:
+	C$lab4_m.c$325$1$164 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:325: count=0;
+	clr	a
+	mov	_count,a
+	mov	(_count + 1),a
+	C$lab4_m.c$326$1$164 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:326: while (count < 1);
+00101$:
+	clr	c
+	mov	a,_count
+	subb	a,#0x01
+	mov	a,(_count + 1)
+	subb	a,#0x00
+	jc	00101$
+	C$lab4_m.c$327$1$164 ==.
+	XG$wait$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'Steering_func'
+;------------------------------------------------------------
+	G$Steering_func$0$0 ==.
+	C$lab4_m.c$329$1$164 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:329: void Steering_func(void)
+;	-----------------------------------------
+;	 function Steering_func
+;	-----------------------------------------
+_Steering_func:
+	C$lab4_m.c$331$1$166 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:331: actual_heading = ReadCompass();
+	lcall	_ReadCompass
+	mov	_actual_heading,dpl
+	mov	(_actual_heading + 1),dph
+	C$lab4_m.c$332$1$166 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:332: offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
+	mov	a,#0x10
+	add	a,_actual_heading
+	mov	r6,a
+	mov	a,#0x0E
+	addc	a,(_actual_heading + 1)
+	mov	r7,a
+	mov	a,r6
+	clr	c
+	subb	a,_desired_heading
+	mov	dpl,a
+	mov	a,r7
+	subb	a,(_desired_heading + 1)
+	mov	dph,a
+	mov	__modsint_PARM_2,#0x10
+	mov	(__modsint_PARM_2 + 1),#0x0E
+	lcall	__modsint
+	mov	r6,dpl
+	mov	r7,dph
+	mov	_offset,r6
+	mov	(_offset + 1),r7
+	C$lab4_m.c$333$1$166 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:333: printf("\r\n%d||%d",actual_heading,offset);
+	push	_offset
+	push	(_offset + 1)
+	push	_actual_heading
+	push	(_actual_heading + 1)
+	mov	a,#___str_10
+	push	acc
+	mov	a,#(___str_10 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xf9
+	mov	sp,a
+	C$lab4_m.c$334$1$166 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:334: Steering_Servo(offset);
+	mov	dpl,_offset
+	mov	dph,(_offset + 1)
+	lcall	_Steering_Servo
+	C$lab4_m.c$336$1$166 ==.
+	XG$Steering_func$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'Drive_func'
+;------------------------------------------------------------
+	G$Drive_func$0$0 ==.
+	C$lab4_m.c$338$1$166 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:338: void Drive_func(void)
+;	-----------------------------------------
+;	 function Drive_func
+;	-----------------------------------------
+_Drive_func:
+	C$lab4_m.c$340$1$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:340: range = Read_Ranger();
+	lcall	_Read_Ranger
+	mov	_range,dpl
+	mov	(_range + 1),dph
+	C$lab4_m.c$341$1$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:341: r_data[0] = 0x51;
+	mov	_r_data,#0x51
+	C$lab4_m.c$342$1$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:342: i2c_write_data(r_addr, 0, r_data, 1);
+	mov	_i2c_write_data_PARM_3,#_r_data
+	mov	(_i2c_write_data_PARM_3 + 1),#0x00
+	mov	(_i2c_write_data_PARM_3 + 2),#0x40
+	mov	_i2c_write_data_PARM_2,#0x00
+	mov	_i2c_write_data_PARM_4,#0x01
+	mov	dpl,_r_addr
+	lcall	_i2c_write_data
+	C$lab4_m.c$343$1$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:343: printf("\r\n The range is: %u", range);
+	push	_range
+	push	(_range + 1)
+	mov	a,#___str_11
+	push	acc
+	mov	a,#(___str_11 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	C$lab4_m.c$344$1$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:344: Drive_Motor();
+	lcall	_Drive_Motor
+	C$lab4_m.c$346$1$168 ==.
+	XG$Drive_func$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'read_AD_input'
+;------------------------------------------------------------
+;n                         Allocated to registers 
+;------------------------------------------------------------
+	G$read_AD_input$0$0 ==.
+	C$lab4_m.c$348$1$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:348: unsigned long read_AD_input(unsigned char n)
+;	-----------------------------------------
+;	 function read_AD_input
+;	-----------------------------------------
+_read_AD_input:
+	mov	_AMX1SL,dpl
+	C$lab4_m.c$351$1$170 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:351: ADC1CN = ADC1CN & ~0x20;
+	mov	r7,_ADC1CN
+	mov	a,#0xDF
+	anl	a,r7
+	mov	_ADC1CN,a
+	C$lab4_m.c$352$1$170 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:352: ADC1CN = ADC1CN | 0x10;
+	orl	_ADC1CN,#0x10
+	C$lab4_m.c$353$1$170 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:353: while ((ADC1CN & 0x20)== 0x00);
+00101$:
+	mov	a,_ADC1CN
+	jnb	acc.5,00101$
+	C$lab4_m.c$355$1$170 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:355: return ADC1;
+	mov	r4,_ADC1
+	mov	r5,#0x00
+	mov	r6,#0x00
+	mov	r7,#0x00
+	mov	dpl,r4
+	mov	dph,r5
+	mov	b,r6
+	mov	a,r7
+	C$lab4_m.c$357$1$170 ==.
+	XG$read_AD_input$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'ADC_Init'
+;------------------------------------------------------------
+	G$ADC_Init$0$0 ==.
+	C$lab4_m.c$359$1$170 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:359: void ADC_Init(void)								/////SETS ADC 
+;	-----------------------------------------
+;	 function ADC_Init
+;	-----------------------------------------
+_ADC_Init:
+	C$lab4_m.c$361$1$172 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:361: REF0CN = 0x03;
+	mov	_REF0CN,#0x03
+	C$lab4_m.c$362$1$172 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:362: ADC1CN = 0x80;
+	mov	_ADC1CN,#0x80
+	C$lab4_m.c$363$1$172 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:363: ADC1CF |= 0x01;
+	orl	_ADC1CF,#0x01
+	C$lab4_m.c$364$1$172 ==.
+	XG$ADC_Init$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'Battery_func'
+;------------------------------------------------------------
+	G$Battery_func$0$0 ==.
+	C$lab4_m.c$367$1$172 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:367: void Battery_func(void)
+;	-----------------------------------------
+;	 function Battery_func
+;	-----------------------------------------
+_Battery_func:
+	C$lab4_m.c$369$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:369: lcd_print( "\r\nBattery is: %ld",read_AD_input(4));
+	mov	dpl,#0x04
+	lcall	_read_AD_input
+	mov	r4,dpl
+	mov	r5,dph
+	mov	r6,b
+	mov	r7,a
+	push	ar4
+	push	ar5
+	push	ar6
+	push	ar7
+	mov	a,#___str_12
+	push	acc
+	mov	a,#(___str_12 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_lcd_print
+	mov	a,sp
+	add	a,#0xf9
+	mov	sp,a
+	C$lab4_m.c$370$1$174 ==.
+	XG$Battery_func$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'avoid_crash'
+;------------------------------------------------------------
+	G$avoid_crash$0$0 ==.
+	C$lab4_m.c$372$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:372: void avoid_crash(void)
+;	-----------------------------------------
+;	 function avoid_crash
+;	-----------------------------------------
+_avoid_crash:
+	C$lab4_m.c$374$2$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:374: while(range < 45)
+00103$:
+	clr	c
+	mov	a,_range
+	subb	a,#0x2D
+	mov	a,(_range + 1)
+	subb	a,#0x00
+	jnc	00106$
+	C$lab4_m.c$376$2$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:376: STR_PW = PW_MIN_STR;
+	mov	_STR_PW,#0xD9
+	mov	(_STR_PW + 1),#0x08
+	C$lab4_m.c$378$2$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:378: printf("\r\nSTR_PW: %u", STR_PW);
+	mov	a,#0xD9
+	push	acc
+	mov	a,#0x08
+	push	acc
+	mov	a,#___str_7
+	push	acc
+	mov	a,#(___str_7 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	C$lab4_m.c$379$2$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:379: STR_lo_to_hi= 0xFFFF - STR_PW;
+	mov	a,#0xFF
+	clr	c
+	subb	a,_STR_PW
+	mov	_STR_lo_to_hi,a
+	mov	a,#0xFF
+	subb	a,(_STR_PW + 1)
+	mov	(_STR_lo_to_hi + 1),a
+	C$lab4_m.c$380$2$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:380: PCA0CP0 = STR_lo_to_hi;
+	mov	((_PCA0CP0 >> 0) & 0xFF),_STR_lo_to_hi
+	mov	((_PCA0CP0 >> 8) & 0xFF),(_STR_lo_to_hi + 1)
+	C$lab4_m.c$381$2$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:381: if (count % 4==0)
+	mov	a,_count
+	anl	a,#0x03
+	jz	00119$
+	sjmp	00103$
+00119$:
+	C$lab4_m.c$383$3$178 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab4\lab4_m.c:383: Drive_func();    		
+	lcall	_Drive_func
+	sjmp	00103$
+00106$:
+	C$lab4_m.c$388$1$176 ==.
+	XG$avoid_crash$0$0 ==.
+	ret
 	.area CSEG    (CODE)
 	.area CONST   (CODE)
 Flab4_m$__str_0$0$0 == .
@@ -3352,38 +3715,67 @@ ___str_2:
 	.db 0x00
 Flab4_m$__str_3$0$0 == .
 ___str_3:
-	.ascii "Embedded Control Car Calibration"
+	.db 0x0D
 	.db 0x0A
+	.ascii "Embedded Control Car Calibration"
 	.db 0x00
 Flab4_m$__str_4$0$0 == .
 ___str_4:
 	.db 0x0D
 	.db 0x0A
-	.ascii "%d||%d"
+	.ascii "Embedded Control Car ready!"
 	.db 0x00
 Flab4_m$__str_5$0$0 == .
 ___str_5:
 	.db 0x0D
 	.db 0x0A
-	.ascii " The range is: %d"
+	.ascii " The control is paused"
 	.db 0x00
 Flab4_m$__str_6$0$0 == .
 ___str_6:
 	.db 0x0D
 	.db 0x0A
-	.ascii " The control is paused"
+	.ascii " Motor Power is %u"
 	.db 0x00
 Flab4_m$__str_7$0$0 == .
 ___str_7:
 	.db 0x0D
 	.db 0x0A
-	.ascii " Motor Power is %u"
+	.ascii "STR_PW: %u"
 	.db 0x00
 Flab4_m$__str_8$0$0 == .
 ___str_8:
+	.ascii "Calibration:"
+	.db 0x0A
+	.ascii "Hello world!"
+	.db 0x0A
+	.ascii "012_345_678:"
+	.db 0x0A
+	.ascii "abc def ghij"
+	.db 0x00
+Flab4_m$__str_9$0$0 == .
+___str_9:
 	.db 0x0D
 	.db 0x0A
-	.ascii "STR_PW: %u"
+	.ascii "The desired direction is: %d"
+	.db 0x00
+Flab4_m$__str_10$0$0 == .
+___str_10:
+	.db 0x0D
+	.db 0x0A
+	.ascii "%d||%d"
+	.db 0x00
+Flab4_m$__str_11$0$0 == .
+___str_11:
+	.db 0x0D
+	.db 0x0A
+	.ascii " The range is: %u"
+	.db 0x00
+Flab4_m$__str_12$0$0 == .
+___str_12:
+	.db 0x0D
+	.db 0x0A
+	.ascii "Battery is: %ld"
 	.db 0x00
 	.area XINIT   (CODE)
 	.area CABS    (ABS,CODE)
