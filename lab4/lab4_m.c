@@ -161,7 +161,8 @@ void Drive_Motor(void)
 		MOTOR_PW = 3686.25 - (18.425 * range);
 	}
 	printf("\r\n Motor Power is %u", MOTOR_PW);
-	PCA0CP2 = 0xFFFF - MOTOR_PW;
+	DRV_lo_to_hi =0xFFFF - MOTOR_PW;
+	PCA0CP2 = DRV_lo_to_hi;
 }
 
 //------------------------------------------------------------------------------
