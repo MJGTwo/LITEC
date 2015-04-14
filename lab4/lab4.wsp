@@ -361,7 +361,7 @@ Docking=True
 MRUDockID=0
 MRUDockLeftPos=1
 MRUDockTopPos=5
-MRUDockRightPos=784
+MRUDockRightPos=1600
 MRUDockBottomPos=202
 MRUFloatStyle=4
 MRUFloatXPos=-2147483648
@@ -373,7 +373,7 @@ MDIChild=False
 PctWidth=1000000
 MRUFloatCX=300
 MRUFloatCY=180
-MRUHorzDockCX=783
+MRUHorzDockCX=1599
 MRUHorzDockCY=197
 MRUVertDockCX=300
 MRUVertDockCY=180
@@ -1167,7 +1167,7 @@ MRUDockID=0
 MRUDockLeftPos=0
 MRUDockTopPos=-2
 MRUDockRightPos=180
-MRUDockBottomPos=540
+MRUDockBottomPos=556
 MRUFloatStyle=4
 MRUFloatXPos=-2147483648
 MRUFloatYPos=0
@@ -1181,7 +1181,7 @@ MRUFloatCY=180
 MRUHorzDockCX=300
 MRUHorzDockCY=180
 MRUVertDockCX=180
-MRUVertDockCY=542
+MRUVertDockCY=558
 MRUDockingState=0
 DockingStyle=61440
 TypeID=0
@@ -1345,6 +1345,7 @@ WindowName=Scratch Pad Viewer
 ResourceID=0
 [WorkState_v1_1.DockState.Bar-37]
 BarID=61905
+Visible=False
 XPos=5
 YPos=-2
 Docking=True
@@ -1629,7 +1630,7 @@ Docking=True
 MRUDockID=59419
 MRUDockLeftPos=0
 MRUDockTopPos=-1
-MRUDockRightPos=784
+MRUDockRightPos=1600
 MRUDockBottomPos=28
 MRUFloatStyle=8196
 MRUFloatXPos=-2147483648
@@ -1641,7 +1642,7 @@ MDIChild=False
 PctWidth=1000000
 MRUFloatCX=384
 MRUFloatCY=29
-MRUHorzDockCX=784
+MRUHorzDockCX=1600
 MRUHorzDockCY=29
 MRUVertDockCX=80
 MRUVertDockCY=556
@@ -2432,17 +2433,17 @@ LargeButtons=False
 ptn_Child1=MainFrame
 ptn_Child2=ChildFrames
 [WorkState_v1_1.Frames.MainFrame]
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPCMAAAAAANEAAAAAACODAAAAAGFDAAAAA
-Title=Silicon Laboratories IDE - kpdlcdtestPCA.c
+WindowPlacement=MCAAAAAACAAAAAAADAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPCMAAAAAANEAAAAAACODAAAAAGFDAAAAA
+Title=Silicon Laboratories IDE - lab4_m.c
 [WorkState_v1_1.Frames.ChildFrames]
 ptn_Child1=Document-0
 [WorkState_v1_1.Frames.ChildFrames.Document-0]
 ptn_Child1=ViewFrame-0
 [WorkState_v1_1.Frames.ChildFrames.Document-0.ViewFrame-0]
-DocPathName=kpdlcdtestPCA.c
+DocPathName=lab4_m.c
 DocumentString=Source File
 DocTemplateIndex=0
-WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPIAAAAAAAIAAAAAAALBCAAAAAHNBAAAAA
+WindowPlacement=MCAAAAAAAAAAAAAABAAAAAAAPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPNCAAAAAAJAAAAAAAOCDAAAAALKBAAAAA
 IsActiveChildFrame=True
 [WorkState_v1_1.ProjectTarget]
 ProjectTarget=C8051F020
@@ -2512,7 +2513,7 @@ BitsBeforeTargetIR=0
 [WorkState_v1_1.BankingPN]
 BankingPN=32767
 [WorkState_v1_1.OutputFile]
-OutputFile=ws10.omf
+OutputFile=lab4.omf
 [WorkState_v1_1.MakeFile]
 MakeFile=
 [WorkState_v1_1.HexGenerator]
@@ -2536,15 +2537,18 @@ USB Adapter Power=0
 [WorkState_v1_1.PFiles]
 ptn_Child1=FileName
 [WorkState_v1_1.PFiles.FileName]
-FileName=kpdlcdtestPCA.c
+FileName=lcd.c
+ptn_Child1=FileName
+[WorkState_v1_1.PFiles.FileName.FileName]
+FileName=lab4_m.c
 [WorkState_v1_1.AFiles]
 [WorkState_v1_1.CFiles]
 ptn_Child1=FileName
 [WorkState_v1_1.CFiles.FileName]
-FileName=kpdlcdtestPCA.c
+FileName=lab4_m.c
 [WorkState_v1_1.LFiles]
 ptn_Child1=FileName
 [WorkState_v1_1.LFiles.FileName]
-FileName=kpdlcdtestPCA.rel
+FileName=lab4_m.rel
 [WorkState_v1_1.BankMap]
 [WorkState_v1_1.Folders]

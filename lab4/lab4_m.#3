@@ -10,7 +10,6 @@ and steer the wheels toward a desired direction.
 #include <stdio.h>
 #include <c8051_SDCC.h>
 #include <i2c.h>
-#include <lcd.c>
 #define PW_CENTER_STR 2685
 #define PW_MIN_STR    2265
 #define PW_MAX_STR    3195
@@ -39,15 +38,17 @@ unsigned int count = 0;
 char input;
  int actual_heading;
  int desired_heading = 900; //East
+ int new_heading;
 unsigned int error;
 unsigned int offset;
 
 unsigned int range = 0;
 unsigned char r_counts = 0;
+unsigned char c_counts = 0;
 unsigned char r_addr;
 unsigned char new_range;
 unsigned char r_data[2];
-unsigned in MOTOR_PW = 0;
+unsigned int MOTOR_PW = 0;
 char r_input;
 __sbit __at 0xB6 SS0;
 
@@ -87,7 +88,7 @@ void main(void)
 			count =0;
 
 			while (count < 2);
-			if (c_counts ==   && new_heading)
+			if (c_counts == 2  && new_heading)
 			{
 				actual_heading = ReadCompass();
 	        	offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
@@ -260,7 +261,7 @@ void PCA_ISR ( void ) __interrupt 9
         if (r_counts > 4)
         {
         	new_range = 1;
-        	r_counts = 0
+        	r_counts = 0;
         }
     }
 
