@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Fri Apr 03 08:34:46 2015
+; This file was generated Tue Apr 14 20:32:13 2015
 ;--------------------------------------------------------
 	.module lab3_1steering
 	.optsdcc -mmcs51 --model-small
@@ -1205,14 +1205,14 @@ _main:
 	dec	sp
 	C$lab3_1steering.c$35$1$30 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:35: STR_PW = PW_CENTER_STR;
-	mov	_STR_PW,#0xCD
-	mov	(_STR_PW + 1),#0x0A
+	mov	_STR_PW,#0x09
+	mov	(_STR_PW + 1),#0x0B
 	C$lab3_1steering.c$37$1$30 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:37: PCA0CPL0 = 0xFFFF - STR_PW;
-	mov	_PCA0CPL0,#0x32
+	mov	_PCA0CPL0,#0xF6
 	C$lab3_1steering.c$38$1$30 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:38: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
-	mov	_PCA0CPH0,#0xF5
+	mov	_PCA0CPH0,#0xF4
 	C$lab3_1steering.c$39$1$30 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:39: while (count < 29);
 00101$:
@@ -1356,15 +1356,15 @@ _Steering_Servo:
 	C$lab3_1steering.c$115$2$40 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
 	clr	c
-	mov	a,#0xD9
+	mov	a,#0x29
 	subb	a,_STR_PW
-	mov	a,#0x08
+	mov	a,#0x09
 	subb	a,(_STR_PW + 1)
 	jc	00102$
 	C$lab3_1steering.c$117$3$41 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
-	mov	_STR_PW,#0xD9
-	mov	(_STR_PW + 1),#0x08
+	mov	_STR_PW,#0x29
+	mov	(_STR_PW + 1),#0x09
 	sjmp	00111$
 00102$:
 	C$lab3_1steering.c$121$3$42 ==.
@@ -1384,15 +1384,15 @@ _Steering_Servo:
 	C$lab3_1steering.c$128$2$43 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
 	clr	c
-	mov	a,#0xCB
+	mov	a,#0x43
 	subb	a,_STR_PW
-	mov	a,#0x0C
+	mov	a,#0x0D
 	subb	a,(_STR_PW + 1)
 	jnc	00105$
 	C$lab3_1steering.c$130$3$44 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
-	mov	_STR_PW,#0xCB
-	mov	(_STR_PW + 1),#0x0C
+	mov	_STR_PW,#0x43
+	mov	(_STR_PW + 1),#0x0D
 	sjmp	00111$
 00105$:
 	C$lab3_1steering.c$134$3$45 ==.

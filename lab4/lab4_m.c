@@ -1,4 +1,4 @@
-/*  Lab4
+ /*  Lab4
 Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
 Section 03
 Side B
@@ -7,13 +7,16 @@ Date: 04/17/15
 The goal of this code is to read values from the compass via i2c
 and steer the wheels toward a desired direction.
  */
+
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <c8051_SDCC.h>
 #include <i2c.h>
-#define PW_CENTER_STR 2685
-#define PW_MIN_STR    2265
-#define PW_MAX_STR    3195
+#define PW_CENTER_STR 2825
+#define PW_MIN_STR    2345
+#define PW_MAX_STR    3295
 #define PW_MAX_DRIVE  3503
 #define PW_MIN_DRIVE  2028
 #define PW_NUET_DRIVE 2765
@@ -23,6 +26,7 @@ and steer the wheels toward a desired direction.
 //-----------------------------------------------------------------------------
 // 8051 Initialization Functions
 //-----------------------------------------------------------------------------
+
 void Port_Init(void);
 void PCA_Init (void);
 void XBR0_Init(void);
@@ -36,7 +40,7 @@ void Steering_func(void);
 void Drive_Motor(void);
 unsigned int Read_Ranger(void);
 void Drive_func(void);
-							/////LCD////
+							/////LCD//////
 void wait(void);
 void start(void);
 unsigned int direction(void);
@@ -50,24 +54,21 @@ void avoid_crash(void);
 //-----------------------------------------------------------------------------
 // Global Variables
 //-----------------------------------------------------------------------------
+
 unsigned int STR_lo_to_hi;
 unsigned int STR_PW   = 0;
 unsigned int count = 0;
-char input;
  int actual_heading;
  int desired_heading;
 unsigned int error;
 unsigned int offset;
 
 unsigned int range = 0;
-unsigned char r_addr;
-unsigned char r_data[2];
 unsigned int MOTOR_PW = 0;
 
-char r_input;
 __sbit __at 0xB7 SS0;
 
-
+unsigned char starter =0;
 
 unsigned int DRV_lo_to_hi;
 
@@ -77,9 +78,11 @@ unsigned int DRV_lo_to_hi;
 
 void main(void)
 {
+    
     //-----------------------------------------------------------------------------
 	// initializing 
 	//-----------------------------------------------------------------------------
+
     Sys_Init();
     putchar(' '); //the quotes in this line may not format correctly
     Port_Init();
@@ -90,52 +93,56 @@ void main(void)
 	
     
     printf("\r\nEmbedded Control Car Calibration");
-
+    count=0;
     STR_PW = PW_CENTER_STR;
     MOTOR_PW = PW_NUET_DRIVE;
 
     STR_lo_to_hi= 0xFFFF - STR_PW;
     PCA0CP0 = STR_lo_to_hi;
 
-    MOTOR_PW = PW_NUET_DRIVE;
     DRV_lo_to_hi = 0xFFFF - MOTOR_PW;
     PCA0CP2 = DRV_lo_to_hi;
 
     count=0; //1 count = 20 milliseconds
 
 	while (count < 50);
+
 	//-----------------------------------------------------------------------------
 	// Start program 
 	//-----------------------------------------------------------------------------
 
 	printf("\r\nEmbedded Control Car ready!");
 	desired_heading = direction();
+	count=0;
 	while (1)
 	{
-		count=0;
+
+
 		if (!SS0)
 		{
-			
-
+			wait();
 			if (count % 4==0)
 			{
 				Drive_func();
 			}
+
 			if (count%2==0)
 			{
-				Steering_func();			
+				Steering_func();	
 			}
+
 			if (count % 50 ==0)
 			{
 				Battery_func();
 			}
+
 			if (range <= 20)
 			{
 				avoid_crash();
-			}
+			}        	
 		}
 
-		if (SS0) {printf("\r\n The control is paused");}
+		else {printf("\r\n The control is paused");count=1;starter=0;}
     }   
 }
 
@@ -145,6 +152,7 @@ void main(void)
 //------------------------------------------------------------------------------
 // Drive Motor Control
 //------------------------------------------------------------------------------
+
 void Drive_Motor(void)
 {
 	if (range <= 10) {MOTOR_PW = PW_MAX_DRIVE;}
@@ -160,7 +168,7 @@ void Drive_Motor(void)
 	{
 		MOTOR_PW = 3686.25 - (18.425 * range);
 	}
-	printf("\r\n Motor Power is %u", MOTOR_PW);
+	//printf("\r\n Motor Power is %u", MOTOR_PW);
 	DRV_lo_to_hi =0xFFFF - MOTOR_PW;
 	PCA0CP2 = DRV_lo_to_hi;
 }
@@ -168,10 +176,14 @@ void Drive_Motor(void)
 //------------------------------------------------------------------------------
 // Read Ranger Function
 //------------------------------------------------------------------------------
+
 unsigned int Read_Ranger(void)
 {
+	unsigned char r_data[2];
+
+	unsigned char r_addr = 0xE0;
 	unsigned int read = 0;
-	r_addr = 0xE0;
+	r_data[0] = 0x51;
 	i2c_read_data(r_addr, 2, r_data, 2);
 	read = (((unsigned int) r_data[0] <<8) | r_data[1]);
 	return read;
@@ -180,9 +192,11 @@ unsigned int Read_Ranger(void)
 //------------------------------------------------------------------------------
 // Read Compass Function
 //------------------------------------------------------------------------------
+
 unsigned int ReadCompass(void)
 {
 	unsigned char Data[2];
+
 	unsigned int Crange = 0;
 	unsigned char addr = 0xC0;
 	i2c_read_data(addr, 2,Data,2);
@@ -225,7 +239,7 @@ void Steering_Servo(unsigned int direction)
 	}		
 
 
-    printf("\r\nSTR_PW: %u", STR_PW);
+    //printf("\r\nSTR_PW: %u", STR_PW);
     STR_lo_to_hi= 0xFFFF - STR_PW;
     PCA0CP0 = STR_lo_to_hi;
 }
@@ -272,7 +286,7 @@ void PCA_Init(void)
 {
     PCA0MD = 0x81;
     PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
-    PCA0CN = 0x40;      //Enable PCA counter
+    PCA0CN 	= 0x40;      //Enable PCA counter
     EIE1 |= 0x08;       //Enable PCA interrupt
     EA = 1;             //Enable global interrupts
 }
@@ -280,6 +294,7 @@ void PCA_Init(void)
 //-----------------------------------------------------------------------------
 // PCA_ISR
 //-----------------------------------------------------------------------------
+
 void PCA_ISR ( void ) __interrupt 9
 {
 
@@ -288,10 +303,13 @@ void PCA_ISR ( void ) __interrupt 9
         CF =0;
         PCA0 = PCA_START;
         count++;
+      
+
     }
 
     PCA0CN &= 0xC0;
 }
+
 
 //-----------------------------------------------------------------------------
 // LCD FUNCTIONS
@@ -323,23 +341,28 @@ void start(void)
 
 void wait(void)
 {
-	count=0;
-	while (count < 1);
+	unsigned int old_c = count+1;
+	while (count < old_c);
 }
 
 void Steering_func(void)
 {
 	actual_heading = ReadCompass();
 	offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
-	printf("\r\n%d||%d",actual_heading,offset);
+	//printf("\r\n%d||%d",actual_heading,offset);
 	Steering_Servo(offset);
 
 }
 
 void Drive_func(void)
 {
-	range = Read_Ranger();
+	unsigned char r_data[2];
+
+	unsigned char r_addr = 0xE0;
+	unsigned int read = 0;
 	r_data[0] = 0x51;
+	range = Read_Ranger();
+	
 	i2c_write_data(r_addr, 0, r_data, 1);
 	printf("\r\n The range is: %u", range);
 	Drive_Motor();
@@ -367,23 +390,21 @@ void ADC_Init(void)								/////SETS ADC
 
 void Battery_func(void)
 {
+	lcd_clear();
 	lcd_print( "\r\nBattery is: %ld",read_AD_input(4));
 }
 
 void avoid_crash(void)
 {
+	STR_PW = PW_MIN_STR;
+
+	//printf("\r\nSTR_PW: %u", STR_PW);
+	STR_lo_to_hi= 0xFFFF - STR_PW;
+	PCA0CP0 = STR_lo_to_hi;
 	while(range < 45)
 	{
-		STR_PW = PW_MIN_STR;
-
-		printf("\r\nSTR_PW: %u", STR_PW);
-    	STR_lo_to_hi= 0xFFFF - STR_PW;
-    	PCA0CP0 = STR_lo_to_hi;
-    	if (count % 4==0)
-    	{
-    		Drive_func();    		
-    	}
-
+		wait();
+		Drive_func();
 
 	}
 }
