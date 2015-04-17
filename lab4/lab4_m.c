@@ -63,7 +63,7 @@ unsigned int count = 0;
 unsigned int error;
 unsigned int offset;
 
-unsigned int range = 0;
+unsigned int range = 35;
 unsigned int MOTOR_PW = 0;
 
 __sbit __at 0xB7 SS0;
@@ -71,6 +71,9 @@ __sbit __at 0xB7 SS0;
 unsigned char starter =0;
 
 unsigned int DRV_lo_to_hi;
+unsigned char r_data[2];
+
+unsigned char pwpercent;
 
 //-----------------------------------------------------------------------------
 // Main Function
@@ -136,10 +139,12 @@ void main(void)
 				Battery_func();
 			}
 
-			if (range <= 20)
+			if (range <= 22)
 			{
 				avoid_crash();
-			}        	
+			} 
+			
+
 		}
 
 		else {printf("\r\n The control is paused");count=1;starter=0;}
@@ -155,21 +160,24 @@ void main(void)
 
 void Drive_Motor(void)
 {
-	if (range <= 10) {MOTOR_PW = PW_MAX_DRIVE;}
-	if (range >= 90) {MOTOR_PW = PW_MIN_DRIVE;}
-	if (range <= 50 && range >= 40) {MOTOR_PW = PW_NUET_DRIVE;}
-	
-	if (range < 40 && range > 10)
-	{
-		MOTOR_PW = -24.6 * range + 3749;
+//------------------------------------------------------------------------------
+	if(range <= 12 ||(range <= 20 && STR_PW == PW_MIN_STR)){MOTOR_PW = PW_NUET_DRIVE;}
+	else if (range > 20 && range < 55) 
+	{  
+		if (MOTOR_PW <= PW_MAX_DRIVE)
+		{
+			MOTOR_PW = PW_NUET_DRIVE + 100 + 2* (float)(PW_MAX_DRIVE- PW_NUET_DRIVE)/(55.0 - range);
+		}
+		else
+		{
+			MOTOR_PW = PW_MAX_DRIVE;
+		}
 	}
+	else { MOTOR_PW = PW_MAX_DRIVE;}
 
-	if (range > 50 && range < 90)
-	{
-		MOTOR_PW = 3686.25 - (18.425 * range);
-	}
+
 	//printf("\r\n Motor Power is %u", MOTOR_PW);
-	DRV_lo_to_hi =0xFFFF - MOTOR_PW;
+	DRV_lo_to_hi = 0xFFFF - MOTOR_PW;
 	PCA0CP2 = DRV_lo_to_hi;
 }
 
@@ -179,11 +187,10 @@ void Drive_Motor(void)
 
 unsigned int Read_Ranger(void)
 {
-	unsigned char r_data[2];
+
 
 	unsigned char r_addr = 0xE0;
 	unsigned int read = 0;
-	r_data[0] = 0x51;
 	i2c_read_data(r_addr, 2, r_data, 2);
 	read = (((unsigned int) r_data[0] <<8) | r_data[1]);
 	return read;
@@ -252,10 +259,15 @@ void Steering_Servo(unsigned int direction)
 //------------------------------------------------------------------------------
 void Port_Init()
 {
+
+
 	P0MDOUT &= ~0x32;
-    P1MDOUT = 0x0F;  //set output pin for CEX0 and CEX2 in push-pull mode
-    P1MDIN &= ~0x10;
-    P1MDOUT |= 0x10;
+
+	P1MDIN &= ~0x10;
+
+    P1MDOUT |= 0x0F;  //set output pin for CEX0 and CEX2 in push-pull mode
+    P1MDOUT &= 0x10;
+
     P1 		 = 0x10;
 
 	P3MDOUT &= ~0x80;
@@ -286,6 +298,7 @@ void PCA_Init(void)
 {
     PCA0MD = 0x81;
     PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
+    PCA0CPM2 = 0xC2;
     PCA0CN 	= 0x40;      //Enable PCA counter
     EIE1 |= 0x08;       //Enable PCA interrupt
     EA = 1;             //Enable global interrupts
@@ -349,20 +362,18 @@ void Steering_func(void)
 {
 	actual_heading = ReadCompass();
 	offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
-	//printf("\r\n%d||%d",actual_heading,offset);
 	Steering_Servo(offset);
 
 }
 
 void Drive_func(void)
 {
-	unsigned char r_data[2];
 
 	unsigned char r_addr = 0xE0;
 	unsigned int read = 0;
-	r_data[0] = 0x51;
+
 	range = Read_Ranger();
-	
+	r_data[0] = 0x51;
 	i2c_write_data(r_addr, 0, r_data, 1);
 	printf("\r\n The range is: %u", range);
 	Drive_Motor();
@@ -391,7 +402,8 @@ void ADC_Init(void)								/////SETS ADC
 void Battery_func(void)
 {
 	lcd_clear();
-	lcd_print( "\r\nBattery is: %ld",read_AD_input(4));
+	pwpercent = ((MOTOR_PW- PW_NUET_DRIVE)*200)/(PW_MAX_DRIVE- PW_MIN_DRIVE);
+	lcd_print("direction: %u\nrange: %u\n pw%c: %u\nbattery: %ld\n",actual_heading,range,0x25,pwpercent,read_AD_input(4));
 }
 
 void avoid_crash(void)
@@ -401,10 +413,11 @@ void avoid_crash(void)
 	//printf("\r\nSTR_PW: %u", STR_PW);
 	STR_lo_to_hi= 0xFFFF - STR_PW;
 	PCA0CP0 = STR_lo_to_hi;
-	while(range < 45)
+	while(range < 35)
 	{
 		wait();
-		Drive_func();
+		if (count % 4 == 0) Drive_func();
+		if (count % 50 ==0) Battery_func();
 
 	}
 }

@@ -71,7 +71,8 @@ S:G$range$0$0({2}SI:U),E,0,0
 S:G$MOTOR_PW$0$0({2}SI:U),E,0,0
 S:G$starter$0$0({1}SC:U),E,0,0
 S:G$DRV_lo_to_hi$0$0({2}SI:U),E,0,0
-S:Llab4_m.Read_Ranger$r_data$1$138({2}DA2d,SC:U),E,0,0
+S:G$r_data$0$0({2}DA2d,SC:U),E,0,0
+S:G$pwpercent$0$0({1}SC:U),E,0,0
 S:Llab4_m.Read_Ranger$r_addr$1$138({1}SC:U),R,0,0,[]
 S:Llab4_m.Read_Ranger$read$1$138({2}SI:U),R,0,0,[]
 S:Llab4_m.ReadCompass$Data$1$140({2}DA2d,SC:U),E,0,0
@@ -79,7 +80,6 @@ S:Llab4_m.ReadCompass$Crange$1$140({2}SI:U),R,0,0,[]
 S:Llab4_m.ReadCompass$addr$1$140({1}SC:U),R,0,0,[]
 S:Llab4_m.Steering_Servo$direction$1$141({2}SI:U),E,0,0
 S:Llab4_m.direction$value$1$160({2}SI:S),R,0,0,[r6,r7]
-S:Llab4_m.Drive_func$r_data$1$168({2}DA2d,SC:U),E,0,0
 S:Llab4_m.Drive_func$r_addr$1$168({1}SC:U),R,0,0,[]
 S:Llab4_m.Drive_func$read$1$168({2}SI:U),R,0,0,[]
 S:Llab4_m.lcd_print$text$1$73({80}DA80d,SC:U),F,0,0
@@ -432,4 +432,4 @@ S:Flab4_m$__str_5$0$0({25}DA25d,SC:S),D,0,0
 S:Flab4_m$__str_6$0$0({52}DA52d,SC:S),D,0,0
 S:Flab4_m$__str_7$0$0({31}DA31d,SC:S),D,0,0
 S:Flab4_m$__str_8$0$0({20}DA20d,SC:S),D,0,0
-S:Flab4_m$__str_9$0$0({18}DA18d,SC:S),D,0,0
+S:Flab4_m$__str_9$0$0({48}DA48d,SC:S),D,0,0
