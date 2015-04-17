@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-                                      4 ; This file was generated Tue Apr 14 20:32:13 2015
+                                      4 ; This file was generated Fri Apr 17 09:04:17 2015
                                       5 ;--------------------------------------------------------
                                       6 	.module lab3_1steering
                                       7 	.optsdcc -mmcs51 --model-small
@@ -1205,14 +1205,14 @@
       000137 15 81            [12] 1205 	dec	sp
                            000083  1206 	C$lab3_1steering.c$35$1$30 ==.
                                    1207 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:35: STR_PW = PW_CENTER_STR;
-      000139 75 08 09         [24] 1208 	mov	_STR_PW,#0x09
-      00013C 75 09 0B         [24] 1209 	mov	(_STR_PW + 1),#0x0B
+      000139 75 08 7D         [24] 1208 	mov	_STR_PW,#0x7D
+      00013C 75 09 0A         [24] 1209 	mov	(_STR_PW + 1),#0x0A
                            000089  1210 	C$lab3_1steering.c$37$1$30 ==.
                                    1211 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:37: PCA0CPL0 = 0xFFFF - STR_PW;
-      00013F 75 EA F6         [24] 1212 	mov	_PCA0CPL0,#0xF6
+      00013F 75 EA 82         [24] 1212 	mov	_PCA0CPL0,#0x82
                            00008C  1213 	C$lab3_1steering.c$38$1$30 ==.
                                    1214 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:38: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
-      000142 75 FA F4         [24] 1215 	mov	_PCA0CPH0,#0xF4
+      000142 75 FA F5         [24] 1215 	mov	_PCA0CPH0,#0xF5
                            00008F  1216 	C$lab3_1steering.c$39$1$30 ==.
                                    1217 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:39: while (count < 29);
       000145                       1218 00101$:
@@ -1356,15 +1356,15 @@
                            0000E1  1356 	C$lab3_1steering.c$115$2$40 ==.
                                    1357 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
       000197 C3               [12] 1358 	clr	c
-      000198 74 29            [12] 1359 	mov	a,#0x29
+      000198 74 BB            [12] 1359 	mov	a,#0xBB
       00019A 95 08            [12] 1360 	subb	a,_STR_PW
-      00019C 74 09            [12] 1361 	mov	a,#0x09
+      00019C 74 08            [12] 1361 	mov	a,#0x08
       00019E 95 09            [12] 1362 	subb	a,(_STR_PW + 1)
       0001A0 40 08            [24] 1363 	jc	00102$
                            0000EC  1364 	C$lab3_1steering.c$117$3$41 ==.
                                    1365 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
-      0001A2 75 08 29         [24] 1366 	mov	_STR_PW,#0x29
-      0001A5 75 09 09         [24] 1367 	mov	(_STR_PW + 1),#0x09
+      0001A2 75 08 BB         [24] 1366 	mov	_STR_PW,#0xBB
+      0001A5 75 09 08         [24] 1367 	mov	(_STR_PW + 1),#0x08
       0001A8 80 31            [24] 1368 	sjmp	00111$
       0001AA                       1369 00102$:
                            0000F4  1370 	C$lab3_1steering.c$121$3$42 ==.
@@ -1384,15 +1384,15 @@
                            000107  1384 	C$lab3_1steering.c$128$2$43 ==.
                                    1385 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
       0001BD C3               [12] 1386 	clr	c
-      0001BE 74 43            [12] 1387 	mov	a,#0x43
+      0001BE 74 F3            [12] 1387 	mov	a,#0xF3
       0001C0 95 08            [12] 1388 	subb	a,_STR_PW
-      0001C2 74 0D            [12] 1389 	mov	a,#0x0D
+      0001C2 74 0C            [12] 1389 	mov	a,#0x0C
       0001C4 95 09            [12] 1390 	subb	a,(_STR_PW + 1)
       0001C6 50 08            [24] 1391 	jnc	00105$
                            000112  1392 	C$lab3_1steering.c$130$3$44 ==.
                                    1393 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
-      0001C8 75 08 43         [24] 1394 	mov	_STR_PW,#0x43
-      0001CB 75 09 0D         [24] 1395 	mov	(_STR_PW + 1),#0x0D
+      0001C8 75 08 F3         [24] 1394 	mov	_STR_PW,#0xF3
+      0001CB 75 09 0C         [24] 1395 	mov	(_STR_PW + 1),#0x0C
       0001CE 80 0B            [24] 1396 	sjmp	00111$
       0001D0                       1397 00105$:
                            00011A  1398 	C$lab3_1steering.c$134$3$45 ==.

@@ -1,3 +1,4 @@
+
  /*  Lab4
 Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
 Section 03
@@ -14,9 +15,9 @@ and steer the wheels toward a desired direction.
 #include <stdlib.h>
 #include <c8051_SDCC.h>
 #include <i2c.h>
-#define PW_CENTER_STR 2825
-#define PW_MIN_STR    2345
-#define PW_MAX_STR    3295
+#define PW_CENTER_STR 2685	// VALUES FOR MAX AND MIN OF STEERING AND MOTOR
+#define PW_MIN_STR    2235
+#define PW_MAX_STR    3185
 #define PW_MAX_DRIVE  3503
 #define PW_MIN_DRIVE  2028
 #define PW_NUET_DRIVE 2765
@@ -26,7 +27,7 @@ and steer the wheels toward a desired direction.
 //-----------------------------------------------------------------------------
 // 8051 Initialization Functions
 //-----------------------------------------------------------------------------
-
+							/////IN
 void Port_Init(void);
 void PCA_Init (void);
 void XBR0_Init(void);
@@ -44,10 +45,10 @@ void Drive_func(void);
 void wait(void);
 void start(void);
 unsigned int direction(void);
-
+							/////BATTERY/////
 unsigned long read_AD_input(unsigned char n);
 void Battery_func(void);
-
+							////CRASH DETECTION////
 void avoid_crash(void);
 
 
@@ -60,20 +61,21 @@ unsigned int STR_PW   = 0;
 unsigned int count = 0;
  int actual_heading;
  int desired_heading;
-unsigned int error;
 unsigned int offset;
 
-unsigned int range = 35;
+unsigned int range = 35; 		///GIVEN A CONSTANT NON-ZERO VALUE TO PREVENT FALSE-POSITIVE OF CRASH
 unsigned int MOTOR_PW = 0;
 
 __sbit __at 0xB7 SS0;
 
 unsigned char starter =0;
+unsigned char record =0;
 
 unsigned int DRV_lo_to_hi;
 unsigned char r_data[2];
 
 unsigned char pwpercent;
+
 
 //-----------------------------------------------------------------------------
 // Main Function
@@ -109,7 +111,9 @@ void main(void)
     count=0; //1 count = 20 milliseconds
 
 	while (count < 50);
-
+	Read_Ranger();
+	count =0;
+	while (count < 4);
 	//-----------------------------------------------------------------------------
 	// Start program 
 	//-----------------------------------------------------------------------------
@@ -120,13 +124,14 @@ void main(void)
 	while (1)
 	{
 
+		record =1;
 
 		if (!SS0)
 		{
-			wait();
+
 			if (count % 4==0)
 			{
-				Drive_func();
+				if (starter == 1) Drive_func();
 			}
 
 			if (count%2==0)
@@ -139,15 +144,17 @@ void main(void)
 				Battery_func();
 			}
 
-			if (range <= 22)
+			if (range <= 30)
 			{
-				avoid_crash();
+				if (starter == 1) avoid_crash();
 			} 
-			
+			//printf("\r\n%d,%d,%d,%d,%d",actual_heading,range,STR_PW,MOTOR_PW,count);
+			wait();
+			starter =1;
 
 		}
 
-		else {printf("\r\n The control is paused");count=1;starter=0;}
+		else {printf("\r\n The control is paused");count=1;}
     }   
 }
 
@@ -161,12 +168,13 @@ void main(void)
 void Drive_Motor(void)
 {
 //------------------------------------------------------------------------------
+	if (range == 0) {range = 35;}
 	if(range <= 12 ||(range <= 20 && STR_PW == PW_MIN_STR)){MOTOR_PW = PW_NUET_DRIVE;}
 	else if (range > 20 && range < 55) 
 	{  
 		if (MOTOR_PW <= PW_MAX_DRIVE)
 		{
-			MOTOR_PW = PW_NUET_DRIVE + 100 + 2* (float)(PW_MAX_DRIVE- PW_NUET_DRIVE)/(55.0 - range);
+			MOTOR_PW = PW_NUET_DRIVE + 200 + 2.5* (float)(PW_MAX_DRIVE- PW_NUET_DRIVE)/(55.0 - range);
 		}
 		else
 		{
@@ -316,6 +324,7 @@ void PCA_ISR ( void ) __interrupt 9
         CF =0;
         PCA0 = PCA_START;
         count++;
+        if (record) printf("\r\n%d,%d,%d,%d,%d",actual_heading,range,STR_PW,MOTOR_PW,count);
       
 
     }
@@ -370,12 +379,10 @@ void Drive_func(void)
 {
 
 	unsigned char r_addr = 0xE0;
-	unsigned int read = 0;
 
 	range = Read_Ranger();
 	r_data[0] = 0x51;
 	i2c_write_data(r_addr, 0, r_data, 1);
-	printf("\r\n The range is: %u", range);
 	Drive_Motor();
 
 }
@@ -413,7 +420,7 @@ void avoid_crash(void)
 	//printf("\r\nSTR_PW: %u", STR_PW);
 	STR_lo_to_hi= 0xFFFF - STR_PW;
 	PCA0CP0 = STR_lo_to_hi;
-	while(range < 35)
+	while(range < 30)
 	{
 		wait();
 		if (count % 4 == 0) Drive_func();
