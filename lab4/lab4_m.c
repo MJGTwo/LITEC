@@ -27,7 +27,7 @@ and steer the wheels toward a desired direction.
 //-----------------------------------------------------------------------------
 // 8051 Initialization Functions
 //-----------------------------------------------------------------------------
-							/////IN
+							/////INIT//////
 void Port_Init(void);
 void PCA_Init (void);
 void XBR0_Init(void);
@@ -55,26 +55,28 @@ void avoid_crash(void);
 //-----------------------------------------------------------------------------
 // Global Variables
 //-----------------------------------------------------------------------------
-
-unsigned int STR_lo_to_hi;
-unsigned int STR_PW   = 0;
-unsigned int count = 0;
- int actual_heading;
- int desired_heading;
-unsigned int offset;
-
-unsigned int range = 35; 		///GIVEN A CONSTANT NON-ZERO VALUE TO PREVENT FALSE-POSITIVE OF CRASH
-unsigned int MOTOR_PW = 0;
-
+//SYS VARS
+unsigned int  count = 0;
+unsigned char pwpercent;
+unsigned char starter=0;
+unsigned char record =0;
 __sbit __at 0xB7 SS0;
 
-unsigned char starter =0;
-unsigned char record =0;
+//STEERING VARS
+unsigned int STR_lo_to_hi;
+unsigned int STR_PW   = 0;
+         int actual_heading;
+         int desired_heading;
+unsigned int offset;
 
+
+//MOTOR
+unsigned int range = 35; 		///GIVEN A CONSTANT NON-ZERO VALUE TO PREVENT FALSE-POSITIVE OF CRASH
+unsigned int MOTOR_PW = 0;
 unsigned int DRV_lo_to_hi;
-unsigned char r_data[2];
+unsigned char r_data[2];        ///FOR I2C
 
-unsigned char pwpercent;
+
 
 
 //-----------------------------------------------------------------------------
@@ -97,7 +99,7 @@ void main(void)
 	ADC_Init();
 	
     
-    printf("\r\nEmbedded Control Car Calibration");
+    printf("\r\nEmbedded Control Car Calibration"); ///PUTTING CAR IN NUETRAL AND STRAIGHT FORWARD
     count=0;
     STR_PW = PW_CENTER_STR;
     MOTOR_PW = PW_NUET_DRIVE;
@@ -154,7 +156,24 @@ void main(void)
 
 		}
 
-		else {printf("\r\n The control is paused");count=1;}
+		else            ////SETS EVERYTHING TO STARTING VALUES
+        {
+            if (count % 50 ==0)
+            {
+                printf("\r\n The control is paused");
+                Battery_func();
+            }
+            STR_PW = PW_CENTER_STR;
+            MOTOR_PW = PW_NUET_DRIVE;
+            
+            STR_lo_to_hi= 0xFFFF - STR_PW;
+            PCA0CP0 = STR_lo_to_hi;
+            
+            DRV_lo_to_hi = 0xFFFF - MOTOR_PW;
+            PCA0CP2 = DRV_lo_to_hi;
+            wait();
+            
+        }
     }   
 }
 
@@ -168,9 +187,9 @@ void main(void)
 void Drive_Motor(void)
 {
 //------------------------------------------------------------------------------
-	if (range == 0) {range = 35;}
-	if(range <= 12 ||(range <= 20 && STR_PW == PW_MIN_STR)){MOTOR_PW = PW_NUET_DRIVE;}
-	else if (range > 20 && range < 55) 
+	if (range == 0) {range = 35;}                   ///FIXES GLITCH WHEN IT STARTS UP
+	if(range <= 12 ||(range <= 20 && STR_PW == PW_MIN_STR)){MOTOR_PW = PW_NUET_DRIVE;}  ////NEUTRAL RANGE
+	else if (range > 20 && range < 55)              ////FORWARD AND SPEEDING UP
 	{  
 		if (MOTOR_PW <= PW_MAX_DRIVE)
 		{
@@ -178,10 +197,10 @@ void Drive_Motor(void)
 		}
 		else
 		{
-			MOTOR_PW = PW_MAX_DRIVE;
+			MOTOR_PW = PW_MAX_DRIVE;                ///SETS LIMIT
 		}
 	}
-	else { MOTOR_PW = PW_MAX_DRIVE;}
+	else { MOTOR_PW = PW_MAX_DRIVE;}                ////SETS TO MAX
 
 
 	//printf("\r\n Motor Power is %u", MOTOR_PW);
@@ -226,9 +245,9 @@ void Steering_Servo(unsigned int direction)
 {
     
     //wait for a key to be pressed
-	if (direction < 1800)
+	if (direction < 1800)               /////IF FACING OPPOSITE DIRECTION, TURN LEFT
 	{
-		if (STR_PW <= PW_CENTER_STR - (float)(direction)/4.2)
+		if (STR_PW <= PW_CENTER_STR - (float)(direction)/4.2)   ///MAKES RATIO TO SMOOTHLY TURN
 		{
 			STR_PW = PW_CENTER_STR - (float)(direction)/4.2;
 		}
@@ -237,11 +256,11 @@ void Steering_Servo(unsigned int direction)
 			STR_PW -= 10;
 		}
 	}
-	else if ( direction == 0 || direction ==3600)
+	else if ( direction == 0 || direction ==3600)       ///GO STRAIGHT
 	{
 		STR_PW=PW_CENTER_STR;
 	}
-	else
+	else                            /////TURN RIGHT OTHERWISE
 	{
 		if (STR_PW >= PW_CENTER_STR + (float)(3600-direction)/1.9)
 		{
@@ -305,8 +324,8 @@ void SMB_Init(void)
 void PCA_Init(void)
 {
     PCA0MD = 0x81;
-    PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
-    PCA0CPM2 = 0xC2;
+    PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode FOR STEERING
+    PCA0CPM2 = 0xC2;    //CCM0 in 16-bit compare mode FOR MOTOR
     PCA0CN 	= 0x40;      //Enable PCA counter
     EIE1 |= 0x08;       //Enable PCA interrupt
     EA = 1;             //Enable global interrupts
@@ -338,7 +357,7 @@ void PCA_ISR ( void ) __interrupt 9
 //-----------------------------------------------------------------------------
 
 
-unsigned int direction(void)
+unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
 {
 	int value;
 	count =0;
@@ -356,18 +375,18 @@ unsigned int direction(void)
 
 }
 
-void start(void)
+void start(void)            ///WAITS UNTIL '*' IS ENTERED
 {
 	while (read_keypad() != '*') wait();
 }
 
-void wait(void)
+void wait(void)             ////FORCES THE CAR TO WAIT 20 MS
 {
 	unsigned int old_c = count+1;
 	while (count < old_c);
 }
 
-void Steering_func(void)
+void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
 {
 	actual_heading = ReadCompass();
 	offset = (unsigned int)((actual_heading +3600- desired_heading ) % 3600);
@@ -375,7 +394,7 @@ void Steering_func(void)
 
 }
 
-void Drive_func(void)
+void Drive_func(void)       ///FUNCTION TO HOLD ACTIONS FOR DRIVING
 {
 
 	unsigned char r_addr = 0xE0;
@@ -413,17 +432,17 @@ void Battery_func(void)
 	lcd_print("direction: %u\nrange: %u\n pw%c: %u\nbattery: %ld\n",actual_heading,range,0x25,pwpercent,read_AD_input(4));
 }
 
-void avoid_crash(void)
+void avoid_crash(void)          ////FORCES IT TO TURN LEFT
 {
 	STR_PW = PW_MIN_STR;
 
 	//printf("\r\nSTR_PW: %u", STR_PW);
 	STR_lo_to_hi= 0xFFFF - STR_PW;
 	PCA0CP0 = STR_lo_to_hi;
-	while(range < 30)
+	while(range < 30)           ////CHECKS EVERY 20MS AND PRINTS INFO WHEN NEEDED
 	{
 		wait();
-		if (count % 4 == 0) Drive_func();
+		if (count % 4 == 0) Drive_func();   ///CONTINUES DRIVING
 		if (count % 50 ==0) Battery_func();
 
 	}
