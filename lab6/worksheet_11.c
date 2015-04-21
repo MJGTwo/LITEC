@@ -1,8 +1,8 @@
 /*
-    Section:
-    Date:
-    File name:
-    Program description:
+    Name: Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
+    Section: 3B
+    Date: 4/21/15
+    Program description: testing algorithms
 */
 
 #include <c8051_SDCC.h>
