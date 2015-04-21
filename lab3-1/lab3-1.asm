@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Mon Mar 16 18:43:23 2015
+; This file was generated Fri Apr 03 08:32:49 2015
 ;--------------------------------------------------------
 	.module lab3_1
 	.optsdcc -mmcs51 --model-small
@@ -9,13 +9,12 @@
 ;--------------------------------------------------------
 ; Public variables in this module
 ;--------------------------------------------------------
+	.globl _PCA_ISR
 	.globl _main
-	.globl _putchar
-	.globl _getchar
-	.globl _printf
 	.globl _Sys_Init
 	.globl _UART0_Init
 	.globl _SYSCLK_Init
+	.globl _printf
 	.globl _SPIF
 	.globl _WCOL
 	.globl _MODF
@@ -292,15 +291,14 @@
 	.globl _DPL
 	.globl _SP
 	.globl _P0
+	.globl _input
 	.globl _count
-	.globl _PW
-	.globl _PW_MAX
-	.globl _PW_MIN
-	.globl _PW_CENTER
+	.globl _STR_PW
+	.globl _putchar
+	.globl _getchar
 	.globl _Port_Init
 	.globl _XBR0_Init
 	.globl _PCA_Init
-	.globl _PCA_ISR
 	.globl _Steering_Servo
 ;--------------------------------------------------------
 ; special function registers
@@ -873,21 +871,15 @@ _SPIF	=	0x00ff
 ; internal ram data
 ;--------------------------------------------------------
 	.area DSEG    (DATA)
-G$PW_CENTER$0$0==.
-_PW_CENTER::
-	.ds 2
-G$PW_MIN$0$0==.
-_PW_MIN::
-	.ds 2
-G$PW_MAX$0$0==.
-_PW_MAX::
-	.ds 2
-G$PW$0$0==.
-_PW::
+G$STR_PW$0$0==.
+_STR_PW::
 	.ds 2
 G$count$0$0==.
 _count::
 	.ds 2
+G$input$0$0==.
+_input::
+	.ds 1
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
 ;--------------------------------------------------------
@@ -977,25 +969,13 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab3_1.c$17$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:17: unsigned int PW_CENTER = 2765;
-	mov	_PW_CENTER,#0xCD
-	mov	(_PW_CENTER + 1),#0x0A
-	C$lab3_1.c$18$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:18: unsigned int PW_MIN =  2085;
-	mov	_PW_MIN,#0x25
-	mov	(_PW_MIN + 1),#0x08
-	C$lab3_1.c$19$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:19: unsigned int PW_MAX = 3265;
-	mov	_PW_MAX,#0xC1
-	mov	(_PW_MAX + 1),#0x0C
-	C$lab3_1.c$20$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:20: unsigned int PW = 0;
+	C$lab3_1.c$14$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:14: unsigned int STR_PW   = 0;
 	clr	a
-	mov	_PW,a
-	mov	(_PW + 1),a
-	C$lab3_1.c$21$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:21: unsigned int count =0;
+	mov	_STR_PW,a
+	mov	(_STR_PW + 1),a
+	C$lab3_1.c$15$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:15: unsigned int count = 0;
 	mov	_count,a
 	mov	(_count + 1),a
 	.area GSFINAL (CODE)
@@ -1032,10 +1012,10 @@ _SYSCLK_Init:
 	ar2 = 0x02
 	ar1 = 0x01
 	ar0 = 0x00
-	C$c8051_SDCC.h$46$1$2 ==.
+	C$c8051_SDCC.h$46$1$16 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:46: OSCXCN = 0x67;                      // start external oscillator with
 	mov	_OSCXCN,#0x67
-	C$c8051_SDCC.h$49$1$2 ==.
+	C$c8051_SDCC.h$49$1$16 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:49: for (i=0; i < 256; i++);            // wait for oscillator to start
 	mov	r6,#0x00
 	mov	r7,#0x01
@@ -1047,83 +1027,83 @@ _SYSCLK_Init:
 	mov	a,r6
 	orl	a,r7
 	jnz	00107$
-	C$c8051_SDCC.h$51$1$2 ==.
+	C$c8051_SDCC.h$51$1$16 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:51: while (!(OSCXCN & 0x80));           // Wait for crystal osc. to settle
 00102$:
 	mov	a,_OSCXCN
 	jnb	acc.7,00102$
-	C$c8051_SDCC.h$53$1$2 ==.
+	C$c8051_SDCC.h$53$1$16 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:53: OSCICN = 0x88;                      // select external oscillator as SYSCLK
 	mov	_OSCICN,#0x88
-	C$c8051_SDCC.h$56$1$2 ==.
+	C$c8051_SDCC.h$56$1$16 ==.
 	XG$SYSCLK_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'UART0_Init'
 ;------------------------------------------------------------
 	G$UART0_Init$0$0 ==.
-	C$c8051_SDCC.h$64$1$2 ==.
+	C$c8051_SDCC.h$64$1$16 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:64: void UART0_Init(void)
 ;	-----------------------------------------
 ;	 function UART0_Init
 ;	-----------------------------------------
 _UART0_Init:
-	C$c8051_SDCC.h$66$1$4 ==.
+	C$c8051_SDCC.h$66$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:66: SCON0  = 0x50;                      // SCON0: mode 1, 8-bit UART, enable RX
 	mov	_SCON0,#0x50
-	C$c8051_SDCC.h$67$1$4 ==.
+	C$c8051_SDCC.h$67$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:67: TMOD   = 0x20;                      // TMOD: timer 1, mode 2, 8-bit reload
 	mov	_TMOD,#0x20
-	C$c8051_SDCC.h$68$1$4 ==.
+	C$c8051_SDCC.h$68$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:68: TH1    = -(SYSCLK/BAUDRATE/16);     // set Timer1 reload value for baudrate
 	mov	_TH1,#0xDC
-	C$c8051_SDCC.h$69$1$4 ==.
+	C$c8051_SDCC.h$69$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:69: TR1    = 1;                         // start Timer1
 	setb	_TR1
-	C$c8051_SDCC.h$70$1$4 ==.
+	C$c8051_SDCC.h$70$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:70: CKCON |= 0x10;                      // Timer1 uses SYSCLK as time base
 	orl	_CKCON,#0x10
-	C$c8051_SDCC.h$71$1$4 ==.
+	C$c8051_SDCC.h$71$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:71: PCON  |= 0x80;                      // SMOD00 = 1 (disable baud rate 
 	orl	_PCON,#0x80
-	C$c8051_SDCC.h$73$1$4 ==.
+	C$c8051_SDCC.h$73$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:73: TI0    = 1;                         // Indicate TX0 ready
 	setb	_TI0
-	C$c8051_SDCC.h$74$1$4 ==.
+	C$c8051_SDCC.h$74$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:74: P0MDOUT |= 0x01;                    // Set TX0 to push/pull
 	orl	_P0MDOUT,#0x01
-	C$c8051_SDCC.h$75$1$4 ==.
+	C$c8051_SDCC.h$75$1$18 ==.
 	XG$UART0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Sys_Init'
 ;------------------------------------------------------------
 	G$Sys_Init$0$0 ==.
-	C$c8051_SDCC.h$83$1$4 ==.
+	C$c8051_SDCC.h$83$1$18 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:83: void Sys_Init(void)
 ;	-----------------------------------------
 ;	 function Sys_Init
 ;	-----------------------------------------
 _Sys_Init:
-	C$c8051_SDCC.h$85$1$6 ==.
+	C$c8051_SDCC.h$85$1$20 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:85: WDTCN = 0xde;			// disable watchdog timer
 	mov	_WDTCN,#0xDE
-	C$c8051_SDCC.h$86$1$6 ==.
+	C$c8051_SDCC.h$86$1$20 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:86: WDTCN = 0xad;
 	mov	_WDTCN,#0xAD
-	C$c8051_SDCC.h$88$1$6 ==.
+	C$c8051_SDCC.h$88$1$20 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:88: SYSCLK_Init();			// initialize oscillator
 	lcall	_SYSCLK_Init
-	C$c8051_SDCC.h$89$1$6 ==.
+	C$c8051_SDCC.h$89$1$20 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:89: UART0_Init();			// initialize UART0
 	lcall	_UART0_Init
-	C$c8051_SDCC.h$91$1$6 ==.
+	C$c8051_SDCC.h$91$1$20 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:91: XBR0 |= 0x04;
 	orl	_XBR0,#0x04
-	C$c8051_SDCC.h$92$1$6 ==.
+	C$c8051_SDCC.h$92$1$20 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:92: XBR2 |= 0x40;                    	// Enable crossbar and weak pull-ups
 	orl	_XBR2,#0x40
-	C$c8051_SDCC.h$93$1$6 ==.
+	C$c8051_SDCC.h$93$1$20 ==.
 	XG$Sys_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -1132,25 +1112,25 @@ _Sys_Init:
 ;c                         Allocated to registers r7 
 ;------------------------------------------------------------
 	G$putchar$0$0 ==.
-	C$c8051_SDCC.h$98$1$6 ==.
+	C$c8051_SDCC.h$98$1$20 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:98: void putchar(char c)
 ;	-----------------------------------------
 ;	 function putchar
 ;	-----------------------------------------
 _putchar:
 	mov	r7,dpl
-	C$c8051_SDCC.h$100$1$8 ==.
+	C$c8051_SDCC.h$100$1$22 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:100: while (!TI0); 
 00101$:
-	C$c8051_SDCC.h$101$1$8 ==.
+	C$c8051_SDCC.h$101$1$22 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:101: TI0 = 0;
 	jbc	_TI0,00112$
 	sjmp	00101$
 00112$:
-	C$c8051_SDCC.h$102$1$8 ==.
+	C$c8051_SDCC.h$102$1$22 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:102: SBUF0 = c;
 	mov	_SBUF0,r7
-	C$c8051_SDCC.h$103$1$8 ==.
+	C$c8051_SDCC.h$103$1$22 ==.
 	XG$putchar$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -1159,60 +1139,60 @@ _putchar:
 ;c                         Allocated to registers 
 ;------------------------------------------------------------
 	G$getchar$0$0 ==.
-	C$c8051_SDCC.h$108$1$8 ==.
+	C$c8051_SDCC.h$108$1$22 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:108: char getchar(void)
 ;	-----------------------------------------
 ;	 function getchar
 ;	-----------------------------------------
 _getchar:
-	C$c8051_SDCC.h$111$1$10 ==.
+	C$c8051_SDCC.h$111$1$24 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:111: while (!RI0);
 00101$:
-	C$c8051_SDCC.h$112$1$10 ==.
+	C$c8051_SDCC.h$112$1$24 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:112: RI0 = 0;
 	jbc	_RI0,00112$
 	sjmp	00101$
 00112$:
-	C$c8051_SDCC.h$113$1$10 ==.
+	C$c8051_SDCC.h$113$1$24 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:113: c = SBUF0;
 	mov	dpl,_SBUF0
-	C$c8051_SDCC.h$114$1$10 ==.
+	C$c8051_SDCC.h$114$1$24 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:114: putchar(c);                          // echo to terminal
 	lcall	_putchar
-	C$c8051_SDCC.h$115$1$10 ==.
+	C$c8051_SDCC.h$115$1$24 ==.
 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/c8051_SDCC.h:115: return SBUF0;
 	mov	dpl,_SBUF0
-	C$c8051_SDCC.h$116$1$10 ==.
+	C$c8051_SDCC.h$116$1$24 ==.
 	XG$getchar$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
 	G$main$0$0 ==.
-	C$lab3_1.c$25$1$10 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:25: void main(void)
+	C$lab3_1.c$21$1$24 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:21: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	C$lab3_1.c$28$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:28: Sys_Init();
+	C$lab3_1.c$24$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:24: Sys_Init();
 	lcall	_Sys_Init
-	C$lab3_1.c$29$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:29: putchar(' '); //the quotes in this line may not format correctly
+	C$lab3_1.c$25$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:25: putchar(' '); //the quotes in this line may not format correctly
 	mov	dpl,#0x20
 	lcall	_putchar
-	C$lab3_1.c$30$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:30: Port_Init();
+	C$lab3_1.c$26$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:26: Port_Init();
 	lcall	_Port_Init
-	C$lab3_1.c$31$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:31: XBR0_Init();
+	C$lab3_1.c$27$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:27: XBR0_Init();
 	lcall	_XBR0_Init
-	C$lab3_1.c$32$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:32: PCA_Init();
+	C$lab3_1.c$28$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:28: PCA_Init();
 	lcall	_PCA_Init
-	C$lab3_1.c$35$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:35: printf("Embedded Control Steering Calibration\n");
+	C$lab3_1.c$31$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:31: printf("Embedded Control Steering Calibration\n");
 	mov	a,#___str_0
 	push	acc
 	mov	a,#(___str_0 >> 8)
@@ -1223,17 +1203,18 @@ _main:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab3_1.c$39$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:39: PW = PW_CENTER;
-	mov	_PW,_PW_CENTER
-	mov	(_PW + 1),(_PW_CENTER + 1)
-	C$lab3_1.c$40$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:40: count=0;
-	clr	a
-	mov	_count,a
-	mov	(_count + 1),a
-	C$lab3_1.c$41$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:41: while (count < 29);
+	C$lab3_1.c$35$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:35: STR_PW = PW_CENTER_STR;
+	mov	_STR_PW,#0xCD
+	mov	(_STR_PW + 1),#0x0A
+	C$lab3_1.c$37$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:37: PCA0CPL0 = 0xFFFF - STR_PW;
+	mov	_PCA0CPL0,#0x32
+	C$lab3_1.c$38$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:38: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
+	mov	_PCA0CPH0,#0xF5
+	C$lab3_1.c$39$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:39: while (count < 29);
 00101$:
 	clr	c
 	mov	a,_count
@@ -1241,130 +1222,117 @@ _main:
 	mov	a,(_count + 1)
 	subb	a,#0x00
 	jc	00101$
-	C$lab3_1.c$42$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:42: PCA0CPL0 = 0xFFFF - PW;
-	mov	r7,_PW
-	mov	a,#0xFF
-	clr	c
-	subb	a,r7
-	mov	_PCA0CPL0,a
-	C$lab3_1.c$43$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:43: PCA0CPH0 = (0xFFFF - PW) >> 8;
-	mov	a,#0xFF
-	clr	c
-	subb	a,_PW
-	mov	r6,a
-	mov	a,#0xFF
-	subb	a,(_PW + 1)
-	mov	r7,a
-	mov	_PCA0CPH0,r7
-	C$lab3_1.c$44$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:44: while(1)
+	C$lab3_1.c$40$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:40: while(1)
 00105$:
-	C$lab3_1.c$45$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:45: Steering_Servo();
+	C$lab3_1.c$42$2$31 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:42: input = (char)getchar();
+	lcall	_getchar
+	mov	_input,dpl
+	C$lab3_1.c$43$2$31 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:43: Steering_Servo();
 	lcall	_Steering_Servo
 	sjmp	00105$
-	C$lab3_1.c$46$1$45 ==.
+	C$lab3_1.c$47$1$30 ==.
 	XG$main$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Port_Init'
 ;------------------------------------------------------------
 	G$Port_Init$0$0 ==.
-	C$lab3_1.c$54$1$45 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:54: void Port_Init()
+	C$lab3_1.c$49$1$30 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:49: void Port_Init()
 ;	-----------------------------------------
 ;	 function Port_Init
 ;	-----------------------------------------
 _Port_Init:
-	C$lab3_1.c$56$1$46 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:56: P1MDOUT = 0x0F;  //set output pin for CEX0 or >CEX2< in push-pull mode
+	C$lab3_1.c$51$1$32 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:51: P1MDOUT = 0x0F;  //set output pin for CEX0 or CEX2 in push-pull mode
 	mov	_P1MDOUT,#0x0F
-	C$lab3_1.c$58$1$46 ==.
+	C$lab3_1.c$53$1$32 ==.
 	XG$Port_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'XBR0_Init'
 ;------------------------------------------------------------
 	G$XBR0_Init$0$0 ==.
-	C$lab3_1.c$66$1$46 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:66: void XBR0_Init()
+	C$lab3_1.c$61$1$32 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:61: void XBR0_Init()
 ;	-----------------------------------------
 ;	 function XBR0_Init
 ;	-----------------------------------------
 _XBR0_Init:
-	C$lab3_1.c$69$1$47 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:69: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
+	C$lab3_1.c$64$1$33 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:64: XBR0  = 0x27;  //configure crossbar as directed in the laboratory
 	mov	_XBR0,#0x27
-	C$lab3_1.c$71$1$47 ==.
+	C$lab3_1.c$66$1$33 ==.
 	XG$XBR0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_Init'
 ;------------------------------------------------------------
 	G$PCA_Init$0$0 ==.
-	C$lab3_1.c$79$1$47 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:79: void PCA_Init(void)
+	C$lab3_1.c$74$1$33 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:74: void PCA_Init(void)
 ;	-----------------------------------------
 ;	 function PCA_Init
 ;	-----------------------------------------
 _PCA_Init:
-	C$lab3_1.c$83$1$49 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:83: PCA0MD = 0x81;
+	C$lab3_1.c$78$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:78: PCA0MD = 0x81;
 	mov	_PCA0MD,#0x81
-	C$lab3_1.c$84$1$49 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:84: PCA0CPM0 = 0xC2;	//CCM0 in 16-bit compare mode
+	C$lab3_1.c$79$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:79: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode
 	mov	_PCA0CPM0,#0xC2
-	C$lab3_1.c$85$1$49 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:85: PCA0CN = 0x40;		//Enable PCA counter
+	C$lab3_1.c$80$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:80: PCA0CN = 0x40;      //Enable PCA counter
 	mov	_PCA0CN,#0x40
-	C$lab3_1.c$86$1$49 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:86: EIE1 |= 0x08;		//Enable PCA interrupt
+	C$lab3_1.c$81$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:81: EIE1 |= 0x08;       //Enable PCA interrupt
 	orl	_EIE1,#0x08
-	C$lab3_1.c$87$1$49 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:87: EA = 1;				//Enable global interrupts
+	C$lab3_1.c$82$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:82: EA = 1;             //Enable global interrupts
 	setb	_EA
-	C$lab3_1.c$88$1$49 ==.
+	C$lab3_1.c$83$1$35 ==.
 	XG$PCA_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_ISR'
 ;------------------------------------------------------------
 	G$PCA_ISR$0$0 ==.
-	C$lab3_1.c$96$1$49 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:96: void PCA_ISR ( void ) __interrupt 9
+	C$lab3_1.c$91$1$35 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:91: void PCA_ISR ( void ) __interrupt 9
 ;	-----------------------------------------
 ;	 function PCA_ISR
 ;	-----------------------------------------
 _PCA_ISR:
 	push	acc
 	push	psw
-	C$lab3_1.c$99$1$51 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:99: if (CF)
-	C$lab3_1.c$101$2$52 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:101: CF =0;
+	C$lab3_1.c$94$1$37 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:94: if (CF)
+	C$lab3_1.c$96$2$38 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:96: CF =0;
 	jbc	_CF,00108$
 	sjmp	00102$
 00108$:
-	C$lab3_1.c$102$2$52 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:102: PCA0 = 0x7000;
+	C$lab3_1.c$97$2$38 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:97: PCA0 = 0x7000;
 	mov	((_PCA0 >> 0) & 0xFF),#0x00
 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-	C$lab3_1.c$103$2$52 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:103: count++;
+	C$lab3_1.c$98$2$38 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:98: count++;
 	inc	_count
 	clr	a
 	cjne	a,_count,00109$
 	inc	(_count + 1)
 00109$:
 00102$:
-	C$lab3_1.c$106$1$51 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:106: PCA0CN &= 0xC0;
+	C$lab3_1.c$101$1$37 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:101: PCA0CN &= 0xC0;
 	anl	_PCA0CN,#0xC0
 	pop	psw
 	pop	acc
-	C$lab3_1.c$109$1$51 ==.
+	C$lab3_1.c$104$1$37 ==.
 	XG$PCA_ISR$0$0 ==.
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
@@ -1374,76 +1342,72 @@ _PCA_ISR:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Steering_Servo'
 ;------------------------------------------------------------
-;input                     Allocated to registers r7 
-;------------------------------------------------------------
 	G$Steering_Servo$0$0 ==.
-	C$lab3_1.c$111$1$51 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:111: void Steering_Servo()
+	C$lab3_1.c$106$1$37 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:106: void Steering_Servo()
 ;	-----------------------------------------
 ;	 function Steering_Servo
 ;	-----------------------------------------
 _Steering_Servo:
-	C$lab3_1.c$115$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:115: input = (char)getchar();
-	lcall	_getchar
-	mov	r7,dpl
-	C$lab3_1.c$116$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:116: if(input == 'r')  // single character input to increase the pulsewidth
-	cjne	r7,#0x72,00110$
-	C$lab3_1.c$120$2$54 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:120: if(PW <= PW_MIN)  // check if less than pulsewidth minimum
+	C$lab3_1.c$111$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:111: if(input == 'r')  // single character input to increase the pulsewidth
+	mov	a,#0x72
+	cjne	a,_input,00110$
+	C$lab3_1.c$115$2$40 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
 	clr	c
-	mov	a,_PW_MIN
-	subb	a,_PW
-	mov	a,(_PW_MIN + 1)
-	subb	a,(_PW + 1)
+	mov	a,#0xD9
+	subb	a,_STR_PW
+	mov	a,#0x08
+	subb	a,(_STR_PW + 1)
 	jc	00102$
-	C$lab3_1.c$122$3$55 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:122: PW = PW_MIN;    // set SERVO_PW to a minimum value
-	mov	_PW,_PW_MIN
-	mov	(_PW + 1),(_PW_MIN + 1)
+	C$lab3_1.c$117$3$41 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
+	mov	_STR_PW,#0xD9
+	mov	(_STR_PW + 1),#0x08
 	sjmp	00111$
 00102$:
-	C$lab3_1.c$126$3$56 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:126: PW -= 10;
-	mov	a,_PW
+	C$lab3_1.c$121$3$42 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:121: STR_PW-= 10;
+	mov	a,_STR_PW
 	add	a,#0xF6
-	mov	_PW,a
-	mov	a,(_PW + 1)
+	mov	_STR_PW,a
+	mov	a,(_STR_PW + 1)
 	addc	a,#0xFF
-	mov	(_PW + 1),a
+	mov	(_STR_PW + 1),a
 	sjmp	00111$
 00110$:
-	C$lab3_1.c$129$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:129: else if(input == 'l')  // single character input to decrease the pulsewidth
-	cjne	r7,#0x6C,00111$
-	C$lab3_1.c$133$2$57 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:133: if(PW > PW_MAX)  // check if pulsewidth maximum exceeded
+	C$lab3_1.c$124$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:124: else if(input == 'l')  // single character input to decrease the pulsewidth
+	mov	a,#0x6C
+	cjne	a,_input,00111$
+	C$lab3_1.c$128$2$43 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
 	clr	c
-	mov	a,_PW_MAX
-	subb	a,_PW
-	mov	a,(_PW_MAX + 1)
-	subb	a,(_PW + 1)
+	mov	a,#0xCB
+	subb	a,_STR_PW
+	mov	a,#0x0C
+	subb	a,(_STR_PW + 1)
 	jnc	00105$
-	C$lab3_1.c$135$3$58 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:135: PW = PW_MAX;     // set PW to a maximum value
-	mov	_PW,_PW_MAX
-	mov	(_PW + 1),(_PW_MAX + 1)
+	C$lab3_1.c$130$3$44 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
+	mov	_STR_PW,#0xCB
+	mov	(_STR_PW + 1),#0x0C
 	sjmp	00111$
 00105$:
-	C$lab3_1.c$139$3$59 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:139: PW += 10;
+	C$lab3_1.c$134$3$45 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:134: STR_PW+= 10;
 	mov	a,#0x0A
-	add	a,_PW
-	mov	_PW,a
+	add	a,_STR_PW
+	mov	_STR_PW,a
 	clr	a
-	addc	a,(_PW + 1)
-	mov	(_PW + 1),a
+	addc	a,(_STR_PW + 1)
+	mov	(_STR_PW + 1),a
 00111$:
-	C$lab3_1.c$142$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:142: printf("PW: %u\n", PW);
-	push	_PW
-	push	(_PW + 1)
+	C$lab3_1.c$137$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:137: printf("\r\nSTR_PW: %u", STR_PW);
+	push	_STR_PW
+	push	(_STR_PW + 1)
 	mov	a,#___str_1
 	push	acc
 	mov	a,#(___str_1 >> 8)
@@ -1454,23 +1418,23 @@ _Steering_Servo:
 	mov	a,sp
 	add	a,#0xfb
 	mov	sp,a
-	C$lab3_1.c$143$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:143: PCA0CPL0 = 0xFFFF - PW;
-	mov	r7,_PW
+	C$lab3_1.c$138$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:138: PCA0CPL0 = 0xFFFF - STR_PW;
+	mov	r7,_STR_PW
 	mov	a,#0xFF
 	clr	c
 	subb	a,r7
 	mov	_PCA0CPL0,a
-	C$lab3_1.c$144$1$53 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:144: PCA0CPH0 = (0xFFFF - PW) >> 8;
+	C$lab3_1.c$139$1$39 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1.c:139: PCA0CPH0 = (0xFFFF - STR_PW) >> 8;
 	mov	a,#0xFF
 	clr	c
-	subb	a,_PW
+	subb	a,_STR_PW
 	mov	a,#0xFF
-	subb	a,(_PW + 1)
+	subb	a,(_STR_PW + 1)
 	mov	r7,a
 	mov	_PCA0CPH0,r7
-	C$lab3_1.c$146$1$53 ==.
+	C$lab3_1.c$141$1$39 ==.
 	XG$Steering_Servo$0$0 ==.
 	ret
 	.area CSEG    (CODE)
@@ -1482,8 +1446,9 @@ ___str_0:
 	.db 0x00
 Flab3_1$__str_1$0$0 == .
 ___str_1:
-	.ascii "PW: %u"
+	.db 0x0D
 	.db 0x0A
+	.ascii "STR_PW: %u"
 	.db 0x00
 	.area XINIT   (CODE)
 	.area CABS    (ABS,CODE)
