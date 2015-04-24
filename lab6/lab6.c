@@ -1,3 +1,4 @@
+
  /*  Lab6
 Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
 Section 03
@@ -277,8 +278,6 @@ void Rudder_cal(void)
 
 void Angle_cal(void)
 {
-	int value = 0;
-	int times = 0;
 	int value =0;
 	int times =0;
 	count =0;
@@ -291,12 +290,6 @@ void Angle_cal(void)
 		count = 0;
 		while (count < 1);
 		lcd_clear();
-		lcd_print("Angle Calibration\n tilt up: press 1\n tilt down: press 2\n confirm: press 3\nPress # for next screen");
-		start();
-		lcd_clear();
-
-		while (1)
-		{
 		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
 		start();
 		lcd_clear();
@@ -384,18 +377,6 @@ void Thrust_cal(void)
 {
 	int value =0;
 	int times =0;
-	while (1)
-	{
-
-		count =0;
-		while (count < 1);
-		lcd_clear();
-		lcd_print("Thrust Calibration\n Decrease thrust PW: press 1\n Increase thrust PW: press 2\n confirm: press 3\nPress # for next screen");
-		start();
-		lcd_clear();
-
-		while (1)
-		{
 	count =0;
 	lcd_clear();
 	lcd_print("Thrust Calibration");
