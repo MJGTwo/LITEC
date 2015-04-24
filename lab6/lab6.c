@@ -94,6 +94,13 @@ void main(void)
 
 
 	Rudder_cal();
+	RUDDER_PW= PW_CENTER_RUDDER;
+	RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
+	PCA0CP0 = RDR_lo_to_hi;
+
+	Angle_cal();
+	Thrust_cal();
+
 	while (1)
 	{
 		printf("\r\n%u ms",count*20);
@@ -517,8 +524,8 @@ void Steering_Servo(unsigned int direction)
 
 
     //printf("\r\nRUDDER_PW: %u", RUDDER_PW);
-    RDR_lo_to_h= 0xFFFF - RUDDER_PW;
-    PCA0CP0 = RDR_lo_to_h;
+    RDR_lo_to_hi= 0xFFFF - RUDDER_PW;
+    PCA0CP0 = RDR_lo_to_hi;
 }
 
 void start(void)            ///WAITS UNTIL '*' IS ENTERED
