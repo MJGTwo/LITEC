@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Fri Apr 24 10:13:48 2015
+; This file was generated Fri Apr 24 10:40:23 2015
 ;--------------------------------------------------------
 	.module lab6
 	.optsdcc -mmcs51 --model-small
@@ -307,8 +307,10 @@
 	.globl _offset
 	.globl _actual_D
 	.globl _desired_D
-	.globl _TRST_lo_to_hi
-	.globl _THRUST_PW
+	.globl _LTRST_lo_to_hi
+	.globl _RTRST_lo_to_hi
+	.globl _LTHRUST_PW
+	.globl _RTHRUST_PW
 	.globl _AGL_lo_to_hi
 	.globl _ANGLE_PW
 	.globl _RDR_lo_to_hi
@@ -1020,11 +1022,17 @@ _ANGLE_PW::
 G$AGL_lo_to_hi$0$0==.
 _AGL_lo_to_hi::
 	.ds 2
-G$THRUST_PW$0$0==.
-_THRUST_PW::
+G$RTHRUST_PW$0$0==.
+_RTHRUST_PW::
 	.ds 2
-G$TRST_lo_to_hi$0$0==.
-_TRST_lo_to_hi::
+G$LTHRUST_PW$0$0==.
+_LTHRUST_PW::
+	.ds 2
+G$RTRST_lo_to_hi$0$0==.
+_RTRST_lo_to_hi::
+	.ds 2
+G$LTRST_lo_to_hi$0$0==.
+_LTRST_lo_to_hi::
 	.ds 2
 G$desired_D$0$0==.
 _desired_D::
@@ -1041,8 +1049,8 @@ _r_data::
 Llab6.ReadCompass$Data$1$134==.
 _ReadCompass_Data_1_134:
 	.ds 2
-Llab6.Steering_Servo$direction$1$192==.
-_Steering_Servo_direction_1_192:
+Llab6.Steering_Servo$direction$1$194==.
+_Steering_Servo_direction_1_194:
 	.ds 2
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
@@ -1142,44 +1150,44 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab6.c$43$1$216 ==.
+	C$lab6.c$43$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:43: int count=0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$44$1$216 ==.
+	C$lab6.c$44$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:44: unsigned int PW_MIN_THRUST = 2000;
 	mov	_PW_MIN_THRUST,#0xD0
 	mov	(_PW_MIN_THRUST + 1),#0x07
-	C$lab6.c$45$1$216 ==.
+	C$lab6.c$45$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:45: unsigned int PW_NUET_THRUST = 2750;
 	mov	_PW_NUET_THRUST,#0xBE
 	mov	(_PW_NUET_THRUST + 1),#0x0A
-	C$lab6.c$46$1$216 ==.
+	C$lab6.c$46$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:46: unsigned int PW_MAX_THRUST = 3500;
 	mov	_PW_MAX_THRUST,#0xAC
 	mov	(_PW_MAX_THRUST + 1),#0x0D
-	C$lab6.c$48$1$216 ==.
+	C$lab6.c$48$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:48: unsigned int PW_LEFT_RUDDER = 2000;
 	mov	_PW_LEFT_RUDDER,#0xD0
 	mov	(_PW_LEFT_RUDDER + 1),#0x07
-	C$lab6.c$49$1$216 ==.
+	C$lab6.c$49$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:49: unsigned int PW_CENTER_RUDDER = 2750;
 	mov	_PW_CENTER_RUDDER,#0xBE
 	mov	(_PW_CENTER_RUDDER + 1),#0x0A
-	C$lab6.c$50$1$216 ==.
+	C$lab6.c$50$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:50: unsigned int PW_RIGHT_RUDDER = 3500;
 	mov	_PW_RIGHT_RUDDER,#0xAC
 	mov	(_PW_RIGHT_RUDDER + 1),#0x0D
-	C$lab6.c$52$1$216 ==.
+	C$lab6.c$52$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:52: unsigned int PW_UP_ANGLE = 2880;
 	mov	_PW_UP_ANGLE,#0x40
 	mov	(_PW_UP_ANGLE + 1),#0x0B
-	C$lab6.c$53$1$216 ==.
+	C$lab6.c$53$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:53: unsigned int PW_CENTER_ANGLE = 3530;
 	mov	_PW_CENTER_ANGLE,#0xCA
 	mov	(_PW_CENTER_ANGLE + 1),#0x0D
-	C$lab6.c$54$1$216 ==.
+	C$lab6.c$54$1$218 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:54: unsigned int PW_DOWN_ANGLE = 4180;
 	mov	_PW_DOWN_ANGLE,#0x54
 	mov	(_PW_DOWN_ANGLE + 1),#0x10
@@ -2357,53 +2365,57 @@ _Accel_Init:
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
 	G$main$0$0 ==.
-	C$lab6.c$70$1$103 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:70: void main(void)
+	C$lab6.c$72$1$103 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:72: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	C$lab6.c$72$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:72: Sys_Init();
+	C$lab6.c$74$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:74: Sys_Init();
 	lcall	_Sys_Init
-	C$lab6.c$73$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:73: putchar(' '); //the quotes in this line may not format correctly
+	C$lab6.c$75$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:75: putchar(' '); //the quotes in this line may not format correctly
 	mov	dpl,#0x20
 	lcall	_putchar
-	C$lab6.c$74$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:74: Port_Init();
-	lcall	_Port_Init
-	C$lab6.c$75$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:75: XBR0_Init();
-	lcall	_XBR0_Init
 	C$lab6.c$76$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:76: PCA_Init();
-	lcall	_PCA_Init
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:76: Port_Init();
+	lcall	_Port_Init
 	C$lab6.c$77$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:77: SMB_Init();
-	lcall	_SMB_Init
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:77: XBR0_Init();
+	lcall	_XBR0_Init
 	C$lab6.c$78$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:78: ADC_Init();
-	lcall	_ADC_Init
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:78: PCA_Init();
+	lcall	_PCA_Init
+	C$lab6.c$79$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:79: SMB_Init();
+	lcall	_SMB_Init
 	C$lab6.c$80$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:80: count =0;
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:80: ADC_Init();
+	lcall	_ADC_Init
+	C$lab6.c$82$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:82: count =0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$82$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:82: RUDDER_PW= PW_CENTER_RUDDER;
+	C$lab6.c$84$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:84: RUDDER_PW= PW_CENTER_RUDDER;
 	mov	_RUDDER_PW,_PW_CENTER_RUDDER
 	mov	(_RUDDER_PW + 1),(_PW_CENTER_RUDDER + 1)
-	C$lab6.c$83$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:83: ANGLE_PW = PW_CENTER_ANGLE;
+	C$lab6.c$85$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:85: ANGLE_PW = PW_CENTER_ANGLE;
 	mov	_ANGLE_PW,_PW_CENTER_ANGLE
 	mov	(_ANGLE_PW + 1),(_PW_CENTER_ANGLE + 1)
-	C$lab6.c$84$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:84: THRUST_PW = PW_NUET_THRUST;
-	mov	_THRUST_PW,_PW_NUET_THRUST
-	mov	(_THRUST_PW + 1),(_PW_NUET_THRUST + 1)
 	C$lab6.c$86$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:86: RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:86: RTHRUST_PW = PW_NUET_THRUST;
+	mov	_RTHRUST_PW,_PW_NUET_THRUST
+	mov	(_RTHRUST_PW + 1),(_PW_NUET_THRUST + 1)
+	C$lab6.c$87$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:87: LTHRUST_PW = PW_NUET_THRUST;
+	mov	_LTHRUST_PW,_PW_NUET_THRUST
+	mov	(_LTHRUST_PW + 1),(_PW_NUET_THRUST + 1)
+	C$lab6.c$89$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:89: RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
 	dec	a
 	clr	c
 	subb	a,_RUDDER_PW
@@ -2411,17 +2423,26 @@ _main:
 	mov	a,#0xFF
 	subb	a,(_RUDDER_PW + 1)
 	mov	(_RDR_lo_to_hi + 1),a
-	C$lab6.c$87$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:87: TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+	C$lab6.c$90$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:90: RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 	mov	a,#0xFF
 	clr	c
-	subb	a,_THRUST_PW
-	mov	_TRST_lo_to_hi,a
+	subb	a,_RTHRUST_PW
+	mov	_RTRST_lo_to_hi,a
 	mov	a,#0xFF
-	subb	a,(_THRUST_PW + 1)
-	mov	(_TRST_lo_to_hi + 1),a
-	C$lab6.c$88$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:88: AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
+	subb	a,(_RTHRUST_PW + 1)
+	mov	(_RTRST_lo_to_hi + 1),a
+	C$lab6.c$91$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:91: LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
+	mov	a,#0xFF
+	clr	c
+	subb	a,_LTHRUST_PW
+	mov	_LTRST_lo_to_hi,a
+	mov	a,#0xFF
+	subb	a,(_LTHRUST_PW + 1)
+	mov	(_LTRST_lo_to_hi + 1),a
+	C$lab6.c$92$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:92: AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_ANGLE_PW
@@ -2429,27 +2450,31 @@ _main:
 	mov	a,#0xFF
 	subb	a,(_ANGLE_PW + 1)
 	mov	(_AGL_lo_to_hi + 1),a
-	C$lab6.c$90$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:90: PCA0CP0 = RDR_lo_to_hi;
+	C$lab6.c$94$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:94: PCA0CP0 = RDR_lo_to_hi;
 	mov	((_PCA0CP0 >> 0) & 0xFF),_RDR_lo_to_hi
 	mov	((_PCA0CP0 >> 8) & 0xFF),(_RDR_lo_to_hi + 1)
-	C$lab6.c$91$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:91: PCA0CP1 = AGL_lo_to_hi;	
+	C$lab6.c$95$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:95: PCA0CP1 = AGL_lo_to_hi;	
 	mov	((_PCA0CP1 >> 0) & 0xFF),_AGL_lo_to_hi
 	mov	((_PCA0CP1 >> 8) & 0xFF),(_AGL_lo_to_hi + 1)
-	C$lab6.c$92$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:92: PCA0CP2 = TRST_lo_to_hi;
-	mov	((_PCA0CP2 >> 0) & 0xFF),_TRST_lo_to_hi
-	mov	((_PCA0CP2 >> 8) & 0xFF),(_TRST_lo_to_hi + 1)
+	C$lab6.c$96$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:96: PCA0CP2 = RTRST_lo_to_hi;
+	mov	((_PCA0CP2 >> 0) & 0xFF),_RTRST_lo_to_hi
+	mov	((_PCA0CP2 >> 8) & 0xFF),(_RTRST_lo_to_hi + 1)
 	C$lab6.c$97$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:97: Rudder_cal();
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:97: PCA0CP3 = LTRST_lo_to_hi;
+	mov	((_PCA0CP3 >> 0) & 0xFF),_LTRST_lo_to_hi
+	mov	((_PCA0CP3 >> 8) & 0xFF),(_LTRST_lo_to_hi + 1)
+	C$lab6.c$102$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:102: Rudder_cal();
 	lcall	_Rudder_cal
-	C$lab6.c$98$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:98: RUDDER_PW= PW_CENTER_RUDDER;
+	C$lab6.c$103$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:103: RUDDER_PW= PW_CENTER_RUDDER;
 	mov	_RUDDER_PW,_PW_CENTER_RUDDER
 	mov	(_RUDDER_PW + 1),(_PW_CENTER_RUDDER + 1)
-	C$lab6.c$99$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:99: RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
+	C$lab6.c$104$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:104: RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_RUDDER_PW
@@ -2457,19 +2482,19 @@ _main:
 	mov	a,#0xFF
 	subb	a,(_RUDDER_PW + 1)
 	mov	(_RDR_lo_to_hi + 1),a
-	C$lab6.c$100$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:100: PCA0CP0 = RDR_lo_to_hi;
+	C$lab6.c$105$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:105: PCA0CP0 = RDR_lo_to_hi;
 	mov	((_PCA0CP0 >> 0) & 0xFF),_RDR_lo_to_hi
 	mov	((_PCA0CP0 >> 8) & 0xFF),(_RDR_lo_to_hi + 1)
-	C$lab6.c$102$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:102: Angle_cal();
+	C$lab6.c$107$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:107: Angle_cal();
 	lcall	_Angle_cal
-	C$lab6.c$103$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:103: ANGLE_PW = PW_CENTER_ANGLE;
+	C$lab6.c$108$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:108: ANGLE_PW = PW_CENTER_ANGLE;
 	mov	_ANGLE_PW,_PW_CENTER_ANGLE
 	mov	(_ANGLE_PW + 1),(_PW_CENTER_ANGLE + 1)
-	C$lab6.c$104$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:104: AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
+	C$lab6.c$109$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:109: AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_ANGLE_PW
@@ -2477,31 +2502,44 @@ _main:
 	mov	a,#0xFF
 	subb	a,(_ANGLE_PW + 1)
 	mov	(_AGL_lo_to_hi + 1),a
-	C$lab6.c$105$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:105: PCA0CP1 = AGL_lo_to_hi;
+	C$lab6.c$110$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:110: PCA0CP1 = AGL_lo_to_hi;
 	mov	((_PCA0CP1 >> 0) & 0xFF),_AGL_lo_to_hi
 	mov	((_PCA0CP1 >> 8) & 0xFF),(_AGL_lo_to_hi + 1)
-	C$lab6.c$107$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:107: Thrust_cal();
+	C$lab6.c$112$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:112: Thrust_cal();
 	lcall	_Thrust_cal
-	C$lab6.c$108$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:108: THRUST_PW = PW_NUET_THRUST;
-	mov	_THRUST_PW,_PW_NUET_THRUST
-	mov	(_THRUST_PW + 1),(_PW_NUET_THRUST + 1)
-	C$lab6.c$109$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:109: TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+	C$lab6.c$113$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:113: RTHRUST_PW = PW_NUET_THRUST;
+	mov	_RTHRUST_PW,_PW_NUET_THRUST
+	mov	(_RTHRUST_PW + 1),(_PW_NUET_THRUST + 1)
+	C$lab6.c$114$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:114: LTHRUST_PW = PW_NUET_THRUST;
+	mov	_LTHRUST_PW,_PW_NUET_THRUST
+	mov	(_LTHRUST_PW + 1),(_PW_NUET_THRUST + 1)
+	C$lab6.c$115$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:115: RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 	mov	a,#0xFF
 	clr	c
-	subb	a,_THRUST_PW
-	mov	_TRST_lo_to_hi,a
+	subb	a,_RTHRUST_PW
+	mov	_RTRST_lo_to_hi,a
 	mov	a,#0xFF
-	subb	a,(_THRUST_PW + 1)
-	mov	(_TRST_lo_to_hi + 1),a
-	C$lab6.c$112$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:112: while (1)
+	subb	a,(_RTHRUST_PW + 1)
+	mov	(_RTRST_lo_to_hi + 1),a
+	C$lab6.c$116$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:116: LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
+	mov	a,#0xFF
+	clr	c
+	subb	a,_LTHRUST_PW
+	mov	_LTRST_lo_to_hi,a
+	mov	a,#0xFF
+	subb	a,(_LTHRUST_PW + 1)
+	mov	(_LTRST_lo_to_hi + 1),a
+	C$lab6.c$119$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:119: while (1)
 00102$:
-	C$lab6.c$114$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:114: printf("\r\n%u ms",count*20);
+	C$lab6.c$121$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:121: printf("\r\n%u ms",count*20);
 	mov	__mulint_PARM_2,_count
 	mov	(__mulint_PARM_2 + 1),(_count + 1)
 	mov	dptr,#0x0014
@@ -2520,11 +2558,11 @@ _main:
 	mov	a,sp
 	add	a,#0xfb
 	mov	sp,a
-	C$lab6.c$115$2$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:115: wait();
+	C$lab6.c$122$2$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:122: wait();
 	lcall	_wait
 	sjmp	00102$
-	C$lab6.c$118$1$121 ==.
+	C$lab6.c$125$1$121 ==.
 	XG$main$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2533,18 +2571,18 @@ _main:
 ;distance                  Allocated to registers r6 r7 
 ;------------------------------------------------------------
 	G$Change_D$0$0 ==.
-	C$lab6.c$120$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:120: void Change_D(void)
+	C$lab6.c$127$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:127: void Change_D(void)
 ;	-----------------------------------------
 ;	 function Change_D
 ;	-----------------------------------------
 _Change_D:
-	C$lab6.c$122$1$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:122: unsigned int distance=100;
+	C$lab6.c$129$1$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:129: unsigned int distance=100;
 	mov	r6,#0x64
 	mov	r7,#0x00
-	C$lab6.c$123$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:123: if (count +1 % 4 == 0)
+	C$lab6.c$130$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:130: if (count +1 % 4 == 0)
 	mov	a,#0x01
 	add	a,_count
 	mov	r4,a
@@ -2553,22 +2591,22 @@ _Change_D:
 	mov	r5,a
 	orl	a,r4
 	jnz	00102$
-	C$lab6.c$125$2$125 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:125: distance = Read_Ranger();
+	C$lab6.c$132$2$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:132: distance = Read_Ranger();
 	lcall	_Read_Ranger
 	mov	r6,dpl
 	mov	r7,dph
 00102$:
-	C$lab6.c$127$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:127: if (distance < 50)
+	C$lab6.c$134$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:134: if (distance < 50)
 	clr	c
 	mov	a,r6
 	subb	a,#0x32
 	mov	a,r7
 	subb	a,#0x00
 	jnc	00105$
-	C$lab6.c$129$2$126 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:129: desired_D = (desired_D + 1800) % 3600;
+	C$lab6.c$136$2$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:136: desired_D = (desired_D + 1800) % 3600;
 	mov	a,#0x08
 	add	a,_desired_D
 	mov	dpl,a
@@ -2581,7 +2619,7 @@ _Change_D:
 	mov	_desired_D,dpl
 	mov	(_desired_D + 1),dph
 00105$:
-	C$lab6.c$131$1$124 ==.
+	C$lab6.c$138$1$124 ==.
 	XG$Change_D$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2591,14 +2629,14 @@ _Change_D:
 ;read                      Allocated to registers 
 ;------------------------------------------------------------
 	G$Read_Ranger$0$0 ==.
-	C$lab6.c$133$1$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:133: unsigned int Read_Ranger(void)
+	C$lab6.c$140$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:140: unsigned int Read_Ranger(void)
 ;	-----------------------------------------
 ;	 function Read_Ranger
 ;	-----------------------------------------
 _Read_Ranger:
-	C$lab6.c$139$1$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:139: i2c_read_data(r_addr, 2, r_data, 2);
+	C$lab6.c$146$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:146: i2c_read_data(r_addr, 2, r_data, 2);
 	mov	_i2c_read_data_PARM_3,#_r_data
 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
@@ -2606,8 +2644,8 @@ _Read_Ranger:
 	mov	_i2c_read_data_PARM_4,#0x02
 	mov	dpl,#0xE0
 	lcall	_i2c_read_data
-	C$lab6.c$140$1$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:140: read = (((unsigned int) r_data[0] <<8) | r_data[1]);
+	C$lab6.c$147$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:147: read = (((unsigned int) r_data[0] <<8) | r_data[1]);
 	mov	r7,_r_data
 	mov	r6,#0x00
 	mov	r4,(_r_data + 0x0001)
@@ -2618,28 +2656,28 @@ _Read_Ranger:
 	mov	a,r5
 	orl	a,r7
 	mov	dph,a
-	C$lab6.c$141$1$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:141: return read;
-	C$lab6.c$142$1$128 ==.
+	C$lab6.c$148$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:148: return read;
+	C$lab6.c$149$1$128 ==.
 	XG$Read_Ranger$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Steering_func'
 ;------------------------------------------------------------
 	G$Steering_func$0$0 ==.
-	C$lab6.c$144$1$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:144: void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
+	C$lab6.c$151$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:151: void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
 ;	-----------------------------------------
 ;	 function Steering_func
 ;	-----------------------------------------
 _Steering_func:
-	C$lab6.c$146$1$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:146: actual_D = ReadCompass();
+	C$lab6.c$153$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:153: actual_D = ReadCompass();
 	lcall	_ReadCompass
 	mov	_actual_D,dpl
 	mov	(_actual_D + 1),dph
-	C$lab6.c$147$1$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:147: offset = (unsigned int)((actual_D +3600- desired_D ) % 3600);
+	C$lab6.c$154$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:154: offset = (unsigned int)((actual_D +3600- desired_D ) % 3600);
 	mov	a,#0x10
 	add	a,_actual_D
 	mov	r6,a
@@ -2660,12 +2698,12 @@ _Steering_func:
 	mov	r7,dph
 	mov	_offset,r6
 	mov	(_offset + 1),r7
-	C$lab6.c$148$1$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:148: Steering_Servo(offset);
+	C$lab6.c$155$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:155: Steering_Servo(offset);
 	mov	dpl,_offset
 	mov	dph,(_offset + 1)
 	lcall	_Steering_Servo
-	C$lab6.c$150$1$130 ==.
+	C$lab6.c$157$1$130 ==.
 	XG$Steering_func$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2674,19 +2712,19 @@ _Steering_func:
 ;value                     Allocated to registers r6 r7 
 ;------------------------------------------------------------
 	G$direction$0$0 ==.
-	C$lab6.c$152$1$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:152: unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
+	C$lab6.c$159$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:159: unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
 ;	-----------------------------------------
 ;	 function direction
 ;	-----------------------------------------
 _direction:
-	C$lab6.c$155$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:155: count =0;
+	C$lab6.c$162$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:162: count =0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$156$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:156: while (count < 1);
+	C$lab6.c$163$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:163: while (count < 1);
 00101$:
 	clr	c
 	mov	a,_count
@@ -2695,11 +2733,11 @@ _direction:
 	xrl	a,#0x80
 	subb	a,#0x80
 	jc	00101$
-	C$lab6.c$157$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:157: lcd_clear();
+	C$lab6.c$164$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:164: lcd_clear();
 	lcall	_lcd_clear
-	C$lab6.c$158$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:158: lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij");
+	C$lab6.c$165$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:165: lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij");
 	mov	a,#___str_4
 	push	acc
 	mov	a,#(___str_4 >> 8)
@@ -2710,27 +2748,27 @@ _direction:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab6.c$159$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:159: start();
+	C$lab6.c$166$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:166: start();
 	lcall	_start
-	C$lab6.c$160$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:160: lcd_clear();
+	C$lab6.c$167$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:167: lcd_clear();
 	lcall	_lcd_clear
-	C$lab6.c$161$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:161: value = kpd_input(0);
+	C$lab6.c$168$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:168: value = kpd_input(0);
 	mov	dpl,#0x00
 	lcall	_kpd_input
 	mov	r6,dpl
 	mov	r7,dph
-	C$lab6.c$162$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:162: lcd_clear();
+	C$lab6.c$169$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:169: lcd_clear();
 	push	ar7
 	push	ar6
 	lcall	_lcd_clear
 	pop	ar6
 	pop	ar7
-	C$lab6.c$163$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:163: lcd_print("\r\nThe desired direction is: %d", value);
+	C$lab6.c$170$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:170: lcd_print("\r\nThe desired direction is: %d", value);
 	push	ar7
 	push	ar6
 	push	ar6
@@ -2747,8 +2785,8 @@ _direction:
 	mov	sp,a
 	pop	ar6
 	pop	ar7
-	C$lab6.c$164$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:164: printf("\r\nThe desired direction is: %d", value);
+	C$lab6.c$171$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:171: printf("\r\nThe desired direction is: %d", value);
 	push	ar7
 	push	ar6
 	push	ar6
@@ -2765,11 +2803,11 @@ _direction:
 	mov	sp,a
 	pop	ar6
 	pop	ar7
-	C$lab6.c$166$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:166: return value;
+	C$lab6.c$173$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:173: return value;
 	mov	dpl,r6
 	mov	dph,r7
-	C$lab6.c$168$1$132 ==.
+	C$lab6.c$175$1$132 ==.
 	XG$direction$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2780,14 +2818,14 @@ _direction:
 ;addr                      Allocated to registers 
 ;------------------------------------------------------------
 	G$ReadCompass$0$0 ==.
-	C$lab6.c$170$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:170: unsigned int ReadCompass(void)
+	C$lab6.c$177$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:177: unsigned int ReadCompass(void)
 ;	-----------------------------------------
 ;	 function ReadCompass
 ;	-----------------------------------------
 _ReadCompass:
-	C$lab6.c$176$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:176: i2c_read_data(addr, 2,Data,2);
+	C$lab6.c$183$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:183: i2c_read_data(addr, 2,Data,2);
 	mov	_i2c_read_data_PARM_3,#_ReadCompass_Data_1_134
 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
@@ -2795,8 +2833,8 @@ _ReadCompass:
 	mov	_i2c_read_data_PARM_4,#0x02
 	mov	dpl,#0xC0
 	lcall	_i2c_read_data
-	C$lab6.c$177$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:177: Crange = ((unsigned int) Data[0] << 8 | Data[1]);
+	C$lab6.c$184$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:184: Crange = ((unsigned int) Data[0] << 8 | Data[1]);
 	mov	r7,_ReadCompass_Data_1_134
 	mov	r6,#0x00
 	mov	r4,(_ReadCompass_Data_1_134 + 0x0001)
@@ -2807,9 +2845,9 @@ _ReadCompass:
 	mov	a,r5
 	orl	a,r7
 	mov	dph,a
-	C$lab6.c$178$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:178: return Crange;
-	C$lab6.c$179$1$134 ==.
+	C$lab6.c$185$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:185: return Crange;
+	C$lab6.c$186$1$134 ==.
 	XG$ReadCompass$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2820,18 +2858,18 @@ _ReadCompass:
 ;times                     Allocated to registers r4 r5 
 ;------------------------------------------------------------
 	G$Rudder_cal$0$0 ==.
-	C$lab6.c$181$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:181: void Rudder_cal(void)
+	C$lab6.c$188$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:188: void Rudder_cal(void)
 ;	-----------------------------------------
 ;	 function Rudder_cal
 ;	-----------------------------------------
 _Rudder_cal:
-	C$lab6.c$184$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:184: int value =0;
-	C$lab6.c$185$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:185: int times =0;
-	C$lab6.c$186$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:186: count =0;
+	C$lab6.c$191$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:191: int value =0;
+	C$lab6.c$192$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:192: int times =0;
+	C$lab6.c$193$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:193: count =0;
 	clr	a
 	mov	r6,a
 	mov	r7,a
@@ -2839,15 +2877,15 @@ _Rudder_cal:
 	mov	r5,a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$187$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:187: lcd_clear();
+	C$lab6.c$194$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:194: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
 	lcall	_lcd_clear
-	C$lab6.c$188$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:188: lcd_print("Rudder Calibration");
+	C$lab6.c$195$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:195: lcd_print("Rudder Calibration");
 	mov	a,#___str_6
 	push	acc
 	mov	a,#(___str_6 >> 8)
@@ -2862,8 +2900,8 @@ _Rudder_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$189$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:189: while (count < 50);
+	C$lab6.c$196$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:196: while (count < 50);
 00101$:
 	clr	c
 	mov	a,_count
@@ -2872,8 +2910,8 @@ _Rudder_cal:
 	xrl	a,#0x80
 	subb	a,#0x80
 	jc	00101$
-	C$lab6.c$190$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:190: lcd_clear();
+	C$lab6.c$197$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:197: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -2883,13 +2921,13 @@ _Rudder_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$194$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:194: count =0;
+	C$lab6.c$201$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:201: count =0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$195$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:195: while (count < 1);
+	C$lab6.c$202$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:202: while (count < 1);
 00104$:
 	clr	c
 	mov	a,_count
@@ -2898,15 +2936,15 @@ _Rudder_cal:
 	xrl	a,#0x80
 	subb	a,#0x80
 	jc	00104$
-	C$lab6.c$196$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:196: lcd_clear();
+	C$lab6.c$203$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:203: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
 	lcall	_lcd_clear
-	C$lab6.c$197$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:197: lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
+	C$lab6.c$204$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:204: lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
 	mov	a,#___str_7
 	push	acc
 	mov	a,#(___str_7 >> 8)
@@ -2917,14 +2955,14 @@ _Rudder_cal:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab6.c$198$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:198: start();
+	C$lab6.c$205$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:205: start();
 	lcall	_start
-	C$lab6.c$199$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:199: lcd_clear();
+	C$lab6.c$206$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:206: lcd_clear();
 	lcall	_lcd_clear
-	C$lab6.c$200$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:200: lcd_print("\n confirm: press 3\n press * to begin");
+	C$lab6.c$207$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:207: lcd_print("\n confirm: press 3\n press * to begin");
 	mov	a,#___str_8
 	push	acc
 	mov	a,#(___str_8 >> 8)
@@ -2935,21 +2973,21 @@ _Rudder_cal:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab6.c$201$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:201: start();
+	C$lab6.c$208$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:208: start();
 	lcall	_start
 	pop	ar4
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$202$2$137 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:202: st =0;
+	C$lab6.c$209$2$137 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:209: st =0;
 	mov	r3,#0x00
-	C$lab6.c$203$5$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:203: while (1)
+	C$lab6.c$210$5$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:210: while (1)
 00146$:
-	C$lab6.c$205$3$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:205: printf("\r\n %u",RUDDER_PW);
+	C$lab6.c$212$3$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:212: printf("\r\n %u",RUDDER_PW);
 	push	ar7
 	push	ar6
 	push	ar5
@@ -2972,8 +3010,8 @@ _Rudder_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$206$3$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:206: RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
+	C$lab6.c$213$3$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:213: RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_RUDDER_PW
@@ -2981,30 +3019,30 @@ _Rudder_cal:
 	mov	a,#0xFF
 	subb	a,(_RUDDER_PW + 1)
 	mov	(_RDR_lo_to_hi + 1),a
-	C$lab6.c$207$3$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:207: PCA0CP0 = RDR_lo_to_hi;
+	C$lab6.c$214$3$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:214: PCA0CP0 = RDR_lo_to_hi;
 	mov	((_PCA0CP0 >> 0) & 0xFF),_RDR_lo_to_hi
 	mov	((_PCA0CP0 >> 8) & 0xFF),(_RDR_lo_to_hi + 1)
-	C$lab6.c$209$3$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:209: if (times == 0 )
+	C$lab6.c$216$3$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:216: if (times == 0 )
 	mov	a,r4
 	orl	a,r5
 	jz	00215$
 	ljmp	00143$
 00215$:
-	C$lab6.c$211$4$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:211: if (value ==0)
+	C$lab6.c$218$4$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:218: if (value ==0)
 	mov	a,r6
 	orl	a,r7
 	jnz	00110$
-	C$lab6.c$213$5$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:213: lcd_clear();
+	C$lab6.c$220$5$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:220: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
 	lcall	_lcd_clear
-	C$lab6.c$214$5$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:214: lcd_print("Now calibrating Min_PW\n");
+	C$lab6.c$221$5$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:221: lcd_print("Now calibrating Min_PW\n");
 	mov	a,#___str_10
 	push	acc
 	mov	a,#(___str_10 >> 8)
@@ -3018,19 +3056,19 @@ _Rudder_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$215$5$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:215: if (st ==0 ) RUDDER_PW = PW_LEFT_RUDDER;
+	C$lab6.c$222$5$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:222: if (st ==0 ) RUDDER_PW = PW_LEFT_RUDDER;
 	mov	a,r3
 	jnz	00108$
 	mov	_RUDDER_PW,_PW_LEFT_RUDDER
 	mov	(_RUDDER_PW + 1),(_PW_LEFT_RUDDER + 1)
 00108$:
-	C$lab6.c$216$5$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:216: st =1;
+	C$lab6.c$223$5$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:223: st =1;
 	mov	r3,#0x01
 00110$:
-	C$lab6.c$218$4$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:218: value = kpd_input(1);
+	C$lab6.c$225$4$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:225: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -3041,12 +3079,12 @@ _Rudder_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$219$4$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:219: if (value == 1)
+	C$lab6.c$226$4$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:226: if (value == 1)
 	cjne	r6,#0x01,00117$
 	cjne	r7,#0x00,00117$
-	C$lab6.c$221$5$141 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:221: RUDDER_PW -= 20;
+	C$lab6.c$228$5$141 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:228: RUDDER_PW -= 20;
 	mov	a,_RUDDER_PW
 	add	a,#0xEC
 	mov	_RUDDER_PW,a
@@ -3055,12 +3093,12 @@ _Rudder_cal:
 	mov	(_RUDDER_PW + 1),a
 	ljmp	00146$
 00117$:
-	C$lab6.c$223$4$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:223: else if (value==2)
+	C$lab6.c$230$4$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:230: else if (value==2)
 	cjne	r6,#0x02,00114$
 	cjne	r7,#0x00,00114$
-	C$lab6.c$225$5$142 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:225: RUDDER_PW += 20;
+	C$lab6.c$232$5$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:232: RUDDER_PW += 20;
 	mov	a,#0x14
 	add	a,_RUDDER_PW
 	mov	_RUDDER_PW,a
@@ -3069,51 +3107,51 @@ _Rudder_cal:
 	mov	(_RUDDER_PW + 1),a
 	ljmp	00146$
 00114$:
-	C$lab6.c$227$4$139 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:227: else if (value == 3)
+	C$lab6.c$234$4$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:234: else if (value == 3)
 	cjne	r6,#0x03,00222$
 	cjne	r7,#0x00,00222$
 	sjmp	00223$
 00222$:
 	ljmp	00146$
 00223$:
-	C$lab6.c$229$5$143 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:229: times++;
+	C$lab6.c$236$5$143 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:236: times++;
 	inc	r4
 	cjne	r4,#0x00,00224$
 	inc	r5
 00224$:
-	C$lab6.c$230$5$143 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:230: value =0;
+	C$lab6.c$237$5$143 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:237: value =0;
 	mov	r6,#0x00
 	mov	r7,#0x00
-	C$lab6.c$231$5$143 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:231: PW_LEFT_RUDDER = RUDDER_PW;
+	C$lab6.c$238$5$143 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:238: PW_LEFT_RUDDER = RUDDER_PW;
 	mov	_PW_LEFT_RUDDER,_RUDDER_PW
 	mov	(_PW_LEFT_RUDDER + 1),(_RUDDER_PW + 1)
 	ljmp	00146$
 00143$:
-	C$lab6.c$234$3$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:234: else if (times ==1)
+	C$lab6.c$241$3$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:241: else if (times ==1)
 	cjne	r4,#0x01,00225$
 	cjne	r5,#0x00,00225$
 	sjmp	00226$
 00225$:
 	ljmp	00140$
 00226$:
-	C$lab6.c$236$4$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:236: if (value ==0)
+	C$lab6.c$243$4$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:243: if (value ==0)
 	mov	a,r6
 	orl	a,r7
 	jnz	00120$
-	C$lab6.c$238$5$145 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:238: lcd_clear();
+	C$lab6.c$245$5$145 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:245: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
 	lcall	_lcd_clear
-	C$lab6.c$239$5$145 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:239: lcd_print("Now calibrating Cen_PW");
+	C$lab6.c$246$5$145 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:246: lcd_print("Now calibrating Cen_PW");
 	mov	a,#___str_11
 	push	acc
 	mov	a,#(___str_11 >> 8)
@@ -3127,13 +3165,13 @@ _Rudder_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$240$5$145 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:240: RUDDER_PW = PW_CENTER_RUDDER;
+	C$lab6.c$247$5$145 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:247: RUDDER_PW = PW_CENTER_RUDDER;
 	mov	_RUDDER_PW,_PW_CENTER_RUDDER
 	mov	(_RUDDER_PW + 1),(_PW_CENTER_RUDDER + 1)
 00120$:
-	C$lab6.c$242$4$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:242: value = kpd_input(1);
+	C$lab6.c$249$4$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:249: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -3144,12 +3182,12 @@ _Rudder_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$243$4$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:243: if (value == 1)
+	C$lab6.c$250$4$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:250: if (value == 1)
 	cjne	r6,#0x01,00127$
 	cjne	r7,#0x00,00127$
-	C$lab6.c$245$5$146 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:245: RUDDER_PW -= 20;
+	C$lab6.c$252$5$146 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:252: RUDDER_PW -= 20;
 	mov	a,_RUDDER_PW
 	add	a,#0xEC
 	mov	_RUDDER_PW,a
@@ -3158,12 +3196,12 @@ _Rudder_cal:
 	mov	(_RUDDER_PW + 1),a
 	ljmp	00146$
 00127$:
-	C$lab6.c$247$4$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:247: else if (value==2)
+	C$lab6.c$254$4$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:254: else if (value==2)
 	cjne	r6,#0x02,00124$
 	cjne	r7,#0x00,00124$
-	C$lab6.c$249$5$147 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:249: RUDDER_PW += 20;
+	C$lab6.c$256$5$147 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:256: RUDDER_PW += 20;
 	mov	a,#0x14
 	add	a,_RUDDER_PW
 	mov	_RUDDER_PW,a
@@ -3172,43 +3210,43 @@ _Rudder_cal:
 	mov	(_RUDDER_PW + 1),a
 	ljmp	00146$
 00124$:
-	C$lab6.c$251$4$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:251: else if (value == 3)
+	C$lab6.c$258$4$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:258: else if (value == 3)
 	cjne	r6,#0x03,00232$
 	cjne	r7,#0x00,00232$
 	sjmp	00233$
 00232$:
 	ljmp	00146$
 00233$:
-	C$lab6.c$253$5$148 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:253: times++;
+	C$lab6.c$260$5$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:260: times++;
 	inc	r4
 	cjne	r4,#0x00,00234$
 	inc	r5
 00234$:
-	C$lab6.c$254$5$148 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:254: value=0;
+	C$lab6.c$261$5$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:261: value=0;
 	mov	r6,#0x00
 	mov	r7,#0x00
-	C$lab6.c$255$5$148 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:255: PW_CENTER_RUDDER = RUDDER_PW;
+	C$lab6.c$262$5$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:262: PW_CENTER_RUDDER = RUDDER_PW;
 	mov	_PW_CENTER_RUDDER,_RUDDER_PW
 	mov	(_PW_CENTER_RUDDER + 1),(_RUDDER_PW + 1)
 	ljmp	00146$
 00140$:
-	C$lab6.c$260$4$149 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:260: if (value==0)
+	C$lab6.c$267$4$149 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:267: if (value==0)
 	mov	a,r6
 	orl	a,r7
 	jnz	00130$
-	C$lab6.c$262$5$150 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:262: lcd_clear();
+	C$lab6.c$269$5$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:269: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
 	lcall	_lcd_clear
-	C$lab6.c$263$5$150 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:263: lcd_print("Now calibrating Max_PW");
+	C$lab6.c$270$5$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:270: lcd_print("Now calibrating Max_PW");
 	mov	a,#___str_12
 	push	acc
 	mov	a,#(___str_12 >> 8)
@@ -3222,13 +3260,13 @@ _Rudder_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$264$5$150 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:264: RUDDER_PW = PW_RIGHT_RUDDER;
+	C$lab6.c$271$5$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:271: RUDDER_PW = PW_RIGHT_RUDDER;
 	mov	_RUDDER_PW,_PW_RIGHT_RUDDER
 	mov	(_RUDDER_PW + 1),(_PW_RIGHT_RUDDER + 1)
 00130$:
-	C$lab6.c$266$4$149 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:266: value = kpd_input(1);
+	C$lab6.c$273$4$149 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:273: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -3239,12 +3277,12 @@ _Rudder_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$267$4$149 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:267: if (value == 1)
+	C$lab6.c$274$4$149 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:274: if (value == 1)
 	cjne	r6,#0x01,00137$
 	cjne	r7,#0x00,00137$
-	C$lab6.c$269$5$151 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:269: RUDDER_PW -= 20;
+	C$lab6.c$276$5$151 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:276: RUDDER_PW -= 20;
 	mov	a,_RUDDER_PW
 	add	a,#0xEC
 	mov	_RUDDER_PW,a
@@ -3253,12 +3291,12 @@ _Rudder_cal:
 	mov	(_RUDDER_PW + 1),a
 	ljmp	00146$
 00137$:
-	C$lab6.c$271$4$149 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:271: else if (value==2)
+	C$lab6.c$278$4$149 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:278: else if (value==2)
 	cjne	r6,#0x02,00134$
 	cjne	r7,#0x00,00134$
-	C$lab6.c$273$5$152 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:273: RUDDER_PW += 20;
+	C$lab6.c$280$5$152 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:280: RUDDER_PW += 20;
 	mov	a,#0x14
 	add	a,_RUDDER_PW
 	mov	_RUDDER_PW,a
@@ -3267,21 +3305,21 @@ _Rudder_cal:
 	mov	(_RUDDER_PW + 1),a
 	ljmp	00146$
 00134$:
-	C$lab6.c$275$4$149 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:275: else if (value == 3)
+	C$lab6.c$282$4$149 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:282: else if (value == 3)
 	cjne	r6,#0x03,00240$
 	cjne	r7,#0x00,00240$
 	sjmp	00241$
 00240$:
 	ljmp	00146$
 00241$:
-	C$lab6.c$277$5$153 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:277: PW_RIGHT_RUDDER = RUDDER_PW;
+	C$lab6.c$284$5$153 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:284: PW_RIGHT_RUDDER = RUDDER_PW;
 	mov	_PW_RIGHT_RUDDER,_RUDDER_PW
 	mov	(_PW_RIGHT_RUDDER + 1),(_RUDDER_PW + 1)
-	C$lab6.c$278$5$153 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:278: return;
-	C$lab6.c$287$1$136 ==.
+	C$lab6.c$285$5$153 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:285: return;
+	C$lab6.c$294$1$136 ==.
 	XG$Rudder_cal$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -3292,18 +3330,18 @@ _Rudder_cal:
 ;times                     Allocated to registers r4 r5 
 ;------------------------------------------------------------
 	G$Angle_cal$0$0 ==.
-	C$lab6.c$289$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:289: void Angle_cal(void)
+	C$lab6.c$296$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:296: void Angle_cal(void)
 ;	-----------------------------------------
 ;	 function Angle_cal
 ;	-----------------------------------------
 _Angle_cal:
-	C$lab6.c$292$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:292: int value =0;
-	C$lab6.c$293$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:293: int times =0;
-	C$lab6.c$294$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:294: count =0;
+	C$lab6.c$299$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:299: int value =0;
+	C$lab6.c$300$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:300: int times =0;
+	C$lab6.c$301$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:301: count =0;
 	clr	a
 	mov	r6,a
 	mov	r7,a
@@ -3311,15 +3349,15 @@ _Angle_cal:
 	mov	r5,a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$295$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:295: lcd_clear();
+	C$lab6.c$302$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:302: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
 	lcall	_lcd_clear
-	C$lab6.c$296$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:296: lcd_print("Angle Calibration");
+	C$lab6.c$303$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:303: lcd_print("Angle Calibration");
 	mov	a,#___str_13
 	push	acc
 	mov	a,#(___str_13 >> 8)
@@ -3334,8 +3372,8 @@ _Angle_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$297$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:297: while (count < 50);
+	C$lab6.c$304$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:304: while (count < 50);
 00101$:
 	clr	c
 	mov	a,_count
@@ -3344,8 +3382,8 @@ _Angle_cal:
 	xrl	a,#0x80
 	subb	a,#0x80
 	jc	00101$
-	C$lab6.c$298$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:298: lcd_clear();
+	C$lab6.c$305$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:305: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -3355,13 +3393,13 @@ _Angle_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$301$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:301: count = 0;
+	C$lab6.c$308$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:308: count = 0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$302$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:302: while (count < 1);
+	C$lab6.c$309$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:309: while (count < 1);
 00104$:
 	clr	c
 	mov	a,_count
@@ -3370,15 +3408,15 @@ _Angle_cal:
 	xrl	a,#0x80
 	subb	a,#0x80
 	jc	00104$
-	C$lab6.c$303$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:303: lcd_clear();
+	C$lab6.c$310$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:310: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
 	lcall	_lcd_clear
-	C$lab6.c$304$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:304: lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
+	C$lab6.c$311$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:311: lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
 	mov	a,#___str_7
 	push	acc
 	mov	a,#(___str_7 >> 8)
@@ -3389,14 +3427,14 @@ _Angle_cal:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab6.c$305$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:305: start();
+	C$lab6.c$312$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:312: start();
 	lcall	_start
-	C$lab6.c$306$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:306: lcd_clear();
+	C$lab6.c$313$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:313: lcd_clear();
 	lcall	_lcd_clear
-	C$lab6.c$307$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:307: lcd_print("\n confirm: press 3\n press * to begin");
+	C$lab6.c$314$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:314: lcd_print("\n confirm: press 3\n press * to begin");
 	mov	a,#___str_8
 	push	acc
 	mov	a,#(___str_8 >> 8)
@@ -3407,21 +3445,21 @@ _Angle_cal:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab6.c$308$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:308: start();
+	C$lab6.c$315$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:315: start();
 	lcall	_start
 	pop	ar4
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$309$2$156 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:309: st =0;
+	C$lab6.c$316$2$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:316: st =0;
 	mov	r3,#0x00
-	C$lab6.c$310$5$159 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:310: while (1)
+	C$lab6.c$317$5$159 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:317: while (1)
 00146$:
-	C$lab6.c$312$3$157 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:312: printf("\r\n %u",ANGLE_PW);
+	C$lab6.c$319$3$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:319: printf("\r\n %u",ANGLE_PW);
 	push	ar7
 	push	ar6
 	push	ar5
@@ -3444,8 +3482,8 @@ _Angle_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$313$3$157 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:313: AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
+	C$lab6.c$320$3$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:320: AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_ANGLE_PW
@@ -3453,30 +3491,30 @@ _Angle_cal:
 	mov	a,#0xFF
 	subb	a,(_ANGLE_PW + 1)
 	mov	(_AGL_lo_to_hi + 1),a
-	C$lab6.c$314$3$157 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:314: PCA0CP1 = AGL_lo_to_hi;
+	C$lab6.c$321$3$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:321: PCA0CP1 = AGL_lo_to_hi;
 	mov	((_PCA0CP1 >> 0) & 0xFF),_AGL_lo_to_hi
 	mov	((_PCA0CP1 >> 8) & 0xFF),(_AGL_lo_to_hi + 1)
-	C$lab6.c$316$3$157 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:316: if (times == 0 )
+	C$lab6.c$323$3$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:323: if (times == 0 )
 	mov	a,r4
 	orl	a,r5
 	jz	00215$
 	ljmp	00143$
 00215$:
-	C$lab6.c$318$4$158 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:318: if (value ==0)
+	C$lab6.c$325$4$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:325: if (value ==0)
 	mov	a,r6
 	orl	a,r7
 	jnz	00110$
-	C$lab6.c$320$5$159 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:320: lcd_clear();
+	C$lab6.c$327$5$159 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:327: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
 	lcall	_lcd_clear
-	C$lab6.c$321$5$159 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:321: lcd_print("Now calibrating Min_PW UP ANGLE");
+	C$lab6.c$328$5$159 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:328: lcd_print("Now calibrating Min_PW UP ANGLE");
 	mov	a,#___str_14
 	push	acc
 	mov	a,#(___str_14 >> 8)
@@ -3490,19 +3528,19 @@ _Angle_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$322$5$159 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:322: if (st == 0) ANGLE_PW = PW_UP_ANGLE;
+	C$lab6.c$329$5$159 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:329: if (st == 0) ANGLE_PW = PW_UP_ANGLE;
 	mov	a,r3
 	jnz	00108$
 	mov	_ANGLE_PW,_PW_UP_ANGLE
 	mov	(_ANGLE_PW + 1),(_PW_UP_ANGLE + 1)
 00108$:
-	C$lab6.c$323$5$159 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:323: st =1;
+	C$lab6.c$330$5$159 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:330: st =1;
 	mov	r3,#0x01
 00110$:
-	C$lab6.c$325$4$158 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:325: value = kpd_input(1);
+	C$lab6.c$332$4$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:332: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -3513,12 +3551,12 @@ _Angle_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$326$4$158 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:326: if (value == 1)
+	C$lab6.c$333$4$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:333: if (value == 1)
 	cjne	r6,#0x01,00117$
 	cjne	r7,#0x00,00117$
-	C$lab6.c$328$5$160 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:328: ANGLE_PW -= 30;
+	C$lab6.c$335$5$160 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:335: ANGLE_PW -= 30;
 	mov	a,_ANGLE_PW
 	add	a,#0xE2
 	mov	_ANGLE_PW,a
@@ -3527,12 +3565,12 @@ _Angle_cal:
 	mov	(_ANGLE_PW + 1),a
 	ljmp	00146$
 00117$:
-	C$lab6.c$330$4$158 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:330: else if (value==2)
+	C$lab6.c$337$4$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:337: else if (value==2)
 	cjne	r6,#0x02,00114$
 	cjne	r7,#0x00,00114$
-	C$lab6.c$332$5$161 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:332: ANGLE_PW += 30;
+	C$lab6.c$339$5$161 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:339: ANGLE_PW += 30;
 	mov	a,#0x1E
 	add	a,_ANGLE_PW
 	mov	_ANGLE_PW,a
@@ -3541,51 +3579,51 @@ _Angle_cal:
 	mov	(_ANGLE_PW + 1),a
 	ljmp	00146$
 00114$:
-	C$lab6.c$334$4$158 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:334: else if (value == 3)
+	C$lab6.c$341$4$158 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:341: else if (value == 3)
 	cjne	r6,#0x03,00222$
 	cjne	r7,#0x00,00222$
 	sjmp	00223$
 00222$:
 	ljmp	00146$
 00223$:
-	C$lab6.c$336$5$162 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:336: times++;
+	C$lab6.c$343$5$162 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:343: times++;
 	inc	r4
 	cjne	r4,#0x00,00224$
 	inc	r5
 00224$:
-	C$lab6.c$337$5$162 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:337: value =0;
+	C$lab6.c$344$5$162 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:344: value =0;
 	mov	r6,#0x00
 	mov	r7,#0x00
-	C$lab6.c$338$5$162 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:338: PW_UP_ANGLE = ANGLE_PW;
+	C$lab6.c$345$5$162 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:345: PW_UP_ANGLE = ANGLE_PW;
 	mov	_PW_UP_ANGLE,_ANGLE_PW
 	mov	(_PW_UP_ANGLE + 1),(_ANGLE_PW + 1)
 	ljmp	00146$
 00143$:
-	C$lab6.c$341$3$157 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:341: else if (times ==1)
+	C$lab6.c$348$3$157 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:348: else if (times ==1)
 	cjne	r4,#0x01,00225$
 	cjne	r5,#0x00,00225$
 	sjmp	00226$
 00225$:
 	ljmp	00140$
 00226$:
-	C$lab6.c$343$4$163 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:343: if (value ==0)
+	C$lab6.c$350$4$163 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:350: if (value ==0)
 	mov	a,r6
 	orl	a,r7
 	jnz	00120$
-	C$lab6.c$345$5$164 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:345: lcd_clear();
+	C$lab6.c$352$5$164 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:352: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
 	lcall	_lcd_clear
-	C$lab6.c$346$5$164 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:346: lcd_print("Now calibrating Cen_PW");
+	C$lab6.c$353$5$164 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:353: lcd_print("Now calibrating Cen_PW");
 	mov	a,#___str_11
 	push	acc
 	mov	a,#(___str_11 >> 8)
@@ -3599,13 +3637,13 @@ _Angle_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$347$5$164 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:347: ANGLE_PW = PW_CENTER_ANGLE;
+	C$lab6.c$354$5$164 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:354: ANGLE_PW = PW_CENTER_ANGLE;
 	mov	_ANGLE_PW,_PW_CENTER_ANGLE
 	mov	(_ANGLE_PW + 1),(_PW_CENTER_ANGLE + 1)
 00120$:
-	C$lab6.c$349$4$163 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:349: value = kpd_input(1);
+	C$lab6.c$356$4$163 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:356: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -3616,12 +3654,12 @@ _Angle_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$350$4$163 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:350: if (value == 1)
+	C$lab6.c$357$4$163 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:357: if (value == 1)
 	cjne	r6,#0x01,00127$
 	cjne	r7,#0x00,00127$
-	C$lab6.c$352$5$165 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:352: ANGLE_PW -= 30;
+	C$lab6.c$359$5$165 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:359: ANGLE_PW -= 30;
 	mov	a,_ANGLE_PW
 	add	a,#0xE2
 	mov	_ANGLE_PW,a
@@ -3630,12 +3668,12 @@ _Angle_cal:
 	mov	(_ANGLE_PW + 1),a
 	ljmp	00146$
 00127$:
-	C$lab6.c$354$4$163 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:354: else if (value==2)
+	C$lab6.c$361$4$163 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:361: else if (value==2)
 	cjne	r6,#0x02,00124$
 	cjne	r7,#0x00,00124$
-	C$lab6.c$356$5$166 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:356: ANGLE_PW += 30;
+	C$lab6.c$363$5$166 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:363: ANGLE_PW += 30;
 	mov	a,#0x1E
 	add	a,_ANGLE_PW
 	mov	_ANGLE_PW,a
@@ -3644,43 +3682,43 @@ _Angle_cal:
 	mov	(_ANGLE_PW + 1),a
 	ljmp	00146$
 00124$:
-	C$lab6.c$358$4$163 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:358: else if (value == 3)
+	C$lab6.c$365$4$163 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:365: else if (value == 3)
 	cjne	r6,#0x03,00232$
 	cjne	r7,#0x00,00232$
 	sjmp	00233$
 00232$:
 	ljmp	00146$
 00233$:
-	C$lab6.c$360$5$167 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:360: times++;
+	C$lab6.c$367$5$167 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:367: times++;
 	inc	r4
 	cjne	r4,#0x00,00234$
 	inc	r5
 00234$:
-	C$lab6.c$361$5$167 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:361: value=0;
+	C$lab6.c$368$5$167 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:368: value=0;
 	mov	r6,#0x00
 	mov	r7,#0x00
-	C$lab6.c$362$5$167 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:362: PW_CENTER_ANGLE = ANGLE_PW;
+	C$lab6.c$369$5$167 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:369: PW_CENTER_ANGLE = ANGLE_PW;
 	mov	_PW_CENTER_ANGLE,_ANGLE_PW
 	mov	(_PW_CENTER_ANGLE + 1),(_ANGLE_PW + 1)
 	ljmp	00146$
 00140$:
-	C$lab6.c$367$4$168 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:367: if (value==0)
+	C$lab6.c$374$4$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:374: if (value==0)
 	mov	a,r6
 	orl	a,r7
 	jnz	00130$
-	C$lab6.c$369$5$169 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:369: lcd_clear();
+	C$lab6.c$376$5$169 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:376: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
 	lcall	_lcd_clear
-	C$lab6.c$370$5$169 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:370: lcd_print("Now calibrating Max_PW DOWN ANGLE");
+	C$lab6.c$377$5$169 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:377: lcd_print("Now calibrating Max_PW DOWN ANGLE");
 	mov	a,#___str_15
 	push	acc
 	mov	a,#(___str_15 >> 8)
@@ -3694,13 +3732,13 @@ _Angle_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$371$5$169 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:371: ANGLE_PW = PW_DOWN_ANGLE;
+	C$lab6.c$378$5$169 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:378: ANGLE_PW = PW_DOWN_ANGLE;
 	mov	_ANGLE_PW,_PW_DOWN_ANGLE
 	mov	(_ANGLE_PW + 1),(_PW_DOWN_ANGLE + 1)
 00130$:
-	C$lab6.c$373$4$168 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:373: value = kpd_input(1);
+	C$lab6.c$380$4$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:380: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -3711,12 +3749,12 @@ _Angle_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$374$4$168 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:374: if (value == 1)
+	C$lab6.c$381$4$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:381: if (value == 1)
 	cjne	r6,#0x01,00137$
 	cjne	r7,#0x00,00137$
-	C$lab6.c$376$5$170 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:376: ANGLE_PW -= 30;
+	C$lab6.c$383$5$170 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:383: ANGLE_PW -= 30;
 	mov	a,_ANGLE_PW
 	add	a,#0xE2
 	mov	_ANGLE_PW,a
@@ -3725,12 +3763,12 @@ _Angle_cal:
 	mov	(_ANGLE_PW + 1),a
 	ljmp	00146$
 00137$:
-	C$lab6.c$378$4$168 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:378: else if (value==2)
+	C$lab6.c$385$4$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:385: else if (value==2)
 	cjne	r6,#0x02,00134$
 	cjne	r7,#0x00,00134$
-	C$lab6.c$380$5$171 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:380: ANGLE_PW += 30;
+	C$lab6.c$387$5$171 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:387: ANGLE_PW += 30;
 	mov	a,#0x1E
 	add	a,_ANGLE_PW
 	mov	_ANGLE_PW,a
@@ -3739,21 +3777,21 @@ _Angle_cal:
 	mov	(_ANGLE_PW + 1),a
 	ljmp	00146$
 00134$:
-	C$lab6.c$382$4$168 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:382: else if (value == 3)
+	C$lab6.c$389$4$168 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:389: else if (value == 3)
 	cjne	r6,#0x03,00240$
 	cjne	r7,#0x00,00240$
 	sjmp	00241$
 00240$:
 	ljmp	00146$
 00241$:
-	C$lab6.c$384$5$172 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:384: PW_DOWN_ANGLE = ANGLE_PW;
+	C$lab6.c$391$5$172 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:391: PW_DOWN_ANGLE = ANGLE_PW;
 	mov	_PW_DOWN_ANGLE,_ANGLE_PW
 	mov	(_PW_DOWN_ANGLE + 1),(_ANGLE_PW + 1)
-	C$lab6.c$385$5$172 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:385: return;
-	C$lab6.c$390$1$155 ==.
+	C$lab6.c$392$5$172 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:392: return;
+	C$lab6.c$397$1$155 ==.
 	XG$Angle_cal$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -3764,18 +3802,18 @@ _Angle_cal:
 ;times                     Allocated to registers r4 r5 
 ;------------------------------------------------------------
 	G$Thrust_cal$0$0 ==.
-	C$lab6.c$392$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:392: void Thrust_cal(void)
+	C$lab6.c$399$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:399: void Thrust_cal(void)
 ;	-----------------------------------------
 ;	 function Thrust_cal
 ;	-----------------------------------------
 _Thrust_cal:
-	C$lab6.c$395$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:395: int value =0;
-	C$lab6.c$396$1$155 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:396: int times =0;
-	C$lab6.c$397$1$174 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:397: count =0;
+	C$lab6.c$402$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:402: int value =0;
+	C$lab6.c$403$1$155 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:403: int times =0;
+	C$lab6.c$404$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:404: count =0;
 	clr	a
 	mov	r6,a
 	mov	r7,a
@@ -3783,15 +3821,15 @@ _Thrust_cal:
 	mov	r5,a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$398$1$174 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:398: lcd_clear();
+	C$lab6.c$405$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:405: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
 	lcall	_lcd_clear
-	C$lab6.c$399$1$174 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:399: lcd_print("Thrust Calibration");
+	C$lab6.c$406$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:406: lcd_print("Thrust Calibration");
 	mov	a,#___str_16
 	push	acc
 	mov	a,#(___str_16 >> 8)
@@ -3806,8 +3844,8 @@ _Thrust_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$400$1$174 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:400: while (count < 50);
+	C$lab6.c$407$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:407: while (count < 50);
 00101$:
 	clr	c
 	mov	a,_count
@@ -3816,8 +3854,8 @@ _Thrust_cal:
 	xrl	a,#0x80
 	subb	a,#0x80
 	jc	00101$
-	C$lab6.c$401$1$174 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:401: lcd_clear();
+	C$lab6.c$408$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:408: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -3827,13 +3865,13 @@ _Thrust_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$405$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:405: count = 0;
+	C$lab6.c$412$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:412: count = 0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$406$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:406: while (count < 1);
+	C$lab6.c$413$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:413: while (count < 1);
 00104$:
 	clr	c
 	mov	a,_count
@@ -3842,15 +3880,15 @@ _Thrust_cal:
 	xrl	a,#0x80
 	subb	a,#0x80
 	jc	00104$
-	C$lab6.c$407$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:407: lcd_clear();
+	C$lab6.c$414$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:414: lcd_clear();
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
 	lcall	_lcd_clear
-	C$lab6.c$408$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:408: lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
+	C$lab6.c$415$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:415: lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
 	mov	a,#___str_7
 	push	acc
 	mov	a,#(___str_7 >> 8)
@@ -3861,14 +3899,14 @@ _Thrust_cal:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab6.c$409$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:409: start();
+	C$lab6.c$416$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:416: start();
 	lcall	_start
-	C$lab6.c$410$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:410: lcd_clear();
+	C$lab6.c$417$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:417: lcd_clear();
 	lcall	_lcd_clear
-	C$lab6.c$411$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:411: lcd_print("\n confirm: press 3\n press * to begin");
+	C$lab6.c$418$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:418: lcd_print("\n confirm: press 3\n press * to begin");
 	mov	a,#___str_8
 	push	acc
 	mov	a,#(___str_8 >> 8)
@@ -3879,28 +3917,28 @@ _Thrust_cal:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab6.c$412$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:412: start();
+	C$lab6.c$419$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:419: start();
 	lcall	_start
 	pop	ar4
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$413$2$175 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:413: st =0;
+	C$lab6.c$420$2$175 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:420: st =0;
 	mov	r3,#0x00
-	C$lab6.c$414$5$178 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:414: while (1)
-00146$:
-	C$lab6.c$416$3$176 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:416: printf("\r\n %u",THRUST_PW);
+	C$lab6.c$421$5$178 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:421: while (1)
+00148$:
+	C$lab6.c$423$3$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:423: printf("\r\n %u",RTHRUST_PW);
 	push	ar7
 	push	ar6
 	push	ar5
 	push	ar4
 	push	ar3
-	push	_THRUST_PW
-	push	(_THRUST_PW + 1)
+	push	_RTHRUST_PW
+	push	(_RTHRUST_PW + 1)
 	mov	a,#___str_9
 	push	acc
 	mov	a,#(___str_9 >> 8)
@@ -3916,36 +3954,44 @@ _Thrust_cal:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab6.c$417$3$176 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:417: TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+	C$lab6.c$424$3$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:424: RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 	mov	a,#0xFF
 	clr	c
-	subb	a,_THRUST_PW
-	mov	_TRST_lo_to_hi,a
+	subb	a,_RTHRUST_PW
+	mov	_RTRST_lo_to_hi,a
 	mov	a,#0xFF
-	subb	a,(_THRUST_PW + 1)
-	mov	(_TRST_lo_to_hi + 1),a
-	C$lab6.c$418$3$176 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:418: PCA0CP2 = TRST_lo_to_hi;
-	mov	((_PCA0CP2 >> 0) & 0xFF),_TRST_lo_to_hi
-	mov	((_PCA0CP2 >> 8) & 0xFF),(_TRST_lo_to_hi + 1)
-	C$lab6.c$419$3$176 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:419: if (times == 0 )
+	subb	a,(_RTHRUST_PW + 1)
+	mov	(_RTRST_lo_to_hi + 1),a
+	C$lab6.c$425$3$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:425: LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
+	mov	a,#0xFF
+	clr	c
+	subb	a,_LTHRUST_PW
+	mov	_LTRST_lo_to_hi,a
+	mov	a,#0xFF
+	subb	a,(_LTHRUST_PW + 1)
+	mov	(_LTRST_lo_to_hi + 1),a
+	C$lab6.c$426$3$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:426: if (times == 0 )
 	mov	a,r4
 	orl	a,r5
-	jz	00215$
-	ljmp	00143$
-00215$:
-	C$lab6.c$421$4$177 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:421: if (value ==0)
+	jz	00220$
+	ljmp	00145$
+00220$:
+	C$lab6.c$428$4$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:428: if (value ==0)
 	mov	a,r6
 	orl	a,r7
 	jnz	00110$
-	C$lab6.c$423$5$178 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:423: lcd_print("Now calibrating Min_PW");
+	C$lab6.c$430$5$178 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:430: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
+	lcall	_lcd_clear
+	C$lab6.c$431$5$178 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:431: lcd_print("Now calibrating Min_PW");
 	mov	a,#___str_17
 	push	acc
 	mov	a,#(___str_17 >> 8)
@@ -3959,19 +4005,25 @@ _Thrust_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$424$5$178 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:424: if (st ==0) RUDDER_PW = PW_MIN_THRUST;
+	C$lab6.c$432$5$178 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:432: if (st ==0)
 	mov	a,r3
 	jnz	00108$
-	mov	_RUDDER_PW,_PW_MIN_THRUST
-	mov	(_RUDDER_PW + 1),(_PW_MIN_THRUST + 1)
+	C$lab6.c$434$6$179 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:434: RTHRUST_PW = PW_MIN_THRUST;
+	mov	_RTHRUST_PW,_PW_MIN_THRUST
+	mov	(_RTHRUST_PW + 1),(_PW_MIN_THRUST + 1)
+	C$lab6.c$435$6$179 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:435: LTHRUST_PW = PW_MIN_THRUST;
+	mov	_LTHRUST_PW,_PW_MIN_THRUST
+	mov	(_LTHRUST_PW + 1),(_PW_MIN_THRUST + 1)
 00108$:
-	C$lab6.c$425$5$178 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:425: st =1;
+	C$lab6.c$437$5$178 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:437: st =1;
 	mov	r3,#0x01
 00110$:
-	C$lab6.c$427$4$177 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:427: value = kpd_input(1);
+	C$lab6.c$439$4$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:439: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -3982,79 +4034,98 @@ _Thrust_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$428$4$177 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:428: if (value == 1)
+	C$lab6.c$440$4$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:440: if (value == 1)
 	cjne	r6,#0x01,00117$
 	cjne	r7,#0x00,00117$
-	C$lab6.c$430$5$179 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:430: THRUST_PW -= 30;
-	mov	a,_THRUST_PW
+	C$lab6.c$442$5$180 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:442: RTHRUST_PW -= 30;
+	mov	a,_RTHRUST_PW
 	add	a,#0xE2
-	mov	_THRUST_PW,a
-	mov	a,(_THRUST_PW + 1)
+	mov	_RTHRUST_PW,a
+	mov	a,(_RTHRUST_PW + 1)
 	addc	a,#0xFF
-	mov	(_THRUST_PW + 1),a
-	ljmp	00146$
+	mov	(_RTHRUST_PW + 1),a
+	C$lab6.c$443$5$180 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:443: LTHRUST_PW += 30;
+	mov	a,#0x1E
+	add	a,_LTHRUST_PW
+	mov	_LTHRUST_PW,a
+	clr	a
+	addc	a,(_LTHRUST_PW + 1)
+	mov	(_LTHRUST_PW + 1),a
+	ljmp	00148$
 00117$:
-	C$lab6.c$432$4$177 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:432: else if (value==2)
+	C$lab6.c$445$4$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:445: else if (value==2)
 	cjne	r6,#0x02,00114$
 	cjne	r7,#0x00,00114$
-	C$lab6.c$434$5$180 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:434: THRUST_PW += 30;
+	C$lab6.c$447$5$181 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:447: RTHRUST_PW += 30;
 	mov	a,#0x1E
-	add	a,_THRUST_PW
-	mov	_THRUST_PW,a
+	add	a,_RTHRUST_PW
+	mov	_RTHRUST_PW,a
 	clr	a
-	addc	a,(_THRUST_PW + 1)
-	mov	(_THRUST_PW + 1),a
-	ljmp	00146$
+	addc	a,(_RTHRUST_PW + 1)
+	mov	(_RTHRUST_PW + 1),a
+	C$lab6.c$448$5$181 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:448: LTHRUST_PW -= 30;
+	mov	a,_LTHRUST_PW
+	add	a,#0xE2
+	mov	_LTHRUST_PW,a
+	mov	a,(_LTHRUST_PW + 1)
+	addc	a,#0xFF
+	mov	(_LTHRUST_PW + 1),a
+	ljmp	00148$
 00114$:
-	C$lab6.c$436$4$177 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:436: else if (value == 3)
-	cjne	r6,#0x03,00222$
-	cjne	r7,#0x00,00222$
-	sjmp	00223$
-00222$:
-	ljmp	00146$
-00223$:
-	C$lab6.c$438$5$181 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:438: times++;
+	C$lab6.c$450$4$177 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:450: else if (value == 3)
+	cjne	r6,#0x03,00227$
+	cjne	r7,#0x00,00227$
+	sjmp	00228$
+00227$:
+	ljmp	00148$
+00228$:
+	C$lab6.c$452$5$182 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:452: times++;
 	inc	r4
-	cjne	r4,#0x00,00224$
+	cjne	r4,#0x00,00229$
 	inc	r5
-00224$:
-	C$lab6.c$439$5$181 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:439: value =0;
+00229$:
+	C$lab6.c$453$5$182 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:453: value =0;
 	mov	r6,#0x00
 	mov	r7,#0x00
-	C$lab6.c$440$5$181 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:440: PW_MIN_THRUST = THRUST_PW;
-	mov	_PW_MIN_THRUST,_THRUST_PW
-	mov	(_PW_MIN_THRUST + 1),(_THRUST_PW + 1)
-	ljmp	00146$
-00143$:
-	C$lab6.c$443$3$176 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:443: else if (times ==1)
-	cjne	r4,#0x01,00225$
-	cjne	r5,#0x00,00225$
-	sjmp	00226$
-00225$:
-	ljmp	00140$
-00226$:
-	C$lab6.c$445$4$182 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:445: if (value ==0)
+	C$lab6.c$454$5$182 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:454: PW_MIN_THRUST = LTHRUST_PW;
+	mov	_PW_MIN_THRUST,_LTHRUST_PW
+	mov	(_PW_MIN_THRUST + 1),(_LTHRUST_PW + 1)
+	ljmp	00148$
+00145$:
+	C$lab6.c$457$3$176 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:457: else if (times ==1)
+	cjne	r4,#0x01,00230$
+	cjne	r5,#0x00,00230$
+	sjmp	00231$
+00230$:
+	ljmp	00142$
+00231$:
+	C$lab6.c$459$4$183 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:459: if (value ==0)
 	mov	a,r6
 	orl	a,r7
-	jnz	00120$
-	C$lab6.c$447$5$183 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:447: lcd_print("Now calibrating Cen_PW");
+	jnz	00122$
+	C$lab6.c$461$5$184 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:461: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
-	mov	a,#___str_11
+	lcall	_lcd_clear
+	C$lab6.c$462$5$184 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:462: lcd_print("Now calibrating Min_PW");
+	mov	a,#___str_17
 	push	acc
-	mov	a,#(___str_11 >> 8)
+	mov	a,#(___str_17 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
@@ -4065,13 +4136,25 @@ _Thrust_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$448$5$183 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:448: RUDDER_PW = PW_NUET_THRUST;
-	mov	_RUDDER_PW,_PW_NUET_THRUST
-	mov	(_RUDDER_PW + 1),(_PW_NUET_THRUST + 1)
+	C$lab6.c$463$5$184 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:463: if (st ==0)
+	mov	a,r3
+	jnz	00120$
+	C$lab6.c$465$6$185 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:465: RTHRUST_PW = PW_NUET_THRUST;
+	mov	_RTHRUST_PW,_PW_NUET_THRUST
+	mov	(_RTHRUST_PW + 1),(_PW_NUET_THRUST + 1)
+	C$lab6.c$466$6$185 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:466: LTHRUST_PW = PW_NUET_THRUST;
+	mov	_LTHRUST_PW,_PW_NUET_THRUST
+	mov	(_LTHRUST_PW + 1),(_PW_NUET_THRUST + 1)
 00120$:
-	C$lab6.c$450$4$182 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:450: value = kpd_input(1);
+	C$lab6.c$468$5$184 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:468: st =1;
+	mov	r3,#0x01
+00122$:
+	C$lab6.c$470$4$183 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:470: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -4082,68 +4165,87 @@ _Thrust_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$451$4$182 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:451: if (value == 1)
-	cjne	r6,#0x01,00127$
-	cjne	r7,#0x00,00127$
-	C$lab6.c$453$5$184 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:453: THRUST_PW -= 30;
-	mov	a,_THRUST_PW
+	C$lab6.c$471$4$183 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:471: if (value == 1)
+	cjne	r6,#0x01,00129$
+	cjne	r7,#0x00,00129$
+	C$lab6.c$473$5$186 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:473: RTHRUST_PW -= 30;
+	mov	a,_RTHRUST_PW
 	add	a,#0xE2
-	mov	_THRUST_PW,a
-	mov	a,(_THRUST_PW + 1)
+	mov	_RTHRUST_PW,a
+	mov	a,(_RTHRUST_PW + 1)
 	addc	a,#0xFF
-	mov	(_THRUST_PW + 1),a
-	ljmp	00146$
-00127$:
-	C$lab6.c$455$4$182 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:455: else if (value==2)
-	cjne	r6,#0x02,00124$
-	cjne	r7,#0x00,00124$
-	C$lab6.c$457$5$185 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:457: THRUST_PW += 30;
+	mov	(_RTHRUST_PW + 1),a
+	C$lab6.c$474$5$186 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:474: LTHRUST_PW += 30;
 	mov	a,#0x1E
-	add	a,_THRUST_PW
-	mov	_THRUST_PW,a
+	add	a,_LTHRUST_PW
+	mov	_LTHRUST_PW,a
 	clr	a
-	addc	a,(_THRUST_PW + 1)
-	mov	(_THRUST_PW + 1),a
-	ljmp	00146$
-00124$:
-	C$lab6.c$459$4$182 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:459: else if (value == 3)
-	cjne	r6,#0x03,00232$
-	cjne	r7,#0x00,00232$
-	sjmp	00233$
-00232$:
-	ljmp	00146$
-00233$:
-	C$lab6.c$461$5$186 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:461: times++;
+	addc	a,(_LTHRUST_PW + 1)
+	mov	(_LTHRUST_PW + 1),a
+	ljmp	00148$
+00129$:
+	C$lab6.c$476$4$183 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:476: else if (value==2)
+	cjne	r6,#0x02,00126$
+	cjne	r7,#0x00,00126$
+	C$lab6.c$478$5$187 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:478: RTHRUST_PW += 30;
+	mov	a,#0x1E
+	add	a,_RTHRUST_PW
+	mov	_RTHRUST_PW,a
+	clr	a
+	addc	a,(_RTHRUST_PW + 1)
+	mov	(_RTHRUST_PW + 1),a
+	C$lab6.c$479$5$187 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:479: LTHRUST_PW -= 30;
+	mov	a,_LTHRUST_PW
+	add	a,#0xE2
+	mov	_LTHRUST_PW,a
+	mov	a,(_LTHRUST_PW + 1)
+	addc	a,#0xFF
+	mov	(_LTHRUST_PW + 1),a
+	ljmp	00148$
+00126$:
+	C$lab6.c$481$4$183 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:481: else if (value == 3)
+	cjne	r6,#0x03,00238$
+	cjne	r7,#0x00,00238$
+	sjmp	00239$
+00238$:
+	ljmp	00148$
+00239$:
+	C$lab6.c$483$5$188 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:483: times++;
 	inc	r4
-	cjne	r4,#0x00,00234$
+	cjne	r4,#0x00,00240$
 	inc	r5
-00234$:
-	C$lab6.c$462$5$186 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:462: value=0;
+00240$:
+	C$lab6.c$484$5$188 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:484: value =0;
 	mov	r6,#0x00
 	mov	r7,#0x00
-	C$lab6.c$463$5$186 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:463: PW_NUET_THRUST = RUDDER_PW;
-	mov	_PW_NUET_THRUST,_RUDDER_PW
-	mov	(_PW_NUET_THRUST + 1),(_RUDDER_PW + 1)
-	ljmp	00146$
-00140$:
-	C$lab6.c$468$4$187 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:468: if (value==0)
+	C$lab6.c$485$5$188 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:485: PW_NUET_THRUST = RTHRUST_PW;
+	mov	_PW_NUET_THRUST,_RTHRUST_PW
+	mov	(_PW_NUET_THRUST + 1),(_RTHRUST_PW + 1)
+	ljmp	00148$
+00142$:
+	C$lab6.c$490$4$189 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:490: if (value==0)
 	mov	a,r6
 	orl	a,r7
-	jnz	00130$
-	C$lab6.c$470$5$188 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:470: lcd_print("Now calibrating Max_PW");
+	jnz	00132$
+	C$lab6.c$492$5$190 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:492: lcd_clear();
 	push	ar5
 	push	ar4
 	push	ar3
+	lcall	_lcd_clear
+	C$lab6.c$493$5$190 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:493: lcd_print("Now calibrating Max_PW");
 	mov	a,#___str_12
 	push	acc
 	mov	a,#(___str_12 >> 8)
@@ -4157,13 +4259,13 @@ _Thrust_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$471$5$188 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:471: THRUST_PW = PW_MAX_THRUST;
-	mov	_THRUST_PW,_PW_MAX_THRUST
-	mov	(_THRUST_PW + 1),(_PW_MAX_THRUST + 1)
-00130$:
-	C$lab6.c$473$4$187 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:473: value = kpd_input(1);
+	C$lab6.c$494$5$190 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:494: RTHRUST_PW = PW_MAX_THRUST;
+	mov	_RTHRUST_PW,_PW_MAX_THRUST
+	mov	(_RTHRUST_PW + 1),(_PW_MAX_THRUST + 1)
+00132$:
+	C$lab6.c$496$4$189 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:496: value = kpd_input(1);
 	mov	dpl,#0x01
 	push	ar5
 	push	ar4
@@ -4174,79 +4276,79 @@ _Thrust_cal:
 	pop	ar3
 	pop	ar4
 	pop	ar5
-	C$lab6.c$474$4$187 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:474: if (value == 1)
-	cjne	r6,#0x01,00137$
-	cjne	r7,#0x00,00137$
-	C$lab6.c$476$5$189 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:476: THRUST_PW -= 30;
-	mov	a,_THRUST_PW
+	C$lab6.c$497$4$189 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:497: if (value == 1)
+	cjne	r6,#0x01,00139$
+	cjne	r7,#0x00,00139$
+	C$lab6.c$499$5$191 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:499: RTHRUST_PW -= 30;
+	mov	a,_RTHRUST_PW
 	add	a,#0xE2
-	mov	_THRUST_PW,a
-	mov	a,(_THRUST_PW + 1)
+	mov	_RTHRUST_PW,a
+	mov	a,(_RTHRUST_PW + 1)
 	addc	a,#0xFF
-	mov	(_THRUST_PW + 1),a
-	ljmp	00146$
-00137$:
-	C$lab6.c$478$4$187 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:478: else if (value==2)
-	cjne	r6,#0x02,00134$
-	cjne	r7,#0x00,00134$
-	C$lab6.c$480$5$190 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:480: THRUST_PW += 30;
+	mov	(_RTHRUST_PW + 1),a
+	ljmp	00148$
+00139$:
+	C$lab6.c$501$4$189 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:501: else if (value==2)
+	cjne	r6,#0x02,00136$
+	cjne	r7,#0x00,00136$
+	C$lab6.c$503$5$192 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:503: RTHRUST_PW += 30;
 	mov	a,#0x1E
-	add	a,_THRUST_PW
-	mov	_THRUST_PW,a
+	add	a,_RTHRUST_PW
+	mov	_RTHRUST_PW,a
 	clr	a
-	addc	a,(_THRUST_PW + 1)
-	mov	(_THRUST_PW + 1),a
-	ljmp	00146$
-00134$:
-	C$lab6.c$482$4$187 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:482: else if (value == 3)
-	cjne	r6,#0x03,00240$
-	cjne	r7,#0x00,00240$
-	sjmp	00241$
-00240$:
-	ljmp	00146$
-00241$:
-	C$lab6.c$484$5$191 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:484: PW_MAX_THRUST = THRUST_PW;
-	mov	_PW_MAX_THRUST,_THRUST_PW
-	mov	(_PW_MAX_THRUST + 1),(_THRUST_PW + 1)
-	C$lab6.c$485$5$191 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:485: return;
-	C$lab6.c$490$1$174 ==.
+	addc	a,(_RTHRUST_PW + 1)
+	mov	(_RTHRUST_PW + 1),a
+	ljmp	00148$
+00136$:
+	C$lab6.c$505$4$189 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:505: else if (value == 3)
+	cjne	r6,#0x03,00246$
+	cjne	r7,#0x00,00246$
+	sjmp	00247$
+00246$:
+	ljmp	00148$
+00247$:
+	C$lab6.c$507$5$193 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:507: PW_MAX_THRUST = RTHRUST_PW;
+	mov	_PW_MAX_THRUST,_RTHRUST_PW
+	mov	(_PW_MAX_THRUST + 1),(_RTHRUST_PW + 1)
+	C$lab6.c$508$5$193 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:508: return;
+	C$lab6.c$513$1$174 ==.
 	XG$Thrust_cal$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Steering_Servo'
 ;------------------------------------------------------------
-;direction                 Allocated with name '_Steering_Servo_direction_1_192'
+;direction                 Allocated with name '_Steering_Servo_direction_1_194'
 ;------------------------------------------------------------
 	G$Steering_Servo$0$0 ==.
-	C$lab6.c$493$1$174 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:493: void Steering_Servo(unsigned int direction)
+	C$lab6.c$516$1$174 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:516: void Steering_Servo(unsigned int direction)
 ;	-----------------------------------------
 ;	 function Steering_Servo
 ;	-----------------------------------------
 _Steering_Servo:
-	mov	_Steering_Servo_direction_1_192,dpl
-	mov	(_Steering_Servo_direction_1_192 + 1),dph
-	C$lab6.c$497$1$193 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:497: if (direction < 1800)               /////IF FACING OPPOSITE DIRECTION, TURN LEFT
+	mov	_Steering_Servo_direction_1_194,dpl
+	mov	(_Steering_Servo_direction_1_194 + 1),dph
+	C$lab6.c$520$1$195 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:520: if (direction < 1800)               /////IF FACING OPPOSITE DIRECTION, TURN LEFT
 	clr	c
-	mov	a,_Steering_Servo_direction_1_192
+	mov	a,_Steering_Servo_direction_1_194
 	subb	a,#0x08
-	mov	a,(_Steering_Servo_direction_1_192 + 1)
+	mov	a,(_Steering_Servo_direction_1_194 + 1)
 	subb	a,#0x07
 	jc	00128$
 	ljmp	00112$
 00128$:
-	C$lab6.c$499$1$193 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:499: if (RUDDER_PW <= PW_CENTER_RUDDER - (float)(direction)/4.2)   ///MAKES RATIO TO SMOOTHLY TURN
-	mov	dpl,_Steering_Servo_direction_1_192
-	mov	dph,(_Steering_Servo_direction_1_192 + 1)
+	C$lab6.c$522$1$195 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:522: if (RUDDER_PW <= PW_CENTER_RUDDER - (float)(direction)/4.2)   ///MAKES RATIO TO SMOOTHLY TURN
+	mov	dpl,_Steering_Servo_direction_1_194
+	mov	dph,(_Steering_Servo_direction_1_194 + 1)
 	lcall	___uint2fs
 	mov	r2,dpl
 	mov	r3,dph
@@ -4334,10 +4436,10 @@ _Steering_Servo:
 	jz	00129$
 	ljmp	00102$
 00129$:
-	C$lab6.c$501$1$193 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:501: RUDDER_PW = PW_CENTER_RUDDER - (float)(direction)/4.2;
-	mov	dpl,_Steering_Servo_direction_1_192
-	mov	dph,(_Steering_Servo_direction_1_192 + 1)
+	C$lab6.c$524$1$195 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:524: RUDDER_PW = PW_CENTER_RUDDER - (float)(direction)/4.2;
+	mov	dpl,_Steering_Servo_direction_1_194
+	mov	dph,(_Steering_Servo_direction_1_194 + 1)
 	lcall	___uint2fs
 	mov	r4,dpl
 	mov	r5,dph
@@ -4402,8 +4504,8 @@ _Steering_Servo:
 	mov	(_RUDDER_PW + 1),dph
 	ljmp	00113$
 00102$:
-	C$lab6.c$505$3$196 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:505: RUDDER_PW -= 10;
+	C$lab6.c$528$3$198 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:528: RUDDER_PW -= 10;
 	mov	a,_RUDDER_PW
 	add	a,#0xF6
 	mov	_RUDDER_PW,a
@@ -4412,30 +4514,30 @@ _Steering_Servo:
 	mov	(_RUDDER_PW + 1),a
 	ljmp	00113$
 00112$:
-	C$lab6.c$508$1$193 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:508: else if ( direction == 0 || direction ==3600)       ///GO STRAIGHT
-	mov	a,_Steering_Servo_direction_1_192
-	orl	a,(_Steering_Servo_direction_1_192 + 1)
+	C$lab6.c$531$1$195 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:531: else if ( direction == 0 || direction ==3600)       ///GO STRAIGHT
+	mov	a,_Steering_Servo_direction_1_194
+	orl	a,(_Steering_Servo_direction_1_194 + 1)
 	jz	00107$
 	mov	a,#0x10
-	cjne	a,_Steering_Servo_direction_1_192,00108$
+	cjne	a,_Steering_Servo_direction_1_194,00108$
 	mov	a,#0x0E
-	cjne	a,(_Steering_Servo_direction_1_192 + 1),00108$
+	cjne	a,(_Steering_Servo_direction_1_194 + 1),00108$
 00107$:
-	C$lab6.c$510$2$197 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:510: RUDDER_PW=PW_CENTER_RUDDER;
+	C$lab6.c$533$2$199 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:533: RUDDER_PW=PW_CENTER_RUDDER;
 	mov	_RUDDER_PW,_PW_CENTER_RUDDER
 	mov	(_RUDDER_PW + 1),(_PW_CENTER_RUDDER + 1)
 	ljmp	00113$
 00108$:
-	C$lab6.c$514$2$198 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:514: if (RUDDER_PW >= PW_CENTER_RUDDER + (float)(3600-direction)/1.9)
+	C$lab6.c$537$2$200 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:537: if (RUDDER_PW >= PW_CENTER_RUDDER + (float)(3600-direction)/1.9)
 	mov	a,#0x10
 	clr	c
-	subb	a,_Steering_Servo_direction_1_192
+	subb	a,_Steering_Servo_direction_1_194
 	mov	dpl,a
 	mov	a,#0x0E
-	subb	a,(_Steering_Servo_direction_1_192 + 1)
+	subb	a,(_Steering_Servo_direction_1_194 + 1)
 	mov	dph,a
 	lcall	___uint2fs
 	mov	r4,dpl
@@ -4524,14 +4626,14 @@ _Steering_Servo:
 	jz	00133$
 	ljmp	00105$
 00133$:
-	C$lab6.c$516$3$199 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:516: RUDDER_PW = PW_CENTER_RUDDER + (float)(3600-direction)/1.9;
+	C$lab6.c$539$3$201 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:539: RUDDER_PW = PW_CENTER_RUDDER + (float)(3600-direction)/1.9;
 	mov	a,#0x10
 	clr	c
-	subb	a,_Steering_Servo_direction_1_192
+	subb	a,_Steering_Servo_direction_1_194
 	mov	dpl,a
 	mov	a,#0x0E
-	subb	a,(_Steering_Servo_direction_1_192 + 1)
+	subb	a,(_Steering_Servo_direction_1_194 + 1)
 	mov	dph,a
 	lcall	___uint2fs
 	mov	r4,dpl
@@ -4597,8 +4699,8 @@ _Steering_Servo:
 	mov	(_RUDDER_PW + 1),dph
 	sjmp	00113$
 00105$:
-	C$lab6.c$520$3$200 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:520: RUDDER_PW += 10;
+	C$lab6.c$543$3$202 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:543: RUDDER_PW += 10;
 	mov	a,#0x0A
 	add	a,_RUDDER_PW
 	mov	_RUDDER_PW,a
@@ -4606,8 +4708,8 @@ _Steering_Servo:
 	addc	a,(_RUDDER_PW + 1)
 	mov	(_RUDDER_PW + 1),a
 00113$:
-	C$lab6.c$526$1$193 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:526: RDR_lo_to_hi= 0xFFFF - RUDDER_PW;
+	C$lab6.c$549$1$195 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:549: RDR_lo_to_hi= 0xFFFF - RUDDER_PW;
 	mov	a,#0xFF
 	clr	c
 	subb	a,_RUDDER_PW
@@ -4615,25 +4717,25 @@ _Steering_Servo:
 	mov	a,#0xFF
 	subb	a,(_RUDDER_PW + 1)
 	mov	(_RDR_lo_to_hi + 1),a
-	C$lab6.c$527$1$193 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:527: PCA0CP0 = RDR_lo_to_hi;
+	C$lab6.c$550$1$195 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:550: PCA0CP0 = RDR_lo_to_hi;
 	mov	((_PCA0CP0 >> 0) & 0xFF),_RDR_lo_to_hi
 	mov	((_PCA0CP0 >> 8) & 0xFF),(_RDR_lo_to_hi + 1)
-	C$lab6.c$528$1$193 ==.
+	C$lab6.c$551$1$195 ==.
 	XG$Steering_Servo$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'start'
 ;------------------------------------------------------------
 	G$start$0$0 ==.
-	C$lab6.c$530$1$193 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:530: void start(void)            ///WAITS UNTIL '*' IS ENTERED
+	C$lab6.c$553$1$195 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:553: void start(void)            ///WAITS UNTIL '*' IS ENTERED
 ;	-----------------------------------------
 ;	 function start
 ;	-----------------------------------------
 _start:
-	C$lab6.c$532$1$202 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:532: while (read_keypad() != '*') wait();
+	C$lab6.c$555$1$204 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:555: while (read_keypad() != '*') wait();
 00101$:
 	lcall	_read_keypad
 	mov	r7,dpl
@@ -4643,7 +4745,7 @@ _start:
 	lcall	_wait
 	sjmp	00101$
 00104$:
-	C$lab6.c$533$1$202 ==.
+	C$lab6.c$556$1$204 ==.
 	XG$start$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -4652,22 +4754,22 @@ _start:
 ;old_count                 Allocated to registers r6 r7 
 ;------------------------------------------------------------
 	G$wait$0$0 ==.
-	C$lab6.c$537$1$202 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:537: void wait(void)
+	C$lab6.c$560$1$204 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:560: void wait(void)
 ;	-----------------------------------------
 ;	 function wait
 ;	-----------------------------------------
 _wait:
-	C$lab6.c$539$1$204 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:539: int old_count = count+1;
+	C$lab6.c$562$1$206 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:562: int old_count = count+1;
 	mov	a,#0x01
 	add	a,_count
 	mov	r6,a
 	clr	a
 	addc	a,(_count + 1)
 	mov	r7,a
-	C$lab6.c$540$1$204 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:540: while (old_count> count);
+	C$lab6.c$563$1$206 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:563: while (old_count> count);
 00101$:
 	clr	c
 	mov	a,_count
@@ -4678,171 +4780,174 @@ _wait:
 	xrl	b,#0x80
 	subb	a,b
 	jc	00101$
-	C$lab6.c$541$1$204 ==.
+	C$lab6.c$564$1$206 ==.
 	XG$wait$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Port_Init'
 ;------------------------------------------------------------
 	G$Port_Init$0$0 ==.
-	C$lab6.c$543$1$204 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:543: void Port_Init(void)
+	C$lab6.c$566$1$206 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:566: void Port_Init(void)
 ;	-----------------------------------------
 ;	 function Port_Init
 ;	-----------------------------------------
 _Port_Init:
-	C$lab6.c$545$1$206 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:545: P0MDOUT &= ~0x32;
+	C$lab6.c$568$1$208 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:568: P0MDOUT &= ~0x32;
 	mov	r7,_P0MDOUT
 	mov	a,#0xCD
 	anl	a,r7
 	mov	_P0MDOUT,a
-	C$lab6.c$547$1$206 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:547: P1MDIN  &= ~0x20;
+	C$lab6.c$570$1$208 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:570: P1MDIN  &= ~0x20;
 	mov	r7,_P1MDIN
 	mov	a,#0xDF
 	anl	a,r7
 	mov	_P1MDIN,a
-	C$lab6.c$549$1$206 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:549: P1MDOUT |= 0x0F;
+	C$lab6.c$572$1$208 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:572: P1MDOUT |= 0x0F;
 	orl	_P1MDOUT,#0x0F
-	C$lab6.c$550$1$206 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:550: P1MDOUT &= 0x20;
+	C$lab6.c$573$1$208 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:573: P1MDOUT &= 0x20;
 	anl	_P1MDOUT,#0x20
-	C$lab6.c$552$1$206 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:552: P1 		 = 0x20;
+	C$lab6.c$575$1$208 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:575: P1 		 = 0x20;
 	mov	_P1,#0x20
-	C$lab6.c$555$1$206 ==.
+	C$lab6.c$578$1$208 ==.
 	XG$Port_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_Init'
 ;------------------------------------------------------------
 	G$PCA_Init$0$0 ==.
-	C$lab6.c$557$1$206 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:557: void PCA_Init(void)
+	C$lab6.c$580$1$208 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:580: void PCA_Init(void)
 ;	-----------------------------------------
 ;	 function PCA_Init
 ;	-----------------------------------------
 _PCA_Init:
-	C$lab6.c$559$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:559: PCA0MD   = 0x81;
+	C$lab6.c$582$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:582: PCA0MD   = 0x81;
 	mov	_PCA0MD,#0x81
-	C$lab6.c$560$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:560: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode FOR STEERING
+	C$lab6.c$583$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:583: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode FOR STEERING
 	mov	_PCA0CPM0,#0xC2
-	C$lab6.c$561$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:561: PCA0CPM1 = 0xC2;
+	C$lab6.c$584$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:584: PCA0CPM1 = 0xC2;
 	mov	_PCA0CPM1,#0xC2
-	C$lab6.c$562$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:562: PCA0CPM2 = 0xC2;    //CCM2 in 16-bit compare mode FOR MOTOR
+	C$lab6.c$585$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:585: PCA0CPM2 = 0xC2;    //CCM2 in 16-bit compare mode FOR MOTOR
 	mov	_PCA0CPM2,#0xC2
-	C$lab6.c$563$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:563: PCA0CN 	 = 0x40;    //Enable PCA counter
+	C$lab6.c$586$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:586: PCA0CPM3 = 0XC2;
+	mov	_PCA0CPM3,#0xC2
+	C$lab6.c$587$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:587: PCA0CN 	 = 0x40;    //Enable PCA counter
 	mov	_PCA0CN,#0x40
-	C$lab6.c$564$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:564: EIE1    |= 0x08;    //Enable PCA interrupt
+	C$lab6.c$588$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:588: EIE1    |= 0x08;    //Enable PCA interrupt
 	orl	_EIE1,#0x08
-	C$lab6.c$565$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:565: EA       = 1   ;    //Enable global interrupts
+	C$lab6.c$589$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:589: EA       = 1   ;    //Enable global interrupts
 	setb	_EA
-	C$lab6.c$566$1$208 ==.
+	C$lab6.c$590$1$210 ==.
 	XG$PCA_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'XBR0_Init'
 ;------------------------------------------------------------
 	G$XBR0_Init$0$0 ==.
-	C$lab6.c$569$1$208 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:569: void XBR0_Init(void)
+	C$lab6.c$593$1$210 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:593: void XBR0_Init(void)
 ;	-----------------------------------------
 ;	 function XBR0_Init
 ;	-----------------------------------------
 _XBR0_Init:
-	C$lab6.c$571$1$210 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:571: XBR0 = 0x27;
+	C$lab6.c$595$1$212 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:595: XBR0 = 0x27;
 	mov	_XBR0,#0x27
-	C$lab6.c$572$1$210 ==.
+	C$lab6.c$596$1$212 ==.
 	XG$XBR0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'SMB_Init'
 ;------------------------------------------------------------
 	G$SMB_Init$0$0 ==.
-	C$lab6.c$574$1$210 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:574: void SMB_Init(void)
+	C$lab6.c$598$1$212 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:598: void SMB_Init(void)
 ;	-----------------------------------------
 ;	 function SMB_Init
 ;	-----------------------------------------
 _SMB_Init:
-	C$lab6.c$576$1$212 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:576: SMB0CR =0x93;
+	C$lab6.c$600$1$214 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:600: SMB0CR =0x93;
 	mov	_SMB0CR,#0x93
-	C$lab6.c$577$1$212 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:577: ENSMB =1;
+	C$lab6.c$601$1$214 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:601: ENSMB =1;
 	setb	_ENSMB
-	C$lab6.c$578$1$212 ==.
+	C$lab6.c$602$1$214 ==.
 	XG$SMB_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'ADC_Init'
 ;------------------------------------------------------------
 	G$ADC_Init$0$0 ==.
-	C$lab6.c$580$1$212 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:580: void ADC_Init(void)								/////SETS ADC 
+	C$lab6.c$604$1$214 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:604: void ADC_Init(void)								/////SETS ADC 
 ;	-----------------------------------------
 ;	 function ADC_Init
 ;	-----------------------------------------
 _ADC_Init:
-	C$lab6.c$582$1$214 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:582: REF0CN = 0x03;
+	C$lab6.c$606$1$216 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:606: REF0CN = 0x03;
 	mov	_REF0CN,#0x03
-	C$lab6.c$583$1$214 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:583: ADC1CN = 0x80;
+	C$lab6.c$607$1$216 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:607: ADC1CN = 0x80;
 	mov	_ADC1CN,#0x80
-	C$lab6.c$584$1$214 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:584: ADC1CF |= 0x01;
+	C$lab6.c$608$1$216 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:608: ADC1CF |= 0x01;
 	orl	_ADC1CF,#0x01
-	C$lab6.c$585$1$214 ==.
+	C$lab6.c$609$1$216 ==.
 	XG$ADC_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_ISR'
 ;------------------------------------------------------------
 	G$PCA_ISR$0$0 ==.
-	C$lab6.c$587$1$214 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:587: void PCA_ISR ( void ) __interrupt 9
+	C$lab6.c$611$1$216 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:611: void PCA_ISR ( void ) __interrupt 9
 ;	-----------------------------------------
 ;	 function PCA_ISR
 ;	-----------------------------------------
 _PCA_ISR:
 	push	acc
 	push	psw
-	C$lab6.c$590$1$216 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:590: if (CF)
-	C$lab6.c$592$2$217 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:592: CF =0;
+	C$lab6.c$614$1$218 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:614: if (CF)
+	C$lab6.c$616$2$219 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:616: CF =0;
 	jbc	_CF,00108$
 	sjmp	00102$
 00108$:
-	C$lab6.c$593$2$217 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:593: PCA0 = PCA_START;
+	C$lab6.c$617$2$219 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:617: PCA0 = PCA_START;
 	mov	((_PCA0 >> 0) & 0xFF),#0x00
 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-	C$lab6.c$594$2$217 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:594: count++;
+	C$lab6.c$618$2$219 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:618: count++;
 	inc	_count
 	clr	a
 	cjne	a,_count,00109$
 	inc	(_count + 1)
 00109$:
 00102$:
-	C$lab6.c$599$1$216 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:599: PCA0CN &= 0xC0;
+	C$lab6.c$623$1$218 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:623: PCA0CN &= 0xC0;
 	anl	_PCA0CN,#0xC0
 	pop	psw
 	pop	acc
-	C$lab6.c$600$1$216 ==.
+	C$lab6.c$624$1$218 ==.
 	XG$PCA_ISR$0$0 ==.
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)

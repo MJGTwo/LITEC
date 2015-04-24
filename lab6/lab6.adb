@@ -73,8 +73,10 @@ S:G$RUDDER_PW$0$0({2}SI:U),E,0,0
 S:G$RDR_lo_to_hi$0$0({2}SI:U),E,0,0
 S:G$ANGLE_PW$0$0({2}SI:U),E,0,0
 S:G$AGL_lo_to_hi$0$0({2}SI:U),E,0,0
-S:G$THRUST_PW$0$0({2}SI:U),E,0,0
-S:G$TRST_lo_to_hi$0$0({2}SI:U),E,0,0
+S:G$RTHRUST_PW$0$0({2}SI:U),E,0,0
+S:G$LTHRUST_PW$0$0({2}SI:U),E,0,0
+S:G$RTRST_lo_to_hi$0$0({2}SI:U),E,0,0
+S:G$LTRST_lo_to_hi$0$0({2}SI:U),E,0,0
 S:G$desired_D$0$0({2}SI:S),E,0,0
 S:G$actual_D$0$0({2}SI:S),E,0,0
 S:G$offset$0$0({2}SI:U),E,0,0
@@ -95,7 +97,7 @@ S:Llab6.Angle_cal$times$1$155({2}SI:S),R,0,0,[r4,r5]
 S:Llab6.Thrust_cal$st$1$174({1}SC:S),R,0,0,[r3]
 S:Llab6.Thrust_cal$value$1$174({2}SI:S),R,0,0,[r6,r7]
 S:Llab6.Thrust_cal$times$1$174({2}SI:S),R,0,0,[r4,r5]
-S:Llab6.Steering_Servo$direction$1$192({2}SI:U),E,0,0
+S:Llab6.Steering_Servo$direction$1$194({2}SI:U),E,0,0
 S:Llab6.lcd_print$text$1$73({80}DA80d,SC:U),F,0,0
 S:G$P0$0$0({1}SC:U),I,0,0
 S:G$SP$0$0({1}SC:U),I,0,0

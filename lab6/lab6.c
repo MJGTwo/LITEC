@@ -58,8 +58,10 @@ unsigned int RUDDER_PW;
 unsigned int RDR_lo_to_hi;
 unsigned int ANGLE_PW;
 unsigned int AGL_lo_to_hi;
-unsigned int THRUST_PW;
-unsigned int TRST_lo_to_hi;
+unsigned int RTHRUST_PW;
+unsigned int LTHRUST_PW;
+unsigned int RTRST_lo_to_hi;
+unsigned int LTRST_lo_to_hi;
 
  		 int desired_D;
  		 int actual_D;
@@ -81,15 +83,18 @@ void main(void)
 
 	RUDDER_PW= PW_CENTER_RUDDER;
 	ANGLE_PW = PW_CENTER_ANGLE;
-	THRUST_PW = PW_NUET_THRUST;
+	RTHRUST_PW = PW_NUET_THRUST;
+	LTHRUST_PW = PW_NUET_THRUST;
 
 	RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
-	TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
+	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
 	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 
 	PCA0CP0 = RDR_lo_to_hi;
 	PCA0CP1 = AGL_lo_to_hi;	
-	PCA0CP2 = TRST_lo_to_hi;
+	PCA0CP2 = RTRST_lo_to_hi;
+	PCA0CP3 = LTRST_lo_to_hi;
 
 
 
@@ -105,8 +110,10 @@ void main(void)
 	PCA0CP1 = AGL_lo_to_hi;
 
 	Thrust_cal();
-	THRUST_PW = PW_NUET_THRUST;
-	TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+	RTHRUST_PW = PW_NUET_THRUST;
+	LTHRUST_PW = PW_NUET_THRUST;
+	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
+	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
 
 
 	while (1)
@@ -413,32 +420,38 @@ void Thrust_cal(void)
 		st =0;
 		while (1)
 		{
-			printf("\r\n %u",THRUST_PW);
-			TRST_lo_to_hi = 0xFFFF - THRUST_PW;
-			PCA0CP2 = TRST_lo_to_hi;
+			printf("\r\n %u",RTHRUST_PW);
+			RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
+			LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
 			if (times == 0 )
 			{
 				if (value ==0)
 				{
 					 lcd_clear();
 					 lcd_print("Now calibrating Min_PW");
-					 if (st ==0) RUDDER_PW = PW_MIN_THRUST;
+					 if (st ==0)
+					 {
+						RTHRUST_PW = PW_MIN_THRUST;
+						LTHRUST_PW = PW_MIN_THRUST;
+					 } 
 					 st =1;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					THRUST_PW -= 30;
+					RTHRUST_PW -= 30;
+					LTHRUST_PW += 30;
 				}
 				else if (value==2)
 				{
-					THRUST_PW += 30;
+					RTHRUST_PW += 30;
+					LTHRUST_PW -= 30;
 				}
 				else if (value == 3)
 				{
 					times++;
 					value =0;
-					PW_MIN_THRUST = THRUST_PW;
+					PW_MIN_THRUST = LTHRUST_PW;
 				}
 			}
 			else if (times ==1)
@@ -446,23 +459,30 @@ void Thrust_cal(void)
 				if (value ==0)
 				{
 					 lcd_clear();
-					 lcd_print("Now calibrating Cen_PW");
-					 RUDDER_PW = PW_NUET_THRUST;
+					 lcd_print("Now calibrating Min_PW");
+					 if (st ==0)
+					 {
+						RTHRUST_PW = PW_NUET_THRUST;
+						LTHRUST_PW = PW_NUET_THRUST;
+					 } 
+					 st =1;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					THRUST_PW -= 30;
+					RTHRUST_PW -= 30;
+					LTHRUST_PW += 30;
 				}
 				else if (value==2)
 				{
-					THRUST_PW += 30;
+					RTHRUST_PW += 30;
+					LTHRUST_PW -= 30;
 				}
 				else if (value == 3)
 				{
 					times++;
-					value=0;
-					PW_NUET_THRUST = RUDDER_PW;
+					value =0;
+					PW_NUET_THRUST = RTHRUST_PW;
 				}
 			}
 			else
@@ -471,20 +491,20 @@ void Thrust_cal(void)
 				{
 					 lcd_clear();
 					 lcd_print("Now calibrating Max_PW");
-					 THRUST_PW = PW_MAX_THRUST;
+					 RTHRUST_PW = PW_MAX_THRUST;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					THRUST_PW -= 30;
+					RTHRUST_PW -= 30;
 				}
 				else if (value==2)
 				{
-					THRUST_PW += 30;
+					RTHRUST_PW += 30;
 				}
 				else if (value == 3)
 				{
-					PW_MAX_THRUST = THRUST_PW;
+					PW_MAX_THRUST = RTHRUST_PW;
 					return;
 				}
 			}
