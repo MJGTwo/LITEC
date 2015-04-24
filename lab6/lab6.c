@@ -423,6 +423,11 @@ void Thrust_cal(void)
 			printf("\r\n %u",RTHRUST_PW);
 			RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 			LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
+			PCA0CP2 = RTRST_lo_to_hi;
+			PCA0CP3 = LTRST_lo_to_hi;
+
+
+
 			if (times == 0 )
 			{
 				if (value ==0)
