@@ -33,6 +33,8 @@ unsigned int direction(void);
 void Rudder_cal(void);
 void Angle_cal(void);
 void Thrust_cal(void);
+void Calibrate(void);
+void kpkd(void);
 
 void Change_D(void);
 unsigned int Read_Ranger(void);
@@ -66,8 +68,15 @@ unsigned int LTRST_lo_to_hi;
  		 int desired_D;
  		 int actual_D;
 unsigned int offset;
+		 int error =0;
+		 int old_error =0;
 
 unsigned char r_data[2];
+
+int kp;
+int kd; 
+int ratio;
+int dratio;
 
 void main(void)
 {
@@ -95,8 +104,26 @@ void main(void)
 	PCA0CP1 = AGL_lo_to_hi;	
 	PCA0CP2 = RTRST_lo_to_hi;
 	PCA0CP3 = LTRST_lo_to_hi;
+	kpkd();
+
+	Calibrate();
 
 
+	while (1)
+	{
+		wait();
+		if (count +1 % 2 ==0)
+		{
+			Steering_func();
+		}
+		Change_D();
+
+	}
+
+}
+
+void Calibrate(void)
+{
 
 
 	Rudder_cal();
@@ -114,15 +141,19 @@ void main(void)
 	LTHRUST_PW = PW_NUET_THRUST;
 	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
-
-
-	while (1)
-	{
-		printf("\r\n%u ms",count*20);
-		wait();
-	}
-
 }
+
+void kpkd(void)
+{
+	lcd_clear();
+	lcd_print("Please enter a kp value:\n ");
+	kp = kpd_input(0);
+	lcd_clear();
+	lcd_print("Please enter a kd value:\n ");
+	kd = kpd_input(0);
+	lcd_clear();
+}
+
 
 void Change_D(void)
 {
@@ -520,39 +551,52 @@ void Thrust_cal(void)
 
 void Steering_Servo(unsigned int direction)
 {
-    
-    //wait for a key to be pressed
-	if (direction < 1800)               /////IF FACING OPPOSITE DIRECTION, TURN LEFT
-	{
-		if (RUDDER_PW <= PW_CENTER_RUDDER - (float)(direction)/4.2)   ///MAKES RATIO TO SMOOTHLY TURN
-		{
-			RUDDER_PW = PW_CENTER_RUDDER - (float)(direction)/4.2;
-		}
-		else
-		{
-			RUDDER_PW -= 10;
-		}
-	}
-	else if ( direction == 0 || direction ==3600)       ///GO STRAIGHT
-	{
-		RUDDER_PW=PW_CENTER_RUDDER;
-	}
-	else                            /////TURN RIGHT OTHERWISE
-	{
-		if (RUDDER_PW >= PW_CENTER_RUDDER + (float)(3600-direction)/1.9)
-		{
-			RUDDER_PW = PW_CENTER_RUDDER + (float)(3600-direction)/1.9;
-		}
-		else
-		{
-			RUDDER_PW += 10;
-		}			
-	}		
 
 
-    //printf("\r\nRUDDER_PW: %u", RUDDER_PW);
-    RDR_lo_to_hi= 0xFFFF - RUDDER_PW;
+	error = desired_D - direction;
+
+	RUDDER_PW  = PW_CENTER_RUDDER + (kp*error) + kd * (old_error - error);
+
+	RTHRUST_PW = PW_NUET_THRUST   + (kp*error) + kd * (old_error - error);
+
+	LTHRUST_PW = PW_NUET_THRUST   - (kp*error) + kd * (old_error - error);
+ 
+	old_error=error;
+
+
+	if (RUDDER_PW >= PW_RIGHT_RUDDER)
+	{
+		RUDDER_PW = PW_RIGHT_RUDDER;
+	}
+	else if(RUDDER_PW <= PW_LEFT_RUDDER)
+	{
+		RUDDER_PW = PW_LEFT_RUDDER;
+	}
+
+	if (RTHRUST_PW >= PW_MAX_THRUST)
+	{
+		RTHRUST_PW = PW_MAX_THRUST;
+	}
+	else if (RTHRUST_PW <=  PW_MIN_THRUST)
+	{
+		RTHRUST_PW = PW_MIN_THRUST;
+	}
+	if (LTHRUST_PW >= PW_MAX_THRUST)
+	{
+		LTHRUST_PW = PW_MAX_THRUST;
+	}
+	else if(LTHRUST_PW <= PW_MIN_THRUST)
+	{
+		LTHRUST_PW = PW_MIN_THRUST;
+	}
+	
+	RDR_lo_to_hi = 0xFFFF - RUDDER_PW ;
+	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
+	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
+
     PCA0CP0 = RDR_lo_to_hi;
+    PCA0CP2 = RTRST_lo_to_hi;
+    PCA0CP3 = LTRST_lo_to_hi;
 }
 
 void start(void)            ///WAITS UNTIL '*' IS ENTERED
