@@ -181,11 +181,8 @@ void Rudder_cal(void)
 		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
 		start();
 		lcd_clear();
-<<<<<<< HEAD
-=======
 		lcd_print("\n confirm: press 3\n press * to begin");
 		start();
->>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 
 		while (1)
 		{
@@ -273,10 +270,8 @@ void Rudder_cal(void)
 
 void Angle_cal(void)
 {
-<<<<<<< HEAD
 	int value = 0;
 	int times = 0;
-=======
 	int value =0;
 	int times =0;
 	count =0;
@@ -284,20 +279,17 @@ void Angle_cal(void)
 	lcd_print("Angle Calibration");
 	while (count < 50);
 	lcd_clear();
->>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 	while (1)
 	{
 		count = 0;
 		while (count < 1);
 		lcd_clear();
-<<<<<<< HEAD
 		lcd_print("Angle Calibration\n tilt up: press 1\n tilt down: press 2\n confirm: press 3\nPress # for next screen");
 		start();
 		lcd_clear();
 
 		while (1)
 		{
-=======
 		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
 		start();
 		lcd_clear();
@@ -309,7 +301,6 @@ void Angle_cal(void)
 			printf("\r\n %u",ANGLE_PW);
 			AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 			PCA0CP1 = AGL_lo_to_hi;
->>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 			if (times == 0 )
 			{
 				if (value ==0)
@@ -386,7 +377,6 @@ void Thrust_cal(void)
 {
 	int value =0;
 	int times =0;
-<<<<<<< HEAD
 	while (1)
 	{
 
@@ -399,7 +389,6 @@ void Thrust_cal(void)
 
 		while (1)
 		{
-=======
 	count =0;
 	lcd_clear();
 	lcd_print("Thrust Calibration");
@@ -422,7 +411,6 @@ void Thrust_cal(void)
 			printf("\r\n %u",THRUST_PW);
 			TRST_lo_to_hi = 0xFFFF - THRUST_PW;
 			PCA0CP2 = TRST_lo_to_hi;
->>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 			if (times == 0 )
 			{
 				if (value ==0)
