@@ -5,8 +5,8 @@ Section 03
 Side B
 Date: 04/17/15
 
-The goal of this code is to read values from the compass via i2c
-and steer the wheels toward a desired direction.
+The goal of this code is to steer and drive the car in a desired direciton and to turn sharp left
+to avoid crashes.
  */
 
 

@@ -22,6 +22,9 @@ F:G$i2c_write_data$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$i2c_read_data$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$Accel_Init$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$main$0$0({2}DF,SV:S),C,0,0,0,0,0
+F:G$direction$0$0({2}DF,SI:U),Z,0,0,0,0,0
+F:G$start$0$0({2}DF,SV:S),Z,0,0,0,0,0
+F:G$wait$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$Port_Init$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$PCA_Init$0$0({2}DF,SV:S),Z,0,0,0,0,0
 F:G$XBR0_Init$0$0({2}DF,SV:S),Z,0,0,0,0,0
@@ -49,6 +52,16 @@ S:Llab6.i2c_read_data$addr$1$99({1}SC:U),R,0,0,[r7]
 S:Llab6.i2c_read_data$j$1$100({1}SC:U),R,0,0,[]
 S:Llab6.Accel_Init$Data2$1$103({1}DA1d,SC:U),E,0,0
 S:G$count$0$0({2}SI:S),E,0,0
+S:G$PW_MIN_THRUST$0$0({2}SI:U),E,0,0
+S:G$PW_NUET_THRUST$0$0({2}SI:U),E,0,0
+S:G$PW_MAX_THRUST$0$0({2}SI:U),E,0,0
+S:G$PW_LEFT_RUDDER$0$0({2}SI:U),E,0,0
+S:G$PW_CENTER_RUDDER$0$0({2}SI:U),E,0,0
+S:G$PW_RIGHT_RUDDER$0$0({2}SI:U),E,0,0
+S:G$PW_UP_ANGLE$0$0({2}SI:U),E,0,0
+S:G$PW_CENTER_ANGLE$0$0({2}SI:U),E,0,0
+S:G$PW_DOWN_ANGLE$0$0({2}SI:U),E,0,0
+S:Llab6.direction$value$1$116({2}SI:S),R,0,0,[r6,r7]
 S:Llab6.lcd_print$text$1$73({80}DA80d,SC:U),F,0,0
 S:G$P0$0$0({1}SC:U),I,0,0
 S:G$SP$0$0({1}SC:U),I,0,0
@@ -392,3 +405,6 @@ S:G$PCA_ISR$0$0({2}DF,SV:S),C,0,0
 S:Flab6$__str_0$0$0({22}DA22d,SC:S),D,0,0
 S:Flab6$__str_1$0$0({16}DA16d,SC:S),D,0,0
 S:Flab6$__str_2$0$0({3}DA3d,SC:S),D,0,0
+S:Flab6$__str_3$0$0({8}DA8d,SC:S),D,0,0
+S:Flab6$__str_4$0$0({52}DA52d,SC:S),D,0,0
+S:Flab6$__str_5$0$0({31}DA31d,SC:S),D,0,0

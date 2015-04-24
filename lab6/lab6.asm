@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Thu Apr 23 19:16:11 2015
+; This file was generated Thu Apr 23 20:10:40 2015
 ;--------------------------------------------------------
 	.module lab6
 	.optsdcc -mmcs51 --model-small
@@ -17,6 +17,7 @@
 	.globl _UART0_Init
 	.globl _SYSCLK_Init
 	.globl _vsprintf
+	.globl _printf
 	.globl _BUS_SCL
 	.globl _BUS_TOE
 	.globl _BUS_FTE
@@ -302,6 +303,15 @@
 	.globl _DPL
 	.globl _SP
 	.globl _P0
+	.globl _PW_DOWN_ANGLE
+	.globl _PW_CENTER_ANGLE
+	.globl _PW_UP_ANGLE
+	.globl _PW_RIGHT_RUDDER
+	.globl _PW_CENTER_RUDDER
+	.globl _PW_LEFT_RUDDER
+	.globl _PW_MAX_THRUST
+	.globl _PW_NUET_THRUST
+	.globl _PW_MIN_THRUST
 	.globl _count
 	.globl _i2c_read_data_PARM_4
 	.globl _i2c_read_data_PARM_3
@@ -323,6 +333,9 @@
 	.globl _i2c_write_data
 	.globl _i2c_read_data
 	.globl _Accel_Init
+	.globl _direction
+	.globl _start
+	.globl _wait
 	.globl _Port_Init
 	.globl _PCA_Init
 	.globl _XBR0_Init
@@ -950,9 +963,37 @@ _Accel_Init_Data2_1_103:
 G$count$0$0==.
 _count::
 	.ds 2
+G$PW_MIN_THRUST$0$0==.
+_PW_MIN_THRUST::
+	.ds 2
+G$PW_NUET_THRUST$0$0==.
+_PW_NUET_THRUST::
+	.ds 2
+G$PW_MAX_THRUST$0$0==.
+_PW_MAX_THRUST::
+	.ds 2
+G$PW_LEFT_RUDDER$0$0==.
+_PW_LEFT_RUDDER::
+	.ds 2
+G$PW_CENTER_RUDDER$0$0==.
+_PW_CENTER_RUDDER::
+	.ds 2
+G$PW_RIGHT_RUDDER$0$0==.
+_PW_RIGHT_RUDDER::
+	.ds 2
+G$PW_UP_ANGLE$0$0==.
+_PW_UP_ANGLE::
+	.ds 2
+G$PW_CENTER_ANGLE$0$0==.
+_PW_CENTER_ANGLE::
+	.ds 2
+G$PW_DOWN_ANGLE$0$0==.
+_PW_DOWN_ANGLE::
+	.ds 2
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
 ;--------------------------------------------------------
+	.area	OSEG    (OVR,DATA)
 	.area	OSEG    (OVR,DATA)
 	.area	OSEG    (OVR,DATA)
 	.area	OSEG    (OVR,DATA)
@@ -1047,11 +1088,47 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab6.c$29$1$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:29: int count=0;
+	C$lab6.c$33$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:33: int count=0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
+	C$lab6.c$34$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:34: unsigned int PW_MIN_THRUST = 2000;
+	mov	_PW_MIN_THRUST,#0xD0
+	mov	(_PW_MIN_THRUST + 1),#0x07
+	C$lab6.c$35$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:35: unsigned int PW_NUET_THRUST = 2750;
+	mov	_PW_NUET_THRUST,#0xBE
+	mov	(_PW_NUET_THRUST + 1),#0x0A
+	C$lab6.c$36$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:36: unsigned int PW_MAX_THRUST = 3500;
+	mov	_PW_MAX_THRUST,#0xAC
+	mov	(_PW_MAX_THRUST + 1),#0x0D
+	C$lab6.c$38$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:38: unsigned int PW_LEFT_RUDDER = 2000;
+	mov	_PW_LEFT_RUDDER,#0xD0
+	mov	(_PW_LEFT_RUDDER + 1),#0x07
+	C$lab6.c$39$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:39: unsigned int PW_CENTER_RUDDER = 2750;
+	mov	_PW_CENTER_RUDDER,#0xBE
+	mov	(_PW_CENTER_RUDDER + 1),#0x0A
+	C$lab6.c$40$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:40: unsigned int PW_RIGHT_RUDDER = 3500;
+	mov	_PW_RIGHT_RUDDER,#0xAC
+	mov	(_PW_RIGHT_RUDDER + 1),#0x0D
+	C$lab6.c$42$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:42: unsigned int PW_UP_ANGLE = 2000;
+	mov	_PW_UP_ANGLE,#0xD0
+	mov	(_PW_UP_ANGLE + 1),#0x07
+	C$lab6.c$43$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:43: unsigned int PW_CENTER_ANGLE = 2750;
+	mov	_PW_CENTER_ANGLE,#0xBE
+	mov	(_PW_CENTER_ANGLE + 1),#0x0A
+	C$lab6.c$44$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:44: unsigned int PW_DOWN_ANGLE = 3500;
+	mov	_PW_DOWN_ANGLE,#0xAC
+	mov	(_PW_DOWN_ANGLE + 1),#0x0D
 	.area GSFINAL (CODE)
 	ljmp	__sdcc_program_startup
 ;--------------------------------------------------------
@@ -2226,207 +2303,394 @@ _Accel_Init:
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
 	G$main$0$0 ==.
-	C$lab6.c$34$1$103 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:34: void main(void)
+	C$lab6.c$48$1$103 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:48: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	C$lab6.c$36$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:36: Sys_Init();
+	C$lab6.c$50$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:50: Sys_Init();
 	lcall	_Sys_Init
-	C$lab6.c$37$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:37: putchar(' '); //the quotes in this line may not format correctly
+	C$lab6.c$51$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:51: putchar(' '); //the quotes in this line may not format correctly
 	mov	dpl,#0x20
 	lcall	_putchar
-	C$lab6.c$38$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:38: Port_Init();
+	C$lab6.c$52$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:52: Port_Init();
 	lcall	_Port_Init
-	C$lab6.c$39$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:39: XBR0_Init();
+	C$lab6.c$53$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:53: XBR0_Init();
 	lcall	_XBR0_Init
-	C$lab6.c$40$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:40: PCA_Init();
+	C$lab6.c$54$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:54: PCA_Init();
 	lcall	_PCA_Init
-	C$lab6.c$41$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:41: SMB_Init();
+	C$lab6.c$55$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:55: SMB_Init();
 	lcall	_SMB_Init
-	C$lab6.c$42$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:42: ADC_Init();
+	C$lab6.c$56$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:56: ADC_Init();
 	lcall	_ADC_Init
-	C$lab6.c$44$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:44: count =0;
+	C$lab6.c$58$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:58: count =0;
 	clr	a
 	mov	_count,a
 	mov	(_count + 1),a
-	C$lab6.c$46$1$110 ==.
+	C$lab6.c$60$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:60: while (1)
+00102$:
+	C$lab6.c$62$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:62: printf("\r\n%u ms",count*20);
+	mov	__mulint_PARM_2,_count
+	mov	(__mulint_PARM_2 + 1),(_count + 1)
+	mov	dptr,#0x0014
+	lcall	__mulint
+	mov	r6,dpl
+	mov	r7,dph
+	push	ar6
+	push	ar7
+	mov	a,#___str_3
+	push	acc
+	mov	a,#(___str_3 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	C$lab6.c$63$2$114 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:63: wait();
+	lcall	_wait
+	sjmp	00102$
+	C$lab6.c$66$1$113 ==.
 	XG$main$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'direction'
+;------------------------------------------------------------
+;value                     Allocated to registers r6 r7 
+;------------------------------------------------------------
+	G$direction$0$0 ==.
+	C$lab6.c$69$1$113 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:69: unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
+;	-----------------------------------------
+;	 function direction
+;	-----------------------------------------
+_direction:
+	C$lab6.c$72$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:72: count =0;
+	clr	a
+	mov	_count,a
+	mov	(_count + 1),a
+	C$lab6.c$73$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:73: while (count < 1);
+00101$:
+	clr	c
+	mov	a,_count
+	subb	a,#0x01
+	mov	a,(_count + 1)
+	xrl	a,#0x80
+	subb	a,#0x80
+	jc	00101$
+	C$lab6.c$74$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:74: lcd_clear();
+	lcall	_lcd_clear
+	C$lab6.c$75$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:75: lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij");
+	mov	a,#___str_4
+	push	acc
+	mov	a,#(___str_4 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_lcd_print
+	dec	sp
+	dec	sp
+	dec	sp
+	C$lab6.c$76$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:76: start();
+	lcall	_start
+	C$lab6.c$77$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:77: lcd_clear();
+	lcall	_lcd_clear
+	C$lab6.c$78$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:78: value = kpd_input(0);
+	mov	dpl,#0x00
+	lcall	_kpd_input
+	mov	r6,dpl
+	mov	r7,dph
+	C$lab6.c$79$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:79: lcd_clear();
+	push	ar7
+	push	ar6
+	lcall	_lcd_clear
+	pop	ar6
+	pop	ar7
+	C$lab6.c$80$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:80: lcd_print("\r\nThe desired direction is: %d", value);
+	push	ar7
+	push	ar6
+	push	ar6
+	push	ar7
+	mov	a,#___str_5
+	push	acc
+	mov	a,#(___str_5 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_lcd_print
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	pop	ar6
+	pop	ar7
+	C$lab6.c$81$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:81: printf("\r\nThe desired direction is: %d", value);
+	push	ar7
+	push	ar6
+	push	ar6
+	push	ar7
+	mov	a,#___str_5
+	push	acc
+	mov	a,#(___str_5 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	pop	ar6
+	pop	ar7
+	C$lab6.c$83$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:83: return value;
+	mov	dpl,r6
+	mov	dph,r7
+	C$lab6.c$85$1$116 ==.
+	XG$direction$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'start'
+;------------------------------------------------------------
+	G$start$0$0 ==.
+	C$lab6.c$87$1$116 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:87: void start(void)            ///WAITS UNTIL '*' IS ENTERED
+;	-----------------------------------------
+;	 function start
+;	-----------------------------------------
+_start:
+	C$lab6.c$89$1$118 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:89: while (read_keypad() != '*') wait();
+00101$:
+	lcall	_read_keypad
+	mov	r7,dpl
+	cjne	r7,#0x2A,00112$
+	sjmp	00104$
+00112$:
+	lcall	_wait
+	sjmp	00101$
+00104$:
+	C$lab6.c$90$1$118 ==.
+	XG$start$0$0 ==.
+	ret
+;------------------------------------------------------------
+;Allocation info for local variables in function 'wait'
+;------------------------------------------------------------
+;old_count                 Allocated to registers r6 r7 
+;------------------------------------------------------------
+	G$wait$0$0 ==.
+	C$lab6.c$94$1$118 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:94: void wait(void)
+;	-----------------------------------------
+;	 function wait
+;	-----------------------------------------
+_wait:
+	C$lab6.c$96$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:96: int old_count = count+1;
+	mov	a,#0x01
+	add	a,_count
+	mov	r6,a
+	clr	a
+	addc	a,(_count + 1)
+	mov	r7,a
+	C$lab6.c$97$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:97: while (old_count> count);
+00101$:
+	clr	c
+	mov	a,_count
+	subb	a,r6
+	mov	a,(_count + 1)
+	xrl	a,#0x80
+	mov	b,r7
+	xrl	b,#0x80
+	subb	a,b
+	jc	00101$
+	C$lab6.c$98$1$120 ==.
+	XG$wait$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Port_Init'
 ;------------------------------------------------------------
 	G$Port_Init$0$0 ==.
-	C$lab6.c$48$1$110 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:48: void Port_Init(void)
+	C$lab6.c$100$1$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:100: void Port_Init(void)
 ;	-----------------------------------------
 ;	 function Port_Init
 ;	-----------------------------------------
 _Port_Init:
-	C$lab6.c$50$1$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:50: P0MDOUT &= ~0x32;
+	C$lab6.c$102$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:102: P0MDOUT &= ~0x32;
 	mov	r7,_P0MDOUT
 	mov	a,#0xCD
 	anl	a,r7
 	mov	_P0MDOUT,a
-	C$lab6.c$52$1$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:52: P1MDIN  &= ~0x20;
+	C$lab6.c$104$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:104: P1MDIN  &= ~0x20;
 	mov	r7,_P1MDIN
 	mov	a,#0xDF
 	anl	a,r7
 	mov	_P1MDIN,a
-	C$lab6.c$54$1$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:54: P1MDOUT |= 0x0F;
+	C$lab6.c$106$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:106: P1MDOUT |= 0x0F;
 	orl	_P1MDOUT,#0x0F
-	C$lab6.c$55$1$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:55: P1MDOUT &= 0x20;
+	C$lab6.c$107$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:107: P1MDOUT &= 0x20;
 	anl	_P1MDOUT,#0x20
-	C$lab6.c$57$1$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:57: P1 		 = 0x20;
+	C$lab6.c$109$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:109: P1 		 = 0x20;
 	mov	_P1,#0x20
-	C$lab6.c$60$1$112 ==.
+	C$lab6.c$112$1$122 ==.
 	XG$Port_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_Init'
 ;------------------------------------------------------------
 	G$PCA_Init$0$0 ==.
-	C$lab6.c$62$1$112 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:62: void PCA_Init(void)
+	C$lab6.c$114$1$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:114: void PCA_Init(void)
 ;	-----------------------------------------
 ;	 function PCA_Init
 ;	-----------------------------------------
 _PCA_Init:
-	C$lab6.c$64$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:64: PCA0MD   = 0x81;
+	C$lab6.c$116$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:116: PCA0MD   = 0x81;
 	mov	_PCA0MD,#0x81
-	C$lab6.c$65$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:65: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode FOR STEERING
+	C$lab6.c$117$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:117: PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode FOR STEERING
 	mov	_PCA0CPM0,#0xC2
-	C$lab6.c$66$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:66: PCA0CPM1 = 0xC2;
+	C$lab6.c$118$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:118: PCA0CPM1 = 0xC2;
 	mov	_PCA0CPM1,#0xC2
-	C$lab6.c$67$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:67: PCA0CPM2 = 0xC2;    //CCM2 in 16-bit compare mode FOR MOTOR
+	C$lab6.c$119$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:119: PCA0CPM2 = 0xC2;    //CCM2 in 16-bit compare mode FOR MOTOR
 	mov	_PCA0CPM2,#0xC2
-	C$lab6.c$68$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:68: PCA0CPM3 = 0xC2;
-	mov	_PCA0CPM3,#0xC2
-	C$lab6.c$69$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:69: PCA0CN 	 = 0x40;    //Enable PCA counter
+	C$lab6.c$120$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:120: PCA0CN 	 = 0x40;    //Enable PCA counter
 	mov	_PCA0CN,#0x40
-	C$lab6.c$70$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:70: EIE1    |= 0x08;    //Enable PCA interrupt
+	C$lab6.c$121$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:121: EIE1    |= 0x08;    //Enable PCA interrupt
 	orl	_EIE1,#0x08
-	C$lab6.c$71$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:71: EA       = 1   ;    //Enable global interrupts
+	C$lab6.c$122$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:122: EA       = 1   ;    //Enable global interrupts
 	setb	_EA
-	C$lab6.c$72$1$114 ==.
+	C$lab6.c$123$1$124 ==.
 	XG$PCA_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'XBR0_Init'
 ;------------------------------------------------------------
 	G$XBR0_Init$0$0 ==.
-	C$lab6.c$75$1$114 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:75: void XBR0_Init(void)
+	C$lab6.c$126$1$124 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:126: void XBR0_Init(void)
 ;	-----------------------------------------
 ;	 function XBR0_Init
 ;	-----------------------------------------
 _XBR0_Init:
-	C$lab6.c$77$1$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:77: XBR0 = 0x27;
+	C$lab6.c$128$1$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:128: XBR0 = 0x27;
 	mov	_XBR0,#0x27
-	C$lab6.c$78$1$116 ==.
+	C$lab6.c$129$1$126 ==.
 	XG$XBR0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'SMB_Init'
 ;------------------------------------------------------------
 	G$SMB_Init$0$0 ==.
-	C$lab6.c$80$1$116 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:80: void SMB_Init(void)
+	C$lab6.c$131$1$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:131: void SMB_Init(void)
 ;	-----------------------------------------
 ;	 function SMB_Init
 ;	-----------------------------------------
 _SMB_Init:
-	C$lab6.c$82$1$118 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:82: SMB0CR =0x93;
+	C$lab6.c$133$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:133: SMB0CR =0x93;
 	mov	_SMB0CR,#0x93
-	C$lab6.c$83$1$118 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:83: ENSMB =1;
+	C$lab6.c$134$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:134: ENSMB =1;
 	setb	_ENSMB
-	C$lab6.c$84$1$118 ==.
+	C$lab6.c$135$1$128 ==.
 	XG$SMB_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'ADC_Init'
 ;------------------------------------------------------------
 	G$ADC_Init$0$0 ==.
-	C$lab6.c$86$1$118 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:86: void ADC_Init(void)								/////SETS ADC 
+	C$lab6.c$137$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:137: void ADC_Init(void)								/////SETS ADC 
 ;	-----------------------------------------
 ;	 function ADC_Init
 ;	-----------------------------------------
 _ADC_Init:
-	C$lab6.c$88$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:88: REF0CN = 0x03;
+	C$lab6.c$139$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:139: REF0CN = 0x03;
 	mov	_REF0CN,#0x03
-	C$lab6.c$89$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:89: ADC1CN = 0x80;
+	C$lab6.c$140$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:140: ADC1CN = 0x80;
 	mov	_ADC1CN,#0x80
-	C$lab6.c$90$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:90: ADC1CF |= 0x01;
+	C$lab6.c$141$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:141: ADC1CF |= 0x01;
 	orl	_ADC1CF,#0x01
-	C$lab6.c$91$1$120 ==.
+	C$lab6.c$142$1$130 ==.
 	XG$ADC_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_ISR'
 ;------------------------------------------------------------
 	G$PCA_ISR$0$0 ==.
-	C$lab6.c$93$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:93: void PCA_ISR ( void ) __interrupt 9
+	C$lab6.c$144$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:144: void PCA_ISR ( void ) __interrupt 9
 ;	-----------------------------------------
 ;	 function PCA_ISR
 ;	-----------------------------------------
 _PCA_ISR:
 	push	acc
 	push	psw
-	C$lab6.c$96$1$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:96: if (CF)
-	C$lab6.c$98$2$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:98: CF =0;
+	C$lab6.c$147$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:147: if (CF)
+	C$lab6.c$149$2$133 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:149: CF =0;
 	jbc	_CF,00108$
 	sjmp	00102$
 00108$:
-	C$lab6.c$99$2$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:99: PCA0 = PCA_START;
+	C$lab6.c$150$2$133 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:150: PCA0 = PCA_START;
 	mov	((_PCA0 >> 0) & 0xFF),#0x00
 	mov	((_PCA0 >> 8) & 0xFF),#0x70
-	C$lab6.c$100$2$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:100: count++;
+	C$lab6.c$151$2$133 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:151: count++;
 	inc	_count
 	clr	a
 	cjne	a,_count,00109$
 	inc	(_count + 1)
 00109$:
 00102$:
-	C$lab6.c$105$1$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:105: PCA0CN &= 0xC0;
+	C$lab6.c$156$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c:156: PCA0CN &= 0xC0;
 	anl	_PCA0CN,#0xC0
 	pop	psw
 	pop	acc
-	C$lab6.c$106$1$122 ==.
+	C$lab6.c$157$1$132 ==.
 	XG$PCA_ISR$0$0 ==.
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
@@ -2447,6 +2711,28 @@ ___str_1:
 Flab6$__str_2$0$0 == .
 ___str_2:
 	.ascii "%c"
+	.db 0x00
+Flab6$__str_3$0$0 == .
+___str_3:
+	.db 0x0D
+	.db 0x0A
+	.ascii "%u ms"
+	.db 0x00
+Flab6$__str_4$0$0 == .
+___str_4:
+	.ascii "Calibration:"
+	.db 0x0A
+	.ascii "Hello world!"
+	.db 0x0A
+	.ascii "012_345_678:"
+	.db 0x0A
+	.ascii "abc def ghij"
+	.db 0x00
+Flab6$__str_5$0$0 == .
+___str_5:
+	.db 0x0D
+	.db 0x0A
+	.ascii "The desired direction is: %d"
 	.db 0x00
 	.area XINIT   (CODE)
 	.area CABS    (ABS,CODE)

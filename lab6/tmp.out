@@ -1,1 +1,2 @@
-+ C:\PROGRA~2\SDCC\bin\sdld.exe -nf "C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.lk"
++ C:\PROGRA~2\SDCC\bin\sdcpp.exe -nostdinc -Wall -I"C:\Users\Michael\Documents\GitHub\LITEC\lab6" -obj-ext=.rel -D__SDCC_MODEL_SMALL -DSDCC_MODEL_SMALL -D__SDCC_FLOAT_REENT -DSDCC_FLOAT_REENT -D__SDCC=3_4_0 -DSDCC=340 -D__SDCC_REVISION=8981 -DSDCC_REVISION=8981 -D__SDCC_mcs51 -DSDCC_mcs51 -D__mcs51 -D__STDC_NO_COMPLEX__ -D__STDC_NO_THREADS__ -D__STDC_NO_ATOMICS__ -D__STDC_NO_VLA__ -isystem "C:\Program Files (x86)\SDCC\bin\..\include\mcs51" -isystem "C:\Program Files (x86)\SDCC\bin\..\include"  "C:\Users\Michael\Documents\GitHub\LITEC\lab6\lab6.c" 
++ C:\PROGRA~2\SDCC\bin\sdas8051.exe -plosgffwy "lab6.rel" "lab6".asm
