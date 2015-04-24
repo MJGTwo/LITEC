@@ -29,6 +29,16 @@ void wait(void);
 void start(void);
 unsigned int direction(void);
 
+void Rudder_cal(void);
+void Angle_cal(void);
+void Thrust_cal(void);
+
+void Change_D(void);
+unsigned int Read_Ranger(void);
+unsigned int ReadCompass(void);
+void Steering_func(void);
+void Steering_Servo(unsigned int direction);
+
 int count=0;
 unsigned int PW_MIN_THRUST = 2000;
 unsigned int PW_NUET_THRUST = 2750;
@@ -44,9 +54,17 @@ unsigned int PW_DOWN_ANGLE = 3500;
 
 
 unsigned int RUDDER_PW;
+unsigned int RDR_lo_to_hi;
 unsigned int ANGLE_PW;
+unsigned int AGL_lo_to_hi;
 unsigned int THRUST_PW;
+unsigned int TRST_lo_to_hi;
 
+ 		 int desired_D;
+ 		 int actual_D;
+unsigned int offset;
+
+unsigned char r_data[2];
 
 void main(void)
 {
@@ -60,6 +78,22 @@ void main(void)
 	
 	count =0;
 
+	RUDDER_PW= PW_CENTER_RUDDER;
+	ANGLE_PW = PW_CENTER_ANGLE;
+	THRUST_PW = PW_NUET_THRUST;
+
+	RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
+	TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
+
+	PCA0CP0 = RDR_lo_to_hi;
+	PCA0CP1 = AGL_lo_to_hi;
+	PCA0CP2 = TRST_lo_to_hi;
+
+
+
+
+	Rudder_cal();
 	while (1)
 	{
 		printf("\r\n%u ms",count*20);
@@ -68,38 +102,112 @@ void main(void)
 
 }
 
+void Change_D(void)
+{
+	unsigned int distance=100;
+	if (count +1 % 4 == 0)
+	{
+		distance = Read_Ranger();
+	}
+	if (distance < 50)
+	{
+		desired_D = (desired_D + 1800) % 3600;
+	}
+}
+
+unsigned int Read_Ranger(void)
+{
+
+
+	unsigned char r_addr = 0xE0;
+	unsigned int read = 0;
+	i2c_read_data(r_addr, 2, r_data, 2);
+	read = (((unsigned int) r_data[0] <<8) | r_data[1]);
+	return read;
+}
+
+void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
+{
+	actual_D = ReadCompass();
+	offset = (unsigned int)((actual_D +3600- desired_D ) % 3600);
+	Steering_Servo(offset);
+
+}
+
+unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
+{
+	int value;
+	count =0;
+	while (count < 1);
+	lcd_clear();
+	lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij");
+	start();
+	lcd_clear();
+	value = kpd_input(0);
+	lcd_clear();
+	lcd_print("\r\nThe desired direction is: %d", value);
+	printf("\r\nThe desired direction is: %d", value);
+    
+	return value;
+
+}
+
+unsigned int ReadCompass(void)
+{
+	unsigned char Data[2];
+
+	unsigned int Crange = 0;
+	unsigned char addr = 0xC0;
+	i2c_read_data(addr, 2,Data,2);
+	Crange = ((unsigned int) Data[0] << 8 | Data[1]);
+	return Crange;
+}
 
 void Rudder_cal(void)
 {	
 	int value =0;
 	int times =0;
+	count =0;
+	lcd_clear();
+	lcd_print("Rudder Calibration");
+	while (count < 50);
+	lcd_clear();
 	while (1)
 	{
 
 		count =0;
 		while (count < 1);
 		lcd_clear();
-		lcd_print("Rudder Calibration\n go left: press 1\n go right: press 2\n confirm: press 3\nPress # for next screen");
+		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
 		start();
 		lcd_clear();
+<<<<<<< HEAD
+=======
+		lcd_print("\n confirm: press 3\n press * to begin");
+		start();
+>>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 
 		while (1)
 		{
+			printf("\r\n %u",RUDDER_PW);
+			RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
+			PCA0CP0 = RDR_lo_to_hi;
 			if (times == 0 )
 			{
 				if (value ==0)
 				{
-					 lcd_print("Now calibrating Min_PW");
+					lcd_clear();
+					 lcd_print("Now calibrating Min_PW\n");
 					 RUDDER_PW = PW_LEFT_RUDDER;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RUDDER_PW -= 10;
+					RUDDER_PW -= 20;
 				}
 				else if (value==2)
 				{
-					RUDDER_PW += 10;
+					RUDDER_PW += 20;
 				}
 				else if (value == 3)
 				{
@@ -112,17 +220,18 @@ void Rudder_cal(void)
 			{
 				if (value ==0)
 				{
+					lcd_clear();
 					 lcd_print("Now calibrating Cen_PW");
 					 RUDDER_PW = PW_CENTER_RUDDER;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RUDDER_PW -= 10;
+					RUDDER_PW -= 20;
 				}
 				else if (value==2)
 				{
-					RUDDER_PW += 10;
+					RUDDER_PW += 20;
 				}
 				else if (value == 3)
 				{
@@ -135,17 +244,18 @@ void Rudder_cal(void)
 			{
 				if (value==0)
 				{
-					 lcd_print("Now calibrating Max_PW");
-					 RUDDER_PW = PW_RIGHT_RUDDER;
+					lcd_clear();
+					lcd_print("Now calibrating Max_PW");
+					RUDDER_PW = PW_RIGHT_RUDDER;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RUDDER_PW -= 10;
+					RUDDER_PW -= 20;
 				}
 				else if (value==2)
 				{
-					RUDDER_PW += 10;
+					RUDDER_PW += 20;
 				}
 				else if (value == 3)
 				{
@@ -163,19 +273,43 @@ void Rudder_cal(void)
 
 void Angle_cal(void)
 {
+<<<<<<< HEAD
 	int value = 0;
 	int times = 0;
+=======
+	int value =0;
+	int times =0;
+	count =0;
+	lcd_clear();
+	lcd_print("Angle Calibration");
+	while (count < 50);
+	lcd_clear();
+>>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 	while (1)
 	{
 		count = 0;
 		while (count < 1);
 		lcd_clear();
+<<<<<<< HEAD
 		lcd_print("Angle Calibration\n tilt up: press 1\n tilt down: press 2\n confirm: press 3\nPress # for next screen");
 		start();
 		lcd_clear();
 
 		while (1)
 		{
+=======
+		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
+		start();
+		lcd_clear();
+		lcd_print("\n confirm: press 3\n press * to begin");
+		start();
+
+		while (1)
+		{
+			printf("\r\n %u",ANGLE_PW);
+			AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
+			PCA0CP1 = AGL_lo_to_hi;
+>>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 			if (times == 0 )
 			{
 				if (value ==0)
@@ -252,6 +386,7 @@ void Thrust_cal(void)
 {
 	int value =0;
 	int times =0;
+<<<<<<< HEAD
 	while (1)
 	{
 
@@ -264,6 +399,30 @@ void Thrust_cal(void)
 
 		while (1)
 		{
+=======
+	count =0;
+	lcd_clear();
+	lcd_print("Thrust Calibration");
+	while (count < 50);
+	lcd_clear();
+	while (1)
+	{
+
+		count = 0;
+		while (count < 1);
+		lcd_clear();
+		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
+		start();
+		lcd_clear();
+		lcd_print("\n confirm: press 3\n press * to begin");
+		start();
+		
+		while (1)
+		{
+			printf("\r\n %u",THRUST_PW);
+			TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+			PCA0CP2 = TRST_lo_to_hi;
+>>>>>>> f275bb088e684b68b582ed23eec3518e16ed8a61
 			if (times == 0 )
 			{
 				if (value ==0)
@@ -336,22 +495,42 @@ void Thrust_cal(void)
 	}
 }
 
-unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
-{
-	int value;
-	count =0;
-	while (count < 1);
-	lcd_clear();
-	lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij");
-	start();
-	lcd_clear();
-	value = kpd_input(0);
-	lcd_clear();
-	lcd_print("\r\nThe desired direction is: %d", value);
-	printf("\r\nThe desired direction is: %d", value);
-    
-	return value;
 
+void Steering_Servo(unsigned int direction)
+{
+    
+    //wait for a key to be pressed
+	if (direction < 1800)               /////IF FACING OPPOSITE DIRECTION, TURN LEFT
+	{
+		if (RUDDER_PW <= PW_CENTER_RUDDER - (float)(direction)/4.2)   ///MAKES RATIO TO SMOOTHLY TURN
+		{
+			RUDDER_PW = PW_CENTER_RUDDER - (float)(direction)/4.2;
+		}
+		else
+		{
+			RUDDER_PW -= 10;
+		}
+	}
+	else if ( direction == 0 || direction ==3600)       ///GO STRAIGHT
+	{
+		RUDDER_PW=PW_CENTER_RUDDER;
+	}
+	else                            /////TURN RIGHT OTHERWISE
+	{
+		if (RUDDER_PW >= PW_CENTER_RUDDER + (float)(3600-direction)/1.9)
+		{
+			RUDDER_PW = PW_CENTER_RUDDER + (float)(3600-direction)/1.9;
+		}
+		else
+		{
+			RUDDER_PW += 10;
+		}			
+	}		
+
+
+    //printf("\r\nRUDDER_PW: %u", RUDDER_PW);
+    RDR_lo_to_h= 0xFFFF - RUDDER_PW;
+    PCA0CP0 = RDR_lo_to_h;
 }
 
 void start(void)            ///WAITS UNTIL '*' IS ENTERED
