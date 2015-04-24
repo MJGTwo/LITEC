@@ -1,4 +1,3 @@
-
  /*  Lab6
 Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
 Section 03
@@ -83,9 +82,7 @@ void Rudder_cal(void)
 		lcd_print("Rudder Calibration\n go left: press 1\n go right: press 2\n confirm: press 3\nPress # for next screen");
 		start();
 		lcd_clear();
-		//unsigned int PW_LEFT_RUDDER = 2000;
-//unsigned int PW_CENTER_RUDDER = 2750;
-//unsigned int PW_RIGHT_RUDDER = 3500;
+
 		while (1)
 		{
 			if (times == 0 )
@@ -166,12 +163,177 @@ void Rudder_cal(void)
 
 void Angle_cal(void)
 {
+	int value = 0;
+	int times = 0;
+	while (1)
+	{
+		count = 0;
+		while (count < 1);
+		lcd_clear();
+		lcd_print("Angle Calibration\n tilt up: press 1\n tilt down: press 2\n confirm: press 3\nPress # for next screen");
+		start();
+		lcd_clear();
 
+		while (1)
+		{
+			if (times == 0 )
+			{
+				if (value ==0)
+				{
+					 lcd_print("Now calibrating Min_PW UP ANGLE");
+					 ANGLE_PW = PW_UP_ANGLE;
+				}
+				value = kpd_input(1);
+				if (value == 1)
+				{
+					ANGLE_PW -= 10;
+				}
+				else if (value==2)
+				{
+					ANGLE_PW += 10;
+				}
+				else if (value == 3)
+				{
+					times++;
+					value =0;
+					PW_UP_ANGLE = ANGLE_PW;
+				}
+			}
+			else if (times ==1)
+			{
+				if (value ==0)
+				{
+					 lcd_print("Now calibrating Cen_PW");
+					 ANGLE_PW = PW_CENTER_ANGLE;
+				}
+				value = kpd_input(1);
+				if (value == 1)
+				{
+					ANGLE_PW -= 10;
+				}
+				else if (value==2)
+				{
+					ANGLE_PW += 10;
+				}
+				else if (value == 3)
+				{
+					times++;
+					value=0;
+					PW_CENTER_ANGLE = ANGLE_PW;
+				}
+			}
+			else
+			{
+				if (value==0)
+				{
+					 lcd_print("Now calibrating Max_PW DOWN ANGLE");
+					 ANGLE_PW = PW_DOWN_ANGLE;
+				}
+				value = kpd_input(1);
+				if (value == 1)
+				{
+					ANGLE_PW -= 10;
+				}
+				else if (value==2)
+				{
+					ANGLE_PW += 10;
+				}
+				else if (value == 3)
+				{
+					PW_DOWN_ANGLE = ANGLE_PW;
+					return;
+				}
+			}
+		}
+	}
 }
 
 void Thrust_cal(void)
 {
+	int value =0;
+	int times =0;
+	while (1)
+	{
 
+		count =0;
+		while (count < 1);
+		lcd_clear();
+		lcd_print("Thrust Calibration\n Decrease thrust PW: press 1\n Increase thrust PW: press 2\n confirm: press 3\nPress # for next screen");
+		start();
+		lcd_clear();
+
+		while (1)
+		{
+			if (times == 0 )
+			{
+				if (value ==0)
+				{
+					 lcd_print("Now calibrating Min_PW");
+					 RUDDER_PW = PW_MIN_THRUST;
+				}
+				value = kpd_input(1);
+				if (value == 1)
+				{
+					THRUST_PW -= 10;
+				}
+				else if (value==2)
+				{
+					THRUST_PW += 10;
+				}
+				else if (value == 3)
+				{
+					times++;
+					value =0;
+					PW_MIN_THRUST = THRUST_PW;
+				}
+			}
+			else if (times ==1)
+			{
+				if (value ==0)
+				{
+					 lcd_print("Now calibrating Cen_PW");
+					 RUDDER_PW = PW_NUET_THRUST;
+				}
+				value = kpd_input(1);
+				if (value == 1)
+				{
+					THRUST_PW -= 10;
+				}
+				else if (value==2)
+				{
+					THRUST_PW += 10;
+				}
+				else if (value == 3)
+				{
+					times++;
+					value=0;
+					PW_NUET_THRUST = RUDDER_PW;
+				}
+			}
+			else
+			{
+				if (value==0)
+				{
+					 lcd_print("Now calibrating Max_PW");
+					 THRUST_PW = PW_MAX_THRUST;
+				}
+				value = kpd_input(1);
+				if (value == 1)
+				{
+					THRUST_PW -= 10;
+				}
+				else if (value==2)
+				{
+					THRUST_PW += 10;
+				}
+				else if (value == 3)
+				{
+					PW_MAX_THRUST = THRUST_PW;
+					return;
+				}
+			}
+		}	
+	}
 }
 
 unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
