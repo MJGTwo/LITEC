@@ -49,9 +49,9 @@ unsigned int PW_LEFT_RUDDER = 2000;
 unsigned int PW_CENTER_RUDDER = 2750;
 unsigned int PW_RIGHT_RUDDER = 3500;
 
-unsigned int PW_UP_ANGLE = 2000;
-unsigned int PW_CENTER_ANGLE = 2750;
-unsigned int PW_DOWN_ANGLE = 3500;
+unsigned int PW_UP_ANGLE = 2880;
+unsigned int PW_CENTER_ANGLE = 3530;
+unsigned int PW_DOWN_ANGLE = 4180;
 
 
 unsigned int RUDDER_PW;
@@ -88,7 +88,7 @@ void main(void)
 	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 
 	PCA0CP0 = RDR_lo_to_hi;
-	PCA0CP1 = AGL_lo_to_hi;
+	PCA0CP1 = AGL_lo_to_hi;	
 	PCA0CP2 = TRST_lo_to_hi;
 
 
@@ -100,7 +100,14 @@ void main(void)
 	PCA0CP0 = RDR_lo_to_hi;
 
 	Angle_cal();
+	ANGLE_PW = PW_CENTER_ANGLE;
+	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
+	PCA0CP1 = AGL_lo_to_hi;
+
 	Thrust_cal();
+	THRUST_PW = PW_NUET_THRUST;
+	TRST_lo_to_hi = 0xFFFF - THRUST_PW;
+
 
 	while (1)
 	{
@@ -173,6 +180,7 @@ unsigned int ReadCompass(void)
 
 void Rudder_cal(void)
 {	
+	char st;
 	int value =0;
 	int times =0;
 	count =0;
@@ -191,19 +199,21 @@ void Rudder_cal(void)
 		lcd_clear();
 		lcd_print("\n confirm: press 3\n press * to begin");
 		start();
-
+		st =0;
 		while (1)
 		{
 			printf("\r\n %u",RUDDER_PW);
 			RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
 			PCA0CP0 = RDR_lo_to_hi;
+
 			if (times == 0 )
 			{
 				if (value ==0)
 				{
 					lcd_clear();
 					 lcd_print("Now calibrating Min_PW\n");
-					 RUDDER_PW = PW_LEFT_RUDDER;
+					 if (st ==0 ) RUDDER_PW = PW_LEFT_RUDDER;
+					 st =1;
 				}
 				value = kpd_input(1);
 				if (value == 1)
@@ -278,6 +288,7 @@ void Rudder_cal(void)
 
 void Angle_cal(void)
 {
+	char st;
 	int value =0;
 	int times =0;
 	count =0;
@@ -295,27 +306,30 @@ void Angle_cal(void)
 		lcd_clear();
 		lcd_print("\n confirm: press 3\n press * to begin");
 		start();
-
+		st =0;
 		while (1)
 		{
 			printf("\r\n %u",ANGLE_PW);
 			AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 			PCA0CP1 = AGL_lo_to_hi;
+
 			if (times == 0 )
 			{
 				if (value ==0)
 				{
+					 lcd_clear();
 					 lcd_print("Now calibrating Min_PW UP ANGLE");
-					 ANGLE_PW = PW_UP_ANGLE;
+					 if (st == 0) ANGLE_PW = PW_UP_ANGLE;
+					 st =1;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					ANGLE_PW -= 10;
+					ANGLE_PW -= 30;
 				}
 				else if (value==2)
 				{
-					ANGLE_PW += 10;
+					ANGLE_PW += 30;
 				}
 				else if (value == 3)
 				{
@@ -328,17 +342,18 @@ void Angle_cal(void)
 			{
 				if (value ==0)
 				{
+					 lcd_clear();
 					 lcd_print("Now calibrating Cen_PW");
 					 ANGLE_PW = PW_CENTER_ANGLE;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					ANGLE_PW -= 10;
+					ANGLE_PW -= 30;
 				}
 				else if (value==2)
 				{
-					ANGLE_PW += 10;
+					ANGLE_PW += 30;
 				}
 				else if (value == 3)
 				{
@@ -351,17 +366,18 @@ void Angle_cal(void)
 			{
 				if (value==0)
 				{
+					 lcd_clear();
 					 lcd_print("Now calibrating Max_PW DOWN ANGLE");
 					 ANGLE_PW = PW_DOWN_ANGLE;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					ANGLE_PW -= 10;
+					ANGLE_PW -= 30;
 				}
 				else if (value==2)
 				{
-					ANGLE_PW += 10;
+					ANGLE_PW += 30;
 				}
 				else if (value == 3)
 				{
@@ -375,6 +391,7 @@ void Angle_cal(void)
 
 void Thrust_cal(void)
 {
+	char st;
 	int value =0;
 	int times =0;
 	count =0;
@@ -393,7 +410,7 @@ void Thrust_cal(void)
 		lcd_clear();
 		lcd_print("\n confirm: press 3\n press * to begin");
 		start();
-		
+		st =0;
 		while (1)
 		{
 			printf("\r\n %u",THRUST_PW);
@@ -403,17 +420,19 @@ void Thrust_cal(void)
 			{
 				if (value ==0)
 				{
+					 lcd_clear();
 					 lcd_print("Now calibrating Min_PW");
-					 RUDDER_PW = PW_MIN_THRUST;
+					 if (st ==0) RUDDER_PW = PW_MIN_THRUST;
+					 st =1;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					THRUST_PW -= 10;
+					THRUST_PW -= 30;
 				}
 				else if (value==2)
 				{
-					THRUST_PW += 10;
+					THRUST_PW += 30;
 				}
 				else if (value == 3)
 				{
@@ -426,17 +445,18 @@ void Thrust_cal(void)
 			{
 				if (value ==0)
 				{
+					 lcd_clear();
 					 lcd_print("Now calibrating Cen_PW");
 					 RUDDER_PW = PW_NUET_THRUST;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					THRUST_PW -= 10;
+					THRUST_PW -= 30;
 				}
 				else if (value==2)
 				{
-					THRUST_PW += 10;
+					THRUST_PW += 30;
 				}
 				else if (value == 3)
 				{
@@ -449,17 +469,18 @@ void Thrust_cal(void)
 			{
 				if (value==0)
 				{
+					 lcd_clear();
 					 lcd_print("Now calibrating Max_PW");
 					 THRUST_PW = PW_MAX_THRUST;
 				}
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					THRUST_PW -= 10;
+					THRUST_PW -= 30;
 				}
 				else if (value==2)
 				{
-					THRUST_PW += 10;
+					THRUST_PW += 30;
 				}
 				else if (value == 3)
 				{
@@ -542,6 +563,7 @@ void PCA_Init(void)
     PCA0CPM0 = 0xC2;    //CCM0 in 16-bit compare mode FOR STEERING
     PCA0CPM1 = 0xC2;
     PCA0CPM2 = 0xC2;    //CCM2 in 16-bit compare mode FOR MOTOR
+    PCA0CPM3 = 0XC2;
     PCA0CN 	 = 0x40;    //Enable PCA counter
     EIE1    |= 0x08;    //Enable PCA interrupt
     EA       = 1   ;    //Enable global interrupts

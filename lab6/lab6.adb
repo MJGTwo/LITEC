@@ -86,10 +86,13 @@ S:Llab6.direction$value$1$132({2}SI:S),R,0,0,[r6,r7]
 S:Llab6.ReadCompass$Data$1$134({2}DA2d,SC:U),E,0,0
 S:Llab6.ReadCompass$Crange$1$134({2}SI:U),R,0,0,[]
 S:Llab6.ReadCompass$addr$1$134({1}SC:U),R,0,0,[]
+S:Llab6.Rudder_cal$st$1$136({1}SC:S),R,0,0,[r3]
 S:Llab6.Rudder_cal$value$1$136({2}SI:S),R,0,0,[r6,r7]
 S:Llab6.Rudder_cal$times$1$136({2}SI:S),R,0,0,[r4,r5]
+S:Llab6.Angle_cal$st$1$155({1}SC:S),R,0,0,[r3]
 S:Llab6.Angle_cal$value$1$155({2}SI:S),R,0,0,[r6,r7]
 S:Llab6.Angle_cal$times$1$155({2}SI:S),R,0,0,[r4,r5]
+S:Llab6.Thrust_cal$st$1$174({1}SC:S),R,0,0,[r3]
 S:Llab6.Thrust_cal$value$1$174({2}SI:S),R,0,0,[r6,r7]
 S:Llab6.Thrust_cal$times$1$174({2}SI:S),R,0,0,[r4,r5]
 S:Llab6.Steering_Servo$direction$1$192({2}SI:U),E,0,0
