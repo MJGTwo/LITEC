@@ -119,8 +119,10 @@ void main(void)
 
 			Steering_func();
 		}
-		Change_D();
-
+		if ((count +1) % 4 ==0)
+		{
+			//Change_D();
+		}
 	}
 
 }
@@ -161,10 +163,11 @@ void kpkd(void)
 void Change_D(void)
 {
 	__xdata unsigned int distance=100;
-	if (count +1 % 4 == 0)
-	{
-		distance = Read_Ranger();
-	}
+
+
+	distance = Read_Ranger();
+	printf("\r\n%u", distance);
+
 	if (distance < 50)
 	{
 		desired_D = (desired_D + 1800) % 3600;
@@ -173,10 +176,12 @@ void Change_D(void)
 
 unsigned int Read_Ranger(void)
 {
-
-
 	unsigned char r_addr = 0xE0;
 	unsigned int read = 0;
+
+	r_data[0] = 0x51;
+	i2c_read_data(r_addr, 0, r_data, 1);
+
 	i2c_read_data(r_addr, 2, r_data, 2);
 	read = (((unsigned int) r_data[0] <<8) | r_data[1]);
 	return read;
@@ -184,13 +189,11 @@ unsigned int Read_Ranger(void)
 
 void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
 {
-
 	actual_D = ReadCompass();
 	lcd_clear();
 	lcd_print("%d", actual_D);
 	offset = (unsigned int)((actual_D +3600- desired_D ) % 3600);
 	Steering_Servo(offset);
-
 }
 
 unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
@@ -208,7 +211,6 @@ unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DE
 	printf("\r\nThe desired direction is: %d", value);
     
 	return value;
-
 }
 
 unsigned int ReadCompass(void)
@@ -591,12 +593,12 @@ void Steering_Servo(unsigned int direction)
 
 	RUDDER_PW  = PW_CENTER_RUDDER + (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
 
-	RTHRUST_PW = PW_NUET_THRUST   - (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
+	RTHRUST_PW = PW_NUET_THRUST   + (int) -1* (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
 
 	LTHRUST_PW = PW_NUET_THRUST   + (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
  	
 	old_error=error;
-	if (count % 25 == 0) printf("\r\n%d\t%u\t%u\t%u\t%d", error,RUDDER_PW,RTHRUST_PW,LTHRUST_PW,(int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error)));
+	//if (count % 25 == 0) printf("\r\n%d\t%u\t%u\t%u\t%d", error,RUDDER_PW,RTHRUST_PW,LTHRUST_PW,(int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error)));
 
 	if (RUDDER_PW >= PW_RIGHT_RUDDER)
 	{
