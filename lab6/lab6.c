@@ -112,10 +112,11 @@ void main(void)
 	direction();
 	while (1)
 	{
-		//printf("\ntest");
+		//printf("\r\n%u",actual_D);
 		wait();
-		if (count +1 % 2 ==0)
+		if ((count +1) % 2 ==0)
 		{
+
 			Steering_func();
 		}
 		Change_D();
@@ -183,6 +184,7 @@ unsigned int Read_Ranger(void)
 
 void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
 {
+
 	actual_D = ReadCompass();
 	lcd_clear();
 	lcd_print("%d", actual_D);
@@ -570,18 +572,31 @@ void Thrust_cal(void)
 
 void Steering_Servo(unsigned int direction)
 {
+	
 
+	
 
-	error = desired_D - direction;
+	if (direction > 3500 || direction < 100)
+	{
+		error =0;
+	}
+	else if (direction > 1800)
+	{
+		error = (3600 - (int) direction);
+	}
+	else
+	{
+		error = -1* direction;
+	}
 
-	RUDDER_PW  = PW_CENTER_RUDDER + (kp*error) + kd * (old_error - error);
+	RUDDER_PW  = PW_CENTER_RUDDER + (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
 
-	RTHRUST_PW = PW_NUET_THRUST   + (kp*error) + kd * (old_error - error);
+	RTHRUST_PW = PW_NUET_THRUST   - (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
 
-	LTHRUST_PW = PW_NUET_THRUST   - (kp*error) + kd * (old_error - error);
- 
+	LTHRUST_PW = PW_NUET_THRUST   + (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
+ 	
 	old_error=error;
-
+	if (count % 25 == 0) printf("\r\n%d\t%u\t%u\t%u\t%d", error,RUDDER_PW,RTHRUST_PW,LTHRUST_PW,(int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error)));
 
 	if (RUDDER_PW >= PW_RIGHT_RUDDER)
 	{
