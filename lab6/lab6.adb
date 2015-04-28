@@ -81,11 +81,11 @@ S:G$RTRST_lo_to_hi$0$0({2}SI:U),E,0,0
 S:G$LTRST_lo_to_hi$0$0({2}SI:U),E,0,0
 S:G$offset$0$0({2}SI:U),E,0,0
 S:G$r_data$0$0({2}DA2d,SC:U),E,0,0
+S:G$r_addr$0$0({1}SC:U),E,0,0
 S:G$kp$0$0({2}SI:S),E,0,0
 S:G$kd$0$0({2}SI:S),E,0,0
 S:G$ratio$0$0({2}SI:S),E,0,0
 S:G$dratio$0$0({2}SI:S),E,0,0
-S:Llab6.Read_Ranger$r_addr$1$135({1}SC:U),R,0,0,[]
 S:Llab6.Read_Ranger$read$1$135({2}SI:U),R,0,0,[]
 S:Llab6.direction$value$1$139({2}SI:S),R,0,0,[r6,r7]
 S:Llab6.ReadCompass$Data$1$141({2}DA2d,SC:U),E,0,0

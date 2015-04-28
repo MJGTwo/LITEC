@@ -72,6 +72,7 @@ __xdata	 int error =0;
 __xdata  int old_error =0;
 
 unsigned char r_data[2];
+unsigned char r_addr = 0xE0;
 
 int kp;
 int kd; 
@@ -119,9 +120,9 @@ void main(void)
 
 			Steering_func();
 		}
-		if ((count +1) % 4 ==0)
+		if ((count +1) % 8 ==0)
 		{
-			//Change_D();
+			Change_D();
 		}
 	}
 
@@ -164,8 +165,9 @@ void Change_D(void)
 {
 	__xdata unsigned int distance=100;
 
-
 	distance = Read_Ranger();
+	r_data[0] = 0x51;
+	i2c_write_data(r_addr, 0, r_data, 1);
 	printf("\r\n%u", distance);
 
 	if (distance < 50)
@@ -176,12 +178,7 @@ void Change_D(void)
 
 unsigned int Read_Ranger(void)
 {
-	unsigned char r_addr = 0xE0;
 	unsigned int read = 0;
-
-	r_data[0] = 0x51;
-	i2c_read_data(r_addr, 0, r_data, 1);
-
 	i2c_read_data(r_addr, 2, r_data, 2);
 	read = (((unsigned int) r_data[0] <<8) | r_data[1]);
 	return read;
