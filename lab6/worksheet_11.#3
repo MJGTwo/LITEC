@@ -11,9 +11,9 @@
 /* Global Variables */
 
 int pw_neut = 2765;                    // set this value
-int previous_error = -1760;             // set this value
-unsigned int desired = 1800;           // set this value
-unsigned int actual = 3500;            // set this value
+int previous_error = -250;             // set this value
+unsigned int desired = 50;           // set this value
+unsigned int actual = 250;            // set this value
 
 unsigned int kp = 30;                // set this value
 unsigned int kd = 30;                // set this value

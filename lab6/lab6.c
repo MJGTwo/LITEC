@@ -120,7 +120,7 @@ void main(void)
 
 			Steering_func();
 		}
-		if ((count +1) % 8 ==0)
+		if ((count +1) % 4 ==0)
 		{
 			Change_D();
 		}
@@ -163,17 +163,23 @@ void kpkd(void)
 
 void Change_D(void)
 {
-	__xdata unsigned int distance=100;
-
-	distance = Read_Ranger();
-	r_data[0] = 0x51;
-	i2c_write_data(r_addr, 0, r_data, 1);
-	printf("\r\n%u", distance);
-
-	if (distance < 50)
+	__xdata unsigned int distance=40;
+	__xdata int temp =1;
+	while (distance < 50)
 	{
-		desired_D = (desired_D + 1800) % 3600;
+		distance = 100;
+		distance = Read_Ranger();
+		r_data[0] = 0x51;
+		i2c_write_data(r_addr, 0, r_data, 1);
+		printf("\r\n%u", distance);
+
+		if (distance < 50 && temp ==1)
+		{
+			desired_D = (desired_D + 1800) % 3600;
+			temp =0;
+		}	
 	}
+
 }
 
 unsigned int Read_Ranger(void)

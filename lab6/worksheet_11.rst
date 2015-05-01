@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-                                      4 ; This file was generated Tue Apr 21 09:37:51 2015
+                                      4 ; This file was generated Fri May 01 08:33:26 2015
                                       5 ;--------------------------------------------------------
                                       6 	.module worksheet_11
                                       7 	.optsdcc -mmcs51 --model-small
@@ -996,9 +996,9 @@
       00005F 75 22 CD         [24]  996 	mov	_pw_neut,#0xCD
       000062 75 23 0A         [24]  997 	mov	(_pw_neut + 1),#0x0A
                            000006   998 	C$worksheet_11.c$14$1$25 ==.
-                                    999 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:14: int previous_error = 20;             // set this value
-      000065 75 24 14         [24] 1000 	mov	_previous_error,#0x14
-      000068 75 25 00         [24] 1001 	mov	(_previous_error + 1),#0x00
+                                    999 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:14: int previous_error = -20;             // set this value
+      000065 75 24 EC         [24] 1000 	mov	_previous_error,#0xEC
+      000068 75 25 FF         [24] 1001 	mov	(_previous_error + 1),#0xFF
                            00000C  1002 	C$worksheet_11.c$15$1$25 ==.
                                    1003 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:15: unsigned int desired = 3500;           // set this value
       00006B 75 26 AC         [24] 1004 	mov	_desired,#0xAC
@@ -1021,7 +1021,7 @@
       000084 F5 2E            [12] 1021 	mov	_error,a
       000086 F5 2F            [12] 1022 	mov	(_error + 1),a
                            000029  1023 	C$worksheet_11.c$23$1$25 ==.
-                                   1024 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:23: int temp_motorpw_2byte = 0;
+                                   1024 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:23: unsigned int temp_motorpw_2byte = 0;
       000088 F5 30            [12] 1025 	mov	_temp_motorpw_2byte,a
       00008A F5 31            [12] 1026 	mov	(_temp_motorpw_2byte + 1),a
                            00002D  1027 	C$worksheet_11.c$24$1$25 ==.
@@ -1317,7 +1317,7 @@
       000177 3F               [12] 1317 	addc	a,r7
       000178 F5 31            [12] 1318 	mov	(_temp_motorpw_2byte + 1),a
                            0000BB  1319 	C$worksheet_11.c$38$1$25 ==.
-                                   1320 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:38: printf("The two byte calculation of motorpw is %d \r\n",temp_motorpw_2byte);
+                                   1320 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:38: printf("The two byte calculation of motorpw is %u \r\n",temp_motorpw_2byte);
       00017A C0 30            [24] 1321 	push	_temp_motorpw_2byte
       00017C C0 31            [24] 1322 	push	(_temp_motorpw_2byte + 1)
       00017E 74 9D            [12] 1323 	mov	a,#___str_0
@@ -1823,12 +1823,12 @@
                                    1823 	.area CONST   (CODE)
                            000000  1824 Fworksheet_11$__str_0$0$0 == .
       000B9D                       1825 ___str_0:
-      000B9D 54 68 65 20 74 77 6F  1826 	.ascii "The two byte calculation of motorpw is %d "
+      000B9D 54 68 65 20 74 77 6F  1826 	.ascii "The two byte calculation of motorpw is %u "
              20 62 79 74 65 20 63
              61 6C 63 75 6C 61 74
              69 6F 6E 20 6F 66 20
              6D 6F 74 6F 72 70 77
-             20 69 73 20 25 64 20
+             20 69 73 20 25 75 20
       000BC7 0D                    1827 	.db 0x0D
       000BC8 0A                    1828 	.db 0x0A
       000BC9 00                    1829 	.db 0x00

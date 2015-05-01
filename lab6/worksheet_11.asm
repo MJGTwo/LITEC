@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Tue Apr 21 09:37:51 2015
+; This file was generated Fri May 01 08:33:26 2015
 ;--------------------------------------------------------
 	.module worksheet_11
 	.optsdcc -mmcs51 --model-small
@@ -996,9 +996,9 @@ __interrupt_vect:
 	mov	_pw_neut,#0xCD
 	mov	(_pw_neut + 1),#0x0A
 	C$worksheet_11.c$14$1$25 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:14: int previous_error = 20;             // set this value
-	mov	_previous_error,#0x14
-	mov	(_previous_error + 1),#0x00
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:14: int previous_error = -20;             // set this value
+	mov	_previous_error,#0xEC
+	mov	(_previous_error + 1),#0xFF
 	C$worksheet_11.c$15$1$25 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:15: unsigned int desired = 3500;           // set this value
 	mov	_desired,#0xAC
@@ -1021,7 +1021,7 @@ __interrupt_vect:
 	mov	_error,a
 	mov	(_error + 1),a
 	C$worksheet_11.c$23$1$25 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:23: int temp_motorpw_2byte = 0;
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:23: unsigned int temp_motorpw_2byte = 0;
 	mov	_temp_motorpw_2byte,a
 	mov	(_temp_motorpw_2byte + 1),a
 	C$worksheet_11.c$24$1$25 ==.
@@ -1317,7 +1317,7 @@ _main:
 	addc	a,r7
 	mov	(_temp_motorpw_2byte + 1),a
 	C$worksheet_11.c$38$1$25 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:38: printf("The two byte calculation of motorpw is %d \r\n",temp_motorpw_2byte);
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab6\worksheet_11.c:38: printf("The two byte calculation of motorpw is %u \r\n",temp_motorpw_2byte);
 	push	_temp_motorpw_2byte
 	push	(_temp_motorpw_2byte + 1)
 	mov	a,#___str_0
@@ -1823,7 +1823,7 @@ _main:
 	.area CONST   (CODE)
 Fworksheet_11$__str_0$0$0 == .
 ___str_0:
-	.ascii "The two byte calculation of motorpw is %d "
+	.ascii "The two byte calculation of motorpw is %u "
 	.db 0x0D
 	.db 0x0A
 	.db 0x00

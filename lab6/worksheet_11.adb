@@ -13,7 +13,7 @@ S:G$actual$0$0({2}SI:U),E,0,0
 S:G$kp$0$0({2}SI:U),E,0,0
 S:G$kd$0$0({2}SI:U),E,0,0
 S:G$error$0$0({2}SI:S),E,0,0
-S:G$temp_motorpw_2byte$0$0({2}SI:S),E,0,0
+S:G$temp_motorpw_2byte$0$0({2}SI:U),E,0,0
 S:G$temp_motorpw_alg1$0$0({4}SL:S),E,0,0
 S:G$temp_motorpw_alg2$0$0({4}SL:S),E,0,0
 S:G$temp_motorpw_alg3$0$0({4}SL:S),E,0,0
