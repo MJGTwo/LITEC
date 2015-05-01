@@ -30,10 +30,10 @@ void wait(void);
 void start(void);
 unsigned int direction(void);
 
-void Rudder_cal(void);
-void Angle_cal(void);
-void Thrust_cal(void);
-void Calibrate(void);
+//void Rudder_cal(void);
+//void Angle_cal(void);
+//void Thrust_cal(void);
+//void Calibrate(void);
 void kpkd(void);
 
 void Change_D(void);
@@ -67,17 +67,17 @@ unsigned int LTRST_lo_to_hi;
 
 __xdata  int desired_D;
 __xdata  int actual_D;
-unsigned int offset;
+__xdata unsigned int offset;
 __xdata	 int error =0;
 __xdata  int old_error =0;
+__xdata unsigned int distanceR=40;
 
 unsigned char r_data[2];
 unsigned char r_addr = 0xE0;
 
-int kp;
-int kd; 
-int ratio;
-int dratio;
+float kp;
+int kd;
+ 
 
 void main(void)
 {
@@ -111,6 +111,7 @@ void main(void)
 	//Calibrate();
 
 	direction();
+	count=0;
 	while (1)
 	{
 		//printf("\r\n%u",actual_D);
@@ -124,10 +125,14 @@ void main(void)
 		{
 			Change_D();
 		}
+		if ((count+1) % 8 == 0)
+		{
+			printf("\r\n%u,\t%d,\t%d,\t%u,\t%d,\t%u",count,desired_D,actual_D,distanceR,error,RTHRUST_PW);
+		}
 	}
 
 }
-
+/*
 void Calibrate(void)
 {
 
@@ -147,33 +152,35 @@ void Calibrate(void)
 	LTHRUST_PW = PW_NUET_THRUST;
 	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
-}
+}*/
 
 void kpkd(void)
 {
 	lcd_clear();
 	lcd_print("Please enter a kp value:\n ");
 	kp = kpd_input(0);
+	kp = 12;
 	lcd_clear();
 	lcd_print("Please enter a kd value:\n ");
 	kd = kpd_input(0);
+	kd = 180;
 	lcd_clear();
 }
 
 
 void Change_D(void)
 {
-	__xdata unsigned int distance=40;
+	
 	__xdata int temp =1;
-	while (distance < 50)
+	while (distanceR < 50)
 	{
-		distance = 100;
-		distance = Read_Ranger();
+		distanceR = 100;
+		distanceR = Read_Ranger();
 		r_data[0] = 0x51;
 		i2c_write_data(r_addr, 0, r_data, 1);
-		printf("\r\n%u", distance);
+		//printf("\r\n%u", distanceR);
 
-		if (distance < 50 && temp ==1)
+		if (distanceR < 50 && temp ==1)
 		{
 			desired_D = (desired_D + 1800) % 3600;
 			temp =0;
@@ -184,7 +191,7 @@ void Change_D(void)
 
 unsigned int Read_Ranger(void)
 {
-	unsigned int read = 0;
+	__xdata unsigned int read = 0;
 	i2c_read_data(r_addr, 2, r_data, 2);
 	read = (((unsigned int) r_data[0] <<8) | r_data[1]);
 	return read;
@@ -201,7 +208,7 @@ void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
 
 unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
 {
-	int value;
+	__xdata int value;
 	count =0;
 	while (count < 1);
 	lcd_clear();
@@ -226,10 +233,10 @@ unsigned int ReadCompass(void)
 	Crange = ((unsigned int) Data[0] << 8 | Data[1]);
 	return Crange;
 }
-
+/*
 void Rudder_cal(void)
 {	
-	char st;
+	__xdata char st;
 	__xdata int value =0;
 	__xdata int times =0;
 	count =0;
@@ -444,7 +451,7 @@ void Angle_cal(void)
 
 void Thrust_cal(void)
 {
-	char st;
+	__xdata char st;
 	__xdata int value =0;
 	__xdata int times =0;
 	count =0;
@@ -572,7 +579,7 @@ void Thrust_cal(void)
 			else return;
 		}	
 	}
-}
+}*/
 
 
 void Steering_Servo(unsigned int direction)
@@ -594,11 +601,11 @@ void Steering_Servo(unsigned int direction)
 		error = -1* direction;
 	}
 
-	RUDDER_PW  = PW_CENTER_RUDDER + (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
+	RUDDER_PW  = PW_CENTER_RUDDER + (int) (( kp* (int) error) - (int) kd * ((int)old_error -(int) error));
 
-	RTHRUST_PW = PW_NUET_THRUST   + (int) -1* (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
+	RTHRUST_PW = PW_NUET_THRUST   + (int) -1* (( kp* (int) error) - (int) kd * ((int)old_error -(int) error));
 
-	LTHRUST_PW = PW_NUET_THRUST   + (int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error));
+	LTHRUST_PW = PW_NUET_THRUST   + (int) (( kp* (int) error) - (int) kd * ((int)old_error -(int) error));
  	
 	old_error=error;
 	//if (count % 25 == 0) printf("\r\n%d\t%u\t%u\t%u\t%d", error,RUDDER_PW,RTHRUST_PW,LTHRUST_PW,(int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error)));
@@ -637,6 +644,7 @@ void Steering_Servo(unsigned int direction)
     PCA0CP2 = RTRST_lo_to_hi;
     PCA0CP3 = LTRST_lo_to_hi;
 }
+
 
 void start(void)            ///WAITS UNTIL '*' IS ENTERED
 {
