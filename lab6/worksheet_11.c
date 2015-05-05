@@ -1,8 +1,8 @@
 /*
-    Name: Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
-    Section: 3B
-    Date: 4/21/15
-    Program description: testing algorithms
+    Section:
+    Date:
+    File name:
+    Program description:
 */
 
 #include <c8051_SDCC.h>
@@ -10,17 +10,14 @@
 
 /* Global Variables */
 
-int pw_neut = 2765;                    // set this value
-int previous_error = -20;             // set this value
-unsigned int desired = 3500;           // set this value
-unsigned int actual = 1800;            // set this value
-
-unsigned int kp = 30;                // set this value
+unsigned int desired = 1350;           // set this value
+unsigned int actual = 0;            // set this value
+unsigned int kp = 12;                // set this value
 unsigned int kd = 30;                // set this value
-
-
+int pw_neut = 2765;                    // set this value
+int previous_error = 0;             // set this value
 int error = 0;                      // set this value
-unsigned int temp_motorpw_2byte = 0;
+int temp_motorpw_2byte = 0;
 long temp_motorpw_alg1 = 0;
 long temp_motorpw_alg2 = 0;
 long temp_motorpw_alg3 = 0;
@@ -35,7 +32,7 @@ void main()
     error = desired-actual;
 //  two byte calculation
     temp_motorpw_2byte = pw_neut+kp*error+kd*(error-previous_error);
-    printf("The two byte calculation of motorpw is %u \r\n",temp_motorpw_2byte);
+    printf("The two byte calculation of motorpw is %d \r\n",temp_motorpw_2byte);
 //  equation form 1, long ints
     temp_motorpw_alg1 = pw_neut+kp*error+kd*(error-previous_error);
     printf("Algorithm 1, four byte calculation of motorpw is %ld \r\n",temp_motorpw_alg1);
