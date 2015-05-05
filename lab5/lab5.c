@@ -46,52 +46,59 @@ unsigned int STR_PW;
 unsigned char new_accels = 0; // flag for count of accel timing
 unsigned char new_lcd = 0; // flag for count of LCD timing
 unsigned int range;
-unsigned char count; // overflow count for acceleration
+unsigned int count; // overflow count for acceleration
 unsigned char lcd_count; // overflow count for LCD updates
 unsigned char ks, kdy,kdx;
-unsigned int avg_gx,avg_gy;
+char gx,gy;
+unsigned char run_stop; // define local variables
 
-__sbit __at 0xB7 run;
+__sbit __at 0xB6 run;
 
 //-----------------------------------------------------------------------------
 // Main Function
 //-----------------------------------------------------------------------------
 void main(void)
 {
-	unsigned char run_stop; // define local variables
+	int x=0;
 	Sys_Init(); // initialize board
 	putchar(' ');
 	Port_Init();
 	PCA_Init();
 	SMB_Init();
-	Interrupt_Init();
+	XBR0_Init();
 	Accel_Init();
+
 	count = 0;
 	lcd_count = 0;
 	DRV_PW = SERVO_PW;
 	STR_PW = PW_CENTER;
+	printf("\r\nGO!");
 
 	while (1)
 	{
+		x++;
+		printf("\r\n%d",x);
 		run_stop = 0;
 		while (!run) // make run an sbit for the run/stop switch
 		{ // stay in loop until switch is in run position
 			if (run_stop == 0)
 			{
-				set_gains(); // function adjusting feedback gains
+				//set_gains(); // function adjusting feedback gains
 				run_stop = 1; // only try to update once
 			}
+			printf("%u",run);
 		}
 		read_accels();
-		set_servo_PWM(); // set the servo PWM
-		set_drive_PWM(); // set drive PWM
+		//set_servo_PWM(); // set the servo PWM
+		//set_drive_PWM(); // set drive PWM
+		printf("\r\n%u,%u",gx,gy);
 		new_accels = 0;
-		if (new_lcd) // enough overflow to write to LCD
-		{
-			updateLCD(); // display values
-			new_lcd = 0;
-			lcd_count = 0;
-		}
+		// if (new_lcd) // enough overflow to write to LCD
+		// {
+		// 	updateLCD(); // display values
+		// 	new_lcd = 0;
+		// 	lcd_count = 0;
+		// }
 	}
 }
 //-----------------------------------------------------------------------------
@@ -108,11 +115,11 @@ void PCA_ISR ( void ) __interrupt 9
 		CF = 0; // clear overflow indicator
 		count++;
 		lcd_count++;
-		if (lcd_count>=15)
-		{
-			new_lcd = 1;
-			lcd_count = 0;
-		}
+		// if (lcd_count>=15)
+		// {
+		// 	new_lcd = 1;
+		// 	lcd_count = 0;
+		// }
 		PCA0L = PCA_START;
 		PCA0H = PCA_START >> 8;
 	}
@@ -186,6 +193,26 @@ void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
 
 void read_accels(void)
 {
+	char Data[4];
+	int avg_gx, avg_gy;
+	char i =0;
+	avg_gy=avg_gx=0;
+	gx=gy=0;
+	for (; i < 8; i++)
+	{
+		wait();
+		i2c_read_data(0x30,0x27,Data,1);
+		if (Data[0] & 0x03 == 0x03)
+		{
+			i2c_read_data(0x30,0x28|0x80,Data,4);
+			avg_gx += ((Data[1] << 8) >> 4);
+			avg_gy += ((Data[3] << 8) >> 4);
+		}
+	}
+	avg_gy= avg_gy/8;
+	avg_gx= avg_gx/8;
+	gx = avg_gx;
+	gy = avg_gy;
 
 
 }
@@ -222,11 +249,9 @@ void set_drive_PWM(void)
 
 void Port_Init(void)
 {
-
-
     P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
 
 
-	P3MDOUT &= ~0x10;
-	P3 = 0x10;
+	P3MDOUT &= ~0x40;
+	P3 = 0x40;
 }

@@ -44,9 +44,9 @@ C:   00000008  l_REG_BANK_0
 C:   00000008  s_REG_BANK_1                    
 C:   0000000A  l_BSEG                          
 C:   0000000A  l_GSINIT2                       
-C:   00000010  s_OSEG                          
 C:   00000010  s_REG_BANK_2                    
-C:   00000016  s_ISEG                          
+C:   00000011  s_OSEG                          
+C:   00000017  s_ISEG                          
 C:   00000018  s_BIT_BANK                      
 C:   00000018  s_REG_BANK_3                    
 C:   00000020  s_BSEG_BYTES                    
@@ -70,19 +70,19 @@ C:   00000051  s_XISEG
 C:   00000054  s_GSINIT1                       
 C:   00000054  s_GSINIT2                       
 C:   0000005E  s_GSINIT3                       
-C:   0000006A  s_SSEG                          
-C:   0000007C  l_DSEG                          
+C:   00000073  s_SSEG                          
+C:   0000007D  l_DSEG                          
 C:   00000080  s_GSINIT4                       
-C:   00000087  l_CONST                         
-C:   00000096  l_SSEG                          
+C:   0000008D  l_SSEG                          
 C:   000000AA  s_GSINIT                        
 C:   000000AA  s_GSINIT5                       
+C:   000000D1  l_CONST                         
 C:   000000D4  s_GSFINAL                       
 C:   000000D7  s_CSEG                          
 C:   00000100  l_IRAM                          
-C:   00000D79  l_CSEG                          
-C:   00000E50  s_CONST                         
-C:   00000ED7  s_XINIT                         
+C:   00001010  l_CSEG                          
+C:   000010E7  s_CONST                         
+C:   000011B8  s_XINIT                         
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
@@ -376,13 +376,13 @@ Area                                    Addr        Size        Decimal Bytes (A
      000000B5  _P74OUT                            lab5
      000000B6  G$FLSCL$0$0                        lab5
      000000B6  G$P3_6$0$0                         lab5
+     000000B6  G$run$0$0                          lab5
      000000B6  _FLSCL                             lab5
      000000B6  _P3_6                              lab5
+     000000B6  _run                               lab5
      000000B7  G$FLACL$0$0                        lab5
      000000B7  G$P3_7$0$0                         lab5
-     000000B7  G$run$0$0                          lab5
      000000B7  _FLACL                             lab5
-     000000B7  _P3_7                              lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 8.
 Hexadecimal  [32-Bits]
 
@@ -392,7 +392,7 @@ Area                                    Addr        Size        Decimal Bytes (A
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     000000B7  _run                               lab5
+     000000B7  _P3_7                              lab5
      000000B8  G$IP$0$0                           lab5
      000000B8  G$PX0$0$0                          lab5
      000000B8  _IP                                lab5
@@ -791,13 +791,14 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-DSEG                                00000000    0000007C =         124. bytes (REL,CON)
+DSEG                                00000000    0000007D =         125. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
      00000008  _vsprintf_PARM_2                   sprintf
      0000000B  _vsprintf_PARM_3                   sprintf
      0000000F  _bp                                _bp
+     00000010  _vprintf_PARM_2                    vprintf
      00000022  Llab5.lcd_clear$NumBytes$1$77      lab5
      00000023  Llab5.lcd_clear$Cmd$1$77           lab5
      00000025  Llab5.read_keypad$Data$1$78        lab5
@@ -826,62 +827,72 @@ DSEG                                00000000    0000007C =         124. bytes (R
      0000003A  _SERVO_MAX                         lab5
      0000003C  G$SERVO_MIN$0$0                    lab5
      0000003C  _SERVO_MIN                         lab5
-     0000003E  G$new_accels$0$0                   lab5
-     0000003E  _new_accels                        lab5
-     0000003F  G$new_lcd$0$0                      lab5
-     0000003F  _new_lcd                           lab5
-     00000040  G$range$0$0                        lab5
-     00000040  _range                             lab5
-     00000042  G$count$0$0                        lab5
-     00000042  _count                             lab5
-     00000043  G$lcd_count$0$0                    lab5
-     00000043  _lcd_count                         lab5
-     00000044  G$ks$0$0                           lab5
-     00000044  _ks                                lab5
-     00000045  G$kdy$0$0                          lab5
-     00000045  _kdy                               lab5
-     00000046  G$kdx$0$0                          lab5
-     00000046  _kdx                               lab5
-     00000047  G$avg_gx$0$0                       lab5
-     00000047  _avg_gx                            lab5
-     00000049  G$avg_gy$0$0                       lab5
+     0000003E  G$DRV_PW$0$0                       lab5
+     0000003E  _DRV_PW                            lab5
+     00000040  G$STR_PW$0$0                       lab5
+     00000040  _STR_PW                            lab5
+     00000042  G$new_accels$0$0                   lab5
+     00000042  _new_accels                        lab5
+     00000043  G$new_lcd$0$0                      lab5
+     00000043  _new_lcd                           lab5
+     00000044  G$range$0$0                        lab5
+     00000044  _range                             lab5
+     00000046  G$count$0$0                        lab5
+     00000046  _count                             lab5
+     00000047  G$lcd_count$0$0                    lab5
+     00000047  _lcd_count                         lab5
+     00000048  G$ks$0$0                           lab5
+     00000048  _ks                                lab5
+     00000049  G$kdy$0$0                          lab5
+     00000049  _kdy                               lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 18.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-DSEG                                00000000    0000007C =         124. bytes (REL,CON)
+DSEG                                00000000    0000007D =         125. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000049  _avg_gy                            lab5
-     0000004B  Llab5.Update_Value$incr$1$139      lab5
-     0000004B  _Update_Value_PARM_2               lab5
-     0000004C  Llab5.Update_Value$maxval$1$139    lab5
-     0000004C  _Update_Value_PARM_3               lab5
-     0000004E  Llab5.Update_Value$minval$1$139    lab5
-     0000004E  _Update_Value_PARM_4               lab5
-     0000005C  __print_format_PARM_2              printf_large
-     0000005F  __print_format_PARM_3              printf_large
-     00000062  __print_format_PARM_4              printf_large
+     0000004A  G$kdx$0$0                          lab5
+     0000004A  _kdx                               lab5
+     0000004B  G$gx$0$0                           lab5
+     0000004B  _gx                                lab5
+     0000004C  G$gy$0$0                           lab5
+     0000004C  _gy                                lab5
+     0000004D  G$run_stop$0$0                     lab5
+     0000004D  _run_stop                          lab5
+     0000004E  Llab5.Update_Value$incr$1$136      lab5
+     0000004E  _Update_Value_PARM_2               lab5
+     0000004F  Llab5.Update_Value$maxval$1$136    lab5
+     0000004F  _Update_Value_PARM_3               lab5
+     00000051  Llab5.Update_Value$minval$1$136    lab5
+     00000051  _Update_Value_PARM_4               lab5
+     00000053  Llab5.read_accels$Data$1$143       lab5
+     00000057  Llab5.read_accels$avg_gx$1$143     lab5
+     00000065  __print_format_PARM_2              printf_large
+     00000068  __print_format_PARM_3              printf_large
+     0000006B  __print_format_PARM_4              printf_large
 ASxxxx Linker V03.00 + NoICE + sdld,  page 19.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-OSEG                                00000010    00000006 =           6. bytes (REL,OVR)
+OSEG                                00000011    00000006 =           6. bytes (REL,OVR)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     00000010  __gptrput_PARM_2                   _gptrput
-     00000010  __mulint_PARM_2                    _mulint
+     00000011  __divsint_PARM_2                   _divuint
+     00000011  __divuint_PARM_2                   _divuint
+     00000011  __gptrput_PARM_2                   _gptrput
+     00000011  __mulint_PARM_2                    _mulint
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 20.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-ISEG                                00000016    00000006 =           6. bytes (REL,CON)
+ISEG                                00000017    00000006 =           6. bytes (REL,CON)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -890,11 +901,11 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-SSEG                                0000006A    00000096 =         150. bytes (REL,OVR)
+SSEG                                00000073    0000008D =         141. bytes (REL,OVR)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-     0000006A  __start__stack                     lab5
+     00000073  __start__stack                     lab5
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 22.
 Hexadecimal  [32-Bits]
@@ -916,18 +927,18 @@ HOME                                00000000    00000051 =          81. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000000  A$lab5$1101                        lab5
-C:   00000003  A$lab5$1102                        lab5
-C:   0000000B  A$lab5$1104                        lab5
-C:   00000013  A$lab5$1106                        lab5
-C:   0000001B  A$lab5$1108                        lab5
-C:   00000023  A$lab5$1110                        lab5
-C:   0000002B  A$lab5$1112                        lab5
-C:   00000033  A$lab5$1114                        lab5
-C:   0000003B  A$lab5$1116                        lab5
-C:   00000043  A$lab5$1118                        lab5
-C:   0000004B  A$lab5$1120                        lab5
-C:   0000004E  A$lab5$1172                        lab5
+C:   00000000  A$lab5$1119                        lab5
+C:   00000003  A$lab5$1120                        lab5
+C:   0000000B  A$lab5$1122                        lab5
+C:   00000013  A$lab5$1124                        lab5
+C:   0000001B  A$lab5$1126                        lab5
+C:   00000023  A$lab5$1128                        lab5
+C:   0000002B  A$lab5$1130                        lab5
+C:   00000033  A$lab5$1132                        lab5
+C:   0000003B  A$lab5$1134                        lab5
+C:   00000043  A$lab5$1136                        lab5
+C:   0000004B  A$lab5$1138                        lab5
+C:   0000004E  A$lab5$1190                        lab5
 C:   0000004E  __sdcc_program_startup             lab5
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 24.
@@ -982,28 +993,28 @@ GSINIT                              000000AA    0000002A =          42. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000000AA  A$lab5$1136                        lab5
-C:   000000AA  C$lab5.c$36$1$140                  lab5
-C:   000000AD  A$lab5$1137                        lab5
-C:   000000B0  A$lab5$1140                        lab5
-C:   000000B0  C$lab5.c$37$1$140                  lab5
-C:   000000B3  A$lab5$1141                        lab5
-C:   000000B6  A$lab5$1144                        lab5
-C:   000000B6  C$lab5.c$38$1$140                  lab5
-C:   000000B9  A$lab5$1145                        lab5
-C:   000000BC  A$lab5$1148                        lab5
-C:   000000BC  C$lab5.c$39$1$140                  lab5
-C:   000000BF  A$lab5$1149                        lab5
-C:   000000C2  A$lab5$1152                        lab5
-C:   000000C2  C$lab5.c$40$1$140                  lab5
-C:   000000C5  A$lab5$1153                        lab5
-C:   000000C8  A$lab5$1156                        lab5
-C:   000000C8  C$lab5.c$41$1$140                  lab5
-C:   000000CB  A$lab5$1157                        lab5
-C:   000000CE  A$lab5$1160                        lab5
-C:   000000CE  C$lab5.c$42$1$140                  lab5
-C:   000000D1  A$lab5$1163                        lab5
-C:   000000D1  C$lab5.c$43$1$140                  lab5
+C:   000000AA  A$lab5$1154                        lab5
+C:   000000AA  C$lab5.c$38$1$155                  lab5
+C:   000000AD  A$lab5$1155                        lab5
+C:   000000B0  A$lab5$1158                        lab5
+C:   000000B0  C$lab5.c$39$1$155                  lab5
+C:   000000B3  A$lab5$1159                        lab5
+C:   000000B6  A$lab5$1162                        lab5
+C:   000000B6  C$lab5.c$40$1$155                  lab5
+C:   000000B9  A$lab5$1163                        lab5
+C:   000000BC  A$lab5$1166                        lab5
+C:   000000BC  C$lab5.c$41$1$155                  lab5
+C:   000000BF  A$lab5$1167                        lab5
+C:   000000C2  A$lab5$1170                        lab5
+C:   000000C2  C$lab5.c$42$1$155                  lab5
+C:   000000C5  A$lab5$1171                        lab5
+C:   000000C8  A$lab5$1174                        lab5
+C:   000000C8  C$lab5.c$43$1$155                  lab5
+C:   000000CB  A$lab5$1175                        lab5
+C:   000000CE  A$lab5$1178                        lab5
+C:   000000CE  C$lab5.c$46$1$155                  lab5
+C:   000000D1  A$lab5$1181                        lab5
+C:   000000D1  C$lab5.c$47$1$155                  lab5
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 29.
 Hexadecimal  [32-Bits]
@@ -1014,665 +1025,665 @@ GSFINAL                             000000D4    00000003 =           3. bytes (R
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000000D4  A$lab5$1165                        lab5
+C:   000000D4  A$lab5$1183                        lab5
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 30.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000000D7  A$lab5$1200                        lab5
+C:   000000D7  A$lab5$1218                        lab5
 C:   000000D7  C$c8051_SDCC.h$42$0$0              lab5
 C:   000000D7  C$c8051_SDCC.h$46$1$2              lab5
 C:   000000D7  G$SYSCLK_Init$0$0                  lab5
 C:   000000D7  _SYSCLK_Init                       lab5
-C:   000000DA  A$lab5$1203                        lab5
+C:   000000DA  A$lab5$1221                        lab5
 C:   000000DA  C$c8051_SDCC.h$49$1$2              lab5
-C:   000000DC  A$lab5$1204                        lab5
-C:   000000DE  A$lab5$1206                        lab5
-C:   000000DF  A$lab5$1207                        lab5
-C:   000000E2  A$lab5$1208                        lab5
-C:   000000E3  A$lab5$1210                        lab5
-C:   000000E4  A$lab5$1211                        lab5
-C:   000000E5  A$lab5$1212                        lab5
-C:   000000E7  A$lab5$1216                        lab5
+C:   000000DC  A$lab5$1222                        lab5
+C:   000000DE  A$lab5$1224                        lab5
+C:   000000DF  A$lab5$1225                        lab5
+C:   000000E2  A$lab5$1226                        lab5
+C:   000000E3  A$lab5$1228                        lab5
+C:   000000E4  A$lab5$1229                        lab5
+C:   000000E5  A$lab5$1230                        lab5
+C:   000000E7  A$lab5$1234                        lab5
 C:   000000E7  C$c8051_SDCC.h$51$1$2              lab5
-C:   000000E9  A$lab5$1217                        lab5
-C:   000000EC  A$lab5$1220                        lab5
+C:   000000E9  A$lab5$1235                        lab5
+C:   000000EC  A$lab5$1238                        lab5
 C:   000000EC  C$c8051_SDCC.h$53$1$2              lab5
-C:   000000EF  A$lab5$1223                        lab5
+C:   000000EF  A$lab5$1241                        lab5
 C:   000000EF  C$c8051_SDCC.h$56$1$2              lab5
 C:   000000EF  XG$SYSCLK_Init$0$0                 lab5
-C:   000000F0  A$lab5$1236                        lab5
+C:   000000F0  A$lab5$1254                        lab5
 C:   000000F0  C$c8051_SDCC.h$64$1$2              lab5
 C:   000000F0  C$c8051_SDCC.h$66$1$4              lab5
 C:   000000F0  G$UART0_Init$0$0                   lab5
 C:   000000F0  _UART0_Init                        lab5
-C:   000000F3  A$lab5$1239                        lab5
+C:   000000F3  A$lab5$1257                        lab5
 C:   000000F3  C$c8051_SDCC.h$67$1$4              lab5
-C:   000000F6  A$lab5$1242                        lab5
+C:   000000F6  A$lab5$1260                        lab5
 C:   000000F6  C$c8051_SDCC.h$68$1$4              lab5
-C:   000000F9  A$lab5$1245                        lab5
+C:   000000F9  A$lab5$1263                        lab5
 C:   000000F9  C$c8051_SDCC.h$69$1$4              lab5
-C:   000000FB  A$lab5$1248                        lab5
+C:   000000FB  A$lab5$1266                        lab5
 C:   000000FB  C$c8051_SDCC.h$70$1$4              lab5
-C:   000000FE  A$lab5$1251                        lab5
+C:   000000FE  A$lab5$1269                        lab5
 C:   000000FE  C$c8051_SDCC.h$71$1$4              lab5
-C:   00000101  A$lab5$1254                        lab5
+C:   00000101  A$lab5$1272                        lab5
 C:   00000101  C$c8051_SDCC.h$73$1$4              lab5
-C:   00000103  A$lab5$1257                        lab5
+C:   00000103  A$lab5$1275                        lab5
 C:   00000103  C$c8051_SDCC.h$74$1$4              lab5
-C:   00000106  A$lab5$1260                        lab5
+C:   00000106  A$lab5$1278                        lab5
 C:   00000106  C$c8051_SDCC.h$75$1$4              lab5
 C:   00000106  XG$UART0_Init$0$0                  lab5
-C:   00000107  A$lab5$1273                        lab5
+C:   00000107  A$lab5$1291                        lab5
 C:   00000107  C$c8051_SDCC.h$83$1$4              lab5
 C:   00000107  C$c8051_SDCC.h$85$1$6              lab5
 C:   00000107  G$Sys_Init$0$0                     lab5
 C:   00000107  _Sys_Init                          lab5
-C:   0000010A  A$lab5$1276                        lab5
+C:   0000010A  A$lab5$1294                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 31.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   0000010A  C$c8051_SDCC.h$86$1$6              lab5
-C:   0000010D  A$lab5$1279                        lab5
+C:   0000010D  A$lab5$1297                        lab5
 C:   0000010D  C$c8051_SDCC.h$88$1$6              lab5
-C:   00000110  A$lab5$1282                        lab5
+C:   00000110  A$lab5$1300                        lab5
 C:   00000110  C$c8051_SDCC.h$89$1$6              lab5
-C:   00000113  A$lab5$1285                        lab5
+C:   00000113  A$lab5$1303                        lab5
 C:   00000113  C$c8051_SDCC.h$91$1$6              lab5
-C:   00000116  A$lab5$1288                        lab5
+C:   00000116  A$lab5$1306                        lab5
 C:   00000116  C$c8051_SDCC.h$92$1$6              lab5
-C:   00000119  A$lab5$1291                        lab5
+C:   00000119  A$lab5$1309                        lab5
 C:   00000119  C$c8051_SDCC.h$93$1$6              lab5
 C:   00000119  XG$Sys_Init$0$0                    lab5
-C:   0000011A  A$lab5$1304                        lab5
+C:   0000011A  A$lab5$1322                        lab5
 C:   0000011A  C$c8051_SDCC.h$98$1$6              lab5
 C:   0000011A  G$putchar$0$0                      lab5
 C:   0000011A  _putchar                           lab5
-C:   0000011C  A$lab5$1310                        lab5
+C:   0000011C  A$lab5$1328                        lab5
 C:   0000011C  C$c8051_SDCC.h$100$1$8             lab5
 C:   0000011C  C$c8051_SDCC.h$101$1$8             lab5
-C:   0000011F  A$lab5$1311                        lab5
-C:   00000121  A$lab5$1315                        lab5
+C:   0000011F  A$lab5$1329                        lab5
+C:   00000121  A$lab5$1333                        lab5
 C:   00000121  C$c8051_SDCC.h$102$1$8             lab5
-C:   00000123  A$lab5$1318                        lab5
+C:   00000123  A$lab5$1336                        lab5
 C:   00000123  C$c8051_SDCC.h$103$1$8             lab5
 C:   00000123  XG$putchar$0$0                     lab5
-C:   00000124  A$lab5$1336                        lab5
+C:   00000124  A$lab5$1354                        lab5
 C:   00000124  C$c8051_SDCC.h$108$1$8             lab5
 C:   00000124  C$c8051_SDCC.h$111$1$10            lab5
 C:   00000124  C$c8051_SDCC.h$112$1$10            lab5
 C:   00000124  G$getchar$0$0                      lab5
 C:   00000124  _getchar                           lab5
-C:   00000127  A$lab5$1337                        lab5
-C:   00000129  A$lab5$1341                        lab5
+C:   00000127  A$lab5$1355                        lab5
+C:   00000129  A$lab5$1359                        lab5
 C:   00000129  C$c8051_SDCC.h$113$1$10            lab5
-C:   0000012C  A$lab5$1344                        lab5
+C:   0000012C  A$lab5$1362                        lab5
 C:   0000012C  C$c8051_SDCC.h$114$1$10            lab5
-C:   0000012F  A$lab5$1347                        lab5
+C:   0000012F  A$lab5$1365                        lab5
 C:   0000012F  C$c8051_SDCC.h$115$1$10            lab5
-C:   00000132  A$lab5$1350                        lab5
+C:   00000132  A$lab5$1368                        lab5
 C:   00000132  C$c8051_SDCC.h$116$1$10            lab5
 C:   00000132  XG$getchar$0$0                     lab5
-C:   00000133  A$lab5$1367                        lab5
+C:   00000133  A$lab5$1385                        lab5
 C:   00000133  C$i2c.h$81$1$10                    lab5
 C:   00000133  G$lcd_print$0$0                    lab5
 C:   00000133  _lcd_print                         lab5
-C:   00000135  A$lab5$1368                        lab5
-C:   00000138  A$lab5$1371                        lab5
+C:   00000135  A$lab5$1386                        lab5
+C:   00000138  A$lab5$1389                        lab5
 C:   00000138  C$i2c.h$87$1$73                    lab5
-C:   0000013A  A$lab5$1372                        lab5
-C:   0000013C  A$lab5$1373                        lab5
-C:   0000013D  A$lab5$1374                        lab5
+C:   0000013A  A$lab5$1390                        lab5
+C:   0000013C  A$lab5$1391                        lab5
+C:   0000013D  A$lab5$1392                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 32.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000013F  A$lab5$1375                        lab5
-C:   00000140  A$lab5$1376                        lab5
-C:   00000142  A$lab5$1377                        lab5
-C:   00000143  A$lab5$1378                        lab5
-C:   00000145  A$lab5$1379                        lab5
-C:   00000148  A$lab5$1380                        lab5
-C:   0000014A  A$lab5$1381                        lab5
-C:   0000014D  A$lab5$1382                        lab5
-C:   0000014F  A$lab5$1383                        lab5
-C:   00000151  A$lab5$1384                        lab5
-C:   00000153  A$lab5$1388                        lab5
+C:   0000013F  A$lab5$1393                        lab5
+C:   00000140  A$lab5$1394                        lab5
+C:   00000142  A$lab5$1395                        lab5
+C:   00000143  A$lab5$1396                        lab5
+C:   00000145  A$lab5$1397                        lab5
+C:   00000148  A$lab5$1398                        lab5
+C:   0000014A  A$lab5$1399                        lab5
+C:   0000014D  A$lab5$1400                        lab5
+C:   0000014F  A$lab5$1401                        lab5
+C:   00000151  A$lab5$1402                        lab5
+C:   00000153  A$lab5$1406                        lab5
 C:   00000153  C$i2c.h$89$2$74                    lab5
-C:   00000155  A$lab5$1389                        lab5
-C:   00000157  A$lab5$1390                        lab5
-C:   00000158  A$lab5$1391                        lab5
-C:   0000015A  A$lab5$1394                        lab5
+C:   00000155  A$lab5$1407                        lab5
+C:   00000157  A$lab5$1408                        lab5
+C:   00000158  A$lab5$1409                        lab5
+C:   0000015A  A$lab5$1412                        lab5
 C:   0000015A  C$i2c.h$90$1$73                    lab5
-C:   0000015C  A$lab5$1395                        lab5
-C:   0000015E  A$lab5$1396                        lab5
-C:   0000015F  A$lab5$1397                        lab5
-C:   00000161  A$lab5$1398                        lab5
-C:   00000162  A$lab5$1399                        lab5
-C:   00000164  A$lab5$1400                        lab5
-C:   00000165  A$lab5$1401                        lab5
-C:   00000167  A$lab5$1402                        lab5
-C:   0000016A  A$lab5$1403                        lab5
-C:   0000016D  A$lab5$1404                        lab5
-C:   00000170  A$lab5$1407                        lab5
+C:   0000015C  A$lab5$1413                        lab5
+C:   0000015E  A$lab5$1414                        lab5
+C:   0000015F  A$lab5$1415                        lab5
+C:   00000161  A$lab5$1416                        lab5
+C:   00000162  A$lab5$1417                        lab5
+C:   00000164  A$lab5$1418                        lab5
+C:   00000165  A$lab5$1419                        lab5
+C:   00000167  A$lab5$1420                        lab5
+C:   0000016A  A$lab5$1421                        lab5
+C:   0000016D  A$lab5$1422                        lab5
+C:   00000170  A$lab5$1425                        lab5
 C:   00000170  C$i2c.h$93$1$73                    lab5
-C:   00000173  A$lab5$1408                        lab5
-C:   00000176  A$lab5$1409                        lab5
-C:   00000179  A$lab5$1410                        lab5
-C:   0000017B  A$lab5$1413                        lab5
-C:   0000017D  A$lab5$1415                        lab5
-C:   0000017E  A$lab5$1416                        lab5
-C:   0000017F  A$lab5$1417                        lab5
-C:   00000180  A$lab5$1418                        lab5
-C:   00000182  A$lab5$1421                        lab5
+C:   00000173  A$lab5$1426                        lab5
+C:   00000176  A$lab5$1427                        lab5
+C:   00000179  A$lab5$1428                        lab5
+C:   0000017B  A$lab5$1431                        lab5
+C:   0000017D  A$lab5$1433                        lab5
+C:   0000017E  A$lab5$1434                        lab5
+C:   0000017F  A$lab5$1435                        lab5
+C:   00000180  A$lab5$1436                        lab5
+C:   00000182  A$lab5$1439                        lab5
 C:   00000182  C$i2c.h$96$2$76                    lab5
-C:   00000183  A$lab5$1422                        lab5
-C:   00000185  A$lab5$1423                        lab5
-C:   00000187  A$lab5$1424                        lab5
-C:   00000188  A$lab5$1425                        lab5
-C:   0000018A  A$lab5$1426                        lab5
-C:   0000018C  A$lab5$1427                        lab5
-C:   0000018D  A$lab5$1428                        lab5
-C:   0000018E  A$lab5$1429                        lab5
-C:   00000191  A$lab5$1430                        lab5
-C:   00000192  A$lab5$1431                        lab5
-C:   00000194  A$lab5$1432                        lab5
-C:   00000196  A$lab5$1433                        lab5
+C:   00000183  A$lab5$1440                        lab5
+C:   00000185  A$lab5$1441                        lab5
+C:   00000187  A$lab5$1442                        lab5
+C:   00000188  A$lab5$1443                        lab5
+C:   0000018A  A$lab5$1444                        lab5
+C:   0000018C  A$lab5$1445                        lab5
+C:   0000018D  A$lab5$1446                        lab5
+C:   0000018E  A$lab5$1447                        lab5
+C:   00000191  A$lab5$1448                        lab5
+C:   00000192  A$lab5$1449                        lab5
+C:   00000194  A$lab5$1450                        lab5
+C:   00000196  A$lab5$1451                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 33.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000197  A$lab5$1434                        lab5
-C:   00000199  A$lab5$1435                        lab5
-C:   0000019B  A$lab5$1436                        lab5
-C:   0000019D  A$lab5$1437                        lab5
-C:   0000019E  A$lab5$1441                        lab5
+C:   00000197  A$lab5$1452                        lab5
+C:   00000199  A$lab5$1453                        lab5
+C:   0000019B  A$lab5$1454                        lab5
+C:   0000019D  A$lab5$1455                        lab5
+C:   0000019E  A$lab5$1459                        lab5
 C:   0000019E  C$i2c.h$94$1$73                    lab5
-C:   0000019F  A$lab5$1442                        lab5
-C:   000001A1  A$lab5$1446                        lab5
+C:   0000019F  A$lab5$1460                        lab5
+C:   000001A1  A$lab5$1464                        lab5
 C:   000001A1  C$i2c.h$99$1$73                    lab5
-C:   000001A4  A$lab5$1447                        lab5
-C:   000001A7  A$lab5$1448                        lab5
-C:   000001AA  A$lab5$1449                        lab5
-C:   000001AD  A$lab5$1450                        lab5
-C:   000001AF  A$lab5$1451                        lab5
-C:   000001B2  A$lab5$1452                        lab5
-C:   000001B5  A$lab5$1454                        lab5
-C:   000001B7  A$lab5$1457                        lab5
+C:   000001A4  A$lab5$1465                        lab5
+C:   000001A7  A$lab5$1466                        lab5
+C:   000001AA  A$lab5$1467                        lab5
+C:   000001AD  A$lab5$1468                        lab5
+C:   000001AF  A$lab5$1469                        lab5
+C:   000001B2  A$lab5$1470                        lab5
+C:   000001B5  A$lab5$1472                        lab5
+C:   000001B7  A$lab5$1475                        lab5
 C:   000001B7  C$i2c.h$100$1$73                   lab5
 C:   000001B7  XG$lcd_print$0$0                   lab5
-C:   000001B8  A$lab5$1473                        lab5
+C:   000001B8  A$lab5$1491                        lab5
 C:   000001B8  C$i2c.h$103$1$73                   lab5
 C:   000001B8  C$i2c.h$105$1$73                   lab5
 C:   000001B8  G$lcd_clear$0$0                    lab5
 C:   000001B8  _lcd_clear                         lab5
-C:   000001BB  A$lab5$1477                        lab5
+C:   000001BB  A$lab5$1495                        lab5
 C:   000001BB  C$i2c.h$107$1$77                   lab5
-C:   000001BD  A$lab5$1478                        lab5
-C:   000001BF  A$lab5$1479                        lab5
-C:   000001C1  A$lab5$1480                        lab5
-C:   000001C4  A$lab5$1481                        lab5
-C:   000001C7  A$lab5$1482                        lab5
-C:   000001CA  A$lab5$1483                        lab5
-C:   000001CD  A$lab5$1484                        lab5
-C:   000001D0  A$lab5$1485                        lab5
-C:   000001D3  A$lab5$1486                        lab5
-C:   000001D6  A$lab5$1487                        lab5
-C:   000001D8  A$lab5$1491                        lab5
+C:   000001BD  A$lab5$1496                        lab5
+C:   000001BF  A$lab5$1497                        lab5
+C:   000001C1  A$lab5$1498                        lab5
+C:   000001C4  A$lab5$1499                        lab5
+C:   000001C7  A$lab5$1500                        lab5
+C:   000001CA  A$lab5$1501                        lab5
+C:   000001CD  A$lab5$1502                        lab5
+C:   000001D0  A$lab5$1503                        lab5
+C:   000001D3  A$lab5$1504                        lab5
+C:   000001D6  A$lab5$1505                        lab5
+C:   000001D8  A$lab5$1509                        lab5
 C:   000001D8  C$i2c.h$109$1$77                   lab5
-C:   000001DB  A$lab5$1494                        lab5
+C:   000001DB  A$lab5$1512                        lab5
 C:   000001DB  C$i2c.h$110$1$77                   lab5
-C:   000001DE  A$lab5$1495                        lab5
-C:   000001E1  A$lab5$1496                        lab5
-C:   000001E4  A$lab5$1497                        lab5
-C:   000001E7  A$lab5$1498                        lab5
-C:   000001EA  A$lab5$1499                        lab5
-C:   000001ED  A$lab5$1500                        lab5
-C:   000001F0  A$lab5$1503                        lab5
+C:   000001DE  A$lab5$1513                        lab5
+C:   000001E1  A$lab5$1514                        lab5
+C:   000001E4  A$lab5$1515                        lab5
+C:   000001E7  A$lab5$1516                        lab5
+C:   000001EA  A$lab5$1517                        lab5
+C:   000001ED  A$lab5$1518                        lab5
+C:   000001F0  A$lab5$1521                        lab5
 C:   000001F0  C$i2c.h$111$1$77                   lab5
 C:   000001F0  XG$lcd_clear$0$0                   lab5
-C:   000001F1  A$lab5$1519                        lab5
+C:   000001F1  A$lab5$1537                        lab5
 C:   000001F1  C$i2c.h$114$1$77                   lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 34.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   000001F1  C$i2c.h$118$1$78                   lab5
 C:   000001F1  G$read_keypad$0$0                  lab5
 C:   000001F1  _read_keypad                       lab5
-C:   000001F4  A$lab5$1520                        lab5
-C:   000001F7  A$lab5$1521                        lab5
-C:   000001FA  A$lab5$1522                        lab5
-C:   000001FD  A$lab5$1523                        lab5
-C:   00000200  A$lab5$1524                        lab5
-C:   00000203  A$lab5$1525                        lab5
-C:   00000206  A$lab5$1528                        lab5
+C:   000001F4  A$lab5$1538                        lab5
+C:   000001F7  A$lab5$1539                        lab5
+C:   000001FA  A$lab5$1540                        lab5
+C:   000001FD  A$lab5$1541                        lab5
+C:   00000200  A$lab5$1542                        lab5
+C:   00000203  A$lab5$1543                        lab5
+C:   00000206  A$lab5$1546                        lab5
 C:   00000206  C$i2c.h$119$1$78                   lab5
-C:   00000208  A$lab5$1529                        lab5
-C:   0000020B  A$lab5$1530                        lab5
-C:   0000020E  A$lab5$1531                        lab5
-C:   00000210  A$lab5$1535                        lab5
-C:   00000212  A$lab5$1536                        lab5
-C:   00000214  A$lab5$1540                        lab5
+C:   00000208  A$lab5$1547                        lab5
+C:   0000020B  A$lab5$1548                        lab5
+C:   0000020E  A$lab5$1549                        lab5
+C:   00000210  A$lab5$1553                        lab5
+C:   00000212  A$lab5$1554                        lab5
+C:   00000214  A$lab5$1558                        lab5
 C:   00000214  C$i2c.h$123$2$79                   lab5
-C:   00000216  A$lab5$1541                        lab5
-C:   00000218  A$lab5$1542                        lab5
-C:   0000021A  A$lab5$1543                        lab5
-C:   0000021C  A$lab5$1544                        lab5
-C:   0000021E  A$lab5$1546                        lab5
-C:   0000021F  A$lab5$1547                        lab5
-C:   00000220  A$lab5$1548                        lab5
-C:   00000221  A$lab5$1549                        lab5
-C:   00000222  A$lab5$1550                        lab5
-C:   00000223  A$lab5$1551                        lab5
-C:   00000224  A$lab5$1553                        lab5
-C:   00000227  A$lab5$1554                        lab5
-C:   00000229  A$lab5$1555                        lab5
-C:   0000022B  A$lab5$1556                        lab5
-C:   0000022C  A$lab5$1557                        lab5
-C:   0000022E  A$lab5$1558                        lab5
-C:   0000022F  A$lab5$1559                        lab5
-C:   00000231  A$lab5$1560                        lab5
-C:   00000232  A$lab5$1561                        lab5
-C:   00000233  A$lab5$1562                        lab5
-C:   00000235  A$lab5$1565                        lab5
+C:   00000216  A$lab5$1559                        lab5
+C:   00000218  A$lab5$1560                        lab5
+C:   0000021A  A$lab5$1561                        lab5
+C:   0000021C  A$lab5$1562                        lab5
+C:   0000021E  A$lab5$1564                        lab5
+C:   0000021F  A$lab5$1565                        lab5
+C:   00000220  A$lab5$1566                        lab5
+C:   00000221  A$lab5$1567                        lab5
+C:   00000222  A$lab5$1568                        lab5
+C:   00000223  A$lab5$1569                        lab5
+C:   00000224  A$lab5$1571                        lab5
+C:   00000227  A$lab5$1572                        lab5
+C:   00000229  A$lab5$1573                        lab5
+C:   0000022B  A$lab5$1574                        lab5
+C:   0000022C  A$lab5$1575                        lab5
+C:   0000022E  A$lab5$1576                        lab5
+C:   0000022F  A$lab5$1577                        lab5
+C:   00000231  A$lab5$1578                        lab5
+C:   00000232  A$lab5$1579                        lab5
+C:   00000233  A$lab5$1580                        lab5
+C:   00000235  A$lab5$1583                        lab5
 C:   00000235  C$i2c.h$124$2$79                   lab5
-C:   00000237  A$lab5$1566                        lab5
-C:   00000238  A$lab5$1567                        lab5
-C:   0000023A  A$lab5$1568                        lab5
-C:   0000023C  A$lab5$1572                        lab5
+C:   00000237  A$lab5$1584                        lab5
+C:   00000238  A$lab5$1585                        lab5
+C:   0000023A  A$lab5$1586                        lab5
+C:   0000023C  A$lab5$1590                        lab5
 C:   0000023C  C$i2c.h$121$1$78                   lab5
-C:   0000023D  A$lab5$1573                        lab5
-C:   0000023F  A$lab5$1574                        lab5
-C:   00000242  A$lab5$1576                        lab5
-C:   00000244  A$lab5$1579                        lab5
+C:   0000023D  A$lab5$1591                        lab5
+C:   0000023F  A$lab5$1592                        lab5
+C:   00000242  A$lab5$1594                        lab5
+C:   00000244  A$lab5$1597                        lab5
 C:   00000244  C$i2c.h$127$1$78                   lab5
-C:   00000246  A$lab5$1580                        lab5
+C:   00000246  A$lab5$1598                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 35.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000249  A$lab5$1581                        lab5
-C:   0000024C  A$lab5$1582                        lab5
-C:   0000024E  A$lab5$1586                        lab5
+C:   00000249  A$lab5$1599                        lab5
+C:   0000024C  A$lab5$1600                        lab5
+C:   0000024E  A$lab5$1604                        lab5
 C:   0000024E  C$i2c.h$129$1$78                   lab5
-C:   00000250  A$lab5$1587                        lab5
-C:   00000253  A$lab5$1588                        lab5
-C:   00000256  A$lab5$1589                        lab5
-C:   00000258  A$lab5$1593                        lab5
+C:   00000250  A$lab5$1605                        lab5
+C:   00000253  A$lab5$1606                        lab5
+C:   00000256  A$lab5$1607                        lab5
+C:   00000258  A$lab5$1611                        lab5
 C:   00000258  C$i2c.h$131$1$78                   lab5
-C:   0000025A  A$lab5$1594                        lab5
-C:   0000025D  A$lab5$1595                        lab5
-C:   00000260  A$lab5$1596                        lab5
-C:   00000262  A$lab5$1600                        lab5
+C:   0000025A  A$lab5$1612                        lab5
+C:   0000025D  A$lab5$1613                        lab5
+C:   00000260  A$lab5$1614                        lab5
+C:   00000262  A$lab5$1618                        lab5
 C:   00000262  C$i2c.h$133$1$78                   lab5
-C:   00000264  A$lab5$1601                        lab5
-C:   00000267  A$lab5$1602                        lab5
-C:   0000026A  A$lab5$1603                        lab5
-C:   0000026C  A$lab5$1607                        lab5
+C:   00000264  A$lab5$1619                        lab5
+C:   00000267  A$lab5$1620                        lab5
+C:   0000026A  A$lab5$1621                        lab5
+C:   0000026C  A$lab5$1625                        lab5
 C:   0000026C  C$i2c.h$135$1$78                   lab5
-C:   0000026F  A$lab5$1611                        lab5
+C:   0000026F  A$lab5$1629                        lab5
 C:   0000026F  C$i2c.h$136$1$78                   lab5
 C:   0000026F  XG$read_keypad$0$0                 lab5
-C:   00000270  A$lab5$1627                        lab5
+C:   00000270  A$lab5$1645                        lab5
 C:   00000270  C$i2c.h$148$1$78                   lab5
 C:   00000270  G$kpd_input$0$0                    lab5
 C:   00000270  _kpd_input                         lab5
-C:   00000272  A$lab5$1632                        lab5
+C:   00000272  A$lab5$1650                        lab5
 C:   00000272  C$i2c.h$153$1$81                   lab5
 C:   00000272  C$i2c.h$156$1$81                   lab5
-C:   00000273  A$lab5$1633                        lab5
-C:   00000274  A$lab5$1634                        lab5
-C:   00000275  A$lab5$1635                        lab5
-C:   00000276  A$lab5$1636                        lab5
-C:   00000278  A$lab5$1637                        lab5
-C:   0000027A  A$lab5$1638                        lab5
-C:   0000027C  A$lab5$1639                        lab5
-C:   0000027E  A$lab5$1640                        lab5
-C:   00000280  A$lab5$1641                        lab5
-C:   00000282  A$lab5$1642                        lab5
-C:   00000284  A$lab5$1643                        lab5
-C:   00000286  A$lab5$1644                        lab5
-C:   00000288  A$lab5$1645                        lab5
-C:   0000028B  A$lab5$1646                        lab5
-C:   0000028D  A$lab5$1647                        lab5
-C:   0000028F  A$lab5$1648                        lab5
-C:   00000291  A$lab5$1649                        lab5
-C:   00000293  A$lab5$1650                        lab5
-C:   00000295  A$lab5$1654                        lab5
+C:   00000273  A$lab5$1651                        lab5
+C:   00000274  A$lab5$1652                        lab5
+C:   00000275  A$lab5$1653                        lab5
+C:   00000276  A$lab5$1654                        lab5
+C:   00000278  A$lab5$1655                        lab5
+C:   0000027A  A$lab5$1656                        lab5
+C:   0000027C  A$lab5$1657                        lab5
+C:   0000027E  A$lab5$1658                        lab5
+C:   00000280  A$lab5$1659                        lab5
+C:   00000282  A$lab5$1660                        lab5
+C:   00000284  A$lab5$1661                        lab5
+C:   00000286  A$lab5$1662                        lab5
+C:   00000288  A$lab5$1663                        lab5
+C:   0000028B  A$lab5$1664                        lab5
+C:   0000028D  A$lab5$1665                        lab5
+C:   0000028F  A$lab5$1666                        lab5
+C:   00000291  A$lab5$1667                        lab5
+C:   00000293  A$lab5$1668                        lab5
+C:   00000295  A$lab5$1672                        lab5
 C:   00000295  C$i2c.h$158$1$81                   lab5
-C:   00000297  A$lab5$1655                        lab5
-C:   00000299  A$lab5$1656                        lab5
+C:   00000297  A$lab5$1673                        lab5
+C:   00000299  A$lab5$1674                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 36.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000029B  A$lab5$1657                        lab5
-C:   0000029D  A$lab5$1658                        lab5
-C:   0000029E  A$lab5$1659                        lab5
-C:   000002A0  A$lab5$1660                        lab5
-C:   000002A2  A$lab5$1661                        lab5
-C:   000002A4  A$lab5$1662                        lab5
-C:   000002A5  A$lab5$1663                        lab5
-C:   000002A7  A$lab5$1664                        lab5
-C:   000002A9  A$lab5$1665                        lab5
-C:   000002AB  A$lab5$1666                        lab5
-C:   000002AC  A$lab5$1667                        lab5
-C:   000002AE  A$lab5$1668                        lab5
-C:   000002B0  A$lab5$1669                        lab5
-C:   000002B2  A$lab5$1670                        lab5
-C:   000002B3  A$lab5$1671                        lab5
-C:   000002B5  A$lab5$1672                        lab5
-C:   000002B7  A$lab5$1673                        lab5
-C:   000002B9  A$lab5$1674                        lab5
-C:   000002BA  A$lab5$1675                        lab5
-C:   000002BC  A$lab5$1676                        lab5
-C:   000002BE  A$lab5$1677                        lab5
-C:   000002C0  A$lab5$1678                        lab5
-C:   000002C2  A$lab5$1679                        lab5
-C:   000002C4  A$lab5$1680                        lab5
-C:   000002C6  A$lab5$1681                        lab5
-C:   000002C8  A$lab5$1682                        lab5
-C:   000002CB  A$lab5$1683                        lab5
-C:   000002CD  A$lab5$1684                        lab5
-C:   000002CF  A$lab5$1685                        lab5
-C:   000002D1  A$lab5$1688                        lab5
+C:   0000029B  A$lab5$1675                        lab5
+C:   0000029D  A$lab5$1676                        lab5
+C:   0000029E  A$lab5$1677                        lab5
+C:   000002A0  A$lab5$1678                        lab5
+C:   000002A2  A$lab5$1679                        lab5
+C:   000002A4  A$lab5$1680                        lab5
+C:   000002A5  A$lab5$1681                        lab5
+C:   000002A7  A$lab5$1682                        lab5
+C:   000002A9  A$lab5$1683                        lab5
+C:   000002AB  A$lab5$1684                        lab5
+C:   000002AC  A$lab5$1685                        lab5
+C:   000002AE  A$lab5$1686                        lab5
+C:   000002B0  A$lab5$1687                        lab5
+C:   000002B2  A$lab5$1688                        lab5
+C:   000002B3  A$lab5$1689                        lab5
+C:   000002B5  A$lab5$1690                        lab5
+C:   000002B7  A$lab5$1691                        lab5
+C:   000002B9  A$lab5$1692                        lab5
+C:   000002BA  A$lab5$1693                        lab5
+C:   000002BC  A$lab5$1694                        lab5
+C:   000002BE  A$lab5$1695                        lab5
+C:   000002C0  A$lab5$1696                        lab5
+C:   000002C2  A$lab5$1697                        lab5
+C:   000002C4  A$lab5$1698                        lab5
+C:   000002C6  A$lab5$1699                        lab5
+C:   000002C8  A$lab5$1700                        lab5
+C:   000002CB  A$lab5$1701                        lab5
+C:   000002CD  A$lab5$1702                        lab5
+C:   000002CF  A$lab5$1703                        lab5
+C:   000002D1  A$lab5$1706                        lab5
 C:   000002D1  C$i2c.h$160$1$81                   lab5
-C:   000002D4  A$lab5$1689                        lab5
-C:   000002D7  A$lab5$1690                        lab5
-C:   000002D8  A$lab5$1691                        lab5
-C:   000002DB  A$lab5$1692                        lab5
-C:   000002DD  A$lab5$1693                        lab5
-C:   000002DF  A$lab5$1696                        lab5
-C:   000002E1  A$lab5$1700                        lab5
+C:   000002D4  A$lab5$1707                        lab5
+C:   000002D7  A$lab5$1708                        lab5
+C:   000002D8  A$lab5$1709                        lab5
+C:   000002DB  A$lab5$1710                        lab5
+C:   000002DD  A$lab5$1711                        lab5
+C:   000002DF  A$lab5$1714                        lab5
+C:   000002E1  A$lab5$1718                        lab5
 C:   000002E1  C$i2c.h$166$3$84                   lab5
-C:   000002E3  A$lab5$1701                        lab5
-C:   000002E5  A$lab5$1702                        lab5
-C:   000002E7  A$lab5$1703                        lab5
-C:   000002EA  A$lab5$1704                        lab5
-C:   000002EC  A$lab5$1705                        lab5
-C:   000002EE  A$lab5$1706                        lab5
-C:   000002F0  A$lab5$1707                        lab5
-C:   000002F2  A$lab5$1708                        lab5
-C:   000002F4  A$lab5$1709                        lab5
-C:   000002F7  A$lab5$1710                        lab5
-C:   000002F9  A$lab5$1712                        lab5
-C:   000002FC  A$lab5$1714                        lab5
+C:   000002E3  A$lab5$1719                        lab5
+C:   000002E5  A$lab5$1720                        lab5
+C:   000002E7  A$lab5$1721                        lab5
+C:   000002EA  A$lab5$1722                        lab5
+C:   000002EC  A$lab5$1723                        lab5
+C:   000002EE  A$lab5$1724                        lab5
+C:   000002F0  A$lab5$1725                        lab5
+C:   000002F2  A$lab5$1726                        lab5
+C:   000002F4  A$lab5$1727                        lab5
+C:   000002F7  A$lab5$1728                        lab5
+C:   000002F9  A$lab5$1730                        lab5
+C:   000002FC  A$lab5$1732                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 37.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000002FF  A$lab5$1715                        lab5
-C:   00000300  A$lab5$1716                        lab5
-C:   00000302  A$lab5$1717                        lab5
-C:   00000304  A$lab5$1718                        lab5
-C:   00000306  A$lab5$1719                        lab5
-C:   00000308  A$lab5$1720                        lab5
-C:   0000030B  A$lab5$1721                        lab5
-C:   0000030D  A$lab5$1722                        lab5
-C:   0000030F  A$lab5$1723                        lab5
-C:   00000311  A$lab5$1724                        lab5
-C:   00000313  A$lab5$1728                        lab5
+C:   000002FF  A$lab5$1733                        lab5
+C:   00000300  A$lab5$1734                        lab5
+C:   00000302  A$lab5$1735                        lab5
+C:   00000304  A$lab5$1736                        lab5
+C:   00000306  A$lab5$1737                        lab5
+C:   00000308  A$lab5$1738                        lab5
+C:   0000030B  A$lab5$1739                        lab5
+C:   0000030D  A$lab5$1740                        lab5
+C:   0000030F  A$lab5$1741                        lab5
+C:   00000311  A$lab5$1742                        lab5
+C:   00000313  A$lab5$1746                        lab5
 C:   00000313  C$i2c.h$167$2$82                   lab5
-C:   00000316  A$lab5$1732                        lab5
+C:   00000316  A$lab5$1750                        lab5
 C:   00000316  C$i2c.h$169$3$83                   lab5
-C:   00000318  A$lab5$1733                        lab5
-C:   0000031A  A$lab5$1734                        lab5
-C:   0000031D  A$lab5$1735                        lab5
-C:   0000031F  A$lab5$1736                        lab5
-C:   00000321  A$lab5$1737                        lab5
-C:   00000323  A$lab5$1738                        lab5
-C:   00000326  A$lab5$1739                        lab5
-C:   00000329  A$lab5$1740                        lab5
-C:   0000032A  A$lab5$1741                        lab5
-C:   0000032C  A$lab5$1742                        lab5
-C:   0000032E  A$lab5$1743                        lab5
-C:   00000330  A$lab5$1744                        lab5
-C:   00000333  A$lab5$1745                        lab5
-C:   00000335  A$lab5$1746                        lab5
-C:   00000337  A$lab5$1747                        lab5
-C:   00000339  A$lab5$1751                        lab5
+C:   00000318  A$lab5$1751                        lab5
+C:   0000031A  A$lab5$1752                        lab5
+C:   0000031D  A$lab5$1753                        lab5
+C:   0000031F  A$lab5$1754                        lab5
+C:   00000321  A$lab5$1755                        lab5
+C:   00000323  A$lab5$1756                        lab5
+C:   00000326  A$lab5$1757                        lab5
+C:   00000329  A$lab5$1758                        lab5
+C:   0000032A  A$lab5$1759                        lab5
+C:   0000032C  A$lab5$1760                        lab5
+C:   0000032E  A$lab5$1761                        lab5
+C:   00000330  A$lab5$1762                        lab5
+C:   00000333  A$lab5$1763                        lab5
+C:   00000335  A$lab5$1764                        lab5
+C:   00000337  A$lab5$1765                        lab5
+C:   00000339  A$lab5$1769                        lab5
 C:   00000339  C$i2c.h$170$3$83                   lab5
-C:   0000033B  A$lab5$1752                        lab5
-C:   0000033D  A$lab5$1753                        lab5
-C:   00000340  A$lab5$1757                        lab5
+C:   0000033B  A$lab5$1770                        lab5
+C:   0000033D  A$lab5$1771                        lab5
+C:   00000340  A$lab5$1775                        lab5
 C:   00000340  C$i2c.h$174$3$84                   lab5
-C:   00000341  A$lab5$1758                        lab5
-C:   00000342  A$lab5$1759                        lab5
-C:   00000343  A$lab5$1760                        lab5
-C:   00000345  A$lab5$1761                        lab5
-C:   00000346  A$lab5$1762                        lab5
-C:   00000348  A$lab5$1763                        lab5
-C:   0000034A  A$lab5$1764                        lab5
-C:   0000034C  A$lab5$1765                        lab5
-C:   0000034E  A$lab5$1766                        lab5
-C:   00000350  A$lab5$1767                        lab5
-C:   00000352  A$lab5$1768                        lab5
-C:   00000354  A$lab5$1769                        lab5
-C:   00000356  A$lab5$1770                        lab5
-C:   00000358  A$lab5$1771                        lab5
-C:   0000035A  A$lab5$1772                        lab5
-C:   0000035C  A$lab5$1773                        lab5
+C:   00000341  A$lab5$1776                        lab5
+C:   00000342  A$lab5$1777                        lab5
+C:   00000343  A$lab5$1778                        lab5
+C:   00000345  A$lab5$1779                        lab5
+C:   00000346  A$lab5$1780                        lab5
+C:   00000348  A$lab5$1781                        lab5
+C:   0000034A  A$lab5$1782                        lab5
+C:   0000034C  A$lab5$1783                        lab5
+C:   0000034E  A$lab5$1784                        lab5
+C:   00000350  A$lab5$1785                        lab5
+C:   00000352  A$lab5$1786                        lab5
+C:   00000354  A$lab5$1787                        lab5
+C:   00000356  A$lab5$1788                        lab5
+C:   00000358  A$lab5$1789                        lab5
+C:   0000035A  A$lab5$1790                        lab5
+C:   0000035C  A$lab5$1791                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 38.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000035E  A$lab5$1774                        lab5
-C:   00000360  A$lab5$1775                        lab5
-C:   00000362  A$lab5$1776                        lab5
-C:   00000365  A$lab5$1777                        lab5
-C:   00000367  A$lab5$1778                        lab5
-C:   00000369  A$lab5$1779                        lab5
-C:   0000036B  A$lab5$1780                        lab5
-C:   0000036D  A$lab5$1781                        lab5
-C:   0000036F  A$lab5$1782                        lab5
-C:   00000371  A$lab5$1783                        lab5
-C:   00000373  A$lab5$1784                        lab5
-C:   00000375  A$lab5$1787                        lab5
+C:   0000035E  A$lab5$1792                        lab5
+C:   00000360  A$lab5$1793                        lab5
+C:   00000362  A$lab5$1794                        lab5
+C:   00000365  A$lab5$1795                        lab5
+C:   00000367  A$lab5$1796                        lab5
+C:   00000369  A$lab5$1797                        lab5
+C:   0000036B  A$lab5$1798                        lab5
+C:   0000036D  A$lab5$1799                        lab5
+C:   0000036F  A$lab5$1800                        lab5
+C:   00000371  A$lab5$1801                        lab5
+C:   00000373  A$lab5$1802                        lab5
+C:   00000375  A$lab5$1805                        lab5
 C:   00000375  C$i2c.h$175$1$81                   lab5
-C:   00000377  A$lab5$1788                        lab5
-C:   00000379  A$lab5$1789                        lab5
-C:   0000037C  A$lab5$1790                        lab5
-C:   0000037E  A$lab5$1791                        lab5
-C:   00000380  A$lab5$1792                        lab5
-C:   00000382  A$lab5$1793                        lab5
-C:   00000385  A$lab5$1794                        lab5
-C:   00000387  A$lab5$1795                        lab5
-C:   00000389  A$lab5$1796                        lab5
-C:   0000038B  A$lab5$1797                        lab5
-C:   0000038D  A$lab5$1798                        lab5
-C:   0000038F  A$lab5$1799                        lab5
-C:   00000391  A$lab5$1800                        lab5
-C:   00000392  A$lab5$1801                        lab5
-C:   00000393  A$lab5$1802                        lab5
-C:   00000394  A$lab5$1803                        lab5
-C:   00000395  A$lab5$1804                        lab5
-C:   00000396  A$lab5$1805                        lab5
-C:   00000397  A$lab5$1806                        lab5
-C:   00000398  A$lab5$1807                        lab5
-C:   0000039A  A$lab5$1808                        lab5
-C:   0000039B  A$lab5$1809                        lab5
-C:   0000039C  A$lab5$1810                        lab5
-C:   0000039E  A$lab5$1811                        lab5
-C:   0000039F  A$lab5$1815                        lab5
+C:   00000377  A$lab5$1806                        lab5
+C:   00000379  A$lab5$1807                        lab5
+C:   0000037C  A$lab5$1808                        lab5
+C:   0000037E  A$lab5$1809                        lab5
+C:   00000380  A$lab5$1810                        lab5
+C:   00000382  A$lab5$1811                        lab5
+C:   00000385  A$lab5$1812                        lab5
+C:   00000387  A$lab5$1813                        lab5
+C:   00000389  A$lab5$1814                        lab5
+C:   0000038B  A$lab5$1815                        lab5
+C:   0000038D  A$lab5$1816                        lab5
+C:   0000038F  A$lab5$1817                        lab5
+C:   00000391  A$lab5$1818                        lab5
+C:   00000392  A$lab5$1819                        lab5
+C:   00000393  A$lab5$1820                        lab5
+C:   00000394  A$lab5$1821                        lab5
+C:   00000395  A$lab5$1822                        lab5
+C:   00000396  A$lab5$1823                        lab5
+C:   00000397  A$lab5$1824                        lab5
+C:   00000398  A$lab5$1825                        lab5
+C:   0000039A  A$lab5$1826                        lab5
+C:   0000039B  A$lab5$1827                        lab5
+C:   0000039C  A$lab5$1828                        lab5
+C:   0000039E  A$lab5$1829                        lab5
+C:   0000039F  A$lab5$1833                        lab5
 C:   0000039F  C$i2c.h$176$3$84                   lab5
-C:   000003A1  A$lab5$1816                        lab5
-C:   000003A3  A$lab5$1817                        lab5
-C:   000003A5  A$lab5$1818                        lab5
-C:   000003A7  A$lab5$1819                        lab5
-C:   000003AA  A$lab5$1820                        lab5
-C:   000003AC  A$lab5$1821                        lab5
-C:   000003AE  A$lab5$1822                        lab5
-C:   000003B0  A$lab5$1823                        lab5
-C:   000003B2  A$lab5$1824                        lab5
-C:   000003B4  A$lab5$1825                        lab5
-C:   000003B5  A$lab5$1826                        lab5
-C:   000003B8  A$lab5$1827                        lab5
+C:   000003A1  A$lab5$1834                        lab5
+C:   000003A3  A$lab5$1835                        lab5
+C:   000003A5  A$lab5$1836                        lab5
+C:   000003A7  A$lab5$1837                        lab5
+C:   000003AA  A$lab5$1838                        lab5
+C:   000003AC  A$lab5$1839                        lab5
+C:   000003AE  A$lab5$1840                        lab5
+C:   000003B0  A$lab5$1841                        lab5
+C:   000003B2  A$lab5$1842                        lab5
+C:   000003B4  A$lab5$1843                        lab5
+C:   000003B5  A$lab5$1844                        lab5
+C:   000003B8  A$lab5$1845                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 39.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000003BB  A$lab5$1828                        lab5
-C:   000003BC  A$lab5$1829                        lab5
-C:   000003BE  A$lab5$1830                        lab5
-C:   000003C0  A$lab5$1831                        lab5
-C:   000003C2  A$lab5$1832                        lab5
-C:   000003C4  A$lab5$1833                        lab5
-C:   000003C6  A$lab5$1834                        lab5
-C:   000003C9  A$lab5$1835                        lab5
-C:   000003CB  A$lab5$1836                        lab5
-C:   000003CD  A$lab5$1837                        lab5
-C:   000003CF  A$lab5$1838                        lab5
-C:   000003D1  A$lab5$1839                        lab5
-C:   000003D3  A$lab5$1843                        lab5
+C:   000003BB  A$lab5$1846                        lab5
+C:   000003BC  A$lab5$1847                        lab5
+C:   000003BE  A$lab5$1848                        lab5
+C:   000003C0  A$lab5$1849                        lab5
+C:   000003C2  A$lab5$1850                        lab5
+C:   000003C4  A$lab5$1851                        lab5
+C:   000003C6  A$lab5$1852                        lab5
+C:   000003C9  A$lab5$1853                        lab5
+C:   000003CB  A$lab5$1854                        lab5
+C:   000003CD  A$lab5$1855                        lab5
+C:   000003CF  A$lab5$1856                        lab5
+C:   000003D1  A$lab5$1857                        lab5
+C:   000003D3  A$lab5$1861                        lab5
 C:   000003D3  C$i2c.h$164$1$81                   lab5
-C:   000003D4  A$lab5$1844                        lab5
-C:   000003D5  A$lab5$1845                        lab5
-C:   000003D6  A$lab5$1846                        lab5
-C:   000003D8  A$lab5$1847                        lab5
-C:   000003DA  A$lab5$1848                        lab5
-C:   000003DC  A$lab5$1849                        lab5
-C:   000003DF  A$lab5$1853                        lab5
+C:   000003D4  A$lab5$1862                        lab5
+C:   000003D5  A$lab5$1863                        lab5
+C:   000003D6  A$lab5$1864                        lab5
+C:   000003D8  A$lab5$1865                        lab5
+C:   000003DA  A$lab5$1866                        lab5
+C:   000003DC  A$lab5$1867                        lab5
+C:   000003DF  A$lab5$1871                        lab5
 C:   000003DF  C$i2c.h$179$1$81                   lab5
-C:   000003E1  A$lab5$1854                        lab5
-C:   000003E3  A$lab5$1858                        lab5
+C:   000003E1  A$lab5$1872                        lab5
+C:   000003E3  A$lab5$1876                        lab5
 C:   000003E3  C$i2c.h$180$1$81                   lab5
 C:   000003E3  XG$kpd_input$0$0                   lab5
-C:   000003E4  A$lab5$1872                        lab5
+C:   000003E4  A$lab5$1890                        lab5
 C:   000003E4  C$i2c.h$189$1$81                   lab5
 C:   000003E4  G$delay_time$0$0                   lab5
 C:   000003E4  _delay_time                        lab5
-C:   000003E6  A$lab5$1873                        lab5
-C:   000003E8  A$lab5$1874                        lab5
-C:   000003EA  A$lab5$1875                        lab5
-C:   000003EB  A$lab5$1878                        lab5
+C:   000003E6  A$lab5$1891                        lab5
+C:   000003E8  A$lab5$1892                        lab5
+C:   000003EA  A$lab5$1893                        lab5
+C:   000003EB  A$lab5$1896                        lab5
 C:   000003EB  C$i2c.h$192$1$86                   lab5
-C:   000003ED  A$lab5$1879                        lab5
-C:   000003EF  A$lab5$1880                        lab5
-C:   000003F1  A$lab5$1881                        lab5
-C:   000003F3  A$lab5$1883                        lab5
-C:   000003F4  A$lab5$1884                        lab5
-C:   000003F5  A$lab5$1885                        lab5
-C:   000003F6  A$lab5$1886                        lab5
-C:   000003F7  A$lab5$1887                        lab5
-C:   000003F8  A$lab5$1888                        lab5
-C:   000003F9  A$lab5$1889                        lab5
-C:   000003FA  A$lab5$1890                        lab5
-C:   000003FB  A$lab5$1891                        lab5
-C:   000003FC  A$lab5$1892                        lab5
-C:   000003FE  A$lab5$1893                        lab5
-C:   000003FF  A$lab5$1894                        lab5
-C:   00000402  A$lab5$1895                        lab5
+C:   000003ED  A$lab5$1897                        lab5
+C:   000003EF  A$lab5$1898                        lab5
+C:   000003F1  A$lab5$1899                        lab5
+C:   000003F3  A$lab5$1901                        lab5
+C:   000003F4  A$lab5$1902                        lab5
+C:   000003F5  A$lab5$1903                        lab5
+C:   000003F6  A$lab5$1904                        lab5
+C:   000003F7  A$lab5$1905                        lab5
+C:   000003F8  A$lab5$1906                        lab5
+C:   000003F9  A$lab5$1907                        lab5
+C:   000003FA  A$lab5$1908                        lab5
+C:   000003FB  A$lab5$1909                        lab5
+C:   000003FC  A$lab5$1910                        lab5
+C:   000003FE  A$lab5$1911                        lab5
+C:   000003FF  A$lab5$1912                        lab5
+C:   00000402  A$lab5$1913                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 40.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000403  A$lab5$1896                        lab5
-C:   00000406  A$lab5$1897                        lab5
-C:   00000407  A$lab5$1898                        lab5
-C:   0000040A  A$lab5$1899                        lab5
-C:   0000040B  A$lab5$1901                        lab5
-C:   0000040D  A$lab5$1905                        lab5
+C:   00000403  A$lab5$1914                        lab5
+C:   00000406  A$lab5$1915                        lab5
+C:   00000407  A$lab5$1916                        lab5
+C:   0000040A  A$lab5$1917                        lab5
+C:   0000040B  A$lab5$1919                        lab5
+C:   0000040D  A$lab5$1923                        lab5
 C:   0000040D  C$i2c.h$193$1$86                   lab5
 C:   0000040D  XG$delay_time$0$0                  lab5
-C:   0000040E  A$lab5$1919                        lab5
+C:   0000040E  A$lab5$1937                        lab5
 C:   0000040E  C$i2c.h$196$1$86                   lab5
 C:   0000040E  C$i2c.h$198$1$88                   lab5
 C:   0000040E  G$i2c_start$0$0                    lab5
 C:   0000040E  _i2c_start                         lab5
-C:   00000411  A$lab5$1922                        lab5
+C:   00000411  A$lab5$1940                        lab5
 C:   00000411  C$i2c.h$199$1$88                   lab5
-C:   00000413  A$lab5$1926                        lab5
+C:   00000413  A$lab5$1944                        lab5
 C:   00000413  C$i2c.h$200$1$88                   lab5
-C:   00000416  A$lab5$1929                        lab5
+C:   00000416  A$lab5$1947                        lab5
 C:   00000416  C$i2c.h$201$1$88                   lab5
-C:   00000418  A$lab5$1932                        lab5
+C:   00000418  A$lab5$1950                        lab5
 C:   00000418  C$i2c.h$202$1$88                   lab5
-C:   0000041A  A$lab5$1935                        lab5
+C:   0000041A  A$lab5$1953                        lab5
 C:   0000041A  C$i2c.h$203$1$88                   lab5
 C:   0000041A  XG$i2c_start$0$0                   lab5
-C:   0000041B  A$lab5$1948                        lab5
+C:   0000041B  A$lab5$1966                        lab5
 C:   0000041B  C$i2c.h$206$1$88                   lab5
 C:   0000041B  G$i2c_write$0$0                    lab5
 C:   0000041B  _i2c_write                         lab5
-C:   0000041E  A$lab5$1954                        lab5
+C:   0000041E  A$lab5$1972                        lab5
 C:   0000041E  C$i2c.h$209$1$90                   lab5
 C:   0000041E  C$i2c.h$210$1$90                   lab5
-C:   00000421  A$lab5$1955                        lab5
-C:   00000423  A$lab5$1959                        lab5
+C:   00000421  A$lab5$1973                        lab5
+C:   00000423  A$lab5$1977                        lab5
 C:   00000423  C$i2c.h$211$1$90                   lab5
 C:   00000423  XG$i2c_write$0$0                   lab5
-C:   00000424  A$lab5$1972                        lab5
+C:   00000424  A$lab5$1990                        lab5
 C:   00000424  C$i2c.h$214$1$90                   lab5
 C:   00000424  G$i2c_write_and_stop$0$0           lab5
 C:   00000424  _i2c_write_and_stop                lab5
-C:   00000427  A$lab5$1975                        lab5
+C:   00000427  A$lab5$1993                        lab5
 C:   00000427  C$i2c.h$217$1$92                   lab5
-C:   00000429  A$lab5$1981                        lab5
+C:   00000429  A$lab5$1999                        lab5
 C:   00000429  C$i2c.h$218$1$92                   lab5
 C:   00000429  C$i2c.h$219$1$92                   lab5
-C:   0000042C  A$lab5$1982                        lab5
-C:   0000042E  A$lab5$1986                        lab5
+C:   0000042C  A$lab5$2000                        lab5
+C:   0000042E  A$lab5$2004                        lab5
 C:   0000042E  C$i2c.h$220$1$92                   lab5
 C:   0000042E  XG$i2c_write_and_stop$0$0          lab5
-C:   0000042F  A$lab5$2002                        lab5
+C:   0000042F  A$lab5$2020                        lab5
 C:   0000042F  C$i2c.h$223$1$92                   lab5
 C:   0000042F  C$i2c.h$226$1$94                   lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 41.
@@ -1680,701 +1691,1023 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   0000042F  G$i2c_read$0$0                     lab5
 C:   0000042F  _i2c_read                          lab5
-C:   00000432  A$lab5$2005                        lab5
+C:   00000432  A$lab5$2023                        lab5
 C:   00000432  C$i2c.h$227$1$94                   lab5
-C:   00000435  A$lab5$2008                        lab5
+C:   00000435  A$lab5$2026                        lab5
 C:   00000435  C$i2c.h$228$1$94                   lab5
-C:   00000437  A$lab5$2013                        lab5
+C:   00000437  A$lab5$2031                        lab5
 C:   00000437  C$i2c.h$229$1$94                   lab5
 C:   00000437  C$i2c.h$230$1$94                   lab5
 C:   00000437  XG$i2c_read$0$0                    lab5
-C:   00000438  A$lab5$2029                        lab5
+C:   00000438  A$lab5$2047                        lab5
 C:   00000438  C$i2c.h$233$1$94                   lab5
 C:   00000438  C$i2c.h$236$1$96                   lab5
 C:   00000438  G$i2c_read_and_stop$0$0            lab5
 C:   00000438  _i2c_read_and_stop                 lab5
-C:   0000043B  A$lab5$2032                        lab5
+C:   0000043B  A$lab5$2050                        lab5
 C:   0000043B  C$i2c.h$237$1$96                   lab5
-C:   0000043D  A$lab5$2035                        lab5
+C:   0000043D  A$lab5$2053                        lab5
 C:   0000043D  C$i2c.h$238$1$96                   lab5
-C:   0000043F  A$lab5$2038                        lab5
+C:   0000043F  A$lab5$2056                        lab5
 C:   0000043F  C$i2c.h$239$1$96                   lab5
-C:   00000441  A$lab5$2044                        lab5
+C:   00000441  A$lab5$2062                        lab5
 C:   00000441  C$i2c.h$240$1$96                   lab5
 C:   00000441  C$i2c.h$241$1$96                   lab5
-C:   00000444  A$lab5$2045                        lab5
-C:   00000446  A$lab5$2049                        lab5
+C:   00000444  A$lab5$2063                        lab5
+C:   00000446  A$lab5$2067                        lab5
 C:   00000446  C$i2c.h$242$1$96                   lab5
-C:   00000448  A$lab5$2052                        lab5
+C:   00000448  A$lab5$2070                        lab5
 C:   00000448  C$i2c.h$243$1$96                   lab5
 C:   00000448  XG$i2c_read_and_stop$0$0           lab5
-C:   00000449  A$lab5$2069                        lab5
+C:   00000449  A$lab5$2087                        lab5
 C:   00000449  C$i2c.h$246$1$96                   lab5
 C:   00000449  G$i2c_write_data$0$0               lab5
 C:   00000449  _i2c_write_data                    lab5
-C:   0000044B  A$lab5$2072                        lab5
+C:   0000044B  A$lab5$2090                        lab5
 C:   0000044B  C$i2c.h$250$1$98                   lab5
-C:   0000044D  A$lab5$2073                        lab5
-C:   00000450  A$lab5$2074                        lab5
-C:   00000452  A$lab5$2077                        lab5
+C:   0000044D  A$lab5$2091                        lab5
+C:   00000450  A$lab5$2092                        lab5
+C:   00000452  A$lab5$2095                        lab5
 C:   00000452  C$i2c.h$251$1$98                   lab5
-C:   00000454  A$lab5$2078                        lab5
-C:   00000455  A$lab5$2079                        lab5
-C:   00000457  A$lab5$2080                        lab5
-C:   0000045A  A$lab5$2083                        lab5
+C:   00000454  A$lab5$2096                        lab5
+C:   00000455  A$lab5$2097                        lab5
+C:   00000457  A$lab5$2098                        lab5
+C:   0000045A  A$lab5$2101                        lab5
 C:   0000045A  C$i2c.h$252$1$98                   lab5
-C:   0000045D  A$lab5$2084                        lab5
-C:   00000460  A$lab5$2087                        lab5
-C:   00000462  A$lab5$2089                        lab5
-C:   00000464  A$lab5$2090                        lab5
-C:   00000466  A$lab5$2091                        lab5
-C:   00000467  A$lab5$2092                        lab5
+C:   0000045D  A$lab5$2102                        lab5
+C:   00000460  A$lab5$2105                        lab5
+C:   00000462  A$lab5$2107                        lab5
+C:   00000464  A$lab5$2108                        lab5
+C:   00000466  A$lab5$2109                        lab5
+C:   00000467  A$lab5$2110                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 42.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000046A  A$lab5$2093                        lab5
-C:   0000046B  A$lab5$2095                        lab5
-C:   0000046D  A$lab5$2096                        lab5
-C:   0000046F  A$lab5$2097                        lab5
-C:   00000470  A$lab5$2098                        lab5
-C:   00000471  A$lab5$2099                        lab5
-C:   00000472  A$lab5$2100                        lab5
-C:   00000473  A$lab5$2101                        lab5
-C:   00000475  A$lab5$2102                        lab5
-C:   00000477  A$lab5$2103                        lab5
-C:   0000047A  A$lab5$2104                        lab5
-C:   0000047C  A$lab5$2105                        lab5
-C:   0000047E  A$lab5$2108                        lab5
+C:   0000046A  A$lab5$2111                        lab5
+C:   0000046B  A$lab5$2113                        lab5
+C:   0000046D  A$lab5$2114                        lab5
+C:   0000046F  A$lab5$2115                        lab5
+C:   00000470  A$lab5$2116                        lab5
+C:   00000471  A$lab5$2117                        lab5
+C:   00000472  A$lab5$2118                        lab5
+C:   00000473  A$lab5$2119                        lab5
+C:   00000475  A$lab5$2120                        lab5
+C:   00000477  A$lab5$2121                        lab5
+C:   0000047A  A$lab5$2122                        lab5
+C:   0000047C  A$lab5$2123                        lab5
+C:   0000047E  A$lab5$2126                        lab5
 C:   0000047E  C$i2c.h$254$1$98                   lab5
-C:   0000047F  A$lab5$2109                        lab5
-C:   00000481  A$lab5$2110                        lab5
-C:   00000482  A$lab5$2111                        lab5
-C:   00000483  A$lab5$2112                        lab5
-C:   00000485  A$lab5$2113                        lab5
-C:   00000486  A$lab5$2114                        lab5
-C:   00000488  A$lab5$2115                        lab5
-C:   0000048A  A$lab5$2116                        lab5
-C:   0000048C  A$lab5$2117                        lab5
-C:   0000048E  A$lab5$2118                        lab5
-C:   00000491  A$lab5$2119                        lab5
-C:   00000493  A$lab5$2120                        lab5
-C:   00000495  A$lab5$2121                        lab5
-C:   00000498  A$lab5$2122                        lab5
-C:   0000049A  A$lab5$2125                        lab5
+C:   0000047F  A$lab5$2127                        lab5
+C:   00000481  A$lab5$2128                        lab5
+C:   00000482  A$lab5$2129                        lab5
+C:   00000483  A$lab5$2130                        lab5
+C:   00000485  A$lab5$2131                        lab5
+C:   00000486  A$lab5$2132                        lab5
+C:   00000488  A$lab5$2133                        lab5
+C:   0000048A  A$lab5$2134                        lab5
+C:   0000048C  A$lab5$2135                        lab5
+C:   0000048E  A$lab5$2136                        lab5
+C:   00000491  A$lab5$2137                        lab5
+C:   00000493  A$lab5$2138                        lab5
+C:   00000495  A$lab5$2139                        lab5
+C:   00000498  A$lab5$2140                        lab5
+C:   0000049A  A$lab5$2143                        lab5
 C:   0000049A  C$i2c.h$253$1$98                   lab5
-C:   0000049B  A$lab5$2126                        lab5
-C:   0000049D  A$lab5$2130                        lab5
+C:   0000049B  A$lab5$2144                        lab5
+C:   0000049D  A$lab5$2148                        lab5
 C:   0000049D  C$i2c.h$255$1$98                   lab5
-C:   0000049F  A$lab5$2131                        lab5
-C:   000004A1  A$lab5$2132                        lab5
-C:   000004A2  A$lab5$2133                        lab5
-C:   000004A5  A$lab5$2134                        lab5
-C:   000004A6  A$lab5$2136                        lab5
-C:   000004A7  A$lab5$2137                        lab5
-C:   000004A9  A$lab5$2138                        lab5
-C:   000004AA  A$lab5$2139                        lab5
-C:   000004AB  A$lab5$2140                        lab5
-C:   000004AD  A$lab5$2141                        lab5
-C:   000004AE  A$lab5$2142                        lab5
-C:   000004B0  A$lab5$2143                        lab5
-C:   000004B2  A$lab5$2144                        lab5
-C:   000004B4  A$lab5$2145                        lab5
-C:   000004B6  A$lab5$2146                        lab5
-C:   000004B9  A$lab5$2147                        lab5
-C:   000004BB  A$lab5$2148                        lab5
-C:   000004BE  A$lab5$2151                        lab5
+C:   0000049F  A$lab5$2149                        lab5
+C:   000004A1  A$lab5$2150                        lab5
+C:   000004A2  A$lab5$2151                        lab5
+C:   000004A5  A$lab5$2152                        lab5
+C:   000004A6  A$lab5$2154                        lab5
+C:   000004A7  A$lab5$2155                        lab5
+C:   000004A9  A$lab5$2156                        lab5
+C:   000004AA  A$lab5$2157                        lab5
+C:   000004AB  A$lab5$2158                        lab5
+C:   000004AD  A$lab5$2159                        lab5
+C:   000004AE  A$lab5$2160                        lab5
+C:   000004B0  A$lab5$2161                        lab5
+C:   000004B2  A$lab5$2162                        lab5
+C:   000004B4  A$lab5$2163                        lab5
+C:   000004B6  A$lab5$2164                        lab5
+C:   000004B9  A$lab5$2165                        lab5
+C:   000004BB  A$lab5$2166                        lab5
+C:   000004BE  A$lab5$2169                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 43.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   000004BE  C$i2c.h$256$1$98                   lab5
 C:   000004BE  XG$i2c_write_data$0$0              lab5
-C:   000004BF  A$lab5$2168                        lab5
+C:   000004BF  A$lab5$2186                        lab5
 C:   000004BF  C$i2c.h$259$1$98                   lab5
 C:   000004BF  G$i2c_read_data$0$0                lab5
 C:   000004BF  _i2c_read_data                     lab5
-C:   000004C1  A$lab5$2171                        lab5
+C:   000004C1  A$lab5$2189                        lab5
 C:   000004C1  C$i2c.h$262$1$100                  lab5
-C:   000004C3  A$lab5$2172                        lab5
-C:   000004C6  A$lab5$2173                        lab5
-C:   000004C8  A$lab5$2176                        lab5
+C:   000004C3  A$lab5$2190                        lab5
+C:   000004C6  A$lab5$2191                        lab5
+C:   000004C8  A$lab5$2194                        lab5
 C:   000004C8  C$i2c.h$263$1$100                  lab5
-C:   000004CA  A$lab5$2177                        lab5
-C:   000004CC  A$lab5$2178                        lab5
-C:   000004CD  A$lab5$2179                        lab5
-C:   000004CF  A$lab5$2180                        lab5
-C:   000004D1  A$lab5$2181                        lab5
-C:   000004D4  A$lab5$2184                        lab5
+C:   000004CA  A$lab5$2195                        lab5
+C:   000004CC  A$lab5$2196                        lab5
+C:   000004CD  A$lab5$2197                        lab5
+C:   000004CF  A$lab5$2198                        lab5
+C:   000004D1  A$lab5$2199                        lab5
+C:   000004D4  A$lab5$2202                        lab5
 C:   000004D4  C$i2c.h$264$1$100                  lab5
-C:   000004D7  A$lab5$2185                        lab5
-C:   000004DA  A$lab5$2188                        lab5
+C:   000004D7  A$lab5$2203                        lab5
+C:   000004DA  A$lab5$2206                        lab5
 C:   000004DA  C$i2c.h$265$1$100                  lab5
-C:   000004DD  A$lab5$2189                        lab5
-C:   000004DF  A$lab5$2192                        lab5
+C:   000004DD  A$lab5$2207                        lab5
+C:   000004DF  A$lab5$2210                        lab5
 C:   000004DF  C$i2c.h$266$1$100                  lab5
-C:   000004E1  A$lab5$2193                        lab5
-C:   000004E2  A$lab5$2194                        lab5
-C:   000004E4  A$lab5$2195                        lab5
-C:   000004E7  A$lab5$2198                        lab5
-C:   000004E9  A$lab5$2200                        lab5
-C:   000004EB  A$lab5$2201                        lab5
-C:   000004ED  A$lab5$2202                        lab5
-C:   000004EE  A$lab5$2203                        lab5
-C:   000004F1  A$lab5$2204                        lab5
-C:   000004F2  A$lab5$2206                        lab5
-C:   000004F4  A$lab5$2207                        lab5
-C:   000004F6  A$lab5$2208                        lab5
-C:   000004F7  A$lab5$2209                        lab5
-C:   000004F8  A$lab5$2210                        lab5
-C:   000004F9  A$lab5$2211                        lab5
-C:   000004FA  A$lab5$2212                        lab5
-C:   000004FC  A$lab5$2213                        lab5
-C:   000004FE  A$lab5$2214                        lab5
-C:   00000501  A$lab5$2215                        lab5
-C:   00000503  A$lab5$2216                        lab5
-C:   00000505  A$lab5$2219                        lab5
+C:   000004E1  A$lab5$2211                        lab5
+C:   000004E2  A$lab5$2212                        lab5
+C:   000004E4  A$lab5$2213                        lab5
+C:   000004E7  A$lab5$2216                        lab5
+C:   000004E9  A$lab5$2218                        lab5
+C:   000004EB  A$lab5$2219                        lab5
+C:   000004ED  A$lab5$2220                        lab5
+C:   000004EE  A$lab5$2221                        lab5
+C:   000004F1  A$lab5$2222                        lab5
+C:   000004F2  A$lab5$2224                        lab5
+C:   000004F4  A$lab5$2225                        lab5
+C:   000004F6  A$lab5$2226                        lab5
+C:   000004F7  A$lab5$2227                        lab5
+C:   000004F8  A$lab5$2228                        lab5
+C:   000004F9  A$lab5$2229                        lab5
+C:   000004FA  A$lab5$2230                        lab5
+C:   000004FC  A$lab5$2231                        lab5
+C:   000004FE  A$lab5$2232                        lab5
+C:   00000501  A$lab5$2233                        lab5
+C:   00000503  A$lab5$2234                        lab5
+C:   00000505  A$lab5$2237                        lab5
 C:   00000505  C$i2c.h$269$2$101                  lab5
-C:   00000507  A$lab5$2222                        lab5
+C:   00000507  A$lab5$2240                        lab5
 C:   00000507  C$i2c.h$270$2$101                  lab5
-C:   00000508  A$lab5$2223                        lab5
-C:   0000050A  A$lab5$2224                        lab5
+C:   00000508  A$lab5$2241                        lab5
+C:   0000050A  A$lab5$2242                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 44.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000050B  A$lab5$2225                        lab5
-C:   0000050C  A$lab5$2226                        lab5
-C:   0000050E  A$lab5$2227                        lab5
-C:   0000050F  A$lab5$2228                        lab5
-C:   00000511  A$lab5$2229                        lab5
-C:   00000513  A$lab5$2230                        lab5
-C:   00000515  A$lab5$2231                        lab5
-C:   00000517  A$lab5$2232                        lab5
-C:   00000519  A$lab5$2233                        lab5
-C:   0000051C  A$lab5$2234                        lab5
-C:   0000051E  A$lab5$2235                        lab5
-C:   00000520  A$lab5$2236                        lab5
-C:   00000522  A$lab5$2237                        lab5
-C:   00000524  A$lab5$2238                        lab5
-C:   00000526  A$lab5$2239                        lab5
-C:   00000528  A$lab5$2240                        lab5
-C:   0000052A  A$lab5$2241                        lab5
-C:   0000052C  A$lab5$2242                        lab5
-C:   0000052D  A$lab5$2243                        lab5
-C:   00000530  A$lab5$2246                        lab5
+C:   0000050B  A$lab5$2243                        lab5
+C:   0000050C  A$lab5$2244                        lab5
+C:   0000050E  A$lab5$2245                        lab5
+C:   0000050F  A$lab5$2246                        lab5
+C:   00000511  A$lab5$2247                        lab5
+C:   00000513  A$lab5$2248                        lab5
+C:   00000515  A$lab5$2249                        lab5
+C:   00000517  A$lab5$2250                        lab5
+C:   00000519  A$lab5$2251                        lab5
+C:   0000051C  A$lab5$2252                        lab5
+C:   0000051E  A$lab5$2253                        lab5
+C:   00000520  A$lab5$2254                        lab5
+C:   00000522  A$lab5$2255                        lab5
+C:   00000524  A$lab5$2256                        lab5
+C:   00000526  A$lab5$2257                        lab5
+C:   00000528  A$lab5$2258                        lab5
+C:   0000052A  A$lab5$2259                        lab5
+C:   0000052C  A$lab5$2260                        lab5
+C:   0000052D  A$lab5$2261                        lab5
+C:   00000530  A$lab5$2264                        lab5
 C:   00000530  C$i2c.h$267$1$100                  lab5
-C:   00000531  A$lab5$2247                        lab5
-C:   00000533  A$lab5$2251                        lab5
+C:   00000531  A$lab5$2265                        lab5
+C:   00000533  A$lab5$2269                        lab5
 C:   00000533  C$i2c.h$272$1$100                  lab5
-C:   00000535  A$lab5$2254                        lab5
+C:   00000535  A$lab5$2272                        lab5
 C:   00000535  C$i2c.h$273$1$100                  lab5
-C:   00000537  A$lab5$2255                        lab5
-C:   00000539  A$lab5$2256                        lab5
-C:   0000053A  A$lab5$2257                        lab5
-C:   0000053D  A$lab5$2258                        lab5
-C:   0000053E  A$lab5$2260                        lab5
-C:   0000053F  A$lab5$2261                        lab5
-C:   00000541  A$lab5$2262                        lab5
-C:   00000542  A$lab5$2263                        lab5
-C:   00000543  A$lab5$2264                        lab5
-C:   00000545  A$lab5$2265                        lab5
-C:   00000546  A$lab5$2266                        lab5
-C:   00000548  A$lab5$2267                        lab5
-C:   0000054A  A$lab5$2268                        lab5
-C:   0000054C  A$lab5$2269                        lab5
-C:   0000054E  A$lab5$2270                        lab5
-C:   00000551  A$lab5$2271                        lab5
-C:   00000553  A$lab5$2272                        lab5
-C:   00000555  A$lab5$2273                        lab5
-C:   00000557  A$lab5$2274                        lab5
-C:   00000559  A$lab5$2275                        lab5
-C:   0000055B  A$lab5$2276                        lab5
-C:   0000055D  A$lab5$2277                        lab5
-C:   0000055F  A$lab5$2278                        lab5
-C:   00000560  A$lab5$2279                        lab5
-C:   00000563  A$lab5$2282                        lab5
+C:   00000537  A$lab5$2273                        lab5
+C:   00000539  A$lab5$2274                        lab5
+C:   0000053A  A$lab5$2275                        lab5
+C:   0000053D  A$lab5$2276                        lab5
+C:   0000053E  A$lab5$2278                        lab5
+C:   0000053F  A$lab5$2279                        lab5
+C:   00000541  A$lab5$2280                        lab5
+C:   00000542  A$lab5$2281                        lab5
+C:   00000543  A$lab5$2282                        lab5
+C:   00000545  A$lab5$2283                        lab5
+C:   00000546  A$lab5$2284                        lab5
+C:   00000548  A$lab5$2285                        lab5
+C:   0000054A  A$lab5$2286                        lab5
+C:   0000054C  A$lab5$2287                        lab5
+C:   0000054E  A$lab5$2288                        lab5
+C:   00000551  A$lab5$2289                        lab5
+C:   00000553  A$lab5$2290                        lab5
+C:   00000555  A$lab5$2291                        lab5
+C:   00000557  A$lab5$2292                        lab5
+C:   00000559  A$lab5$2293                        lab5
+C:   0000055B  A$lab5$2294                        lab5
+C:   0000055D  A$lab5$2295                        lab5
+C:   0000055F  A$lab5$2296                        lab5
+C:   00000560  A$lab5$2297                        lab5
+C:   00000563  A$lab5$2300                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 45.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
 C:   00000563  C$i2c.h$274$1$100                  lab5
 C:   00000563  XG$i2c_read_data$0$0               lab5
-C:   00000564  A$lab5$2297                        lab5
+C:   00000564  A$lab5$2315                        lab5
 C:   00000564  C$i2c.h$283$1$100                  lab5
 C:   00000564  C$i2c.h$287$1$103                  lab5
 C:   00000564  G$Accel_Init$0$0                   lab5
 C:   00000564  _Accel_Init                        lab5
-C:   00000567  A$lab5$2300                        lab5
+C:   00000567  A$lab5$2318                        lab5
 C:   00000567  C$i2c.h$289$1$103                  lab5
-C:   0000056A  A$lab5$2301                        lab5
-C:   0000056D  A$lab5$2302                        lab5
-C:   00000570  A$lab5$2303                        lab5
-C:   00000573  A$lab5$2304                        lab5
-C:   00000576  A$lab5$2305                        lab5
-C:   00000579  A$lab5$2306                        lab5
-C:   0000057C  A$lab5$2309                        lab5
+C:   0000056A  A$lab5$2319                        lab5
+C:   0000056D  A$lab5$2320                        lab5
+C:   00000570  A$lab5$2321                        lab5
+C:   00000573  A$lab5$2322                        lab5
+C:   00000576  A$lab5$2323                        lab5
+C:   00000579  A$lab5$2324                        lab5
+C:   0000057C  A$lab5$2327                        lab5
 C:   0000057C  C$i2c.h$290$1$103                  lab5
-C:   0000057F  A$lab5$2312                        lab5
+C:   0000057F  A$lab5$2330                        lab5
 C:   0000057F  C$i2c.h$292$1$103                  lab5
-C:   00000582  A$lab5$2313                        lab5
-C:   00000585  A$lab5$2314                        lab5
-C:   00000588  A$lab5$2315                        lab5
-C:   0000058B  A$lab5$2316                        lab5
-C:   0000058E  A$lab5$2317                        lab5
-C:   00000591  A$lab5$2318                        lab5
-C:   00000594  A$lab5$2321                        lab5
+C:   00000582  A$lab5$2331                        lab5
+C:   00000585  A$lab5$2332                        lab5
+C:   00000588  A$lab5$2333                        lab5
+C:   0000058B  A$lab5$2334                        lab5
+C:   0000058E  A$lab5$2335                        lab5
+C:   00000591  A$lab5$2336                        lab5
+C:   00000594  A$lab5$2339                        lab5
 C:   00000594  C$i2c.h$293$1$103                  lab5
-C:   00000597  A$lab5$2324                        lab5
+C:   00000597  A$lab5$2342                        lab5
 C:   00000597  C$i2c.h$294$1$103                  lab5
-C:   0000059A  A$lab5$2325                        lab5
-C:   0000059D  A$lab5$2326                        lab5
-C:   000005A0  A$lab5$2327                        lab5
-C:   000005A3  A$lab5$2328                        lab5
-C:   000005A6  A$lab5$2329                        lab5
-C:   000005A9  A$lab5$2330                        lab5
-C:   000005AC  A$lab5$2333                        lab5
+C:   0000059A  A$lab5$2343                        lab5
+C:   0000059D  A$lab5$2344                        lab5
+C:   000005A0  A$lab5$2345                        lab5
+C:   000005A3  A$lab5$2346                        lab5
+C:   000005A6  A$lab5$2347                        lab5
+C:   000005A9  A$lab5$2348                        lab5
+C:   000005AC  A$lab5$2351                        lab5
 C:   000005AC  C$i2c.h$298$1$103                  lab5
 C:   000005AC  XG$Accel_Init$0$0                  lab5
-C:   000005AD  A$lab5$2348                        lab5
-C:   000005AD  C$lab5.c$55$1$103                  lab5
-C:   000005AD  C$lab5.c$58$1$120                  lab5
+C:   000005AD  A$lab5$2366                        lab5
+C:   000005AD  C$lab5.c$60$1$103                  lab5
+C:   000005AD  C$lab5.c$62$1$103                  lab5
 C:   000005AD  G$main$0$0                         lab5
 C:   000005AD  _main                              lab5
-C:   000005B0  A$lab5$2351                        lab5
-C:   000005B0  C$lab5.c$59$1$120                  lab5
-C:   000005B3  A$lab5$2352                        lab5
-C:   000005B6  A$lab5$2355                        lab5
-C:   000005B6  C$lab5.c$60$1$120                  lab5
-C:   000005B9  A$lab5$2358                        lab5
-C:   000005B9  C$lab5.c$61$1$120                  lab5
-C:   000005BC  A$lab5$2361                        lab5
+C:   000005AF  A$lab5$2367                        lab5
+C:   000005B1  A$lab5$2370                        lab5
+C:   000005B1  C$lab5.c$63$1$119                  lab5
+C:   000005B3  A$lab5$2371                        lab5
+C:   000005B5  A$lab5$2372                        lab5
+C:   000005B8  A$lab5$2375                        lab5
+C:   000005B8  C$lab5.c$64$1$119                  lab5
+C:   000005BB  A$lab5$2376                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 46.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000005BC  C$lab5.c$62$1$120                  lab5
-C:   000005BF  A$lab5$2364                        lab5
-C:   000005BF  C$lab5.c$63$1$120                  lab5
-C:   000005C2  A$lab5$2367                        lab5
-C:   000005C2  C$lab5.c$64$1$120                  lab5
-C:   000005C5  A$lab5$2370                        lab5
-C:   000005C5  C$lab5.c$65$1$120                  lab5
-C:   000005C8  A$lab5$2373                        lab5
-C:   000005C8  C$lab5.c$66$1$120                  lab5
-C:   000005CB  A$lab5$2379                        lab5
-C:   000005CB  C$lab5.c$67$1$120                  lab5
-C:   000005CB  C$lab5.c$69$2$121                  lab5
-C:   000005CD  A$lab5$2383                        lab5
-C:   000005CD  C$lab5.c$70$2$121                  lab5
-C:   000005D0  A$lab5$2386                        lab5
-C:   000005D0  C$lab5.c$72$3$122                  lab5
-C:   000005D1  A$lab5$2387                        lab5
-C:   000005D3  A$lab5$2390                        lab5
-C:   000005D3  C$lab5.c$74$4$123                  lab5
-C:   000005D6  A$lab5$2393                        lab5
-C:   000005D6  C$lab5.c$75$4$123                  lab5
-C:   000005D8  A$lab5$2394                        lab5
-C:   000005DA  A$lab5$2398                        lab5
-C:   000005DA  C$lab5.c$78$2$121                  lab5
-C:   000005DD  A$lab5$2401                        lab5
-C:   000005DD  C$lab5.c$79$2$121                  lab5
-C:   000005E0  A$lab5$2404                        lab5
-C:   000005E0  C$lab5.c$80$2$121                  lab5
-C:   000005E3  A$lab5$2407                        lab5
-C:   000005E3  C$lab5.c$81$2$121                  lab5
-C:   000005E6  A$lab5$2410                        lab5
-C:   000005E6  C$lab5.c$82$2$121                  lab5
-C:   000005E8  A$lab5$2411                        lab5
-C:   000005EA  A$lab5$2414                        lab5
-C:   000005EA  C$lab5.c$84$3$124                  lab5
-C:   000005ED  A$lab5$2417                        lab5
-C:   000005ED  C$lab5.c$85$3$124                  lab5
-C:   000005F0  A$lab5$2420                        lab5
-C:   000005F0  C$lab5.c$86$3$124                  lab5
-C:   000005F3  A$lab5$2421                        lab5
-C:   000005F5  A$lab5$2424                        lab5
-C:   000005F5  C$lab5.c$89$1$120                  lab5
-C:   000005F5  XG$main$0$0                        lab5
-C:   000005F6  A$lab5$2435                        lab5
-C:   000005F6  C$lab5.c$97$1$120                  lab5
-C:   000005F6  G$PCA_ISR$0$0                      lab5
-C:   000005F6  _PCA_ISR                           lab5
-C:   000005F8  A$lab5$2436                        lab5
-C:   000005FA  A$lab5$2441                        lab5
-C:   000005FA  C$lab5.c$101$2$127                 lab5
-C:   000005FA  C$lab5.c$99$1$126                  lab5
+C:   000005BE  A$lab5$2379                        lab5
+C:   000005BE  C$lab5.c$65$1$119                  lab5
+C:   000005C1  A$lab5$2382                        lab5
+C:   000005C1  C$lab5.c$66$1$119                  lab5
+C:   000005C4  A$lab5$2385                        lab5
+C:   000005C4  C$lab5.c$67$1$119                  lab5
+C:   000005C7  A$lab5$2388                        lab5
+C:   000005C7  C$lab5.c$68$1$119                  lab5
+C:   000005CA  A$lab5$2391                        lab5
+C:   000005CA  C$lab5.c$69$1$119                  lab5
+C:   000005CD  A$lab5$2394                        lab5
+C:   000005CD  C$lab5.c$71$1$119                  lab5
+C:   000005D0  A$lab5$2397                        lab5
+C:   000005D0  C$lab5.c$72$1$119                  lab5
+C:   000005D3  A$lab5$2400                        lab5
+C:   000005D3  C$lab5.c$73$1$119                  lab5
+C:   000005D6  A$lab5$2401                        lab5
+C:   000005D9  A$lab5$2404                        lab5
+C:   000005D9  C$lab5.c$74$1$119                  lab5
+C:   000005DC  A$lab5$2405                        lab5
+C:   000005DF  A$lab5$2408                        lab5
+C:   000005DF  C$lab5.c$75$1$119                  lab5
+C:   000005E1  A$lab5$2409                        lab5
+C:   000005E3  A$lab5$2410                        lab5
+C:   000005E5  A$lab5$2411                        lab5
+C:   000005E7  A$lab5$2412                        lab5
+C:   000005E9  A$lab5$2413                        lab5
+C:   000005EB  A$lab5$2414                        lab5
+C:   000005EE  A$lab5$2415                        lab5
+C:   000005F0  A$lab5$2416                        lab5
+C:   000005F2  A$lab5$2417                        lab5
+C:   000005F4  A$lab5$2418                        lab5
+C:   000005F6  A$lab5$2419                        lab5
+C:   000005F8  A$lab5$2425                        lab5
+C:   000005F8  C$lab5.c$77$1$119                  lab5
+C:   000005F8  C$lab5.c$79$2$120                  lab5
+C:   000005F9  A$lab5$2426                        lab5
+C:   000005FC  A$lab5$2427                        lab5
+C:   000005FD  A$lab5$2431                        lab5
+C:   000005FD  C$lab5.c$80$2$120                  lab5
+C:   000005FF  A$lab5$2432                        lab5
+C:   00000601  A$lab5$2433                        lab5
+C:   00000603  A$lab5$2434                        lab5
+C:   00000605  A$lab5$2435                        lab5
+C:   00000607  A$lab5$2436                        lab5
+C:   00000609  A$lab5$2437                        lab5
+C:   0000060B  A$lab5$2438                        lab5
+C:   0000060D  A$lab5$2439                        lab5
+C:   0000060F  A$lab5$2440                        lab5
+C:   00000611  A$lab5$2441                        lab5
+C:   00000614  A$lab5$2442                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 47.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000005FD  A$lab5$2442                        lab5
-C:   000005FF  A$lab5$2446                        lab5
-C:   000005FF  C$lab5.c$102$2$127                 lab5
-C:   00000601  A$lab5$2449                        lab5
-C:   00000601  C$lab5.c$103$2$127                 lab5
-C:   00000603  A$lab5$2452                        lab5
-C:   00000603  C$lab5.c$104$2$127                 lab5
-C:   00000605  A$lab5$2453                        lab5
-C:   00000607  A$lab5$2454                        lab5
-C:   00000609  A$lab5$2457                        lab5
-C:   00000609  C$lab5.c$106$3$128                 lab5
-C:   0000060C  A$lab5$2460                        lab5
-C:   0000060C  C$lab5.c$107$3$128                 lab5
-C:   0000060F  A$lab5$2464                        lab5
-C:   0000060F  C$lab5.c$109$2$127                 lab5
-C:   00000612  A$lab5$2467                        lab5
-C:   00000612  C$lab5.c$110$2$127                 lab5
-C:   00000615  A$lab5$2471                        lab5
-C:   00000615  C$lab5.c$113$1$126                 lab5
-C:   00000618  A$lab5$2472                        lab5
-C:   0000061A  A$lab5$2473                        lab5
-C:   0000061C  A$lab5$2476                        lab5
-C:   0000061C  C$lab5.c$114$1$126                 lab5
-C:   0000061C  XG$PCA_ISR$0$0                     lab5
-C:   0000061D  A$lab5$2495                        lab5
-C:   0000061D  C$lab5.c$116$1$126                 lab5
-C:   0000061D  C$lab5.c$118$1$130                 lab5
-C:   0000061D  G$wait$0$0                         lab5
-C:   0000061D  _wait                              lab5
-C:   0000061F  A$lab5$2496                        lab5
-C:   00000621  A$lab5$2497                        lab5
-C:   00000622  A$lab5$2498                        lab5
-C:   00000625  A$lab5$2499                        lab5
-C:   00000626  A$lab5$2504                        lab5
-C:   00000626  C$lab5.c$119$1$130                 lab5
-C:   00000628  A$lab5$2505                        lab5
-C:   0000062A  A$lab5$2506                        lab5
-C:   0000062B  A$lab5$2507                        lab5
-C:   0000062C  A$lab5$2508                        lab5
-C:   0000062D  A$lab5$2509                        lab5
-C:   0000062E  A$lab5$2510                        lab5
-C:   00000630  A$lab5$2511                        lab5
-C:   00000632  A$lab5$2512                        lab5
-C:   00000635  A$lab5$2513                        lab5
-C:   00000637  A$lab5$2514                        lab5
-C:   00000639  A$lab5$2517                        lab5
-C:   00000639  C$lab5.c$120$1$130                 lab5
-C:   00000639  XG$wait$0$0                        lab5
-C:   0000063A  A$lab5$2531                        lab5
-C:   0000063A  C$lab5.c$122$1$130                 lab5
-C:   0000063A  C$lab5.c$124$1$132                 lab5
+C:   00000616  A$lab5$2443                        lab5
+C:   00000618  A$lab5$2444                        lab5
+C:   0000061A  A$lab5$2445                        lab5
+C:   0000061C  A$lab5$2446                        lab5
+C:   0000061E  A$lab5$2449                        lab5
+C:   0000061E  C$lab5.c$81$2$120                  lab5
+C:   00000621  A$lab5$2453                        lab5
+C:   00000621  C$lab5.c$82$3$121                  lab5
+C:   00000624  A$lab5$2456                        lab5
+C:   00000624  C$lab5.c$84$3$121                  lab5
+C:   00000626  A$lab5$2457                        lab5
+C:   00000628  A$lab5$2460                        lab5
+C:   00000628  C$lab5.c$87$4$122                  lab5
+C:   0000062B  A$lab5$2464                        lab5
+C:   0000062B  C$lab5.c$89$3$121                  lab5
+C:   0000062D  A$lab5$2465                        lab5
+C:   0000062E  A$lab5$2466                        lab5
+C:   0000062F  A$lab5$2467                        lab5
+C:   00000630  A$lab5$2468                        lab5
+C:   00000632  A$lab5$2469                        lab5
+C:   00000634  A$lab5$2470                        lab5
+C:   00000636  A$lab5$2471                        lab5
+C:   00000638  A$lab5$2472                        lab5
+C:   0000063A  A$lab5$2473                        lab5
+C:   0000063C  A$lab5$2474                        lab5
+C:   0000063E  A$lab5$2475                        lab5
+C:   00000640  A$lab5$2476                        lab5
+C:   00000642  A$lab5$2477                        lab5
+C:   00000644  A$lab5$2478                        lab5
+C:   00000646  A$lab5$2479                        lab5
+C:   00000649  A$lab5$2480                        lab5
+C:   0000064B  A$lab5$2481                        lab5
+C:   0000064D  A$lab5$2482                        lab5
+C:   0000064F  A$lab5$2483                        lab5
+C:   00000651  A$lab5$2484                        lab5
+C:   00000653  A$lab5$2485                        lab5
+C:   00000655  A$lab5$2489                        lab5
+C:   00000655  C$lab5.c$91$2$120                  lab5
+C:   00000657  A$lab5$2490                        lab5
+C:   0000065A  A$lab5$2491                        lab5
+C:   0000065C  A$lab5$2492                        lab5
+C:   0000065E  A$lab5$2493                        lab5
+C:   00000661  A$lab5$2494                        lab5
+C:   00000663  A$lab5$2495                        lab5
+C:   00000665  A$lab5$2499                        lab5
+C:   00000665  C$lab5.c$94$2$120                  lab5
+C:   00000667  A$lab5$2500                        lab5
+C:   00000668  A$lab5$2501                        lab5
+C:   00000669  A$lab5$2502                        lab5
+C:   0000066B  A$lab5$2503                        lab5
+C:   0000066C  A$lab5$2504                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 48.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000063A  G$start$0$0                        lab5
-C:   0000063A  _start                             lab5
-C:   0000063D  A$lab5$2532                        lab5
-C:   0000063F  A$lab5$2533                        lab5
-C:   00000642  A$lab5$2534                        lab5
-C:   00000644  A$lab5$2536                        lab5
-C:   00000647  A$lab5$2537                        lab5
-C:   00000649  A$lab5$2541                        lab5
-C:   00000649  C$lab5.c$125$1$132                 lab5
-C:   00000649  XG$start$0$0                       lab5
-C:   0000064A  A$lab5$2554                        lab5
-C:   0000064A  C$lab5.c$127$1$132                 lab5
-C:   0000064A  C$lab5.c$129$1$134                 lab5
-C:   0000064A  G$set_gains$0$0                    lab5
-C:   0000064A  _set_gains                         lab5
-C:   0000064D  A$lab5$2557                        lab5
-C:   0000064D  C$lab5.c$130$1$134                 lab5
-C:   0000064F  A$lab5$2558                        lab5
-C:   00000651  A$lab5$2559                        lab5
-C:   00000653  A$lab5$2560                        lab5
-C:   00000655  A$lab5$2561                        lab5
-C:   00000657  A$lab5$2562                        lab5
-C:   00000659  A$lab5$2563                        lab5
-C:   0000065C  A$lab5$2564                        lab5
-C:   0000065E  A$lab5$2565                        lab5
-C:   00000660  A$lab5$2566                        lab5
-C:   00000662  A$lab5$2569                        lab5
-C:   00000662  C$lab5.c$131$1$134                 lab5
-C:   00000665  A$lab5$2570                        lab5
-C:   00000668  A$lab5$2571                        lab5
-C:   0000066A  A$lab5$2572                        lab5
-C:   0000066C  A$lab5$2575                        lab5
-C:   0000066C  C$lab5.c$132$1$134                 lab5
-C:   0000066F  A$lab5$2578                        lab5
-C:   0000066F  C$lab5.c$133$1$134                 lab5
-C:   00000671  A$lab5$2579                        lab5
-C:   00000673  A$lab5$2580                        lab5
-C:   00000675  A$lab5$2581                        lab5
-C:   00000677  A$lab5$2582                        lab5
-C:   00000679  A$lab5$2583                        lab5
-C:   0000067B  A$lab5$2584                        lab5
-C:   0000067E  A$lab5$2585                        lab5
-C:   00000680  A$lab5$2586                        lab5
-C:   00000682  A$lab5$2587                        lab5
-C:   00000684  A$lab5$2590                        lab5
-C:   00000684  C$lab5.c$134$1$134                 lab5
-C:   00000687  A$lab5$2591                        lab5
-C:   0000068A  A$lab5$2592                        lab5
-C:   0000068C  A$lab5$2593                        lab5
-C:   0000068E  A$lab5$2596                        lab5
-C:   0000068E  C$lab5.c$135$1$134                 lab5
+C:   0000066E  A$lab5$2505                        lab5
+C:   0000066F  A$lab5$2506                        lab5
+C:   00000670  A$lab5$2507                        lab5
+C:   00000672  A$lab5$2508                        lab5
+C:   00000673  A$lab5$2509                        lab5
+C:   00000675  A$lab5$2510                        lab5
+C:   00000677  A$lab5$2511                        lab5
+C:   00000679  A$lab5$2512                        lab5
+C:   0000067B  A$lab5$2513                        lab5
+C:   0000067D  A$lab5$2514                        lab5
+C:   0000067F  A$lab5$2515                        lab5
+C:   00000681  A$lab5$2516                        lab5
+C:   00000683  A$lab5$2517                        lab5
+C:   00000685  A$lab5$2518                        lab5
+C:   00000687  A$lab5$2519                        lab5
+C:   00000689  A$lab5$2520                        lab5
+C:   0000068B  A$lab5$2521                        lab5
+C:   0000068E  A$lab5$2522                        lab5
+C:   00000690  A$lab5$2523                        lab5
+C:   00000692  A$lab5$2524                        lab5
+C:   00000694  A$lab5$2525                        lab5
+C:   00000696  A$lab5$2526                        lab5
+C:   00000698  A$lab5$2529                        lab5
+C:   00000698  C$lab5.c$95$2$120                  lab5
+C:   0000069B  A$lab5$2530                        lab5
+C:   0000069E  A$lab5$2533                        lab5
+C:   0000069E  C$lab5.c$103$1$119                 lab5
+C:   0000069E  XG$main$0$0                        lab5
+C:   0000069F  A$lab5$2548                        lab5
+C:   0000069F  C$lab5.c$111$1$119                 lab5
+C:   0000069F  C$lab5.c$113$1$124                 lab5
+C:   0000069F  C$lab5.c$115$2$125                 lab5
+C:   0000069F  G$PCA_ISR$0$0                      lab5
+C:   0000069F  _PCA_ISR                           lab5
+C:   000006A2  A$lab5$2549                        lab5
+C:   000006A4  A$lab5$2553                        lab5
+C:   000006A4  C$lab5.c$116$2$125                 lab5
+C:   000006A6  A$lab5$2556                        lab5
+C:   000006A6  C$lab5.c$117$2$125                 lab5
+C:   000006A8  A$lab5$2559                        lab5
+C:   000006A8  C$lab5.c$123$2$125                 lab5
+C:   000006AB  A$lab5$2562                        lab5
+C:   000006AB  C$lab5.c$124$2$125                 lab5
+C:   000006AE  A$lab5$2566                        lab5
+C:   000006AE  C$lab5.c$127$1$124                 lab5
+C:   000006B1  A$lab5$2569                        lab5
+C:   000006B1  C$lab5.c$128$1$124                 lab5
+C:   000006B1  XG$PCA_ISR$0$0                     lab5
+C:   000006B2  A$lab5$2590                        lab5
+C:   000006B2  C$lab5.c$130$1$124                 lab5
+C:   000006B2  C$lab5.c$132$1$127                 lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 49.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000691  A$lab5$2599                        lab5
-C:   00000691  C$lab5.c$136$1$134                 lab5
-C:   00000693  A$lab5$2600                        lab5
-C:   00000695  A$lab5$2601                        lab5
-C:   00000697  A$lab5$2602                        lab5
-C:   00000699  A$lab5$2603                        lab5
-C:   0000069B  A$lab5$2604                        lab5
-C:   0000069D  A$lab5$2605                        lab5
-C:   000006A0  A$lab5$2606                        lab5
-C:   000006A2  A$lab5$2607                        lab5
-C:   000006A4  A$lab5$2608                        lab5
-C:   000006A6  A$lab5$2611                        lab5
-C:   000006A6  C$lab5.c$137$1$134                 lab5
-C:   000006A9  A$lab5$2612                        lab5
-C:   000006AC  A$lab5$2613                        lab5
-C:   000006AE  A$lab5$2614                        lab5
-C:   000006B0  A$lab5$2617                        lab5
-C:   000006B0  C$lab5.c$138$1$134                 lab5
-C:   000006B3  A$lab5$2620                        lab5
-C:   000006B3  C$lab5.c$139$1$134                 lab5
-C:   000006B3  XG$set_gains$0$0                   lab5
-C:   000006B4  A$lab5$2633                        lab5
-C:   000006B4  C$lab5.c$141$1$134                 lab5
-C:   000006B4  C$lab5.c$143$1$136                 lab5
-C:   000006B4  G$XBR0_Init$0$0                    lab5
-C:   000006B4  _XBR0_Init                         lab5
-C:   000006B7  A$lab5$2636                        lab5
-C:   000006B7  C$lab5.c$144$1$136                 lab5
-C:   000006B7  XG$XBR0_Init$0$0                   lab5
-C:   000006B8  A$lab5$2649                        lab5
-C:   000006B8  C$lab5.c$146$1$136                 lab5
-C:   000006B8  C$lab5.c$148$1$138                 lab5
-C:   000006B8  G$SMB_Init$0$0                     lab5
-C:   000006B8  _SMB_Init                          lab5
-C:   000006BB  A$lab5$2652                        lab5
-C:   000006BB  C$lab5.c$149$1$138                 lab5
-C:   000006BD  A$lab5$2655                        lab5
-C:   000006BD  C$lab5.c$150$1$138                 lab5
-C:   000006BD  XG$SMB_Init$0$0                    lab5
-C:   000006BE  A$lab5$2673                        lab5
-C:   000006BE  C$lab5.c$152$1$138                 lab5
-C:   000006BE  G$Update_Value$0$0                 lab5
-C:   000006BE  _Update_Value                      lab5
-C:   000006C0  A$lab5$2674                        lab5
-C:   000006C2  A$lab5$2677                        lab5
-C:   000006C2  C$lab5.c$158$1$140                 lab5
-C:   000006C4  A$lab5$2678                        lab5
-C:   000006C6  A$lab5$2684                        lab5
-C:   000006C6  C$lab5.c$159$1$140                 lab5
-C:   000006C6  C$lab5.c$161$2$141                 lab5
-C:   000006C8  A$lab5$2685                        lab5
+C:   000006B2  G$wait$0$0                         lab5
+C:   000006B2  _wait                              lab5
+C:   000006B4  A$lab5$2591                        lab5
+C:   000006B6  A$lab5$2592                        lab5
+C:   000006B7  A$lab5$2593                        lab5
+C:   000006BA  A$lab5$2594                        lab5
+C:   000006BB  A$lab5$2599                        lab5
+C:   000006BB  C$lab5.c$133$1$127                 lab5
+C:   000006BD  A$lab5$2600                        lab5
+C:   000006BF  A$lab5$2601                        lab5
+C:   000006C0  A$lab5$2602                        lab5
+C:   000006C1  A$lab5$2603                        lab5
+C:   000006C2  A$lab5$2604                        lab5
+C:   000006C3  A$lab5$2605                        lab5
+C:   000006C5  A$lab5$2606                        lab5
+C:   000006C7  A$lab5$2607                        lab5
+C:   000006CA  A$lab5$2608                        lab5
+C:   000006CC  A$lab5$2609                        lab5
+C:   000006CE  A$lab5$2612                        lab5
+C:   000006CE  C$lab5.c$134$1$127                 lab5
+C:   000006CE  XG$wait$0$0                        lab5
+C:   000006CF  A$lab5$2626                        lab5
+C:   000006CF  C$lab5.c$136$1$127                 lab5
+C:   000006CF  C$lab5.c$138$1$129                 lab5
+C:   000006CF  G$start$0$0                        lab5
+C:   000006CF  _start                             lab5
+C:   000006D2  A$lab5$2627                        lab5
+C:   000006D4  A$lab5$2628                        lab5
+C:   000006D7  A$lab5$2629                        lab5
+C:   000006D9  A$lab5$2631                        lab5
+C:   000006DC  A$lab5$2632                        lab5
+C:   000006DE  A$lab5$2636                        lab5
+C:   000006DE  C$lab5.c$139$1$129                 lab5
+C:   000006DE  XG$start$0$0                       lab5
+C:   000006DF  A$lab5$2649                        lab5
+C:   000006DF  C$lab5.c$141$1$129                 lab5
+C:   000006DF  C$lab5.c$143$1$131                 lab5
+C:   000006DF  G$set_gains$0$0                    lab5
+C:   000006DF  _set_gains                         lab5
+C:   000006E2  A$lab5$2652                        lab5
+C:   000006E2  C$lab5.c$144$1$131                 lab5
+C:   000006E4  A$lab5$2653                        lab5
+C:   000006E6  A$lab5$2654                        lab5
+C:   000006E8  A$lab5$2655                        lab5
+C:   000006EA  A$lab5$2656                        lab5
+C:   000006EC  A$lab5$2657                        lab5
+C:   000006EE  A$lab5$2658                        lab5
+C:   000006F1  A$lab5$2659                        lab5
+C:   000006F3  A$lab5$2660                        lab5
+C:   000006F5  A$lab5$2661                        lab5
+C:   000006F7  A$lab5$2664                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 50.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000006CA  A$lab5$2686                        lab5
-C:   000006CC  A$lab5$2687                        lab5
-C:   000006CE  A$lab5$2688                        lab5
-C:   000006D1  A$lab5$2689                        lab5
-C:   000006D3  A$lab5$2690                        lab5
-C:   000006D5  A$lab5$2691                        lab5
-C:   000006D7  A$lab5$2692                        lab5
-C:   000006D9  A$lab5$2693                        lab5
-C:   000006DB  A$lab5$2696                        lab5
-C:   000006DB  C$lab5.c$162$2$141                 lab5
-C:   000006DE  A$lab5$2697                        lab5
-C:   000006E0  A$lab5$2698                        lab5
-C:   000006E2  A$lab5$2702                        lab5
-C:   000006E2  C$lab5.c$163$2$141                 lab5
-C:   000006E5  A$lab5$2705                        lab5
-C:   000006E5  C$lab5.c$165$3$142                 lab5
-C:   000006E7  A$lab5$2706                        lab5
-C:   000006E9  A$lab5$2707                        lab5
-C:   000006EA  A$lab5$2708                        lab5
-C:   000006EB  A$lab5$2709                        lab5
-C:   000006EC  A$lab5$2710                        lab5
-C:   000006ED  A$lab5$2711                        lab5
-C:   000006EE  A$lab5$2712                        lab5
-C:   000006EF  A$lab5$2715                        lab5
-C:   000006EF  C$lab5.c$166$3$142                 lab5
-C:   000006F0  A$lab5$2716                        lab5
-C:   000006F2  A$lab5$2717                        lab5
-C:   000006F3  A$lab5$2718                        lab5
-C:   000006F5  A$lab5$2719                        lab5
-C:   000006F7  A$lab5$2720                        lab5
-C:   000006F9  A$lab5$2721                        lab5
-C:   000006FC  A$lab5$2722                        lab5
-C:   000006FE  A$lab5$2723                        lab5
-C:   00000700  A$lab5$2724                        lab5
-C:   00000702  A$lab5$2725                        lab5
-C:   00000704  A$lab5$2729                        lab5
-C:   00000704  C$lab5.c$168$2$141                 lab5
-C:   00000707  A$lab5$2732                        lab5
-C:   00000707  C$lab5.c$170$3$143                 lab5
-C:   00000709  A$lab5$2733                        lab5
-C:   0000070B  A$lab5$2734                        lab5
-C:   0000070C  A$lab5$2735                        lab5
-C:   0000070D  A$lab5$2736                        lab5
-C:   0000070E  A$lab5$2737                        lab5
-C:   0000070F  A$lab5$2738                        lab5
-C:   00000710  A$lab5$2739                        lab5
-C:   00000711  A$lab5$2740                        lab5
-C:   00000712  A$lab5$2743                        lab5
-C:   00000712  C$lab5.c$171$3$143                 lab5
-C:   00000713  A$lab5$2744                        lab5
-C:   00000714  A$lab5$2745                        lab5
+C:   000006F7  C$lab5.c$145$1$131                 lab5
+C:   000006FA  A$lab5$2665                        lab5
+C:   000006FD  A$lab5$2666                        lab5
+C:   000006FF  A$lab5$2667                        lab5
+C:   00000701  A$lab5$2670                        lab5
+C:   00000701  C$lab5.c$146$1$131                 lab5
+C:   00000704  A$lab5$2673                        lab5
+C:   00000704  C$lab5.c$147$1$131                 lab5
+C:   00000706  A$lab5$2674                        lab5
+C:   00000708  A$lab5$2675                        lab5
+C:   0000070A  A$lab5$2676                        lab5
+C:   0000070C  A$lab5$2677                        lab5
+C:   0000070E  A$lab5$2678                        lab5
+C:   00000710  A$lab5$2679                        lab5
+C:   00000713  A$lab5$2680                        lab5
+C:   00000715  A$lab5$2681                        lab5
+C:   00000717  A$lab5$2682                        lab5
+C:   00000719  A$lab5$2685                        lab5
+C:   00000719  C$lab5.c$148$1$131                 lab5
+C:   0000071C  A$lab5$2686                        lab5
+C:   0000071F  A$lab5$2687                        lab5
+C:   00000721  A$lab5$2688                        lab5
+C:   00000723  A$lab5$2691                        lab5
+C:   00000723  C$lab5.c$149$1$131                 lab5
+C:   00000726  A$lab5$2694                        lab5
+C:   00000726  C$lab5.c$150$1$131                 lab5
+C:   00000728  A$lab5$2695                        lab5
+C:   0000072A  A$lab5$2696                        lab5
+C:   0000072C  A$lab5$2697                        lab5
+C:   0000072E  A$lab5$2698                        lab5
+C:   00000730  A$lab5$2699                        lab5
+C:   00000732  A$lab5$2700                        lab5
+C:   00000735  A$lab5$2701                        lab5
+C:   00000737  A$lab5$2702                        lab5
+C:   00000739  A$lab5$2703                        lab5
+C:   0000073B  A$lab5$2706                        lab5
+C:   0000073B  C$lab5.c$151$1$131                 lab5
+C:   0000073E  A$lab5$2707                        lab5
+C:   00000741  A$lab5$2708                        lab5
+C:   00000743  A$lab5$2709                        lab5
+C:   00000745  A$lab5$2712                        lab5
+C:   00000745  C$lab5.c$152$1$131                 lab5
+C:   00000748  A$lab5$2715                        lab5
+C:   00000748  C$lab5.c$153$1$131                 lab5
+C:   00000748  XG$set_gains$0$0                   lab5
+C:   00000749  A$lab5$2728                        lab5
+C:   00000749  C$lab5.c$155$1$131                 lab5
+C:   00000749  C$lab5.c$157$1$133                 lab5
+C:   00000749  G$XBR0_Init$0$0                    lab5
+C:   00000749  _XBR0_Init                         lab5
+C:   0000074C  A$lab5$2731                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 51.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000716  A$lab5$2746                        lab5
-C:   00000717  A$lab5$2747                        lab5
-C:   00000719  A$lab5$2748                        lab5
-C:   0000071C  A$lab5$2749                        lab5
-C:   0000071F  A$lab5$2750                        lab5
-C:   00000721  A$lab5$2751                        lab5
-C:   00000723  A$lab5$2752                        lab5
-C:   00000725  A$lab5$2753                        lab5
-C:   00000727  A$lab5$2757                        lab5
-C:   00000727  C$lab5.c$173$2$141                 lab5
-C:   0000072A  A$lab5$2762                        lab5
-C:   0000072A  C$lab5.c$175$3$144                 lab5
-C:   0000072A  C$lab5.c$178$1$140                 lab5
-C:   0000072A  XG$Update_Value$0$0                lab5
-C:   0000072B  A$lab5$2777                        lab5
-C:   0000072B  C$lab5.c$180$1$140                 lab5
-C:   0000072B  C$lab5.c$183$1$140                 lab5
-C:   0000072B  G$read_accels$0$0                  lab5
-C:   0000072B  XG$read_accels$0$0                 lab5
-C:   0000072B  _read_accels                       lab5
-C:   0000072C  A$lab5$2792                        lab5
-C:   0000072C  C$lab5.c$185$1$140                 lab5
-C:   0000072C  C$lab5.c$188$1$140                 lab5
-C:   0000072C  G$set_servo_PWM$0$0                lab5
-C:   0000072C  XG$set_servo_PWM$0$0               lab5
-C:   0000072C  _set_servo_PWM                     lab5
-C:   0000072D  A$lab5$2807                        lab5
-C:   0000072D  C$lab5.c$190$1$140                 lab5
-C:   0000072D  C$lab5.c$193$1$140                 lab5
-C:   0000072D  G$PCA_Init$0$0                     lab5
-C:   0000072D  XG$PCA_Init$0$0                    lab5
-C:   0000072D  _PCA_Init                          lab5
-C:   0000072E  A$lab5$2822                        lab5
-C:   0000072E  C$lab5.c$195$1$140                 lab5
-C:   0000072E  C$lab5.c$198$1$140                 lab5
-C:   0000072E  G$updateLCD$0$0                    lab5
-C:   0000072E  XG$updateLCD$0$0                   lab5
-C:   0000072E  _updateLCD                         lab5
-C:   0000072F  A$lab5$2837                        lab5
-C:   0000072F  C$lab5.c$200$1$140                 lab5
-C:   0000072F  C$lab5.c$203$1$140                 lab5
-C:   0000072F  G$set_drive_PWM$0$0                lab5
-C:   0000072F  XG$set_drive_PWM$0$0               lab5
-C:   0000072F  _set_drive_PWM                     lab5
-C:   00000730  A$lab5$2852                        lab5
-C:   00000730  C$lab5.c$205$1$140                 lab5
-C:   00000730  C$lab5.c$208$1$140                 lab5
-C:   00000730  G$Interrupt_Init$0$0               lab5
-C:   00000730  XG$Interrupt_Init$0$0              lab5
-C:   00000730  _Interrupt_Init                    lab5
-C:   00000731  A$lab5$2867                        lab5
+C:   0000074C  C$lab5.c$158$1$133                 lab5
+C:   0000074C  XG$XBR0_Init$0$0                   lab5
+C:   0000074D  A$lab5$2744                        lab5
+C:   0000074D  C$lab5.c$160$1$133                 lab5
+C:   0000074D  C$lab5.c$162$1$135                 lab5
+C:   0000074D  G$SMB_Init$0$0                     lab5
+C:   0000074D  _SMB_Init                          lab5
+C:   00000750  A$lab5$2747                        lab5
+C:   00000750  C$lab5.c$163$1$135                 lab5
+C:   00000752  A$lab5$2750                        lab5
+C:   00000752  C$lab5.c$164$1$135                 lab5
+C:   00000752  XG$SMB_Init$0$0                    lab5
+C:   00000753  A$lab5$2768                        lab5
+C:   00000753  C$lab5.c$166$1$135                 lab5
+C:   00000753  G$Update_Value$0$0                 lab5
+C:   00000753  _Update_Value                      lab5
+C:   00000755  A$lab5$2769                        lab5
+C:   00000757  A$lab5$2772                        lab5
+C:   00000757  C$lab5.c$172$1$137                 lab5
+C:   00000759  A$lab5$2773                        lab5
+C:   0000075B  A$lab5$2779                        lab5
+C:   0000075B  C$lab5.c$173$1$137                 lab5
+C:   0000075B  C$lab5.c$175$2$138                 lab5
+C:   0000075D  A$lab5$2780                        lab5
+C:   0000075F  A$lab5$2781                        lab5
+C:   00000761  A$lab5$2782                        lab5
+C:   00000763  A$lab5$2783                        lab5
+C:   00000766  A$lab5$2784                        lab5
+C:   00000768  A$lab5$2785                        lab5
+C:   0000076A  A$lab5$2786                        lab5
+C:   0000076C  A$lab5$2787                        lab5
+C:   0000076E  A$lab5$2788                        lab5
+C:   00000770  A$lab5$2791                        lab5
+C:   00000770  C$lab5.c$176$2$138                 lab5
+C:   00000773  A$lab5$2792                        lab5
+C:   00000775  A$lab5$2793                        lab5
+C:   00000777  A$lab5$2797                        lab5
+C:   00000777  C$lab5.c$177$2$138                 lab5
+C:   0000077A  A$lab5$2800                        lab5
+C:   0000077A  C$lab5.c$179$3$139                 lab5
+C:   0000077C  A$lab5$2801                        lab5
+C:   0000077E  A$lab5$2802                        lab5
+C:   0000077F  A$lab5$2803                        lab5
+C:   00000780  A$lab5$2804                        lab5
+C:   00000781  A$lab5$2805                        lab5
+C:   00000782  A$lab5$2806                        lab5
+C:   00000783  A$lab5$2807                        lab5
+C:   00000784  A$lab5$2810                        lab5
+C:   00000784  C$lab5.c$180$3$139                 lab5
+C:   00000785  A$lab5$2811                        lab5
+C:   00000787  A$lab5$2812                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 52.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    00000D79 =        3449. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000731  C$lab5.c$210$1$140                 lab5
-C:   00000731  C$lab5.c$213$1$140                 lab5
-C:   00000731  G$Port_Init$0$0                    lab5
-C:   00000731  XG$Port_Init$0$0                   lab5
-C:   00000731  _Port_Init                         lab5
-C:   00000732  __gptrput                          _gptrput
-C:   0000074D  __mulint                           _mulint
-C:   0000074D  __mulint_dummy                     _mulint
-C:   000007DA  _vsprintf                          sprintf
-C:   00000817  _sprintf                           sprintf
-C:   0000090E  __print_format                     printf_large
-C:   00000E18  _strlen                            _strlen
-C:   00000E30  __gptrget                          _gptrget
-C:   00000E4C  __sdcc_external_startup            _startup
-
+C:   00000788  A$lab5$2813                        lab5
+C:   0000078A  A$lab5$2814                        lab5
+C:   0000078C  A$lab5$2815                        lab5
+C:   0000078E  A$lab5$2816                        lab5
+C:   00000791  A$lab5$2817                        lab5
+C:   00000793  A$lab5$2818                        lab5
+C:   00000795  A$lab5$2819                        lab5
+C:   00000797  A$lab5$2820                        lab5
+C:   00000799  A$lab5$2824                        lab5
+C:   00000799  C$lab5.c$182$2$138                 lab5
+C:   0000079C  A$lab5$2827                        lab5
+C:   0000079C  C$lab5.c$184$3$140                 lab5
+C:   0000079E  A$lab5$2828                        lab5
+C:   000007A0  A$lab5$2829                        lab5
+C:   000007A1  A$lab5$2830                        lab5
+C:   000007A2  A$lab5$2831                        lab5
+C:   000007A3  A$lab5$2832                        lab5
+C:   000007A4  A$lab5$2833                        lab5
+C:   000007A5  A$lab5$2834                        lab5
+C:   000007A6  A$lab5$2835                        lab5
+C:   000007A7  A$lab5$2838                        lab5
+C:   000007A7  C$lab5.c$185$3$140                 lab5
+C:   000007A8  A$lab5$2839                        lab5
+C:   000007A9  A$lab5$2840                        lab5
+C:   000007AB  A$lab5$2841                        lab5
+C:   000007AC  A$lab5$2842                        lab5
+C:   000007AE  A$lab5$2843                        lab5
+C:   000007B1  A$lab5$2844                        lab5
+C:   000007B4  A$lab5$2845                        lab5
+C:   000007B6  A$lab5$2846                        lab5
+C:   000007B8  A$lab5$2847                        lab5
+C:   000007BA  A$lab5$2848                        lab5
+C:   000007BC  A$lab5$2852                        lab5
+C:   000007BC  C$lab5.c$187$2$138                 lab5
+C:   000007BF  A$lab5$2857                        lab5
+C:   000007BF  C$lab5.c$189$3$141                 lab5
+C:   000007BF  C$lab5.c$192$1$137                 lab5
+C:   000007BF  XG$Update_Value$0$0                lab5
+C:   000007C0  A$lab5$2877                        lab5
+C:   000007C0  C$lab5.c$194$1$137                 lab5
+C:   000007C0  C$lab5.c$198$1$137                 lab5
+C:   000007C0  C$lab5.c$199$1$143                 lab5
+C:   000007C0  G$read_accels$0$0                  lab5
+C:   000007C0  _read_accels                       lab5
+C:   000007C1  A$lab5$2878                        lab5
+C:   000007C2  A$lab5$2879                        lab5
+C:   000007C4  A$lab5$2880                        lab5
+C:   000007C6  A$lab5$2881                        lab5
+C:   000007C7  A$lab5$2882                        lab5
+C:   000007C8  A$lab5$2886                        lab5
+C:   000007C8  C$lab5.c$200$1$143                 lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 53.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CONST                               00000E50    00000087 =         135. bytes (REL,CON,CODE)
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00000E50  Flab5$__str_0$0$0                  lab5
-C:   00000E66  Flab5$__str_1$0$0                  lab5
-C:   00000E76  Flab5$__str_2$0$0                  lab5
-C:   00000E79  Flab5$__str_3$0$0                  lab5
-C:   00000E94  Flab5$__str_4$0$0                  lab5
-C:   00000EB0  Flab5$__str_5$0$0                  lab5
+C:   000007CA  A$lab5$2888                        lab5
+C:   000007CC  A$lab5$2892                        lab5
+C:   000007CD  A$lab5$2893                        lab5
+C:   000007CE  A$lab5$2894                        lab5
+C:   000007D0  A$lab5$2895                        lab5
+C:   000007D2  A$lab5$2896                        lab5
+C:   000007D4  A$lab5$2897                        lab5
+C:   000007D7  A$lab5$2901                        lab5
+C:   000007D7  C$lab5.c$203$2$144                 lab5
+C:   000007D9  A$lab5$2902                        lab5
+C:   000007DB  A$lab5$2903                        lab5
+C:   000007DD  A$lab5$2904                        lab5
+C:   000007E0  A$lab5$2907                        lab5
+C:   000007E0  C$lab5.c$204$2$144                 lab5
+C:   000007E3  A$lab5$2908                        lab5
+C:   000007E6  A$lab5$2909                        lab5
+C:   000007E9  A$lab5$2910                        lab5
+C:   000007EC  A$lab5$2911                        lab5
+C:   000007EF  A$lab5$2912                        lab5
+C:   000007F2  A$lab5$2913                        lab5
+C:   000007F5  A$lab5$2914                        lab5
+C:   000007F7  A$lab5$2915                        lab5
+C:   000007F9  A$lab5$2916                        lab5
+C:   000007FB  A$lab5$2919                        lab5
+C:   000007FB  C$lab5.c$205$2$144                 lab5
+C:   000007FD  A$lab5$2920                        lab5
+C:   00000800  A$lab5$2923                        lab5
+C:   00000800  C$lab5.c$207$3$145                 lab5
+C:   00000803  A$lab5$2924                        lab5
+C:   00000806  A$lab5$2925                        lab5
+C:   00000809  A$lab5$2926                        lab5
+C:   0000080C  A$lab5$2927                        lab5
+C:   0000080F  A$lab5$2928                        lab5
+C:   00000812  A$lab5$2929                        lab5
+C:   00000814  A$lab5$2930                        lab5
+C:   00000816  A$lab5$2931                        lab5
+C:   00000818  A$lab5$2932                        lab5
+C:   0000081B  A$lab5$2933                        lab5
+C:   0000081D  A$lab5$2934                        lab5
+C:   0000081F  A$lab5$2935                        lab5
+C:   00000821  A$lab5$2938                        lab5
+C:   00000821  C$lab5.c$208$3$145                 lab5
+C:   00000823  A$lab5$2939                        lab5
+C:   00000825  A$lab5$2940                        lab5
+C:   00000826  A$lab5$2941                        lab5
+C:   00000828  A$lab5$2942                        lab5
+C:   0000082A  A$lab5$2943                        lab5
+C:   0000082C  A$lab5$2944                        lab5
+C:   0000082D  A$lab5$2945                        lab5
+C:   0000082E  A$lab5$2946                        lab5
+C:   0000082F  A$lab5$2947                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 54.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00000830  A$lab5$2948                        lab5
+C:   00000832  A$lab5$2949                        lab5
+C:   00000833  A$lab5$2950                        lab5
+C:   00000834  A$lab5$2951                        lab5
+C:   00000836  A$lab5$2952                        lab5
+C:   00000837  A$lab5$2953                        lab5
+C:   00000838  A$lab5$2954                        lab5
+C:   00000839  A$lab5$2955                        lab5
+C:   0000083C  A$lab5$2956                        lab5
+C:   0000083E  A$lab5$2958                        lab5
+C:   0000083F  A$lab5$2959                        lab5
+C:   00000840  A$lab5$2960                        lab5
+C:   00000842  A$lab5$2961                        lab5
+C:   00000844  A$lab5$2962                        lab5
+C:   00000845  A$lab5$2963                        lab5
+C:   00000847  A$lab5$2964                        lab5
+C:   00000849  A$lab5$2967                        lab5
+C:   00000849  C$lab5.c$209$3$145                 lab5
+C:   0000084B  A$lab5$2968                        lab5
+C:   0000084D  A$lab5$2969                        lab5
+C:   0000084E  A$lab5$2970                        lab5
+C:   00000850  A$lab5$2971                        lab5
+C:   00000852  A$lab5$2972                        lab5
+C:   00000854  A$lab5$2973                        lab5
+C:   00000855  A$lab5$2974                        lab5
+C:   00000856  A$lab5$2975                        lab5
+C:   00000857  A$lab5$2976                        lab5
+C:   00000858  A$lab5$2977                        lab5
+C:   0000085A  A$lab5$2978                        lab5
+C:   0000085B  A$lab5$2979                        lab5
+C:   0000085C  A$lab5$2980                        lab5
+C:   0000085E  A$lab5$2981                        lab5
+C:   0000085F  A$lab5$2982                        lab5
+C:   00000860  A$lab5$2983                        lab5
+C:   00000861  A$lab5$2984                        lab5
+C:   00000864  A$lab5$2985                        lab5
+C:   00000866  A$lab5$2987                        lab5
+C:   00000867  A$lab5$2988                        lab5
+C:   00000868  A$lab5$2989                        lab5
+C:   00000869  A$lab5$2990                        lab5
+C:   0000086A  A$lab5$2991                        lab5
+C:   0000086B  A$lab5$2992                        lab5
+C:   0000086C  A$lab5$2993                        lab5
+C:   0000086D  A$lab5$2997                        lab5
+C:   0000086D  C$lab5.c$211$2$144                 lab5
+C:   0000086F  A$lab5$2998                        lab5
+C:   00000871  A$lab5$2999                        lab5
+C:   00000873  A$lab5$3000                        lab5
+C:   00000875  A$lab5$3001                        lab5
+C:   00000877  A$lab5$3002                        lab5
+C:   00000879  A$lab5$3003                        lab5
+ASxxxx Linker V03.00 + NoICE + sdld,  page 55.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000087B  A$lab5$3004                        lab5
+C:   0000087D  A$lab5$3005                        lab5
+C:   0000087F  A$lab5$3006                        lab5
+C:   00000882  A$lab5$3007                        lab5
+C:   00000884  A$lab5$3008                        lab5
+C:   00000886  A$lab5$3009                        lab5
+C:   00000888  A$lab5$3010                        lab5
+C:   0000088A  A$lab5$3011                        lab5
+C:   0000088C  A$lab5$3012                        lab5
+C:   0000088E  A$lab5$3015                        lab5
+C:   0000088E  C$lab5.c$201$1$143                 lab5
+C:   0000088F  A$lab5$3016                        lab5
+C:   00000892  A$lab5$3020                        lab5
+C:   00000892  C$lab5.c$213$1$143                 lab5
+C:   00000895  A$lab5$3021                        lab5
+C:   00000898  A$lab5$3022                        lab5
+C:   0000089A  A$lab5$3023                        lab5
+C:   0000089C  A$lab5$3024                        lab5
+C:   0000089F  A$lab5$3025                        lab5
+C:   000008A1  A$lab5$3026                        lab5
+C:   000008A3  A$lab5$3029                        lab5
+C:   000008A3  C$lab5.c$214$1$143                 lab5
+C:   000008A6  A$lab5$3030                        lab5
+C:   000008A9  A$lab5$3031                        lab5
+C:   000008AC  A$lab5$3032                        lab5
+C:   000008AF  A$lab5$3033                        lab5
+C:   000008B1  A$lab5$3034                        lab5
+C:   000008B3  A$lab5$3035                        lab5
+C:   000008B6  A$lab5$3036                        lab5
+C:   000008B9  A$lab5$3037                        lab5
+C:   000008BC  A$lab5$3038                        lab5
+C:   000008BE  A$lab5$3039                        lab5
+C:   000008C0  A$lab5$3042                        lab5
+C:   000008C0  C$lab5.c$215$1$143                 lab5
+C:   000008C3  A$lab5$3045                        lab5
+C:   000008C3  C$lab5.c$216$1$143                 lab5
+C:   000008C5  A$lab5$3048                        lab5
+C:   000008C5  C$lab5.c$219$1$143                 lab5
+C:   000008C5  XG$read_accels$0$0                 lab5
+C:   000008C6  A$lab5$3061                        lab5
+C:   000008C6  C$lab5.c$221$1$143                 lab5
+C:   000008C6  C$lab5.c$223$1$147                 lab5
+C:   000008C6  G$set_servo_PWM$0$0                lab5
+C:   000008C6  _set_servo_PWM                     lab5
+C:   000008C8  A$lab5$3062                        lab5
+C:   000008C9  A$lab5$3063                        lab5
+C:   000008CB  A$lab5$3064                        lab5
+C:   000008CD  A$lab5$3065                        lab5
+C:   000008CF  A$lab5$3066                        lab5
+C:   000008D1  A$lab5$3067                        lab5
+C:   000008D3  A$lab5$3070                        lab5
+ASxxxx Linker V03.00 + NoICE + sdld,  page 56.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000008D3  C$lab5.c$224$1$147                 lab5
+C:   000008D3  XG$set_servo_PWM$0$0               lab5
+C:   000008D4  A$lab5$3083                        lab5
+C:   000008D4  C$lab5.c$226$1$147                 lab5
+C:   000008D4  C$lab5.c$228$1$149                 lab5
+C:   000008D4  G$PCA_Init$0$0                     lab5
+C:   000008D4  _PCA_Init                          lab5
+C:   000008D7  A$lab5$3086                        lab5
+C:   000008D7  C$lab5.c$229$1$149                 lab5
+C:   000008DA  A$lab5$3089                        lab5
+C:   000008DA  C$lab5.c$230$1$149                 lab5
+C:   000008DD  A$lab5$3092                        lab5
+C:   000008DD  C$lab5.c$231$1$149                 lab5
+C:   000008E0  A$lab5$3095                        lab5
+C:   000008E0  C$lab5.c$232$1$149                 lab5
+C:   000008E3  A$lab5$3098                        lab5
+C:   000008E3  C$lab5.c$233$1$149                 lab5
+C:   000008E5  A$lab5$3101                        lab5
+C:   000008E5  C$lab5.c$236$1$149                 lab5
+C:   000008E5  XG$PCA_Init$0$0                    lab5
+C:   000008E6  A$lab5$3114                        lab5
+C:   000008E6  C$lab5.c$238$1$149                 lab5
+C:   000008E6  C$lab5.c$240$1$151                 lab5
+C:   000008E6  G$updateLCD$0$0                    lab5
+C:   000008E6  _updateLCD                         lab5
+C:   000008E9  A$lab5$3117                        lab5
+C:   000008E9  C$lab5.c$241$1$151                 lab5
+C:   000008EB  A$lab5$3118                        lab5
+C:   000008ED  A$lab5$3119                        lab5
+C:   000008EF  A$lab5$3120                        lab5
+C:   000008F1  A$lab5$3121                        lab5
+C:   000008F3  A$lab5$3122                        lab5
+C:   000008F5  A$lab5$3123                        lab5
+C:   000008F8  A$lab5$3124                        lab5
+C:   000008FA  A$lab5$3125                        lab5
+C:   000008FC  A$lab5$3126                        lab5
+C:   000008FE  A$lab5$3129                        lab5
+C:   000008FE  C$lab5.c$242$1$151                 lab5
+C:   000008FE  XG$updateLCD$0$0                   lab5
+C:   000008FF  A$lab5$3142                        lab5
+C:   000008FF  C$lab5.c$244$1$151                 lab5
+C:   000008FF  C$lab5.c$246$1$153                 lab5
+C:   000008FF  G$set_drive_PWM$0$0                lab5
+C:   000008FF  _set_drive_PWM                     lab5
+C:   00000901  A$lab5$3143                        lab5
+C:   00000902  A$lab5$3144                        lab5
+C:   00000904  A$lab5$3145                        lab5
+C:   00000906  A$lab5$3146                        lab5
+C:   00000908  A$lab5$3147                        lab5
+C:   0000090A  A$lab5$3148                        lab5
+C:   0000090C  A$lab5$3151                        lab5
+ASxxxx Linker V03.00 + NoICE + sdld,  page 57.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CSEG                                000000D7    00001010 =        4112. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   0000090C  C$lab5.c$247$1$153                 lab5
+C:   0000090C  XG$set_drive_PWM$0$0               lab5
+C:   0000090D  A$lab5$3164                        lab5
+C:   0000090D  C$lab5.c$251$1$153                 lab5
+C:   0000090D  C$lab5.c$253$1$155                 lab5
+C:   0000090D  G$Port_Init$0$0                    lab5
+C:   0000090D  _Port_Init                         lab5
+C:   00000910  A$lab5$3167                        lab5
+C:   00000910  C$lab5.c$256$1$155                 lab5
+C:   00000912  A$lab5$3168                        lab5
+C:   00000914  A$lab5$3169                        lab5
+C:   00000915  A$lab5$3170                        lab5
+C:   00000917  A$lab5$3173                        lab5
+C:   00000917  C$lab5.c$257$1$155                 lab5
+C:   0000091A  A$lab5$3176                        lab5
+C:   0000091A  C$lab5.c$258$1$155                 lab5
+C:   0000091A  XG$Port_Init$0$0                   lab5
+C:   0000091B  __gptrput                          _gptrput
+C:   00000936  __mulint                           _mulint
+C:   00000936  __mulint_dummy                     _mulint
+C:   000009C3  _vsprintf                          sprintf
+C:   00000A00  _sprintf                           sprintf
+C:   00000A4E  __divuint                          _divuint
+C:   00000A82  _vprintf                           vprintf
+C:   00000A9B  _printf                            vprintf
+C:   00000B6D  __print_format                     printf_large
+C:   00001077  _strlen                            _strlen
+C:   0000108F  __gptrget                          _gptrget
+C:   000010AB  __divsint                          _divsint
+C:   000010E3  __sdcc_external_startup            _startup
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 58.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CONST                               000010E7    000000D1 =         209. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   000010E7  Flab5$__str_0$0$0                  lab5
+C:   000010FD  Flab5$__str_1$0$0                  lab5
+C:   0000110D  Flab5$__str_2$0$0                  lab5
+C:   00001110  Flab5$__str_3$0$0                  lab5
+C:   00001116  Flab5$__str_4$0$0                  lab5
+C:   0000111B  Flab5$__str_5$0$0                  lab5
+C:   0000111E  Flab5$__str_6$0$0                  lab5
+C:   00001126  Flab5$__str_7$0$0                  lab5
+C:   00001141  Flab5$__str_8$0$0                  lab5
+C:   0000115D  Flab5$__str_9$0$0                  lab5
+C:   00001179  Flab5$__str_10$0$0                 lab5
+C:   00001182  Flab5$__str_11$0$0                 lab5
+ASxxxx Linker V03.00 + NoICE + sdld,  page 59.
 
 Files Linked                              [ module(s) ]
 
@@ -2396,8 +2729,12 @@ C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
                                           [ sprintf.rel ]
 C:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
                                           [ crtxclear.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libint.lib
+                                          [ _divuint.rel ]
 C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
                                           [ _bp.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
+                                          [ vprintf.rel ]
 C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
                                           [ printf_large.rel ]
 C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
@@ -2406,10 +2743,12 @@ C:\Program Files (x86)\SDCC\bin\..\lib\small/mcs51.lib
                                           [ crtstart.rel ]
 C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
                                           [ _gptrget.rel ]
+C:\Program Files (x86)\SDCC\bin\..\lib\small/libint.lib
+                                          [ _divsint.rel ]
 C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
                                           [ _startup.rel ]
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 55.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 60.
 
 User Base Address Definitions
 
