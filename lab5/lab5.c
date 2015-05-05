@@ -5,6 +5,9 @@ Side B
 Date: 05/04/15
 
 The goal of this code is to read the 
+
+CEX0 == DRIVE
+CEX1 == STEERING
 */
 
 
@@ -23,7 +26,6 @@ void SMB_Init (void);
 void XBR0_Init(void);
 void wait(void);
 void start(void);
-void Interrupt_Init(void);
 void PCA_ISR ( void ) __interrupt 9;
 void read_accel (void); //Sets global variables gx & gy
 void set_servo_PWM (void);
@@ -39,6 +41,8 @@ unsigned int PW_LEFT = 3185;
 unsigned int SERVO_PW = 2765;
 unsigned int SERVO_MAX= 3503;
 unsigned int SERVO_MIN= 2028;
+unsigned int DRV_PW;
+unsigned int STR_PW;
 unsigned char new_accels = 0; // flag for count of accel timing
 unsigned char new_lcd = 0; // flag for count of LCD timing
 unsigned int range;
@@ -64,6 +68,9 @@ void main(void)
 	Accel_Init();
 	count = 0;
 	lcd_count = 0;
+	DRV_PW = SERVO_PW;
+	STR_PW = PW_CENTER;
+
 	while (1)
 	{
 		run_stop = 0;
@@ -180,34 +187,46 @@ void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
 void read_accels(void)
 {
 
+
 }
 
 void set_servo_PWM(void)
 {
-
+	PCA0CP1 = 0xFFFF - STR_PW;
 }
 
 void PCA_Init(void)
 {
+	PCA0MD = 0x81;
+	PCA0CPM0 = 0xC2;
+	PCA0CPM1 = 0xC2;
+	PCA0CN 	= 0x40;      //Enable PCA counter
+    EIE1 |= 0x08;       //Enable PCA interrupt
+    EA = 1;             //Enable global interrupts
+
 
 }
 
 void updateLCD(void)
 {
-
+	lcd_clear();
+	lcd_print("ks: %u, kdx: %u, kdy: %u\nMpw: %u, Spw: %u\n");
 }
 
 void set_drive_PWM(void)
 {
-
+	PCA0CP0 = 0xFFFF - DRV_PW;
 }
 
-void Interrupt_Init(void)
-{
 
-}
 
 void Port_Init(void)
 {
 
+
+    P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
+
+
+	P3MDOUT &= ~0x10;
+	P3 = 0x10;
 }
