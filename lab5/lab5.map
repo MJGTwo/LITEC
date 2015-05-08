@@ -78,11 +78,11 @@ C:   000000AA  s_GSINIT
 C:   000000AA  s_GSINIT5                       
 C:   000000D4  s_GSFINAL                       
 C:   000000D7  s_CSEG                          
-C:   000000E2  l_CONST                         
+C:   000000DE  l_CONST                         
 C:   00000100  l_IRAM                          
-C:   0000113B  l_CSEG                          
-C:   00001212  s_CONST                         
-C:   000012F4  s_XINIT                         
+C:   0000115B  l_CSEG                          
+C:   00001232  s_CONST                         
+C:   00001310  s_XINIT                         
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 3.
 Hexadecimal  [32-Bits]
@@ -1039,7 +1039,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1098,7 +1098,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1158,7 +1158,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1218,7 +1218,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1278,7 +1278,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1338,7 +1338,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1398,7 +1398,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1458,7 +1458,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1518,7 +1518,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1578,7 +1578,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1638,7 +1638,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1698,7 +1698,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1758,7 +1758,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1818,7 +1818,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1878,7 +1878,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1938,7 +1938,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -1998,7 +1998,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2058,7 +2058,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2118,7 +2118,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2178,7 +2178,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2238,7 +2238,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2298,7 +2298,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2358,7 +2358,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2418,7 +2418,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2478,7 +2478,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2538,7 +2538,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2598,7 +2598,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2658,7 +2658,7 @@ Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
@@ -2705,150 +2705,175 @@ C:   0000095A  A$lab5$3201                        lab5
 C:   0000095C  A$lab5$3202                        lab5
 C:   0000095E  A$lab5$3203                        lab5
 C:   00000960  A$lab5$3204                        lab5
-C:   00000963  A$lab5$3205                        lab5
-C:   00000965  A$lab5$3206                        lab5
-C:   00000967  A$lab5$3207                        lab5
-C:   00000969  A$lab5$3210                        lab5
-C:   00000969  C$lab5.c$247$1$152                 lab5
-C:   00000969  XG$updateLCD$0$0                   lab5
-C:   0000096A  A$lab5$3223                        lab5
-C:   0000096A  C$lab5.c$249$1$152                 lab5
+C:   00000962  A$lab5$3205                        lab5
+C:   00000964  A$lab5$3206                        lab5
+C:   00000966  A$lab5$3207                        lab5
+C:   00000968  A$lab5$3208                        lab5
+C:   0000096A  A$lab5$3209                        lab5
+C:   0000096C  A$lab5$3210                        lab5
+C:   0000096E  A$lab5$3211                        lab5
+C:   00000970  A$lab5$3212                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 58.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   0000096A  C$lab5.c$251$1$154                 lab5
-C:   0000096A  G$set_drive_PWM$0$0                lab5
-C:   0000096A  _set_drive_PWM                     lab5
-C:   0000096C  A$lab5$3224                        lab5
-C:   0000096E  A$lab5$3225                        lab5
-C:   00000971  A$lab5$3226                        lab5
-C:   00000974  A$lab5$3227                        lab5
-C:   00000976  A$lab5$3228                        lab5
-C:   00000978  A$lab5$3229                        lab5
-C:   0000097B  A$lab5$3230                        lab5
-C:   0000097D  A$lab5$3231                        lab5
-C:   0000097F  A$lab5$3232                        lab5
-C:   00000980  A$lab5$3233                        lab5
-C:   00000982  A$lab5$3234                        lab5
-C:   00000984  A$lab5$3235                        lab5
-C:   00000985  A$lab5$3236                        lab5
-C:   00000987  A$lab5$3237                        lab5
-C:   00000989  A$lab5$3240                        lab5
-C:   00000989  C$lab5.c$252$1$154                 lab5
-C:   0000098C  A$lab5$3241                        lab5
-C:   0000098F  A$lab5$3242                        lab5
-C:   00000992  A$lab5$3243                        lab5
-C:   00000995  A$lab5$3244                        lab5
+C:   00000972  A$lab5$3213                        lab5
+C:   00000974  A$lab5$3214                        lab5
+C:   00000976  A$lab5$3215                        lab5
+C:   00000978  A$lab5$3216                        lab5
+C:   0000097A  A$lab5$3217                        lab5
+C:   0000097C  A$lab5$3218                        lab5
+C:   0000097E  A$lab5$3219                        lab5
+C:   00000980  A$lab5$3220                        lab5
+C:   00000983  A$lab5$3221                        lab5
+C:   00000985  A$lab5$3222                        lab5
+C:   00000987  A$lab5$3223                        lab5
+C:   00000989  A$lab5$3226                        lab5
+C:   00000989  C$lab5.c$247$1$152                 lab5
+C:   00000989  XG$updateLCD$0$0                   lab5
+C:   0000098A  A$lab5$3239                        lab5
+C:   0000098A  C$lab5.c$249$1$152                 lab5
+C:   0000098A  C$lab5.c$251$1$154                 lab5
+C:   0000098A  G$set_drive_PWM$0$0                lab5
+C:   0000098A  _set_drive_PWM                     lab5
+C:   0000098C  A$lab5$3240                        lab5
+C:   0000098E  A$lab5$3241                        lab5
+C:   00000991  A$lab5$3242                        lab5
+C:   00000994  A$lab5$3243                        lab5
+C:   00000996  A$lab5$3244                        lab5
 C:   00000998  A$lab5$3245                        lab5
-C:   0000099A  A$lab5$3246                        lab5
-C:   0000099C  A$lab5$3247                        lab5
-C:   0000099E  A$lab5$3248                        lab5
+C:   0000099B  A$lab5$3246                        lab5
+C:   0000099D  A$lab5$3247                        lab5
+C:   0000099F  A$lab5$3248                        lab5
 C:   000009A0  A$lab5$3249                        lab5
-C:   000009A3  A$lab5$3250                        lab5
-C:   000009A5  A$lab5$3251                        lab5
-C:   000009A7  A$lab5$3252                        lab5
-C:   000009A8  A$lab5$3253                        lab5
-C:   000009AA  A$lab5$3254                        lab5
-C:   000009AC  A$lab5$3255                        lab5
-C:   000009AD  A$lab5$3256                        lab5
-C:   000009AF  A$lab5$3257                        lab5
-C:   000009B1  A$lab5$3260                        lab5
-C:   000009B1  C$lab5.c$253$1$154                 lab5
-C:   000009B4  A$lab5$3261                        lab5
-C:   000009B7  A$lab5$3262                        lab5
-C:   000009BA  A$lab5$3263                        lab5
-C:   000009BC  A$lab5$3264                        lab5
-C:   000009BE  A$lab5$3265                        lab5
-C:   000009BF  A$lab5$3266                        lab5
-C:   000009C1  A$lab5$3267                        lab5
-C:   000009C2  A$lab5$3268                        lab5
-C:   000009C3  A$lab5$3269                        lab5
-C:   000009C5  A$lab5$3270                        lab5
-C:   000009C6  A$lab5$3271                        lab5
-C:   000009C7  A$lab5$3272                        lab5
-C:   000009C9  A$lab5$3273                        lab5
+C:   000009A2  A$lab5$3250                        lab5
+C:   000009A4  A$lab5$3251                        lab5
+C:   000009A5  A$lab5$3252                        lab5
+C:   000009A7  A$lab5$3253                        lab5
+C:   000009A9  A$lab5$3256                        lab5
+C:   000009A9  C$lab5.c$252$1$154                 lab5
+C:   000009AC  A$lab5$3257                        lab5
+C:   000009AF  A$lab5$3258                        lab5
+C:   000009B2  A$lab5$3259                        lab5
+C:   000009B5  A$lab5$3260                        lab5
+C:   000009B8  A$lab5$3261                        lab5
+C:   000009BA  A$lab5$3262                        lab5
+C:   000009BC  A$lab5$3263                        lab5
+C:   000009BE  A$lab5$3264                        lab5
+C:   000009C0  A$lab5$3265                        lab5
+C:   000009C3  A$lab5$3266                        lab5
+C:   000009C5  A$lab5$3267                        lab5
+C:   000009C7  A$lab5$3268                        lab5
+C:   000009C8  A$lab5$3269                        lab5
+C:   000009CA  A$lab5$3270                        lab5
+C:   000009CC  A$lab5$3271                        lab5
+C:   000009CD  A$lab5$3272                        lab5
 ASxxxx Linker V03.00 + NoICE + sdld,  page 59.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CSEG                                000000D7    0000113B =        4411. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   000009CB  A$lab5$3274                        lab5
-C:   000009CC  A$lab5$3275                        lab5
-C:   000009CE  A$lab5$3276                        lab5
-C:   000009D0  A$lab5$3279                        lab5
-C:   000009D0  C$lab5.c$255$1$154                 lab5
-C:   000009D2  A$lab5$3280                        lab5
-C:   000009D3  A$lab5$3281                        lab5
-C:   000009D5  A$lab5$3282                        lab5
-C:   000009D7  A$lab5$3283                        lab5
-C:   000009D9  A$lab5$3284                        lab5
-C:   000009DB  A$lab5$3285                        lab5
-C:   000009DD  A$lab5$3288                        lab5
-C:   000009DD  C$lab5.c$256$1$154                 lab5
-C:   000009DD  XG$set_drive_PWM$0$0               lab5
-C:   000009DE  A$lab5$3301                        lab5
-C:   000009DE  C$lab5.c$260$1$154                 lab5
-C:   000009DE  C$lab5.c$262$1$156                 lab5
-C:   000009DE  G$Port_Init$0$0                    lab5
-C:   000009DE  _Port_Init                         lab5
-C:   000009E1  A$lab5$3304                        lab5
-C:   000009E1  C$lab5.c$265$1$156                 lab5
-C:   000009E3  A$lab5$3305                        lab5
-C:   000009E5  A$lab5$3306                        lab5
-C:   000009E6  A$lab5$3307                        lab5
-C:   000009E8  A$lab5$3310                        lab5
-C:   000009E8  C$lab5.c$266$1$156                 lab5
-C:   000009EB  A$lab5$3313                        lab5
-C:   000009EB  C$lab5.c$267$1$156                 lab5
-C:   000009EB  XG$Port_Init$0$0                   lab5
-C:   000009EC  __gptrput                          _gptrput
-C:   00000A07  _abs                               abs
-C:   00000A14  __mulint                           _mulint
-C:   00000A14  __mulint_dummy                     _mulint
-C:   00000AA1  _vsprintf                          sprintf
-C:   00000ADE  _sprintf                           sprintf
-C:   00000B2C  __moduint                          _moduint
-C:   00000B79  __divuint                          _divuint
-C:   00000BAD  _vprintf                           vprintf
-C:   00000BC6  _printf                            vprintf
-C:   00000C98  __print_format                     printf_large
-C:   000011A2  _strlen                            _strlen
-C:   000011BA  __gptrget                          _gptrget
-C:   000011D6  __divsint                          _divsint
-C:   0000120E  __sdcc_external_startup            _startup
-
+C:   000009CF  A$lab5$3273                        lab5
+C:   000009D1  A$lab5$3276                        lab5
+C:   000009D1  C$lab5.c$253$1$154                 lab5
+C:   000009D4  A$lab5$3277                        lab5
+C:   000009D7  A$lab5$3278                        lab5
+C:   000009DA  A$lab5$3279                        lab5
+C:   000009DC  A$lab5$3280                        lab5
+C:   000009DE  A$lab5$3281                        lab5
+C:   000009DF  A$lab5$3282                        lab5
+C:   000009E1  A$lab5$3283                        lab5
+C:   000009E2  A$lab5$3284                        lab5
+C:   000009E3  A$lab5$3285                        lab5
+C:   000009E5  A$lab5$3286                        lab5
+C:   000009E6  A$lab5$3287                        lab5
+C:   000009E7  A$lab5$3288                        lab5
+C:   000009E9  A$lab5$3289                        lab5
+C:   000009EB  A$lab5$3290                        lab5
+C:   000009EC  A$lab5$3291                        lab5
+C:   000009EE  A$lab5$3292                        lab5
+C:   000009F0  A$lab5$3295                        lab5
+C:   000009F0  C$lab5.c$255$1$154                 lab5
+C:   000009F2  A$lab5$3296                        lab5
+C:   000009F3  A$lab5$3297                        lab5
+C:   000009F5  A$lab5$3298                        lab5
+C:   000009F7  A$lab5$3299                        lab5
+C:   000009F9  A$lab5$3300                        lab5
+C:   000009FB  A$lab5$3301                        lab5
+C:   000009FD  A$lab5$3304                        lab5
+C:   000009FD  C$lab5.c$256$1$154                 lab5
+C:   000009FD  XG$set_drive_PWM$0$0               lab5
+C:   000009FE  A$lab5$3317                        lab5
+C:   000009FE  C$lab5.c$260$1$154                 lab5
+C:   000009FE  C$lab5.c$262$1$156                 lab5
+C:   000009FE  G$Port_Init$0$0                    lab5
+C:   000009FE  _Port_Init                         lab5
+C:   00000A01  A$lab5$3320                        lab5
+C:   00000A01  C$lab5.c$265$1$156                 lab5
+C:   00000A03  A$lab5$3321                        lab5
+C:   00000A05  A$lab5$3322                        lab5
+C:   00000A06  A$lab5$3323                        lab5
+C:   00000A08  A$lab5$3326                        lab5
+C:   00000A08  C$lab5.c$266$1$156                 lab5
+C:   00000A0B  A$lab5$3329                        lab5
+C:   00000A0B  C$lab5.c$267$1$156                 lab5
+C:   00000A0B  XG$Port_Init$0$0                   lab5
+C:   00000A0C  __gptrput                          _gptrput
+C:   00000A27  _abs                               abs
+C:   00000A34  __mulint                           _mulint
+C:   00000A34  __mulint_dummy                     _mulint
+C:   00000AC1  _vsprintf                          sprintf
+C:   00000AFE  _sprintf                           sprintf
 ASxxxx Linker V03.00 + NoICE + sdld,  page 60.
 Hexadecimal  [32-Bits]
 
 Area                                    Addr        Size        Decimal Bytes (Attributes)
 --------------------------------        ----        ----        ------- ----- ------------
-CONST                               00001212    000000E2 =         226. bytes (REL,CON,CODE)
+CSEG                                000000D7    0000115B =        4443. bytes (REL,CON,CODE)
 
       Value  Global                              Global Defined In Module
       -----  --------------------------------   ------------------------
-C:   00001212  Flab5$__str_0$0$0                  lab5
-C:   00001228  Flab5$__str_1$0$0                  lab5
-C:   00001238  Flab5$__str_2$0$0                  lab5
-C:   0000123B  Flab5$__str_3$0$0                  lab5
-C:   00001241  Flab5$__str_4$0$0                  lab5
-C:   00001246  Flab5$__str_5$0$0                  lab5
-C:   00001250  Flab5$__str_6$0$0                  lab5
-C:   0000126B  Flab5$__str_7$0$0                  lab5
-C:   00001287  Flab5$__str_8$0$0                  lab5
-C:   000012A3  Flab5$__str_9$0$0                  lab5
-C:   000012BE  Flab5$__str_10$0$0                 lab5
+C:   00000B4C  __moduint                          _moduint
+C:   00000B99  __divuint                          _divuint
+C:   00000BCD  _vprintf                           vprintf
+C:   00000BE6  _printf                            vprintf
+C:   00000CB8  __print_format                     printf_large
+C:   000011C2  _strlen                            _strlen
+C:   000011DA  __gptrget                          _gptrget
+C:   000011F6  __divsint                          _divsint
+C:   0000122E  __sdcc_external_startup            _startup
 
 ASxxxx Linker V03.00 + NoICE + sdld,  page 61.
+Hexadecimal  [32-Bits]
+
+Area                                    Addr        Size        Decimal Bytes (Attributes)
+--------------------------------        ----        ----        ------- ----- ------------
+CONST                               00001232    000000DE =         222. bytes (REL,CON,CODE)
+
+      Value  Global                              Global Defined In Module
+      -----  --------------------------------   ------------------------
+C:   00001232  Flab5$__str_0$0$0                  lab5
+C:   00001248  Flab5$__str_1$0$0                  lab5
+C:   00001258  Flab5$__str_2$0$0                  lab5
+C:   0000125B  Flab5$__str_3$0$0                  lab5
+C:   00001261  Flab5$__str_4$0$0                  lab5
+C:   00001266  Flab5$__str_5$0$0                  lab5
+C:   00001270  Flab5$__str_6$0$0                  lab5
+C:   0000128B  Flab5$__str_7$0$0                  lab5
+C:   000012A7  Flab5$__str_8$0$0                  lab5
+C:   000012C3  Flab5$__str_9$0$0                  lab5
+C:   000012DE  Flab5$__str_10$0$0                 lab5
+
+ASxxxx Linker V03.00 + NoICE + sdld,  page 62.
 
 Files Linked                              [ module(s) ]
 
@@ -2893,7 +2918,7 @@ C:\Program Files (x86)\SDCC\bin\..\lib\small/libint.lib
 C:\Program Files (x86)\SDCC\bin\..\lib\small/libsdcc.lib
                                           [ _startup.rel ]
 
-ASxxxx Linker V03.00 + NoICE + sdld,  page 62.
+ASxxxx Linker V03.00 + NoICE + sdld,  page 63.
 
 User Base Address Definitions
 

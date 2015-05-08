@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Thu May 07 20:47:35 2015
+; This file was generated Fri May 08 08:31:24 2015
 ;--------------------------------------------------------
 	.module lab5
 	.optsdcc -mmcs51 --model-small
@@ -3194,7 +3194,23 @@ _updateLCD:
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:245: lcd_clear();
 	lcall	_lcd_clear
 	C$lab5.c$246$1$152 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:246: lcd_print("ks: %u, kdx: %u, kdy: %u\nMpw: %u, Spw: %u\n");
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:246: lcd_print("ks: %u kdx: %u\rkdy: %u\rMpw: %u\rSpw: %u",ks,kdx,kdy,DRV_PW,STR_PW);
+	mov	r6,_kdy
+	mov	r7,#0x00
+	mov	r4,_kdx
+	mov	r5,#0x00
+	mov	r2,_ks
+	mov	r3,#0x00
+	push	_STR_PW
+	push	(_STR_PW + 1)
+	push	_DRV_PW
+	push	(_DRV_PW + 1)
+	push	ar6
+	push	ar7
+	push	ar4
+	push	ar5
+	push	ar2
+	push	ar3
 	mov	a,#___str_10
 	push	acc
 	mov	a,#(___str_10 >> 8)
@@ -3202,9 +3218,9 @@ _updateLCD:
 	mov	a,#0x80
 	push	acc
 	lcall	_lcd_print
-	dec	sp
-	dec	sp
-	dec	sp
+	mov	a,sp
+	add	a,#0xf3
+	mov	sp,a
 	C$lab5.c$247$1$152 ==.
 	XG$updateLCD$0$0 ==.
 	ret
@@ -3373,10 +3389,13 @@ ___str_9:
 	.db 0x00
 Flab5$__str_10$0$0 == .
 ___str_10:
-	.ascii "ks: %u, kdx: %u, kdy: %u"
-	.db 0x0A
-	.ascii "Mpw: %u, Spw: %u"
-	.db 0x0A
+	.ascii "ks: %u kdx: %u"
+	.db 0x0D
+	.ascii "kdy: %u"
+	.db 0x0D
+	.ascii "Mpw: %u"
+	.db 0x0D
+	.ascii "Spw: %u"
 	.db 0x00
 	.area XINIT   (CODE)
 	.area CABS    (ABS,CODE)
