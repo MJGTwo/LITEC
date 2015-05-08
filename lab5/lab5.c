@@ -8,6 +8,10 @@ The goal of this code is to read the
 
 CEX0 == DRIVE
 CEX1 == STEERING
+-Y == backward
++y == forward
+-X == right
++X == left
 */
 
 
@@ -35,9 +39,9 @@ void set_gains(void); // function which allow operator to set feedback gains
 void Update_Value(int Constant, unsigned char incr, int maxval, int minval);
 void read_accels(void);
 //define global variables
-unsigned int PW_CENTER = 2685;
-unsigned int PW_RIGHT = 2235;
-unsigned int PW_LEFT = 3185;
+unsigned int PW_CENTER = 2675;
+unsigned int PW_RIGHT = 3175;
+unsigned int PW_LEFT = 2135;
 unsigned int SERVO_PW = 2765;
 unsigned int SERVO_MAX= 3503;
 unsigned int SERVO_MIN= 2028;
@@ -47,10 +51,11 @@ unsigned char new_accels = 0; // flag for count of accel timing
 unsigned char new_lcd = 0; // flag for count of LCD timing
 unsigned int range;
 unsigned int count; // overflow count for acceleration
-unsigned char lcd_count; // overflow count for LCD updates
-unsigned char ks, kdy,kdx;
-char gx,gy;
+unsigned char ks, kdy,kdx, ki;
+		 int gx,gy;
+		 char xoff,yoff;
 unsigned char run_stop; // define local variables
+		 int error_sum;
 
 __sbit __at 0xB6 run;
 
@@ -60,6 +65,9 @@ __sbit __at 0xB6 run;
 void main(void)
 {
 	int x=0;
+	xoff = -170;
+	yoff = -220;
+	error_sum=0;
 	Sys_Init(); // initialize board
 	putchar(' ');
 	Port_Init();
@@ -69,7 +77,6 @@ void main(void)
 	Accel_Init();
 
 	count = 0;
-	lcd_count = 0;
 	DRV_PW = SERVO_PW;
 	STR_PW = PW_CENTER;
 	printf("\r\nGO!");
@@ -83,22 +90,21 @@ void main(void)
 		{ // stay in loop until switch is in run position
 			if (run_stop == 0)
 			{
-				//set_gains(); // function adjusting feedback gains
+				set_gains(); // function adjusting feedback gains
 				run_stop = 1; // only try to update once
 			}
-			printf("%u",run);
 		}
 		read_accels();
-		//set_servo_PWM(); // set the servo PWM
-		//set_drive_PWM(); // set drive PWM
-		printf("\r\n%u,%u",gx,gy);
+		set_servo_PWM(); // set the servo PWM
+		set_drive_PWM(); // set drive PWM
+		printf("\r\n\t%d,\t%d",(gx+ xoff),(gy+ yoff));
 		new_accels = 0;
-		// if (new_lcd) // enough overflow to write to LCD
-		// {
-		// 	updateLCD(); // display values
-		// 	new_lcd = 0;
-		// 	lcd_count = 0;
-		// }
+		if (count % 15 == 0) // enough overflow to write to LCD
+		{
+			updateLCD(); // display values
+			new_lcd = 0;
+	
+		}
 	}
 }
 //-----------------------------------------------------------------------------
@@ -114,12 +120,6 @@ void PCA_ISR ( void ) __interrupt 9
 	{
 		CF = 0; // clear overflow indicator
 		count++;
-		lcd_count++;
-		// if (lcd_count>=15)
-		// {
-		// 	new_lcd = 1;
-		// 	lcd_count = 0;
-		// }
 		PCA0L = PCA_START;
 		PCA0H = PCA_START >> 8;
 	}
@@ -149,6 +149,9 @@ void set_gains(void)
 	lcd_clear();
 	lcd_print("Please enter a kdy value:\n ");
 	kdy = kpd_input(0);
+	lcd_clear();
+	lcd_print("Please enter a ki value:\n ");	
+	ki  = kpd_input(0);
 	lcd_clear();
 }
 
@@ -198,7 +201,7 @@ void read_accels(void)
 	char i =0;
 	avg_gy=avg_gx=0;
 	gx=gy=0;
-	for (; i < 8; i++)
+	for (; i < 12; i++)
 	{
 		wait();
 		i2c_read_data(0x30,0x27,Data,1);
@@ -209,8 +212,8 @@ void read_accels(void)
 			avg_gy += ((Data[3] << 8) >> 4);
 		}
 	}
-	avg_gy= avg_gy/8;
-	avg_gx= avg_gx/8;
+	avg_gy= avg_gy/12;
+	avg_gx= avg_gx/12;
 	gx = avg_gx;
 	gy = avg_gy;
 
@@ -219,6 +222,9 @@ void read_accels(void)
 
 void set_servo_PWM(void)
 {
+	STR_PW = PW_CENTER - ks  * gx;
+	if (STR_PW < PW_LEFT) STR_PW = PW_LEFT;
+	if (STR_PW > PW_RIGHT) STR_PW = PW_RIGHT;
 	PCA0CP1 = 0xFFFF - STR_PW;
 }
 
@@ -242,6 +248,10 @@ void updateLCD(void)
 
 void set_drive_PWM(void)
 {
+	DRV_PW = SERVO_PW + kdy * gy;
+	DRV_PW += kdx * abs(gx); + ki * error_sum;
+	error_sum += gy + abs(gx);
+
 	PCA0CP0 = 0xFFFF - DRV_PW;
 }
 
