@@ -1,9 +1,9 @@
 /* Sample code for speed control using PWM. */
 #include <stdio.h>
 #include <c8051_SDCC.h>
-#define PW_CENTER_STR 2565
-#define PW_MIN_STR    2235
-#define PW_MAX_STR    3115
+#define PW_CENTER_STR 2685
+#define PW_MIN_STR    2000
+#define PW_MAX_STR    3185
 //-----------------------------------------------------------------------------
 // 8051 Initialization Functions
 //-----------------------------------------------------------------------------

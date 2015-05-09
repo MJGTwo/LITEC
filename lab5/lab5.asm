@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Mon May 04 20:03:03 2015
+; This file was generated Fri May 08 08:31:24 2015
 ;--------------------------------------------------------
 	.module lab5
 	.optsdcc -mmcs51 --model-small
@@ -15,6 +15,8 @@
 	.globl _putchar
 	.globl _getchar
 	.globl _vsprintf
+	.globl _printf
+	.globl _abs
 	.globl _Sys_Init
 	.globl _UART0_Init
 	.globl _SYSCLK_Init
@@ -307,16 +309,22 @@
 	.globl _Update_Value_PARM_4
 	.globl _Update_Value_PARM_3
 	.globl _Update_Value_PARM_2
-	.globl _avg_gy
-	.globl _avg_gx
+	.globl _error_sum
+	.globl _run_stop
+	.globl _yoff
+	.globl _xoff
+	.globl _gy
+	.globl _gx
+	.globl _ki
 	.globl _kdx
 	.globl _kdy
 	.globl _ks
-	.globl _lcd_count
 	.globl _count
 	.globl _range
 	.globl _new_lcd
 	.globl _new_accels
+	.globl _STR_PW
+	.globl _DRV_PW
 	.globl _SERVO_MIN
 	.globl _SERVO_MAX
 	.globl _SERVO_PW
@@ -353,7 +361,6 @@
 	.globl _PCA_Init
 	.globl _updateLCD
 	.globl _set_drive_PWM
-	.globl _Interrupt_Init
 	.globl _Port_Init
 ;--------------------------------------------------------
 ; special function registers
@@ -935,8 +942,8 @@ G$BUS_TOE$0$0 == 0x00c0
 _BUS_TOE	=	0x00c0
 G$BUS_SCL$0$0 == 0x0083
 _BUS_SCL	=	0x0083
-G$run$0$0 == 0x00b7
-_run	=	0x00b7
+G$run$0$0 == 0x00b6
+_run	=	0x00b6
 ;--------------------------------------------------------
 ; overlayable register banks
 ;--------------------------------------------------------
@@ -994,6 +1001,12 @@ _SERVO_MAX::
 G$SERVO_MIN$0$0==.
 _SERVO_MIN::
 	.ds 2
+G$DRV_PW$0$0==.
+_DRV_PW::
+	.ds 2
+G$STR_PW$0$0==.
+_STR_PW::
+	.ds 2
 G$new_accels$0$0==.
 _new_accels::
 	.ds 1
@@ -1005,10 +1018,7 @@ _range::
 	.ds 2
 G$count$0$0==.
 _count::
-	.ds 1
-G$lcd_count$0$0==.
-_lcd_count::
-	.ds 1
+	.ds 2
 G$ks$0$0==.
 _ks::
 	.ds 1
@@ -1018,20 +1028,41 @@ _kdy::
 G$kdx$0$0==.
 _kdx::
 	.ds 1
-G$avg_gx$0$0==.
-_avg_gx::
+G$ki$0$0==.
+_ki::
+	.ds 1
+G$gx$0$0==.
+_gx::
 	.ds 2
-G$avg_gy$0$0==.
-_avg_gy::
+G$gy$0$0==.
+_gy::
 	.ds 2
-Llab5.Update_Value$incr$1$139==.
+G$xoff$0$0==.
+_xoff::
+	.ds 1
+G$yoff$0$0==.
+_yoff::
+	.ds 1
+G$run_stop$0$0==.
+_run_stop::
+	.ds 1
+G$error_sum$0$0==.
+_error_sum::
+	.ds 2
+Llab5.Update_Value$incr$1$137==.
 _Update_Value_PARM_2:
 	.ds 1
-Llab5.Update_Value$maxval$1$139==.
+Llab5.Update_Value$maxval$1$137==.
 _Update_Value_PARM_3:
 	.ds 2
-Llab5.Update_Value$minval$1$139==.
+Llab5.Update_Value$minval$1$137==.
 _Update_Value_PARM_4:
+	.ds 2
+Llab5.read_accels$Data$1$144==.
+_read_accels_Data_1_144:
+	.ds 4
+Llab5.read_accels$avg_gx$1$144==.
+_read_accels_avg_gx_1_144:
 	.ds 2
 ;--------------------------------------------------------
 ; overlayable items in internal ram 
@@ -1131,35 +1162,35 @@ __interrupt_vect:
 	.globl __mcs51_genXINIT
 	.globl __mcs51_genXRAMCLEAR
 	.globl __mcs51_genRAMCLEAR
-	C$lab5.c$36$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:36: unsigned int PW_CENTER = 2685;
-	mov	_PW_CENTER,#0x7D
+	C$lab5.c$42$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:42: unsigned int PW_CENTER = 2675;
+	mov	_PW_CENTER,#0x73
 	mov	(_PW_CENTER + 1),#0x0A
-	C$lab5.c$37$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:37: unsigned int PW_RIGHT = 2235;
-	mov	_PW_RIGHT,#0xBB
-	mov	(_PW_RIGHT + 1),#0x08
-	C$lab5.c$38$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:38: unsigned int PW_LEFT = 3185;
-	mov	_PW_LEFT,#0x71
-	mov	(_PW_LEFT + 1),#0x0C
-	C$lab5.c$39$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:39: unsigned int SERVO_PW = 2765;
+	C$lab5.c$43$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:43: unsigned int PW_RIGHT = 3175;
+	mov	_PW_RIGHT,#0x67
+	mov	(_PW_RIGHT + 1),#0x0C
+	C$lab5.c$44$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:44: unsigned int PW_LEFT = 2135;
+	mov	_PW_LEFT,#0x57
+	mov	(_PW_LEFT + 1),#0x08
+	C$lab5.c$45$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:45: unsigned int SERVO_PW = 2765;
 	mov	_SERVO_PW,#0xCD
 	mov	(_SERVO_PW + 1),#0x0A
-	C$lab5.c$40$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:40: unsigned int SERVO_MAX= 3503;
+	C$lab5.c$46$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:46: unsigned int SERVO_MAX= 3503;
 	mov	_SERVO_MAX,#0xAF
 	mov	(_SERVO_MAX + 1),#0x0D
-	C$lab5.c$41$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:41: unsigned int SERVO_MIN= 2028;
+	C$lab5.c$47$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:47: unsigned int SERVO_MIN= 2028;
 	mov	_SERVO_MIN,#0xEC
 	mov	(_SERVO_MIN + 1),#0x07
-	C$lab5.c$42$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:42: unsigned char new_accels = 0; // flag for count of accel timing
+	C$lab5.c$50$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:50: unsigned char new_accels = 0; // flag for count of accel timing
 	mov	_new_accels,#0x00
-	C$lab5.c$43$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:43: unsigned char new_lcd = 0; // flag for count of LCD timing
+	C$lab5.c$51$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:51: unsigned char new_lcd = 0; // flag for count of LCD timing
 	mov	_new_lcd,#0x00
 	.area GSFINAL (CODE)
 	ljmp	__sdcc_program_startup
@@ -2334,144 +2365,251 @@ _Accel_Init:
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'main'
 ;------------------------------------------------------------
-;run_stop                  Allocated to registers r7 
+;x                         Allocated to registers r6 r7 
 ;------------------------------------------------------------
 	G$main$0$0 ==.
-	C$lab5.c$55$1$103 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:55: void main(void)
+	C$lab5.c$65$1$103 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:65: void main(void)
 ;	-----------------------------------------
 ;	 function main
 ;	-----------------------------------------
 _main:
-	C$lab5.c$58$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:58: Sys_Init(); // initialize board
+	C$lab5.c$67$1$103 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:67: int x=0;
+	mov	r6,#0x00
+	mov	r7,#0x00
+	C$lab5.c$68$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:68: xoff = -170;
+	mov	_xoff,#0x56
+	C$lab5.c$69$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:69: yoff = -220;
+	mov	_yoff,#0x24
+	C$lab5.c$70$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:70: error_sum=0;
+	clr	a
+	mov	_error_sum,a
+	mov	(_error_sum + 1),a
+	C$lab5.c$71$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:71: Sys_Init(); // initialize board
+	push	ar7
+	push	ar6
 	lcall	_Sys_Init
-	C$lab5.c$59$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:59: putchar(' ');
+	C$lab5.c$72$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:72: putchar(' ');
 	mov	dpl,#0x20
 	lcall	_putchar
-	C$lab5.c$60$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:60: Port_Init();
+	C$lab5.c$73$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:73: Port_Init();
 	lcall	_Port_Init
-	C$lab5.c$61$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:61: PCA_Init();
+	C$lab5.c$74$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:74: PCA_Init();
 	lcall	_PCA_Init
-	C$lab5.c$62$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:62: SMB_Init();
+	C$lab5.c$75$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:75: SMB_Init();
 	lcall	_SMB_Init
-	C$lab5.c$63$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:63: Interrupt_Init();
-	lcall	_Interrupt_Init
-	C$lab5.c$64$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:64: Accel_Init();
+	C$lab5.c$76$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:76: XBR0_Init();
+	lcall	_XBR0_Init
+	C$lab5.c$77$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:77: Accel_Init();
 	lcall	_Accel_Init
-	C$lab5.c$65$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:65: count = 0;
-	mov	_count,#0x00
-	C$lab5.c$66$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:66: lcd_count = 0;
-	mov	_lcd_count,#0x00
-	C$lab5.c$67$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:67: while (1)
+	C$lab5.c$79$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:79: count = 0;
+	clr	a
+	mov	_count,a
+	mov	(_count + 1),a
+	C$lab5.c$80$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:80: DRV_PW = SERVO_PW;
+	mov	_DRV_PW,_SERVO_PW
+	mov	(_DRV_PW + 1),(_SERVO_PW + 1)
+	C$lab5.c$81$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:81: STR_PW = PW_CENTER;
+	mov	_STR_PW,_PW_CENTER
+	mov	(_STR_PW + 1),(_PW_CENTER + 1)
+	C$lab5.c$82$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:82: printf("\r\nGO!");
+	mov	a,#___str_3
+	push	acc
+	mov	a,#(___str_3 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	dec	sp
+	dec	sp
+	dec	sp
+	pop	ar6
+	pop	ar7
+	C$lab5.c$84$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:84: while (1)
 00109$:
-	C$lab5.c$69$2$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:69: run_stop = 0;
-	mov	r7,#0x00
-	C$lab5.c$70$2$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:70: while (!run) // make run an sbit for the run/stop switch
+	C$lab5.c$86$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:86: x++;
+	inc	r6
+	cjne	r6,#0x00,00128$
+	inc	r7
+00128$:
+	C$lab5.c$87$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:87: printf("\r\n%d",x);
+	push	ar7
+	push	ar6
+	push	ar6
+	push	ar7
+	mov	a,#___str_4
+	push	acc
+	mov	a,#(___str_4 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xfb
+	mov	sp,a
+	pop	ar6
+	pop	ar7
+	C$lab5.c$88$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:88: run_stop = 0;
+	mov	_run_stop,#0x00
+	C$lab5.c$89$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:89: while (!run) // make run an sbit for the run/stop switch
 00103$:
 	jb	_run,00105$
-	C$lab5.c$72$3$122 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:72: if (run_stop == 0)
-	mov	a,r7
+	C$lab5.c$91$3$121 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:91: if (run_stop == 0)
+	mov	a,_run_stop
 	jnz	00103$
-	C$lab5.c$74$4$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:74: set_gains(); // function adjusting feedback gains
+	C$lab5.c$93$4$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:93: set_gains(); // function adjusting feedback gains
+	push	ar7
+	push	ar6
 	lcall	_set_gains
-	C$lab5.c$75$4$123 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:75: run_stop = 1; // only try to update once
-	mov	r7,#0x01
+	pop	ar6
+	pop	ar7
+	C$lab5.c$94$4$122 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:94: run_stop = 1; // only try to update once
+	mov	_run_stop,#0x01
 	sjmp	00103$
 00105$:
-	C$lab5.c$78$2$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:78: read_accels();
+	C$lab5.c$97$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:97: read_accels();
+	push	ar7
+	push	ar6
 	lcall	_read_accels
-	C$lab5.c$79$2$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:79: set_servo_PWM(); // set the servo PWM
+	C$lab5.c$98$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:98: set_servo_PWM(); // set the servo PWM
 	lcall	_set_servo_PWM
-	C$lab5.c$80$2$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:80: set_drive_PWM(); // set drive PWM
+	C$lab5.c$99$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:99: set_drive_PWM(); // set drive PWM
 	lcall	_set_drive_PWM
-	C$lab5.c$81$2$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:81: new_accels = 0;
+	C$lab5.c$100$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:100: printf("\r\n\t%d,\t%d",(gx+ xoff),(gy+ yoff));
+	mov	a,_yoff
+	mov	r4,a
+	rlc	a
+	subb	a,acc
+	mov	r5,a
+	mov	a,r4
+	add	a,_gy
+	mov	r4,a
+	mov	a,r5
+	addc	a,(_gy + 1)
+	mov	r5,a
+	mov	a,_xoff
+	mov	r2,a
+	rlc	a
+	subb	a,acc
+	mov	r3,a
+	mov	a,r2
+	add	a,_gx
+	mov	r2,a
+	mov	a,r3
+	addc	a,(_gx + 1)
+	mov	r3,a
+	push	ar4
+	push	ar5
+	push	ar2
+	push	ar3
+	mov	a,#___str_5
+	push	acc
+	mov	a,#(___str_5 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_printf
+	mov	a,sp
+	add	a,#0xf9
+	mov	sp,a
+	C$lab5.c$101$2$120 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:101: new_accels = 0;
 	mov	_new_accels,#0x00
-	C$lab5.c$82$2$121 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:82: if (new_lcd) // enough overflow to write to LCD
-	mov	a,_new_lcd
-	jz	00109$
-	C$lab5.c$84$3$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:84: updateLCD(); // display values
+	C$lab5.c$102$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:102: if (count % 15 == 0) // enough overflow to write to LCD
+	mov	__moduint_PARM_2,#0x0F
+	mov	(__moduint_PARM_2 + 1),#0x00
+	mov	dpl,_count
+	mov	dph,(_count + 1)
+	lcall	__moduint
+	mov	a,dpl
+	mov	b,dph
+	pop	ar6
+	pop	ar7
+	orl	a,b
+	jz	00131$
+	ljmp	00109$
+00131$:
+	C$lab5.c$104$3$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:104: updateLCD(); // display values
+	push	ar7
+	push	ar6
 	lcall	_updateLCD
-	C$lab5.c$85$3$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:85: new_lcd = 0;
+	pop	ar6
+	pop	ar7
+	C$lab5.c$105$3$123 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:105: new_lcd = 0;
 	mov	_new_lcd,#0x00
-	C$lab5.c$86$3$124 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:86: lcd_count = 0;
-	mov	_lcd_count,#0x00
-	sjmp	00109$
-	C$lab5.c$89$1$120 ==.
+	ljmp	00109$
+	C$lab5.c$109$1$119 ==.
 	XG$main$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_ISR'
 ;------------------------------------------------------------
 	G$PCA_ISR$0$0 ==.
-	C$lab5.c$97$1$120 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:97: void PCA_ISR ( void ) __interrupt 9
+	C$lab5.c$117$1$119 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:117: void PCA_ISR ( void ) __interrupt 9
 ;	-----------------------------------------
 ;	 function PCA_ISR
 ;	-----------------------------------------
 _PCA_ISR:
 	push	acc
 	push	psw
-	C$lab5.c$99$1$126 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:99: if (CF)
-	C$lab5.c$101$2$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:101: CF = 0; // clear overflow indicator
-	jbc	_CF,00113$
-	sjmp	00104$
-00113$:
-	C$lab5.c$102$2$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:102: count++;
+	C$lab5.c$119$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:119: if (CF)
+	C$lab5.c$121$2$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:121: CF = 0; // clear overflow indicator
+	jbc	_CF,00108$
+	sjmp	00102$
+00108$:
+	C$lab5.c$122$2$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:122: count++;
 	inc	_count
-	C$lab5.c$103$2$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:103: lcd_count++;
-	inc	_lcd_count
-	C$lab5.c$104$2$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:104: if (lcd_count>=15)
-	mov	a,#0x100 - 0x0F
-	add	a,_lcd_count
-	jnc	00102$
-	C$lab5.c$106$3$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:106: new_lcd = 1;
-	mov	_new_lcd,#0x01
-	C$lab5.c$107$3$128 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:107: lcd_count = 0;
-	mov	_lcd_count,#0x00
-00102$:
-	C$lab5.c$109$2$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:109: PCA0L = PCA_START;
+	clr	a
+	cjne	a,_count,00109$
+	inc	(_count + 1)
+00109$:
+	C$lab5.c$123$2$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:123: PCA0L = PCA_START;
 	mov	_PCA0L,#0x00
-	C$lab5.c$110$2$127 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:110: PCA0H = PCA_START >> 8;
+	C$lab5.c$124$2$126 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:124: PCA0H = PCA_START >> 8;
 	mov	_PCA0H,#0x70
-00104$:
-	C$lab5.c$113$1$126 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:113: PCA0CN &= 0xC0;
+00102$:
+	C$lab5.c$127$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:127: PCA0CN &= 0xC0;
 	anl	_PCA0CN,#0xC0
 	pop	psw
 	pop	acc
-	C$lab5.c$114$1$126 ==.
+	C$lab5.c$128$1$125 ==.
 	XG$PCA_ISR$0$0 ==.
 	reti
 ;	eliminated unneeded mov psw,# (no regs used in bank)
@@ -2484,49 +2622,46 @@ _PCA_ISR:
 ;old_count                 Allocated to registers r6 r7 
 ;------------------------------------------------------------
 	G$wait$0$0 ==.
-	C$lab5.c$116$1$126 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:116: void wait(void)
+	C$lab5.c$130$1$125 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:130: void wait(void)
 ;	-----------------------------------------
 ;	 function wait
 ;	-----------------------------------------
 _wait:
-	C$lab5.c$118$1$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:118: int old_count = count+1;
-	mov	r6,_count
-	mov	r7,#0x00
-	inc	r6
-	cjne	r6,#0x00,00109$
-	inc	r7
-00109$:
-	C$lab5.c$119$1$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:119: while (old_count> count);
+	C$lab5.c$132$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:132: int old_count = count+1;
+	mov	a,#0x01
+	add	a,_count
+	mov	r6,a
+	clr	a
+	addc	a,(_count + 1)
+	mov	r7,a
+	C$lab5.c$133$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:133: while (old_count> count);
 00101$:
-	mov	r4,_count
-	mov	r5,#0x00
+	mov	ar4,r6
+	mov	ar5,r7
 	clr	c
-	mov	a,r4
-	subb	a,r6
-	mov	a,r5
-	xrl	a,#0x80
-	mov	b,r7
-	xrl	b,#0x80
-	subb	a,b
+	mov	a,_count
+	subb	a,r4
+	mov	a,(_count + 1)
+	subb	a,r5
 	jc	00101$
-	C$lab5.c$120$1$130 ==.
+	C$lab5.c$134$1$128 ==.
 	XG$wait$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'start'
 ;------------------------------------------------------------
 	G$start$0$0 ==.
-	C$lab5.c$122$1$130 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:122: void start(void)            ///WAITS UNTIL '*' IS ENTERED
+	C$lab5.c$136$1$128 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:136: void start(void)            ///WAITS UNTIL '*' IS ENTERED
 ;	-----------------------------------------
 ;	 function start
 ;	-----------------------------------------
 _start:
-	C$lab5.c$124$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:124: while (read_keypad() != '*') wait();
+	C$lab5.c$138$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:138: while (read_keypad() != '*') wait();
 00101$:
 	lcall	_read_keypad
 	mov	r7,dpl
@@ -2536,27 +2671,27 @@ _start:
 	lcall	_wait
 	sjmp	00101$
 00104$:
-	C$lab5.c$125$1$132 ==.
+	C$lab5.c$139$1$130 ==.
 	XG$start$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'set_gains'
 ;------------------------------------------------------------
 	G$set_gains$0$0 ==.
-	C$lab5.c$127$1$132 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:127: void set_gains(void)
+	C$lab5.c$141$1$130 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:141: void set_gains(void)
 ;	-----------------------------------------
 ;	 function set_gains
 ;	-----------------------------------------
 _set_gains:
-	C$lab5.c$129$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:129: lcd_clear();
+	C$lab5.c$143$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:143: lcd_clear();
 	lcall	_lcd_clear
-	C$lab5.c$130$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:130: lcd_print("Please enter a ks value:\n ");
-	mov	a,#___str_3
+	C$lab5.c$144$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:144: lcd_print("Please enter a ks value:\n ");
+	mov	a,#___str_6
 	push	acc
-	mov	a,#(___str_3 >> 8)
+	mov	a,#(___str_6 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
@@ -2564,20 +2699,20 @@ _set_gains:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab5.c$131$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:131: ks = kpd_input(0);
+	C$lab5.c$145$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:145: ks = kpd_input(0);
 	mov	dpl,#0x00
 	lcall	_kpd_input
 	mov	r6,dpl
 	mov	_ks,r6
-	C$lab5.c$132$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:132: lcd_clear();
+	C$lab5.c$146$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:146: lcd_clear();
 	lcall	_lcd_clear
-	C$lab5.c$133$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:133: lcd_print("Please enter a kdx value:\n ");
-	mov	a,#___str_4
+	C$lab5.c$147$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:147: lcd_print("Please enter a kdx value:\n ");
+	mov	a,#___str_7
 	push	acc
-	mov	a,#(___str_4 >> 8)
+	mov	a,#(___str_7 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
@@ -2585,20 +2720,20 @@ _set_gains:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab5.c$134$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:134: kdx = kpd_input(0);
+	C$lab5.c$148$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:148: kdx = kpd_input(0);
 	mov	dpl,#0x00
 	lcall	_kpd_input
 	mov	r6,dpl
 	mov	_kdx,r6
-	C$lab5.c$135$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:135: lcd_clear();
+	C$lab5.c$149$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:149: lcd_clear();
 	lcall	_lcd_clear
-	C$lab5.c$136$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:136: lcd_print("Please enter a kdy value:\n ");
-	mov	a,#___str_5
+	C$lab5.c$150$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:150: lcd_print("Please enter a kdy value:\n ");
+	mov	a,#___str_8
 	push	acc
-	mov	a,#(___str_5 >> 8)
+	mov	a,#(___str_8 >> 8)
 	push	acc
 	mov	a,#0x80
 	push	acc
@@ -2606,51 +2741,72 @@ _set_gains:
 	dec	sp
 	dec	sp
 	dec	sp
-	C$lab5.c$137$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:137: kdy = kpd_input(0);
+	C$lab5.c$151$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:151: kdy = kpd_input(0);
 	mov	dpl,#0x00
 	lcall	_kpd_input
 	mov	r6,dpl
 	mov	_kdy,r6
-	C$lab5.c$138$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:138: lcd_clear();
+	C$lab5.c$152$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:152: lcd_clear();
 	lcall	_lcd_clear
-	C$lab5.c$139$1$134 ==.
+	C$lab5.c$153$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:153: lcd_print("Please enter a ki value:\n ");	
+	mov	a,#___str_9
+	push	acc
+	mov	a,#(___str_9 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_lcd_print
+	dec	sp
+	dec	sp
+	dec	sp
+	C$lab5.c$154$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:154: ki  = kpd_input(0);
+	mov	dpl,#0x00
+	lcall	_kpd_input
+	mov	r6,dpl
+	mov	_ki,r6
+	C$lab5.c$155$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:155: lcd_clear();
+	lcall	_lcd_clear
+	C$lab5.c$156$1$132 ==.
 	XG$set_gains$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'XBR0_Init'
 ;------------------------------------------------------------
 	G$XBR0_Init$0$0 ==.
-	C$lab5.c$141$1$134 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:141: void XBR0_Init(void)
+	C$lab5.c$158$1$132 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:158: void XBR0_Init(void)
 ;	-----------------------------------------
 ;	 function XBR0_Init
 ;	-----------------------------------------
 _XBR0_Init:
-	C$lab5.c$143$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:143: XBR0 = 0x17;
+	C$lab5.c$160$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:160: XBR0 = 0x17;
 	mov	_XBR0,#0x17
-	C$lab5.c$144$1$136 ==.
+	C$lab5.c$161$1$134 ==.
 	XG$XBR0_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'SMB_Init'
 ;------------------------------------------------------------
 	G$SMB_Init$0$0 ==.
-	C$lab5.c$146$1$136 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:146: void SMB_Init(void)
+	C$lab5.c$163$1$134 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:163: void SMB_Init(void)
 ;	-----------------------------------------
 ;	 function SMB_Init
 ;	-----------------------------------------
 _SMB_Init:
-	C$lab5.c$148$1$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:148: SMB0CR =0x93;
+	C$lab5.c$165$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:165: SMB0CR =0x93;
 	mov	_SMB0CR,#0x93
-	C$lab5.c$149$1$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:149: ENSMB =1;
+	C$lab5.c$166$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:166: ENSMB =1;
 	setb	_ENSMB
-	C$lab5.c$150$1$138 ==.
+	C$lab5.c$167$1$136 ==.
 	XG$SMB_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
@@ -2664,23 +2820,23 @@ _SMB_Init:
 ;input                     Allocated to registers r3 
 ;------------------------------------------------------------
 	G$Update_Value$0$0 ==.
-	C$lab5.c$152$1$138 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:152: void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
+	C$lab5.c$169$1$136 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:169: void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
 ;	-----------------------------------------
 ;	 function Update_Value
 ;	-----------------------------------------
 _Update_Value:
 	mov	r6,dpl
 	mov	r7,dph
-	C$lab5.c$158$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:158: deflt = Constant;
+	C$lab5.c$175$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:175: deflt = Constant;
 	mov	ar4,r6
 	mov	ar5,r7
-	C$lab5.c$159$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:159: while(1)
+	C$lab5.c$176$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:176: while(1)
 00114$:
-	C$lab5.c$161$2$141 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:161: input = getchar();
+	C$lab5.c$178$2$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:178: input = getchar();
 	push	ar7
 	push	ar6
 	push	ar5
@@ -2691,17 +2847,17 @@ _Update_Value:
 	pop	ar5
 	pop	ar6
 	pop	ar7
-	C$lab5.c$162$2$141 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:162: if (input == 'c') Constant = deflt;
+	C$lab5.c$179$2$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:179: if (input == 'c') Constant = deflt;
 	cjne	r3,#0x63,00102$
 	mov	ar6,r4
 	mov	ar7,r5
 00102$:
-	C$lab5.c$163$2$141 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:163: if (input == 'i')
+	C$lab5.c$180$2$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:180: if (input == 'i')
 	cjne	r3,#0x69,00106$
-	C$lab5.c$165$3$142 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:165: Constant += incr;
+	C$lab5.c$182$3$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:182: Constant += incr;
 	mov	r1,_Update_Value_PARM_2
 	mov	r2,#0x00
 	mov	a,r1
@@ -2710,8 +2866,8 @@ _Update_Value:
 	mov	a,r2
 	addc	a,r7
 	mov	r7,a
-	C$lab5.c$166$3$142 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:166: if (Constant > maxval) Constant = maxval;
+	C$lab5.c$183$3$140 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:183: if (Constant > maxval) Constant = maxval;
 	clr	c
 	mov	a,_Update_Value_PARM_3
 	subb	a,r6
@@ -2724,11 +2880,11 @@ _Update_Value:
 	mov	r6,_Update_Value_PARM_3
 	mov	r7,(_Update_Value_PARM_3 + 1)
 00106$:
-	C$lab5.c$168$2$141 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:168: if (input == 'd')
+	C$lab5.c$185$2$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:185: if (input == 'd')
 	cjne	r3,#0x64,00110$
-	C$lab5.c$170$3$143 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:170: Constant -= incr;
+	C$lab5.c$187$3$141 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:187: Constant -= incr;
 	mov	r1,_Update_Value_PARM_2
 	mov	r2,#0x00
 	mov	a,r6
@@ -2738,8 +2894,8 @@ _Update_Value:
 	mov	a,r7
 	subb	a,r2
 	mov	r7,a
-	C$lab5.c$171$3$143 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:171: if (Constant < minval) Constant = minval;
+	C$lab5.c$188$3$141 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:188: if (Constant < minval) Constant = minval;
 	clr	c
 	mov	a,r6
 	subb	a,_Update_Value_PARM_4
@@ -2752,117 +2908,423 @@ _Update_Value:
 	mov	r6,_Update_Value_PARM_4
 	mov	r7,(_Update_Value_PARM_4 + 1)
 00110$:
-	C$lab5.c$173$2$141 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:173: if (input == 'u')
+	C$lab5.c$190$2$139 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:190: if (input == 'u')
 	cjne	r3,#0x75,00114$
-	C$lab5.c$175$3$144 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:175: return;
-	C$lab5.c$178$1$140 ==.
+	C$lab5.c$192$3$142 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:192: return;
+	C$lab5.c$195$1$138 ==.
 	XG$Update_Value$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'read_accels'
 ;------------------------------------------------------------
+;Data                      Allocated with name '_read_accels_Data_1_144'
+;avg_gx                    Allocated with name '_read_accels_avg_gx_1_144'
+;avg_gy                    Allocated to registers r3 r4 
+;i                         Allocated to registers 
+;------------------------------------------------------------
 	G$read_accels$0$0 ==.
-	C$lab5.c$180$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:180: void read_accels(void)
+	C$lab5.c$197$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:197: void read_accels(void)
 ;	-----------------------------------------
 ;	 function read_accels
 ;	-----------------------------------------
 _read_accels:
-	C$lab5.c$183$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:183: }
-	C$lab5.c$183$1$140 ==.
+	C$lab5.c$201$1$138 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:201: char i =0;
+	C$lab5.c$202$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:202: avg_gy=avg_gx=0;
+	clr	a
+	mov	r7,a
+	mov	_read_accels_avg_gx_1_144,a
+	mov	(_read_accels_avg_gx_1_144 + 1),a
+	mov	r3,a
+	mov	r4,a
+	C$lab5.c$203$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:203: gx=gy=0;
+	mov	_gy,a
+	mov	(_gy + 1),a
+	mov	_gx,a
+	mov	(_gx + 1),a
+00105$:
+	C$lab5.c$204$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:204: for (; i < 12; i++)
+	clr	c
+	mov	a,r7
+	xrl	a,#0x80
+	subb	a,#0x8c
+	jc	00119$
+	ljmp	00103$
+00119$:
+	C$lab5.c$206$2$145 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:206: wait();
+	push	ar7
+	push	ar4
+	push	ar3
+	lcall	_wait
+	C$lab5.c$207$2$145 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:207: i2c_read_data(0x30,0x27,Data,1);
+	mov	_i2c_read_data_PARM_3,#_read_accels_Data_1_144
+	mov	(_i2c_read_data_PARM_3 + 1),#0x00
+	mov	(_i2c_read_data_PARM_3 + 2),#0x40
+	mov	_i2c_read_data_PARM_2,#0x27
+	mov	_i2c_read_data_PARM_4,#0x01
+	mov	dpl,#0x30
+	lcall	_i2c_read_data
+	pop	ar3
+	pop	ar4
+	pop	ar7
+	C$lab5.c$208$2$145 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:208: if (Data[0] & 0x03 == 0x03)
+	mov	a,_read_accels_Data_1_144
+	jnb	acc.0,00106$
+	C$lab5.c$210$3$146 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:210: i2c_read_data(0x30,0x28|0x80,Data,4);
+	mov	_i2c_read_data_PARM_3,#_read_accels_Data_1_144
+	mov	(_i2c_read_data_PARM_3 + 1),#0x00
+	mov	(_i2c_read_data_PARM_3 + 2),#0x40
+	mov	_i2c_read_data_PARM_2,#0xA8
+	mov	_i2c_read_data_PARM_4,#0x04
+	mov	dpl,#0x30
+	push	ar7
+	push	ar4
+	push	ar3
+	lcall	_i2c_read_data
+	pop	ar3
+	pop	ar4
+	pop	ar7
+	C$lab5.c$211$3$146 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:211: avg_gx += ((Data[1] << 8) >> 4);
+	mov	r2,(_read_accels_Data_1_144 + 0x0001)
+	mov	a,(_read_accels_Data_1_144 + 0x0001)
+	rlc	a
+	subb	a,acc
+	mov	ar6,r2
+	mov	r2,#0x00
+	mov	a,r6
+	swap	a
+	xch	a,r2
+	swap	a
+	anl	a,#0x0F
+	xrl	a,r2
+	xch	a,r2
+	anl	a,#0x0F
+	xch	a,r2
+	xrl	a,r2
+	xch	a,r2
+	jnb	acc.3,00121$
+	orl	a,#0xF0
+00121$:
+	mov	r6,a
+	mov	a,r2
+	add	a,_read_accels_avg_gx_1_144
+	mov	_read_accels_avg_gx_1_144,a
+	mov	a,r6
+	addc	a,(_read_accels_avg_gx_1_144 + 1)
+	mov	(_read_accels_avg_gx_1_144 + 1),a
+	C$lab5.c$212$3$146 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:212: avg_gy += ((Data[3] << 8) >> 4);
+	mov	r5,(_read_accels_Data_1_144 + 0x0003)
+	mov	a,(_read_accels_Data_1_144 + 0x0003)
+	rlc	a
+	subb	a,acc
+	mov	ar6,r5
+	mov	r5,#0x00
+	mov	a,r6
+	swap	a
+	xch	a,r5
+	swap	a
+	anl	a,#0x0F
+	xrl	a,r5
+	xch	a,r5
+	anl	a,#0x0F
+	xch	a,r5
+	xrl	a,r5
+	xch	a,r5
+	jnb	acc.3,00122$
+	orl	a,#0xF0
+00122$:
+	mov	r6,a
+	mov	a,r5
+	add	a,r3
+	mov	r3,a
+	mov	a,r6
+	addc	a,r4
+	mov	r4,a
+00106$:
+	C$lab5.c$204$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:204: for (; i < 12; i++)
+	inc	r7
+	ljmp	00105$
+00103$:
+	C$lab5.c$215$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:215: avg_gy= avg_gy/12;
+	mov	__divsint_PARM_2,#0x0C
+	mov	(__divsint_PARM_2 + 1),#0x00
+	mov	dpl,r3
+	mov	dph,r4
+	lcall	__divsint
+	mov	r3,dpl
+	mov	r4,dph
+	C$lab5.c$216$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:216: avg_gx= avg_gx/12;
+	mov	__divsint_PARM_2,#0x0C
+	mov	(__divsint_PARM_2 + 1),#0x00
+	mov	dpl,_read_accels_avg_gx_1_144
+	mov	dph,(_read_accels_avg_gx_1_144 + 1)
+	push	ar4
+	push	ar3
+	lcall	__divsint
+	mov	_gx,dpl
+	mov	(_gx + 1),dph
+	pop	ar3
+	pop	ar4
+	C$lab5.c$218$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:218: gy = avg_gy;
+	mov	_gy,r3
+	mov	(_gy + 1),r4
+	C$lab5.c$221$1$144 ==.
 	XG$read_accels$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'set_servo_PWM'
 ;------------------------------------------------------------
 	G$set_servo_PWM$0$0 ==.
-	C$lab5.c$185$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:185: void set_servo_PWM(void)
+	C$lab5.c$223$1$144 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:223: void set_servo_PWM(void)
 ;	-----------------------------------------
 ;	 function set_servo_PWM
 ;	-----------------------------------------
 _set_servo_PWM:
-	C$lab5.c$188$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:188: }
-	C$lab5.c$188$1$140 ==.
+	C$lab5.c$225$1$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:225: STR_PW = PW_CENTER - ks  * gx;
+	mov	r6,_ks
+	mov	r7,#0x00
+	mov	__mulint_PARM_2,_gx
+	mov	(__mulint_PARM_2 + 1),(_gx + 1)
+	mov	dpl,r6
+	mov	dph,r7
+	lcall	__mulint
+	mov	r6,dpl
+	mov	r7,dph
+	mov	a,_PW_CENTER
+	clr	c
+	subb	a,r6
+	mov	_STR_PW,a
+	mov	a,(_PW_CENTER + 1)
+	subb	a,r7
+	mov	(_STR_PW + 1),a
+	C$lab5.c$226$1$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:226: if (STR_PW < PW_LEFT) STR_PW = PW_LEFT;
+	clr	c
+	mov	a,_STR_PW
+	subb	a,_PW_LEFT
+	mov	a,(_STR_PW + 1)
+	subb	a,(_PW_LEFT + 1)
+	jnc	00102$
+	mov	_STR_PW,_PW_LEFT
+	mov	(_STR_PW + 1),(_PW_LEFT + 1)
+00102$:
+	C$lab5.c$227$1$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:227: if (STR_PW > PW_RIGHT) STR_PW = PW_RIGHT;
+	clr	c
+	mov	a,_PW_RIGHT
+	subb	a,_STR_PW
+	mov	a,(_PW_RIGHT + 1)
+	subb	a,(_STR_PW + 1)
+	jnc	00104$
+	mov	_STR_PW,_PW_RIGHT
+	mov	(_STR_PW + 1),(_PW_RIGHT + 1)
+00104$:
+	C$lab5.c$228$1$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:228: PCA0CP1 = 0xFFFF - STR_PW;
+	mov	a,#0xFF
+	clr	c
+	subb	a,_STR_PW
+	mov	((_PCA0CP1 >> 0) & 0xFF),a
+	mov	a,#0xFF
+	subb	a,(_STR_PW + 1)
+	mov	((_PCA0CP1 >> 8) & 0xFF),a
+	C$lab5.c$229$1$148 ==.
 	XG$set_servo_PWM$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'PCA_Init'
 ;------------------------------------------------------------
 	G$PCA_Init$0$0 ==.
-	C$lab5.c$190$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:190: void PCA_Init(void)
+	C$lab5.c$231$1$148 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:231: void PCA_Init(void)
 ;	-----------------------------------------
 ;	 function PCA_Init
 ;	-----------------------------------------
 _PCA_Init:
-	C$lab5.c$193$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:193: }
-	C$lab5.c$193$1$140 ==.
+	C$lab5.c$233$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:233: PCA0MD = 0x81;
+	mov	_PCA0MD,#0x81
+	C$lab5.c$234$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:234: PCA0CPM0 = 0xC2;
+	mov	_PCA0CPM0,#0xC2
+	C$lab5.c$235$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:235: PCA0CPM1 = 0xC2;
+	mov	_PCA0CPM1,#0xC2
+	C$lab5.c$236$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:236: PCA0CN 	= 0x40;      //Enable PCA counter
+	mov	_PCA0CN,#0x40
+	C$lab5.c$237$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:237: EIE1 |= 0x08;       //Enable PCA interrupt
+	orl	_EIE1,#0x08
+	C$lab5.c$238$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:238: EA = 1;             //Enable global interrupts
+	setb	_EA
+	C$lab5.c$241$1$150 ==.
 	XG$PCA_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'updateLCD'
 ;------------------------------------------------------------
 	G$updateLCD$0$0 ==.
-	C$lab5.c$195$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:195: void updateLCD(void)
+	C$lab5.c$243$1$150 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:243: void updateLCD(void)
 ;	-----------------------------------------
 ;	 function updateLCD
 ;	-----------------------------------------
 _updateLCD:
-	C$lab5.c$198$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:198: }
-	C$lab5.c$198$1$140 ==.
+	C$lab5.c$245$1$152 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:245: lcd_clear();
+	lcall	_lcd_clear
+	C$lab5.c$246$1$152 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:246: lcd_print("ks: %u kdx: %u\rkdy: %u\rMpw: %u\rSpw: %u",ks,kdx,kdy,DRV_PW,STR_PW);
+	mov	r6,_kdy
+	mov	r7,#0x00
+	mov	r4,_kdx
+	mov	r5,#0x00
+	mov	r2,_ks
+	mov	r3,#0x00
+	push	_STR_PW
+	push	(_STR_PW + 1)
+	push	_DRV_PW
+	push	(_DRV_PW + 1)
+	push	ar6
+	push	ar7
+	push	ar4
+	push	ar5
+	push	ar2
+	push	ar3
+	mov	a,#___str_10
+	push	acc
+	mov	a,#(___str_10 >> 8)
+	push	acc
+	mov	a,#0x80
+	push	acc
+	lcall	_lcd_print
+	mov	a,sp
+	add	a,#0xf3
+	mov	sp,a
+	C$lab5.c$247$1$152 ==.
 	XG$updateLCD$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'set_drive_PWM'
 ;------------------------------------------------------------
 	G$set_drive_PWM$0$0 ==.
-	C$lab5.c$200$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:200: void set_drive_PWM(void)
+	C$lab5.c$249$1$152 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:249: void set_drive_PWM(void)
 ;	-----------------------------------------
 ;	 function set_drive_PWM
 ;	-----------------------------------------
 _set_drive_PWM:
-	C$lab5.c$203$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:203: }
-	C$lab5.c$203$1$140 ==.
+	C$lab5.c$251$1$154 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:251: DRV_PW = SERVO_PW + kdy * gy;
+	mov	r6,_kdy
+	mov	r7,#0x00
+	mov	__mulint_PARM_2,_gy
+	mov	(__mulint_PARM_2 + 1),(_gy + 1)
+	mov	dpl,r6
+	mov	dph,r7
+	lcall	__mulint
+	mov	r6,dpl
+	mov	r7,dph
+	mov	a,r6
+	add	a,_SERVO_PW
+	mov	_DRV_PW,a
+	mov	a,r7
+	addc	a,(_SERVO_PW + 1)
+	mov	(_DRV_PW + 1),a
+	C$lab5.c$252$1$154 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:252: DRV_PW += kdx * abs(gx); + ki * error_sum;
+	mov	dpl,_gx
+	mov	dph,(_gx + 1)
+	lcall	_abs
+	mov	__mulint_PARM_2,dpl
+	mov	(__mulint_PARM_2 + 1),dph
+	mov	r6,_kdx
+	mov	r7,#0x00
+	mov	dpl,r6
+	mov	dph,r7
+	lcall	__mulint
+	mov	r6,dpl
+	mov	r7,dph
+	mov	a,r6
+	add	a,_DRV_PW
+	mov	_DRV_PW,a
+	mov	a,r7
+	addc	a,(_DRV_PW + 1)
+	mov	(_DRV_PW + 1),a
+	C$lab5.c$253$1$154 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:253: error_sum += gy + abs(gx);
+	mov	dpl,_gx
+	mov	dph,(_gx + 1)
+	lcall	_abs
+	mov	r6,dpl
+	mov	r7,dph
+	mov	a,r6
+	add	a,_gy
+	mov	r6,a
+	mov	a,r7
+	addc	a,(_gy + 1)
+	mov	r7,a
+	mov	a,r6
+	add	a,_error_sum
+	mov	_error_sum,a
+	mov	a,r7
+	addc	a,(_error_sum + 1)
+	mov	(_error_sum + 1),a
+	C$lab5.c$255$1$154 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:255: PCA0CP0 = 0xFFFF - DRV_PW;
+	mov	a,#0xFF
+	clr	c
+	subb	a,_DRV_PW
+	mov	((_PCA0CP0 >> 0) & 0xFF),a
+	mov	a,#0xFF
+	subb	a,(_DRV_PW + 1)
+	mov	((_PCA0CP0 >> 8) & 0xFF),a
+	C$lab5.c$256$1$154 ==.
 	XG$set_drive_PWM$0$0 ==.
-	ret
-;------------------------------------------------------------
-;Allocation info for local variables in function 'Interrupt_Init'
-;------------------------------------------------------------
-	G$Interrupt_Init$0$0 ==.
-	C$lab5.c$205$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:205: void Interrupt_Init(void)
-;	-----------------------------------------
-;	 function Interrupt_Init
-;	-----------------------------------------
-_Interrupt_Init:
-	C$lab5.c$208$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:208: }
-	C$lab5.c$208$1$140 ==.
-	XG$Interrupt_Init$0$0 ==.
 	ret
 ;------------------------------------------------------------
 ;Allocation info for local variables in function 'Port_Init'
 ;------------------------------------------------------------
 	G$Port_Init$0$0 ==.
-	C$lab5.c$210$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:210: void Port_Init(void)
+	C$lab5.c$260$1$154 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:260: void Port_Init(void)
 ;	-----------------------------------------
 ;	 function Port_Init
 ;	-----------------------------------------
 _Port_Init:
-	C$lab5.c$213$1$140 ==.
-;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:213: }
-	C$lab5.c$213$1$140 ==.
+	C$lab5.c$262$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:262: P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
+	orl	_P1MDOUT,#0x03
+	C$lab5.c$265$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:265: P3MDOUT &= ~0x40;
+	mov	r7,_P3MDOUT
+	mov	a,#0xBF
+	anl	a,r7
+	mov	_P3MDOUT,a
+	C$lab5.c$266$1$156 ==.
+;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:266: P3 = 0x40;
+	mov	_P3,#0x40
+	C$lab5.c$267$1$156 ==.
 	XG$Port_Init$0$0 ==.
 	ret
 	.area CSEG    (CODE)
@@ -2882,21 +3344,58 @@ ___str_2:
 	.db 0x00
 Flab5$__str_3$0$0 == .
 ___str_3:
+	.db 0x0D
+	.db 0x0A
+	.ascii "GO!"
+	.db 0x00
+Flab5$__str_4$0$0 == .
+___str_4:
+	.db 0x0D
+	.db 0x0A
+	.ascii "%d"
+	.db 0x00
+Flab5$__str_5$0$0 == .
+___str_5:
+	.db 0x0D
+	.db 0x0A
+	.db 0x09
+	.ascii "%d,"
+	.db 0x09
+	.ascii "%d"
+	.db 0x00
+Flab5$__str_6$0$0 == .
+___str_6:
 	.ascii "Please enter a ks value:"
 	.db 0x0A
 	.ascii " "
 	.db 0x00
-Flab5$__str_4$0$0 == .
-___str_4:
+Flab5$__str_7$0$0 == .
+___str_7:
 	.ascii "Please enter a kdx value:"
 	.db 0x0A
 	.ascii " "
 	.db 0x00
-Flab5$__str_5$0$0 == .
-___str_5:
+Flab5$__str_8$0$0 == .
+___str_8:
 	.ascii "Please enter a kdy value:"
 	.db 0x0A
 	.ascii " "
+	.db 0x00
+Flab5$__str_9$0$0 == .
+___str_9:
+	.ascii "Please enter a ki value:"
+	.db 0x0A
+	.ascii " "
+	.db 0x00
+Flab5$__str_10$0$0 == .
+___str_10:
+	.ascii "ks: %u kdx: %u"
+	.db 0x0D
+	.ascii "kdy: %u"
+	.db 0x0D
+	.ascii "Mpw: %u"
+	.db 0x0D
+	.ascii "Spw: %u"
 	.db 0x00
 	.area XINIT   (CODE)
 	.area CABS    (ABS,CODE)

@@ -1,7 +1,7 @@
 ;--------------------------------------------------------
 ; File Created by SDCC : free open source ANSI-C Compiler
 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-; This file was generated Fri Apr 17 09:04:17 2015
+; This file was generated Thu May 07 20:41:28 2015
 ;--------------------------------------------------------
 	.module lab3_1steering
 	.optsdcc -mmcs51 --model-small
@@ -1356,15 +1356,15 @@ _Steering_Servo:
 	C$lab3_1steering.c$115$2$40 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:115: if(STR_PW<= PW_MIN_STR)  // check if less than pulsewidth minimum
 	clr	c
-	mov	a,#0xBB
+	mov	a,#0xD0
 	subb	a,_STR_PW
-	mov	a,#0x08
+	mov	a,#0x07
 	subb	a,(_STR_PW + 1)
 	jc	00102$
 	C$lab3_1steering.c$117$3$41 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:117: STR_PW= PW_MIN_STR;    // set SERVO_PW to a minimum value
-	mov	_STR_PW,#0xBB
-	mov	(_STR_PW + 1),#0x08
+	mov	_STR_PW,#0xD0
+	mov	(_STR_PW + 1),#0x07
 	sjmp	00111$
 00102$:
 	C$lab3_1steering.c$121$3$42 ==.
@@ -1384,14 +1384,14 @@ _Steering_Servo:
 	C$lab3_1steering.c$128$2$43 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:128: if(STR_PW> PW_MAX_STR)  // check if pulsewidth maximum exceeded
 	clr	c
-	mov	a,#0xF3
+	mov	a,#0x71
 	subb	a,_STR_PW
 	mov	a,#0x0C
 	subb	a,(_STR_PW + 1)
 	jnc	00105$
 	C$lab3_1steering.c$130$3$44 ==.
 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab3-1\lab3-1steering.c:130: STR_PW= PW_MAX_STR;     // set STR_PW to a maximum value
-	mov	_STR_PW,#0xF3
+	mov	_STR_PW,#0x71
 	mov	(_STR_PW + 1),#0x0C
 	sjmp	00111$
 00105$:
