@@ -38,26 +38,29 @@ void updateLCD(void);
 void set_gains(void); // function which allow operator to set feedback gains
 void Update_Value(int Constant, unsigned char incr, int maxval, int minval);
 void read_accels(void);
-//define global variables
-unsigned int PW_CENTER = 2675;
-unsigned int PW_RIGHT = 3175;
-unsigned int PW_LEFT = 2135;
-unsigned int SERVO_PW = 2765;
-unsigned int SERVO_MAX= 3503;
-unsigned int SERVO_MIN= 2028;
-unsigned int DRV_PW;
-unsigned int STR_PW;
+
+//-----------------------------------------------------------------------------
+// Global Variables
+//-----------------------------------------------------------------------------
+unsigned int PW_CENTER = 2675; //pw to steer straight 
+unsigned int PW_RIGHT = 3175;  //pw to steer right
+unsigned int PW_LEFT = 2135;   //pw to steer left
+unsigned int SERVO_PW = 2765;  //neutral drive pw
+unsigned int SERVO_MAX= 3503;  //max forward speed pw
+unsigned int SERVO_MIN= 2028;  //max reverse speed pw
+unsigned int DRV_PW;           //variable pulsewidth to control speed
+unsigned int STR_PW;           //variable pulsewidth to controll steering
 unsigned char new_accels = 0; // flag for count of accel timing
-unsigned char new_lcd = 0; // flag for count of LCD timing
+unsigned char new_lcd = 0;    // flag for count of LCD timing
 unsigned int range;
-unsigned int count; // overflow count for acceleration
+unsigned int count;           // overflow count for acceleration
 unsigned char ks, kdy,kdx, ki;
 		 int gx,gy;
 		 char xoff,yoff;
 unsigned char run_stop; // define local variables
 		 int error_sum;
 
-__sbit __at 0xB6 run;
+__sbit __at 0xB6 run;         // sbit linked to slide switch
 
 //-----------------------------------------------------------------------------
 // Main Function
@@ -107,63 +110,25 @@ void main(void)
 		}
 	}
 }
+
 //-----------------------------------------------------------------------------
-// PCA_ISR
+// Control Functions
 //-----------------------------------------------------------------------------
-//
-// Interrupt Service Routine for Programmable Counter Array Overflow Interrupt
-//
-
-void PCA_ISR ( void ) __interrupt 9
-{
-	if (CF)
-	{
-		CF = 0; // clear overflow indicator
-		count++;
-		PCA0L = PCA_START;
-		PCA0H = PCA_START >> 8;
-	}
-	// handle other PCA interrupt sources
-	PCA0CN &= 0xC0;
-}
-
-void wait(void)
-{
-	int old_count = count+1;
-	while (old_count> count);
-}
-
-void start(void)            ///WAITS UNTIL '*' IS ENTERED
-{
-	while (read_keypad() != '*') wait();
-}
-
 void set_gains(void)
 {
 	lcd_clear();
-	lcd_print("Please enter a ks value:\n ");
-	ks = kpd_input(0);
+	lcd_print("Please enter a ks value:\n "); 
+	ks = kpd_input(0);    //prompts and stores vale for ks gain
 	lcd_clear();
 	lcd_print("Please enter a kdx value:\n ");
-	kdx = kpd_input(0);
+	kdx = kpd_input(0);   //prompts and stores value for kdx gain
 	lcd_clear();
 	lcd_print("Please enter a kdy value:\n ");
-	kdy = kpd_input(0);
+	kdy = kpd_input(0);   //promts and stores value for kdy gain
 	lcd_clear();
 	lcd_print("Please enter a ki value:\n ");	
-	ki  = kpd_input(0);
+	ki  = kpd_input(0);   //prompts and stores value for ki gain
 	lcd_clear();
-}
-
-void XBR0_Init(void)
-{
-	XBR0 = 0x17;
-}
-
-void SMB_Init(void)
-{
-	SMB0CR =0x93;
-	ENSMB =1;
 }
 
 void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
@@ -220,14 +185,46 @@ void read_accels(void)
 
 }
 
+void set_drive_PWM(void)
+{
+	DRV_PW = SERVO_PW + kdy * gy;       //sets the pulsewidth of the drive motor
+	DRV_PW += kdx * abs(gx); + ki * error_sum; //ensures that the drive pulsewidth is 
+	error_sum += gy + abs(gx);                 //not bigger/smaller than max/min value   
+
+	PCA0CP0 = 0xFFFF - DRV_PW;      //sets capture compare module value  
+}
+
 void set_servo_PWM(void)
 {
-	STR_PW = PW_CENTER - ks  * gx;
-	if (STR_PW < PW_LEFT) STR_PW = PW_LEFT;
-	if (STR_PW > PW_RIGHT) STR_PW = PW_RIGHT;
+	STR_PW = PW_CENTER - ks  * gx;      //sets the pulsewidth of the steering servo
+	if (STR_PW < PW_LEFT) STR_PW = PW_LEFT;   //ensures that the steering pulsewith is
+	if (STR_PW > PW_RIGHT) STR_PW = PW_RIGHT; //not bigger than max or smaller than min values
 	PCA0CP1 = 0xFFFF - STR_PW;
 }
 
+
+
+void updateLCD(void)
+{
+	lcd_clear();
+	lcd_print("ks: %u, kdx: %u, kdy: %u\nMpw: %u, Spw: %u\n"); //prints values
+	                   //for ks, kdx, kdy gains and motor and steering pulsewidth
+}
+
+void wait(void)
+{
+	int old_count = count+1;
+	while (old_count> count);
+}
+
+void start(void)            ///WAITS UNTIL '*' IS ENTERED
+{
+	while (read_keypad() != '*') wait();
+}
+.
+//-----------------------------------------------------------------------------
+// Initialization and ISR Functions
+//-----------------------------------------------------------------------------
 void PCA_Init(void)
 {
 	PCA0MD = 0x81;
@@ -240,28 +237,34 @@ void PCA_Init(void)
 
 }
 
-void updateLCD(void)
-{
-	lcd_clear();
-	lcd_print("ks: %u, kdx: %u, kdy: %u\nMpw: %u, Spw: %u\n");
-}
-
-void set_drive_PWM(void)
-{
-	DRV_PW = SERVO_PW + kdy * gy;
-	DRV_PW += kdx * abs(gx); + ki * error_sum;
-	error_sum += gy + abs(gx);
-
-	PCA0CP0 = 0xFFFF - DRV_PW;
-}
-
-
-
 void Port_Init(void)
 {
     P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
 
-
 	P3MDOUT &= ~0x40;
 	P3 = 0x40;
+}
+
+void XBR0_Init(void)
+{
+	XBR0 = 0x17;
+}
+
+void SMB_Init(void)
+{
+	SMB0CR =0x93;
+	ENSMB =1;
+}
+
+void PCA_ISR ( void ) __interrupt 9
+{
+	if (CF)
+	{
+		CF = 0; // clear overflow indicator
+		count++;
+		PCA0L = PCA_START;
+		PCA0H = PCA_START >> 8;
+	}
+	// handle other PCA interrupt sources
+	PCA0CN &= 0xC0;
 }
