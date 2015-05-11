@@ -1,7 +1,7 @@
                                       1 ;--------------------------------------------------------
                                       2 ; File Created by SDCC : free open source ANSI-C Compiler
                                       3 ; Version 3.4.0 #8981 (Apr  5 2014) (MINGW32)
-                                      4 ; This file was generated Fri May 08 08:31:24 2015
+                                      4 ; This file was generated Fri May 08 09:29:41 2015
                                       5 ;--------------------------------------------------------
                                       6 	.module lab5
                                       7 	.optsdcc -mmcs51 --model-small
@@ -1148,7 +1148,7 @@
       00003C                       1148 	.ds	7
       000043 32               [24] 1149 	reti
       000044                       1150 	.ds	7
-      00004B 02 06 BE         [24] 1151 	ljmp	_PCA_ISR
+      00004B 02 06 A4         [24] 1151 	ljmp	_PCA_ISR
                                    1152 ;--------------------------------------------------------
                                    1153 ; global & static initialisations
                                    1154 ;--------------------------------------------------------
@@ -1162,35 +1162,35 @@
                                    1162 	.globl __mcs51_genXINIT
                                    1163 	.globl __mcs51_genXRAMCLEAR
                                    1164 	.globl __mcs51_genRAMCLEAR
-                           000000  1165 	C$lab5.c$42$1$156 ==.
-                                   1166 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:42: unsigned int PW_CENTER = 2675;
+                           000000  1165 	C$lab5.c$51$1$156 ==.
+                                   1166 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:51: unsigned int PW_CENTER = 2675;
       0000AA 75 32 73         [24] 1167 	mov	_PW_CENTER,#0x73
       0000AD 75 33 0A         [24] 1168 	mov	(_PW_CENTER + 1),#0x0A
-                           000006  1169 	C$lab5.c$43$1$156 ==.
-                                   1170 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:43: unsigned int PW_RIGHT = 3175;
+                           000006  1169 	C$lab5.c$52$1$156 ==.
+                                   1170 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:52: unsigned int PW_RIGHT = 3175;
       0000B0 75 34 67         [24] 1171 	mov	_PW_RIGHT,#0x67
       0000B3 75 35 0C         [24] 1172 	mov	(_PW_RIGHT + 1),#0x0C
-                           00000C  1173 	C$lab5.c$44$1$156 ==.
-                                   1174 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:44: unsigned int PW_LEFT = 2135;
+                           00000C  1173 	C$lab5.c$53$1$156 ==.
+                                   1174 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:53: unsigned int PW_LEFT = 2135;
       0000B6 75 36 57         [24] 1175 	mov	_PW_LEFT,#0x57
       0000B9 75 37 08         [24] 1176 	mov	(_PW_LEFT + 1),#0x08
-                           000012  1177 	C$lab5.c$45$1$156 ==.
-                                   1178 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:45: unsigned int SERVO_PW = 2765;
+                           000012  1177 	C$lab5.c$54$1$156 ==.
+                                   1178 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:54: unsigned int SERVO_PW = 2765;
       0000BC 75 38 CD         [24] 1179 	mov	_SERVO_PW,#0xCD
       0000BF 75 39 0A         [24] 1180 	mov	(_SERVO_PW + 1),#0x0A
-                           000018  1181 	C$lab5.c$46$1$156 ==.
-                                   1182 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:46: unsigned int SERVO_MAX= 3503;
+                           000018  1181 	C$lab5.c$55$1$156 ==.
+                                   1182 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:55: unsigned int SERVO_MAX= 3503;
       0000C2 75 3A AF         [24] 1183 	mov	_SERVO_MAX,#0xAF
       0000C5 75 3B 0D         [24] 1184 	mov	(_SERVO_MAX + 1),#0x0D
-                           00001E  1185 	C$lab5.c$47$1$156 ==.
-                                   1186 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:47: unsigned int SERVO_MIN= 2028;
+                           00001E  1185 	C$lab5.c$56$1$156 ==.
+                                   1186 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:56: unsigned int SERVO_MIN= 2028;
       0000C8 75 3C EC         [24] 1187 	mov	_SERVO_MIN,#0xEC
       0000CB 75 3D 07         [24] 1188 	mov	(_SERVO_MIN + 1),#0x07
-                           000024  1189 	C$lab5.c$50$1$156 ==.
-                                   1190 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:50: unsigned char new_accels = 0; // flag for count of accel timing
+                           000024  1189 	C$lab5.c$59$1$156 ==.
+                                   1190 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:59: unsigned char new_accels = 0; // flag for count of accel timing
       0000CE 75 42 00         [24] 1191 	mov	_new_accels,#0x00
-                           000027  1192 	C$lab5.c$51$1$156 ==.
-                                   1193 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:51: unsigned char new_lcd = 0; // flag for count of LCD timing
+                           000027  1192 	C$lab5.c$60$1$156 ==.
+                                   1193 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:60: unsigned char new_lcd = 0; // flag for count of LCD timing
       0000D1 75 43 00         [24] 1194 	mov	_new_lcd,#0x00
                                    1195 	.area GSFINAL (CODE)
       0000D4 02 00 4E         [24] 1196 	ljmp	__sdcc_program_startup
@@ -1407,7 +1407,7 @@
       000140 86 83            [24] 1407 	mov	dph,@r0
       000142 08               [12] 1408 	inc	r0
       000143 86 F0            [24] 1409 	mov	b,@r0
-      000145 12 11 C2         [24] 1410 	lcall	_strlen
+      000145 12 11 A8         [24] 1410 	lcall	_strlen
       000148 E5 82            [12] 1411 	mov	a,dpl
       00014A 85 83 F0         [24] 1412 	mov	b,dph
       00014D 45 F0            [12] 1413 	orl	a,b
@@ -1432,12 +1432,12 @@
       000165 86 0A            [24] 1432 	mov	(_vsprintf_PARM_2 + 2),@r0
       000167 90 00 01         [24] 1433 	mov	dptr,#_lcd_print_text_1_73
       00016A 75 F0 00         [24] 1434 	mov	b,#0x00
-      00016D 12 0A C1         [24] 1435 	lcall	_vsprintf
+      00016D 12 0A A7         [24] 1435 	lcall	_vsprintf
                            000099  1436 	C$i2c.h$93$1$73 ==.
                                    1437 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/i2c.h:93: len = strlen(text);
       000170 90 00 01         [24] 1438 	mov	dptr,#_lcd_print_text_1_73
       000173 75 F0 00         [24] 1439 	mov	b,#0x00
-      000176 12 11 C2         [24] 1440 	lcall	_strlen
+      000176 12 11 A8         [24] 1440 	lcall	_strlen
       000179 AE 82            [24] 1441 	mov	r6,dpl
                            0000A4  1442 	C$i2c.h$94$1$73 ==.
                                    1443 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/i2c.h:94: for(i=0; i<len; i++)
@@ -1667,7 +1667,7 @@
       000276 70 1D            [24] 1667 	jnz	00102$
       000278 C0 06            [24] 1668 	push	ar6
       00027A C0 05            [24] 1669 	push	ar5
-      00027C 74 32            [12] 1670 	mov	a,#___str_0
+      00027C 74 18            [12] 1670 	mov	a,#___str_0
       00027E C0 E0            [24] 1671 	push	acc
       000280 74 12            [12] 1672 	mov	a,#(___str_0 >> 8)
       000282 C0 E0            [24] 1673 	push	acc
@@ -1704,7 +1704,7 @@
       0002B7 C0 E0            [24] 1704 	push	acc
       0002B9 E4               [12] 1705 	clr	a
       0002BA C0 E0            [24] 1706 	push	acc
-      0002BC 74 48            [12] 1707 	mov	a,#___str_1
+      0002BC 74 2E            [12] 1707 	mov	a,#___str_1
       0002BE C0 E0            [24] 1708 	push	acc
       0002C0 74 12            [12] 1709 	mov	a,#(___str_1 >> 8)
       0002C2 C0 E0            [24] 1710 	push	acc
@@ -1798,7 +1798,7 @@
       000350 C0 02            [24] 1798 	push	ar2
       000352 C0 02            [24] 1799 	push	ar2
       000354 C0 04            [24] 1800 	push	ar4
-      000356 74 58            [12] 1801 	mov	a,#___str_2
+      000356 74 3E            [12] 1801 	mov	a,#___str_2
       000358 C0 E0            [24] 1802 	push	acc
       00035A 74 12            [12] 1803 	mov	a,#(___str_2 >> 8)
       00035C C0 E0            [24] 1804 	push	acc
@@ -1821,7 +1821,7 @@
       00037C C0 04            [24] 1821 	push	ar4
       00037E C0 03            [24] 1822 	push	ar3
       000380 C0 02            [24] 1823 	push	ar2
-      000382 12 0A 34         [24] 1824 	lcall	__mulint
+      000382 12 0A 1A         [24] 1824 	lcall	__mulint
       000385 A8 82            [24] 1825 	mov	r0,dpl
       000387 A9 83            [24] 1826 	mov	r1,dph
       000389 D0 02            [24] 1827 	pop	ar2
@@ -2146,7 +2146,7 @@
       000488 8C 82            [24] 2146 	mov	dpl,r4
       00048A 8D 83            [24] 2147 	mov	dph,r5
       00048C 8E F0            [24] 2148 	mov	b,r6
-      00048E 12 11 DA         [24] 2149 	lcall	__gptrget
+      00048E 12 11 C0         [24] 2149 	lcall	__gptrget
       000491 F5 82            [12] 2150 	mov	dpl,a
       000493 C0 07            [24] 2151 	push	ar7
       000495 12 04 1B         [24] 2152 	lcall	_i2c_write
@@ -2174,7 +2174,7 @@
       0004B0 8E 82            [24] 2174 	mov	dpl,r6
       0004B2 8F 83            [24] 2175 	mov	dph,r7
       0004B4 8D F0            [24] 2176 	mov	b,r5
-      0004B6 12 11 DA         [24] 2177 	lcall	__gptrget
+      0004B6 12 11 C0         [24] 2177 	lcall	__gptrget
       0004B9 F5 82            [12] 2178 	mov	dpl,a
       0004BB 12 04 24         [24] 2179 	lcall	_i2c_write_and_stop
                            0003E7  2180 	C$i2c.h$256$1$98 ==.
@@ -2271,7 +2271,7 @@
       000528 8D 83            [24] 2271 	mov	dph,r5
       00052A 8E F0            [24] 2272 	mov	b,r6
       00052C EB               [12] 2273 	mov	a,r3
-      00052D 12 0A 0C         [24] 2274 	lcall	__gptrput
+      00052D 12 09 F2         [24] 2274 	lcall	__gptrput
                            000459  2275 	C$i2c.h$267$1$100 ==.
                                    2276 ;	C:/Program Files (x86)/SDCC/bin/../include/mcs51/i2c.h:267: for(j = 0; j < num_bytes - 1; j++)
       000530 0F               [12] 2277 	inc	r7
@@ -2307,7 +2307,7 @@
       00055B 8F 83            [24] 2307 	mov	dph,r7
       00055D 8D F0            [24] 2308 	mov	b,r5
       00055F EC               [12] 2309 	mov	a,r4
-      000560 12 0A 0C         [24] 2310 	lcall	__gptrput
+      000560 12 09 F2         [24] 2310 	lcall	__gptrput
                            00048C  2311 	C$i2c.h$274$1$100 ==.
                            00048C  2312 	XG$i2c_read_data$0$0 ==.
       000563 22               [24] 2313 	ret
@@ -2365,1054 +2365,1044 @@
                                    2365 ;------------------------------------------------------------
                                    2366 ;Allocation info for local variables in function 'main'
                                    2367 ;------------------------------------------------------------
-                                   2368 ;x                         Allocated to registers r6 r7 
+                                   2368 ;x                         Allocated to registers 
                                    2369 ;------------------------------------------------------------
                            0004D6  2370 	G$main$0$0 ==.
-                           0004D6  2371 	C$lab5.c$65$1$103 ==.
-                                   2372 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:65: void main(void)
+                           0004D6  2371 	C$lab5.c$74$1$103 ==.
+                                   2372 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:74: void main(void)
                                    2373 ;	-----------------------------------------
                                    2374 ;	 function main
                                    2375 ;	-----------------------------------------
       0005AD                       2376 _main:
-                           0004D6  2377 	C$lab5.c$67$1$103 ==.
-                                   2378 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:67: int x=0;
-      0005AD 7E 00            [12] 2379 	mov	r6,#0x00
-      0005AF 7F 00            [12] 2380 	mov	r7,#0x00
-                           0004DA  2381 	C$lab5.c$68$1$119 ==.
-                                   2382 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:68: xoff = -170;
-      0005B1 75 50 56         [24] 2383 	mov	_xoff,#0x56
-                           0004DD  2384 	C$lab5.c$69$1$119 ==.
-                                   2385 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:69: yoff = -220;
-      0005B4 75 51 24         [24] 2386 	mov	_yoff,#0x24
-                           0004E0  2387 	C$lab5.c$70$1$119 ==.
-                                   2388 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:70: error_sum=0;
-      0005B7 E4               [12] 2389 	clr	a
-      0005B8 F5 53            [12] 2390 	mov	_error_sum,a
-      0005BA F5 54            [12] 2391 	mov	(_error_sum + 1),a
-                           0004E5  2392 	C$lab5.c$71$1$119 ==.
-                                   2393 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:71: Sys_Init(); // initialize board
-      0005BC C0 07            [24] 2394 	push	ar7
-      0005BE C0 06            [24] 2395 	push	ar6
-      0005C0 12 01 07         [24] 2396 	lcall	_Sys_Init
-                           0004EC  2397 	C$lab5.c$72$1$119 ==.
-                                   2398 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:72: putchar(' ');
-      0005C3 75 82 20         [24] 2399 	mov	dpl,#0x20
-      0005C6 12 01 1A         [24] 2400 	lcall	_putchar
-                           0004F2  2401 	C$lab5.c$73$1$119 ==.
-                                   2402 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:73: Port_Init();
-      0005C9 12 09 FE         [24] 2403 	lcall	_Port_Init
-                           0004F5  2404 	C$lab5.c$74$1$119 ==.
-                                   2405 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:74: PCA_Init();
-      0005CC 12 09 3F         [24] 2406 	lcall	_PCA_Init
-                           0004F8  2407 	C$lab5.c$75$1$119 ==.
-                                   2408 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:75: SMB_Init();
-      0005CF 12 07 94         [24] 2409 	lcall	_SMB_Init
-                           0004FB  2410 	C$lab5.c$76$1$119 ==.
-                                   2411 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:76: XBR0_Init();
-      0005D2 12 07 90         [24] 2412 	lcall	_XBR0_Init
-                           0004FE  2413 	C$lab5.c$77$1$119 ==.
-                                   2414 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:77: Accel_Init();
-      0005D5 12 05 64         [24] 2415 	lcall	_Accel_Init
-                           000501  2416 	C$lab5.c$79$1$119 ==.
-                                   2417 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:79: count = 0;
-      0005D8 E4               [12] 2418 	clr	a
-      0005D9 F5 46            [12] 2419 	mov	_count,a
-      0005DB F5 47            [12] 2420 	mov	(_count + 1),a
-                           000506  2421 	C$lab5.c$80$1$119 ==.
-                                   2422 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:80: DRV_PW = SERVO_PW;
-      0005DD 85 38 3E         [24] 2423 	mov	_DRV_PW,_SERVO_PW
-      0005E0 85 39 3F         [24] 2424 	mov	(_DRV_PW + 1),(_SERVO_PW + 1)
-                           00050C  2425 	C$lab5.c$81$1$119 ==.
-                                   2426 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:81: STR_PW = PW_CENTER;
-      0005E3 85 32 40         [24] 2427 	mov	_STR_PW,_PW_CENTER
-      0005E6 85 33 41         [24] 2428 	mov	(_STR_PW + 1),(_PW_CENTER + 1)
-                           000512  2429 	C$lab5.c$82$1$119 ==.
-                                   2430 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:82: printf("\r\nGO!");
-      0005E9 74 5B            [12] 2431 	mov	a,#___str_3
-      0005EB C0 E0            [24] 2432 	push	acc
-      0005ED 74 12            [12] 2433 	mov	a,#(___str_3 >> 8)
-      0005EF C0 E0            [24] 2434 	push	acc
-      0005F1 74 80            [12] 2435 	mov	a,#0x80
-      0005F3 C0 E0            [24] 2436 	push	acc
-      0005F5 12 0B E6         [24] 2437 	lcall	_printf
-      0005F8 15 81            [12] 2438 	dec	sp
-      0005FA 15 81            [12] 2439 	dec	sp
-      0005FC 15 81            [12] 2440 	dec	sp
-      0005FE D0 06            [24] 2441 	pop	ar6
-      000600 D0 07            [24] 2442 	pop	ar7
-                           00052B  2443 	C$lab5.c$84$1$119 ==.
-                                   2444 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:84: while (1)
-      000602                       2445 00109$:
-                           00052B  2446 	C$lab5.c$86$2$120 ==.
-                                   2447 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:86: x++;
-      000602 0E               [12] 2448 	inc	r6
-      000603 BE 00 01         [24] 2449 	cjne	r6,#0x00,00128$
-      000606 0F               [12] 2450 	inc	r7
-      000607                       2451 00128$:
-                           000530  2452 	C$lab5.c$87$2$120 ==.
-                                   2453 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:87: printf("\r\n%d",x);
-      000607 C0 07            [24] 2454 	push	ar7
-      000609 C0 06            [24] 2455 	push	ar6
-      00060B C0 06            [24] 2456 	push	ar6
-      00060D C0 07            [24] 2457 	push	ar7
-      00060F 74 61            [12] 2458 	mov	a,#___str_4
-      000611 C0 E0            [24] 2459 	push	acc
-      000613 74 12            [12] 2460 	mov	a,#(___str_4 >> 8)
-      000615 C0 E0            [24] 2461 	push	acc
-      000617 74 80            [12] 2462 	mov	a,#0x80
-      000619 C0 E0            [24] 2463 	push	acc
-      00061B 12 0B E6         [24] 2464 	lcall	_printf
-      00061E E5 81            [12] 2465 	mov	a,sp
-      000620 24 FB            [12] 2466 	add	a,#0xfb
-      000622 F5 81            [12] 2467 	mov	sp,a
-      000624 D0 06            [24] 2468 	pop	ar6
-      000626 D0 07            [24] 2469 	pop	ar7
-                           000551  2470 	C$lab5.c$88$2$120 ==.
-                                   2471 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:88: run_stop = 0;
-      000628 75 52 00         [24] 2472 	mov	_run_stop,#0x00
-                           000554  2473 	C$lab5.c$89$2$120 ==.
-                                   2474 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:89: while (!run) // make run an sbit for the run/stop switch
-      00062B                       2475 00103$:
-      00062B 20 B6 14         [24] 2476 	jb	_run,00105$
-                           000557  2477 	C$lab5.c$91$3$121 ==.
-                                   2478 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:91: if (run_stop == 0)
-      00062E E5 52            [12] 2479 	mov	a,_run_stop
-      000630 70 F9            [24] 2480 	jnz	00103$
-                           00055B  2481 	C$lab5.c$93$4$122 ==.
-                                   2482 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:93: set_gains(); // function adjusting feedback gains
-      000632 C0 07            [24] 2483 	push	ar7
-      000634 C0 06            [24] 2484 	push	ar6
-      000636 12 07 04         [24] 2485 	lcall	_set_gains
-      000639 D0 06            [24] 2486 	pop	ar6
-      00063B D0 07            [24] 2487 	pop	ar7
-                           000566  2488 	C$lab5.c$94$4$122 ==.
-                                   2489 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:94: run_stop = 1; // only try to update once
-      00063D 75 52 01         [24] 2490 	mov	_run_stop,#0x01
-      000640 80 E9            [24] 2491 	sjmp	00103$
-      000642                       2492 00105$:
-                           00056B  2493 	C$lab5.c$97$2$120 ==.
-                                   2494 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:97: read_accels();
-      000642 C0 07            [24] 2495 	push	ar7
-      000644 C0 06            [24] 2496 	push	ar6
-      000646 12 08 07         [24] 2497 	lcall	_read_accels
-                           000572  2498 	C$lab5.c$98$2$120 ==.
-                                   2499 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:98: set_servo_PWM(); // set the servo PWM
-      000649 12 08 EF         [24] 2500 	lcall	_set_servo_PWM
-                           000575  2501 	C$lab5.c$99$2$120 ==.
-                                   2502 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:99: set_drive_PWM(); // set drive PWM
-      00064C 12 09 8A         [24] 2503 	lcall	_set_drive_PWM
-                           000578  2504 	C$lab5.c$100$2$120 ==.
-                                   2505 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:100: printf("\r\n\t%d,\t%d",(gx+ xoff),(gy+ yoff));
-      00064F E5 51            [12] 2506 	mov	a,_yoff
-      000651 FC               [12] 2507 	mov	r4,a
-      000652 33               [12] 2508 	rlc	a
-      000653 95 E0            [12] 2509 	subb	a,acc
-      000655 FD               [12] 2510 	mov	r5,a
-      000656 EC               [12] 2511 	mov	a,r4
-      000657 25 4E            [12] 2512 	add	a,_gy
-      000659 FC               [12] 2513 	mov	r4,a
-      00065A ED               [12] 2514 	mov	a,r5
-      00065B 35 4F            [12] 2515 	addc	a,(_gy + 1)
-      00065D FD               [12] 2516 	mov	r5,a
-      00065E E5 50            [12] 2517 	mov	a,_xoff
-      000660 FA               [12] 2518 	mov	r2,a
-      000661 33               [12] 2519 	rlc	a
-      000662 95 E0            [12] 2520 	subb	a,acc
-      000664 FB               [12] 2521 	mov	r3,a
-      000665 EA               [12] 2522 	mov	a,r2
-      000666 25 4C            [12] 2523 	add	a,_gx
-      000668 FA               [12] 2524 	mov	r2,a
-      000669 EB               [12] 2525 	mov	a,r3
-      00066A 35 4D            [12] 2526 	addc	a,(_gx + 1)
-      00066C FB               [12] 2527 	mov	r3,a
-      00066D C0 04            [24] 2528 	push	ar4
-      00066F C0 05            [24] 2529 	push	ar5
-      000671 C0 02            [24] 2530 	push	ar2
-      000673 C0 03            [24] 2531 	push	ar3
-      000675 74 66            [12] 2532 	mov	a,#___str_5
-      000677 C0 E0            [24] 2533 	push	acc
-      000679 74 12            [12] 2534 	mov	a,#(___str_5 >> 8)
-      00067B C0 E0            [24] 2535 	push	acc
-      00067D 74 80            [12] 2536 	mov	a,#0x80
-      00067F C0 E0            [24] 2537 	push	acc
-      000681 12 0B E6         [24] 2538 	lcall	_printf
-      000684 E5 81            [12] 2539 	mov	a,sp
-      000686 24 F9            [12] 2540 	add	a,#0xf9
-      000688 F5 81            [12] 2541 	mov	sp,a
-                           0005B3  2542 	C$lab5.c$101$2$120 ==.
-                                   2543 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:101: new_accels = 0;
-      00068A 75 42 00         [24] 2544 	mov	_new_accels,#0x00
-                           0005B6  2545 	C$lab5.c$102$1$119 ==.
-                                   2546 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:102: if (count % 15 == 0) // enough overflow to write to LCD
-      00068D 75 11 0F         [24] 2547 	mov	__moduint_PARM_2,#0x0F
-      000690 75 12 00         [24] 2548 	mov	(__moduint_PARM_2 + 1),#0x00
-      000693 85 46 82         [24] 2549 	mov	dpl,_count
-      000696 85 47 83         [24] 2550 	mov	dph,(_count + 1)
-      000699 12 0B 4C         [24] 2551 	lcall	__moduint
-      00069C E5 82            [12] 2552 	mov	a,dpl
-      00069E 85 83 F0         [24] 2553 	mov	b,dph
-      0006A1 D0 06            [24] 2554 	pop	ar6
-      0006A3 D0 07            [24] 2555 	pop	ar7
-      0006A5 45 F0            [12] 2556 	orl	a,b
-      0006A7 60 03            [24] 2557 	jz	00131$
-      0006A9 02 06 02         [24] 2558 	ljmp	00109$
-      0006AC                       2559 00131$:
-                           0005D5  2560 	C$lab5.c$104$3$123 ==.
-                                   2561 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:104: updateLCD(); // display values
-      0006AC C0 07            [24] 2562 	push	ar7
-      0006AE C0 06            [24] 2563 	push	ar6
-      0006B0 12 09 51         [24] 2564 	lcall	_updateLCD
-      0006B3 D0 06            [24] 2565 	pop	ar6
-      0006B5 D0 07            [24] 2566 	pop	ar7
-                           0005E0  2567 	C$lab5.c$105$3$123 ==.
-                                   2568 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:105: new_lcd = 0;
-      0006B7 75 43 00         [24] 2569 	mov	_new_lcd,#0x00
-      0006BA 02 06 02         [24] 2570 	ljmp	00109$
-                           0005E6  2571 	C$lab5.c$109$1$119 ==.
-                           0005E6  2572 	XG$main$0$0 ==.
-      0006BD 22               [24] 2573 	ret
-                                   2574 ;------------------------------------------------------------
-                                   2575 ;Allocation info for local variables in function 'PCA_ISR'
-                                   2576 ;------------------------------------------------------------
-                           0005E7  2577 	G$PCA_ISR$0$0 ==.
-                           0005E7  2578 	C$lab5.c$117$1$119 ==.
-                                   2579 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:117: void PCA_ISR ( void ) __interrupt 9
-                                   2580 ;	-----------------------------------------
-                                   2581 ;	 function PCA_ISR
-                                   2582 ;	-----------------------------------------
-      0006BE                       2583 _PCA_ISR:
-      0006BE C0 E0            [24] 2584 	push	acc
-      0006C0 C0 D0            [24] 2585 	push	psw
-                           0005EB  2586 	C$lab5.c$119$1$125 ==.
-                                   2587 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:119: if (CF)
-                           0005EB  2588 	C$lab5.c$121$2$126 ==.
-                                   2589 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:121: CF = 0; // clear overflow indicator
-      0006C2 10 DF 02         [24] 2590 	jbc	_CF,00108$
-      0006C5 80 0E            [24] 2591 	sjmp	00102$
-      0006C7                       2592 00108$:
-                           0005F0  2593 	C$lab5.c$122$2$126 ==.
-                                   2594 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:122: count++;
-      0006C7 05 46            [12] 2595 	inc	_count
-      0006C9 E4               [12] 2596 	clr	a
-      0006CA B5 46 02         [24] 2597 	cjne	a,_count,00109$
-      0006CD 05 47            [12] 2598 	inc	(_count + 1)
-      0006CF                       2599 00109$:
-                           0005F8  2600 	C$lab5.c$123$2$126 ==.
-                                   2601 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:123: PCA0L = PCA_START;
-      0006CF 75 E9 00         [24] 2602 	mov	_PCA0L,#0x00
-                           0005FB  2603 	C$lab5.c$124$2$126 ==.
-                                   2604 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:124: PCA0H = PCA_START >> 8;
-      0006D2 75 F9 70         [24] 2605 	mov	_PCA0H,#0x70
-      0006D5                       2606 00102$:
-                           0005FE  2607 	C$lab5.c$127$1$125 ==.
-                                   2608 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:127: PCA0CN &= 0xC0;
-      0006D5 53 D8 C0         [24] 2609 	anl	_PCA0CN,#0xC0
-      0006D8 D0 D0            [24] 2610 	pop	psw
-      0006DA D0 E0            [24] 2611 	pop	acc
-                           000605  2612 	C$lab5.c$128$1$125 ==.
-                           000605  2613 	XG$PCA_ISR$0$0 ==.
-      0006DC 32               [24] 2614 	reti
-                                   2615 ;	eliminated unneeded mov psw,# (no regs used in bank)
-                                   2616 ;	eliminated unneeded push/pop dpl
-                                   2617 ;	eliminated unneeded push/pop dph
-                                   2618 ;	eliminated unneeded push/pop b
-                                   2619 ;------------------------------------------------------------
-                                   2620 ;Allocation info for local variables in function 'wait'
-                                   2621 ;------------------------------------------------------------
-                                   2622 ;old_count                 Allocated to registers r6 r7 
-                                   2623 ;------------------------------------------------------------
-                           000606  2624 	G$wait$0$0 ==.
-                           000606  2625 	C$lab5.c$130$1$125 ==.
-                                   2626 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:130: void wait(void)
-                                   2627 ;	-----------------------------------------
-                                   2628 ;	 function wait
-                                   2629 ;	-----------------------------------------
-      0006DD                       2630 _wait:
-                           000606  2631 	C$lab5.c$132$1$128 ==.
-                                   2632 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:132: int old_count = count+1;
-      0006DD 74 01            [12] 2633 	mov	a,#0x01
-      0006DF 25 46            [12] 2634 	add	a,_count
-      0006E1 FE               [12] 2635 	mov	r6,a
-      0006E2 E4               [12] 2636 	clr	a
-      0006E3 35 47            [12] 2637 	addc	a,(_count + 1)
-      0006E5 FF               [12] 2638 	mov	r7,a
-                           00060F  2639 	C$lab5.c$133$1$128 ==.
-                                   2640 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:133: while (old_count> count);
-      0006E6                       2641 00101$:
-      0006E6 8E 04            [24] 2642 	mov	ar4,r6
-      0006E8 8F 05            [24] 2643 	mov	ar5,r7
-      0006EA C3               [12] 2644 	clr	c
-      0006EB E5 46            [12] 2645 	mov	a,_count
-      0006ED 9C               [12] 2646 	subb	a,r4
-      0006EE E5 47            [12] 2647 	mov	a,(_count + 1)
-      0006F0 9D               [12] 2648 	subb	a,r5
-      0006F1 40 F3            [24] 2649 	jc	00101$
-                           00061C  2650 	C$lab5.c$134$1$128 ==.
-                           00061C  2651 	XG$wait$0$0 ==.
-      0006F3 22               [24] 2652 	ret
-                                   2653 ;------------------------------------------------------------
-                                   2654 ;Allocation info for local variables in function 'start'
-                                   2655 ;------------------------------------------------------------
-                           00061D  2656 	G$start$0$0 ==.
-                           00061D  2657 	C$lab5.c$136$1$128 ==.
-                                   2658 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:136: void start(void)            ///WAITS UNTIL '*' IS ENTERED
-                                   2659 ;	-----------------------------------------
-                                   2660 ;	 function start
-                                   2661 ;	-----------------------------------------
-      0006F4                       2662 _start:
-                           00061D  2663 	C$lab5.c$138$1$130 ==.
-                                   2664 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:138: while (read_keypad() != '*') wait();
-      0006F4                       2665 00101$:
-      0006F4 12 01 F1         [24] 2666 	lcall	_read_keypad
-      0006F7 AF 82            [24] 2667 	mov	r7,dpl
-      0006F9 BF 2A 02         [24] 2668 	cjne	r7,#0x2A,00112$
-      0006FC 80 05            [24] 2669 	sjmp	00104$
-      0006FE                       2670 00112$:
-      0006FE 12 06 DD         [24] 2671 	lcall	_wait
-      000701 80 F1            [24] 2672 	sjmp	00101$
-      000703                       2673 00104$:
-                           00062C  2674 	C$lab5.c$139$1$130 ==.
-                           00062C  2675 	XG$start$0$0 ==.
-      000703 22               [24] 2676 	ret
-                                   2677 ;------------------------------------------------------------
-                                   2678 ;Allocation info for local variables in function 'set_gains'
-                                   2679 ;------------------------------------------------------------
-                           00062D  2680 	G$set_gains$0$0 ==.
-                           00062D  2681 	C$lab5.c$141$1$130 ==.
-                                   2682 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:141: void set_gains(void)
-                                   2683 ;	-----------------------------------------
-                                   2684 ;	 function set_gains
-                                   2685 ;	-----------------------------------------
-      000704                       2686 _set_gains:
-                           00062D  2687 	C$lab5.c$143$1$132 ==.
-                                   2688 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:143: lcd_clear();
-      000704 12 01 B8         [24] 2689 	lcall	_lcd_clear
-                           000630  2690 	C$lab5.c$144$1$132 ==.
-                                   2691 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:144: lcd_print("Please enter a ks value:\n ");
-      000707 74 70            [12] 2692 	mov	a,#___str_6
-      000709 C0 E0            [24] 2693 	push	acc
-      00070B 74 12            [12] 2694 	mov	a,#(___str_6 >> 8)
-      00070D C0 E0            [24] 2695 	push	acc
-      00070F 74 80            [12] 2696 	mov	a,#0x80
-      000711 C0 E0            [24] 2697 	push	acc
-      000713 12 01 33         [24] 2698 	lcall	_lcd_print
-      000716 15 81            [12] 2699 	dec	sp
-      000718 15 81            [12] 2700 	dec	sp
-      00071A 15 81            [12] 2701 	dec	sp
-                           000645  2702 	C$lab5.c$145$1$132 ==.
-                                   2703 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:145: ks = kpd_input(0);
-      00071C 75 82 00         [24] 2704 	mov	dpl,#0x00
-      00071F 12 02 70         [24] 2705 	lcall	_kpd_input
-      000722 AE 82            [24] 2706 	mov	r6,dpl
-      000724 8E 48            [24] 2707 	mov	_ks,r6
-                           00064F  2708 	C$lab5.c$146$1$132 ==.
-                                   2709 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:146: lcd_clear();
-      000726 12 01 B8         [24] 2710 	lcall	_lcd_clear
-                           000652  2711 	C$lab5.c$147$1$132 ==.
-                                   2712 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:147: lcd_print("Please enter a kdx value:\n ");
-      000729 74 8B            [12] 2713 	mov	a,#___str_7
-      00072B C0 E0            [24] 2714 	push	acc
-      00072D 74 12            [12] 2715 	mov	a,#(___str_7 >> 8)
-      00072F C0 E0            [24] 2716 	push	acc
-      000731 74 80            [12] 2717 	mov	a,#0x80
-      000733 C0 E0            [24] 2718 	push	acc
-      000735 12 01 33         [24] 2719 	lcall	_lcd_print
-      000738 15 81            [12] 2720 	dec	sp
-      00073A 15 81            [12] 2721 	dec	sp
-      00073C 15 81            [12] 2722 	dec	sp
-                           000667  2723 	C$lab5.c$148$1$132 ==.
-                                   2724 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:148: kdx = kpd_input(0);
-      00073E 75 82 00         [24] 2725 	mov	dpl,#0x00
-      000741 12 02 70         [24] 2726 	lcall	_kpd_input
-      000744 AE 82            [24] 2727 	mov	r6,dpl
-      000746 8E 4A            [24] 2728 	mov	_kdx,r6
-                           000671  2729 	C$lab5.c$149$1$132 ==.
-                                   2730 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:149: lcd_clear();
-      000748 12 01 B8         [24] 2731 	lcall	_lcd_clear
-                           000674  2732 	C$lab5.c$150$1$132 ==.
-                                   2733 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:150: lcd_print("Please enter a kdy value:\n ");
-      00074B 74 A7            [12] 2734 	mov	a,#___str_8
-      00074D C0 E0            [24] 2735 	push	acc
-      00074F 74 12            [12] 2736 	mov	a,#(___str_8 >> 8)
-      000751 C0 E0            [24] 2737 	push	acc
-      000753 74 80            [12] 2738 	mov	a,#0x80
-      000755 C0 E0            [24] 2739 	push	acc
-      000757 12 01 33         [24] 2740 	lcall	_lcd_print
-      00075A 15 81            [12] 2741 	dec	sp
-      00075C 15 81            [12] 2742 	dec	sp
-      00075E 15 81            [12] 2743 	dec	sp
-                           000689  2744 	C$lab5.c$151$1$132 ==.
-                                   2745 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:151: kdy = kpd_input(0);
-      000760 75 82 00         [24] 2746 	mov	dpl,#0x00
-      000763 12 02 70         [24] 2747 	lcall	_kpd_input
-      000766 AE 82            [24] 2748 	mov	r6,dpl
-      000768 8E 49            [24] 2749 	mov	_kdy,r6
-                           000693  2750 	C$lab5.c$152$1$132 ==.
-                                   2751 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:152: lcd_clear();
-      00076A 12 01 B8         [24] 2752 	lcall	_lcd_clear
-                           000696  2753 	C$lab5.c$153$1$132 ==.
-                                   2754 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:153: lcd_print("Please enter a ki value:\n ");	
-      00076D 74 C3            [12] 2755 	mov	a,#___str_9
-      00076F C0 E0            [24] 2756 	push	acc
-      000771 74 12            [12] 2757 	mov	a,#(___str_9 >> 8)
-      000773 C0 E0            [24] 2758 	push	acc
-      000775 74 80            [12] 2759 	mov	a,#0x80
-      000777 C0 E0            [24] 2760 	push	acc
-      000779 12 01 33         [24] 2761 	lcall	_lcd_print
-      00077C 15 81            [12] 2762 	dec	sp
-      00077E 15 81            [12] 2763 	dec	sp
-      000780 15 81            [12] 2764 	dec	sp
-                           0006AB  2765 	C$lab5.c$154$1$132 ==.
-                                   2766 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:154: ki  = kpd_input(0);
-      000782 75 82 00         [24] 2767 	mov	dpl,#0x00
-      000785 12 02 70         [24] 2768 	lcall	_kpd_input
-      000788 AE 82            [24] 2769 	mov	r6,dpl
-      00078A 8E 4B            [24] 2770 	mov	_ki,r6
-                           0006B5  2771 	C$lab5.c$155$1$132 ==.
-                                   2772 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:155: lcd_clear();
-      00078C 12 01 B8         [24] 2773 	lcall	_lcd_clear
-                           0006B8  2774 	C$lab5.c$156$1$132 ==.
-                           0006B8  2775 	XG$set_gains$0$0 ==.
-      00078F 22               [24] 2776 	ret
-                                   2777 ;------------------------------------------------------------
-                                   2778 ;Allocation info for local variables in function 'XBR0_Init'
-                                   2779 ;------------------------------------------------------------
-                           0006B9  2780 	G$XBR0_Init$0$0 ==.
-                           0006B9  2781 	C$lab5.c$158$1$132 ==.
-                                   2782 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:158: void XBR0_Init(void)
-                                   2783 ;	-----------------------------------------
-                                   2784 ;	 function XBR0_Init
-                                   2785 ;	-----------------------------------------
-      000790                       2786 _XBR0_Init:
-                           0006B9  2787 	C$lab5.c$160$1$134 ==.
-                                   2788 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:160: XBR0 = 0x17;
-      000790 75 E1 17         [24] 2789 	mov	_XBR0,#0x17
-                           0006BC  2790 	C$lab5.c$161$1$134 ==.
-                           0006BC  2791 	XG$XBR0_Init$0$0 ==.
-      000793 22               [24] 2792 	ret
-                                   2793 ;------------------------------------------------------------
-                                   2794 ;Allocation info for local variables in function 'SMB_Init'
-                                   2795 ;------------------------------------------------------------
-                           0006BD  2796 	G$SMB_Init$0$0 ==.
-                           0006BD  2797 	C$lab5.c$163$1$134 ==.
-                                   2798 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:163: void SMB_Init(void)
-                                   2799 ;	-----------------------------------------
-                                   2800 ;	 function SMB_Init
-                                   2801 ;	-----------------------------------------
-      000794                       2802 _SMB_Init:
-                           0006BD  2803 	C$lab5.c$165$1$136 ==.
-                                   2804 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:165: SMB0CR =0x93;
-      000794 75 CF 93         [24] 2805 	mov	_SMB0CR,#0x93
-                           0006C0  2806 	C$lab5.c$166$1$136 ==.
-                                   2807 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:166: ENSMB =1;
-      000797 D2 C6            [12] 2808 	setb	_ENSMB
-                           0006C2  2809 	C$lab5.c$167$1$136 ==.
-                           0006C2  2810 	XG$SMB_Init$0$0 ==.
-      000799 22               [24] 2811 	ret
+                           0004D6  2377 	C$lab5.c$77$1$119 ==.
+                                   2378 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:77: xoff = -170;
+      0005AD 75 50 56         [24] 2379 	mov	_xoff,#0x56
+                           0004D9  2380 	C$lab5.c$78$1$119 ==.
+                                   2381 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:78: yoff = -220;
+      0005B0 75 51 24         [24] 2382 	mov	_yoff,#0x24
+                           0004DC  2383 	C$lab5.c$79$1$119 ==.
+                                   2384 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:79: error_sum=0;
+      0005B3 E4               [12] 2385 	clr	a
+      0005B4 F5 53            [12] 2386 	mov	_error_sum,a
+      0005B6 F5 54            [12] 2387 	mov	(_error_sum + 1),a
+                           0004E1  2388 	C$lab5.c$80$1$119 ==.
+                                   2389 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:80: Sys_Init(); // initialize board
+      0005B8 12 01 07         [24] 2390 	lcall	_Sys_Init
+                           0004E4  2391 	C$lab5.c$81$1$119 ==.
+                                   2392 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:81: putchar(' ');
+      0005BB 75 82 20         [24] 2393 	mov	dpl,#0x20
+      0005BE 12 01 1A         [24] 2394 	lcall	_putchar
+                           0004EA  2395 	C$lab5.c$82$1$119 ==.
+                                   2396 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:82: Port_Init();
+      0005C1 12 09 E4         [24] 2397 	lcall	_Port_Init
+                           0004ED  2398 	C$lab5.c$83$1$119 ==.
+                                   2399 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:83: PCA_Init();
+      0005C4 12 09 25         [24] 2400 	lcall	_PCA_Init
+                           0004F0  2401 	C$lab5.c$84$1$119 ==.
+                                   2402 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:84: SMB_Init();
+      0005C7 12 07 7A         [24] 2403 	lcall	_SMB_Init
+                           0004F3  2404 	C$lab5.c$85$1$119 ==.
+                                   2405 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:85: XBR0_Init();
+      0005CA 12 07 76         [24] 2406 	lcall	_XBR0_Init
+                           0004F6  2407 	C$lab5.c$86$1$119 ==.
+                                   2408 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:86: Accel_Init();
+      0005CD 12 05 64         [24] 2409 	lcall	_Accel_Init
+                           0004F9  2410 	C$lab5.c$88$1$119 ==.
+                                   2411 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:88: count = 0;
+      0005D0 E4               [12] 2412 	clr	a
+      0005D1 F5 46            [12] 2413 	mov	_count,a
+      0005D3 F5 47            [12] 2414 	mov	(_count + 1),a
+                           0004FE  2415 	C$lab5.c$89$1$119 ==.
+                                   2416 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:89: DRV_PW = SERVO_PW;
+      0005D5 85 38 3E         [24] 2417 	mov	_DRV_PW,_SERVO_PW
+      0005D8 85 39 3F         [24] 2418 	mov	(_DRV_PW + 1),(_SERVO_PW + 1)
+                           000504  2419 	C$lab5.c$90$1$119 ==.
+                                   2420 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:90: STR_PW = PW_CENTER;
+      0005DB 85 32 40         [24] 2421 	mov	_STR_PW,_PW_CENTER
+      0005DE 85 33 41         [24] 2422 	mov	(_STR_PW + 1),(_PW_CENTER + 1)
+                           00050A  2423 	C$lab5.c$91$1$119 ==.
+                                   2424 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:91: printf("\r\nGO!");
+      0005E1 74 41            [12] 2425 	mov	a,#___str_3
+      0005E3 C0 E0            [24] 2426 	push	acc
+      0005E5 74 12            [12] 2427 	mov	a,#(___str_3 >> 8)
+      0005E7 C0 E0            [24] 2428 	push	acc
+      0005E9 74 80            [12] 2429 	mov	a,#0x80
+      0005EB C0 E0            [24] 2430 	push	acc
+      0005ED 12 0B CC         [24] 2431 	lcall	_printf
+      0005F0 15 81            [12] 2432 	dec	sp
+      0005F2 15 81            [12] 2433 	dec	sp
+      0005F4 15 81            [12] 2434 	dec	sp
+                           00051F  2435 	C$lab5.c$93$1$119 ==.
+                                   2436 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:93: while (1)
+      0005F6                       2437 00109$:
+                           00051F  2438 	C$lab5.c$96$2$120 ==.
+                                   2439 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:96: run_stop = 0;
+      0005F6 75 52 00         [24] 2440 	mov	_run_stop,#0x00
+                           000522  2441 	C$lab5.c$97$2$120 ==.
+                                   2442 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:97: while (!run) // make run an sbit for the run/stop switch
+      0005F9                       2443 00103$:
+      0005F9 20 B6 30         [24] 2444 	jb	_run,00105$
+                           000525  2445 	C$lab5.c$99$3$121 ==.
+                                   2446 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:99: DRV_PW = SERVO_PW;
+      0005FC 85 38 3E         [24] 2447 	mov	_DRV_PW,_SERVO_PW
+      0005FF 85 39 3F         [24] 2448 	mov	(_DRV_PW + 1),(_SERVO_PW + 1)
+                           00052B  2449 	C$lab5.c$100$3$121 ==.
+                                   2450 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:100: STR_PW = PW_CENTER;
+      000602 85 32 40         [24] 2451 	mov	_STR_PW,_PW_CENTER
+      000605 85 33 41         [24] 2452 	mov	(_STR_PW + 1),(_PW_CENTER + 1)
+                           000531  2453 	C$lab5.c$101$3$121 ==.
+                                   2454 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:101: PCA0CP0 = 0xFFFF - DRV_PW;
+      000608 74 FF            [12] 2455 	mov	a,#0xFF
+      00060A C3               [12] 2456 	clr	c
+      00060B 95 3E            [12] 2457 	subb	a,_DRV_PW
+      00060D FE               [12] 2458 	mov	r6,a
+      00060E 74 FF            [12] 2459 	mov	a,#0xFF
+      000610 95 3F            [12] 2460 	subb	a,(_DRV_PW + 1)
+      000612 FF               [12] 2461 	mov	r7,a
+      000613 8E EA            [24] 2462 	mov	((_PCA0CP0 >> 0) & 0xFF),r6
+      000615 8F FA            [24] 2463 	mov	((_PCA0CP0 >> 8) & 0xFF),r7
+                           000540  2464 	C$lab5.c$102$3$121 ==.
+                                   2465 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:102: PCA0CP1 = 0xFFFF - DRV_PW;
+      000617 8E EB            [24] 2466 	mov	((_PCA0CP1 >> 0) & 0xFF),r6
+      000619 8F FB            [24] 2467 	mov	((_PCA0CP1 >> 8) & 0xFF),r7
+                           000544  2468 	C$lab5.c$103$3$121 ==.
+                                   2469 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:103: if (run_stop == 0)
+      00061B E5 52            [12] 2470 	mov	a,_run_stop
+      00061D 70 06            [24] 2471 	jnz	00102$
+                           000548  2472 	C$lab5.c$105$4$122 ==.
+                                   2473 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:105: set_gains(); // function adjusting feedback gains
+      00061F 12 06 EA         [24] 2474 	lcall	_set_gains
+                           00054B  2475 	C$lab5.c$106$4$122 ==.
+                                   2476 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:106: run_stop = 1; // only try to update once
+      000622 75 52 01         [24] 2477 	mov	_run_stop,#0x01
+      000625                       2478 00102$:
+                           00054E  2479 	C$lab5.c$108$3$121 ==.
+                                   2480 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:108: count=0;
+      000625 E4               [12] 2481 	clr	a
+      000626 F5 46            [12] 2482 	mov	_count,a
+      000628 F5 47            [12] 2483 	mov	(_count + 1),a
+      00062A 80 CD            [24] 2484 	sjmp	00103$
+      00062C                       2485 00105$:
+                           000555  2486 	C$lab5.c$110$2$120 ==.
+                                   2487 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:110: read_accels();
+      00062C 12 07 ED         [24] 2488 	lcall	_read_accels
+                           000558  2489 	C$lab5.c$111$2$120 ==.
+                                   2490 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:111: set_servo_PWM(); // set the servo PWM
+      00062F 12 08 D5         [24] 2491 	lcall	_set_servo_PWM
+                           00055B  2492 	C$lab5.c$112$2$120 ==.
+                                   2493 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:112: set_drive_PWM(); // set drive PWM
+      000632 12 09 70         [24] 2494 	lcall	_set_drive_PWM
+                           00055E  2495 	C$lab5.c$113$2$120 ==.
+                                   2496 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:113: printf("\r\n%u,\t%d,\t%d,\t%u,\t%u",count,(gx+ xoff),(gy+ yoff),DRV_PW,STR_PW);
+      000635 E5 51            [12] 2497 	mov	a,_yoff
+      000637 FE               [12] 2498 	mov	r6,a
+      000638 33               [12] 2499 	rlc	a
+      000639 95 E0            [12] 2500 	subb	a,acc
+      00063B FF               [12] 2501 	mov	r7,a
+      00063C EE               [12] 2502 	mov	a,r6
+      00063D 25 4E            [12] 2503 	add	a,_gy
+      00063F FE               [12] 2504 	mov	r6,a
+      000640 EF               [12] 2505 	mov	a,r7
+      000641 35 4F            [12] 2506 	addc	a,(_gy + 1)
+      000643 FF               [12] 2507 	mov	r7,a
+      000644 E5 50            [12] 2508 	mov	a,_xoff
+      000646 FC               [12] 2509 	mov	r4,a
+      000647 33               [12] 2510 	rlc	a
+      000648 95 E0            [12] 2511 	subb	a,acc
+      00064A FD               [12] 2512 	mov	r5,a
+      00064B EC               [12] 2513 	mov	a,r4
+      00064C 25 4C            [12] 2514 	add	a,_gx
+      00064E FC               [12] 2515 	mov	r4,a
+      00064F ED               [12] 2516 	mov	a,r5
+      000650 35 4D            [12] 2517 	addc	a,(_gx + 1)
+      000652 FD               [12] 2518 	mov	r5,a
+      000653 C0 40            [24] 2519 	push	_STR_PW
+      000655 C0 41            [24] 2520 	push	(_STR_PW + 1)
+      000657 C0 3E            [24] 2521 	push	_DRV_PW
+      000659 C0 3F            [24] 2522 	push	(_DRV_PW + 1)
+      00065B C0 06            [24] 2523 	push	ar6
+      00065D C0 07            [24] 2524 	push	ar7
+      00065F C0 04            [24] 2525 	push	ar4
+      000661 C0 05            [24] 2526 	push	ar5
+      000663 C0 46            [24] 2527 	push	_count
+      000665 C0 47            [24] 2528 	push	(_count + 1)
+      000667 74 47            [12] 2529 	mov	a,#___str_4
+      000669 C0 E0            [24] 2530 	push	acc
+      00066B 74 12            [12] 2531 	mov	a,#(___str_4 >> 8)
+      00066D C0 E0            [24] 2532 	push	acc
+      00066F 74 80            [12] 2533 	mov	a,#0x80
+      000671 C0 E0            [24] 2534 	push	acc
+      000673 12 0B CC         [24] 2535 	lcall	_printf
+      000676 E5 81            [12] 2536 	mov	a,sp
+      000678 24 F3            [12] 2537 	add	a,#0xf3
+      00067A F5 81            [12] 2538 	mov	sp,a
+                           0005A5  2539 	C$lab5.c$114$2$120 ==.
+                                   2540 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:114: new_accels = 0;
+      00067C 75 42 00         [24] 2541 	mov	_new_accels,#0x00
+                           0005A8  2542 	C$lab5.c$115$1$119 ==.
+                                   2543 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:115: if (count % 15 == 0) // enough overflow to write to LCD
+      00067F 75 11 0F         [24] 2544 	mov	__moduint_PARM_2,#0x0F
+      000682 75 12 00         [24] 2545 	mov	(__moduint_PARM_2 + 1),#0x00
+      000685 85 46 82         [24] 2546 	mov	dpl,_count
+      000688 85 47 83         [24] 2547 	mov	dph,(_count + 1)
+      00068B 12 0B 32         [24] 2548 	lcall	__moduint
+      00068E E5 82            [12] 2549 	mov	a,dpl
+      000690 85 83 F0         [24] 2550 	mov	b,dph
+      000693 45 F0            [12] 2551 	orl	a,b
+      000695 60 03            [24] 2552 	jz	00130$
+      000697 02 05 F6         [24] 2553 	ljmp	00109$
+      00069A                       2554 00130$:
+                           0005C3  2555 	C$lab5.c$117$3$123 ==.
+                                   2556 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:117: updateLCD(); // display values
+      00069A 12 09 37         [24] 2557 	lcall	_updateLCD
+                           0005C6  2558 	C$lab5.c$118$3$123 ==.
+                                   2559 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:118: new_lcd = 0;
+      00069D 75 43 00         [24] 2560 	mov	_new_lcd,#0x00
+      0006A0 02 05 F6         [24] 2561 	ljmp	00109$
+                           0005CC  2562 	C$lab5.c$122$1$119 ==.
+                           0005CC  2563 	XG$main$0$0 ==.
+      0006A3 22               [24] 2564 	ret
+                                   2565 ;------------------------------------------------------------
+                                   2566 ;Allocation info for local variables in function 'PCA_ISR'
+                                   2567 ;------------------------------------------------------------
+                           0005CD  2568 	G$PCA_ISR$0$0 ==.
+                           0005CD  2569 	C$lab5.c$130$1$119 ==.
+                                   2570 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:130: void PCA_ISR ( void ) __interrupt 9
+                                   2571 ;	-----------------------------------------
+                                   2572 ;	 function PCA_ISR
+                                   2573 ;	-----------------------------------------
+      0006A4                       2574 _PCA_ISR:
+      0006A4 C0 E0            [24] 2575 	push	acc
+      0006A6 C0 D0            [24] 2576 	push	psw
+                           0005D1  2577 	C$lab5.c$132$1$125 ==.
+                                   2578 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:132: if (CF)
+                           0005D1  2579 	C$lab5.c$134$2$126 ==.
+                                   2580 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:134: CF = 0; // clear overflow indicator
+      0006A8 10 DF 02         [24] 2581 	jbc	_CF,00108$
+      0006AB 80 0E            [24] 2582 	sjmp	00102$
+      0006AD                       2583 00108$:
+                           0005D6  2584 	C$lab5.c$135$2$126 ==.
+                                   2585 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:135: count++;
+      0006AD 05 46            [12] 2586 	inc	_count
+      0006AF E4               [12] 2587 	clr	a
+      0006B0 B5 46 02         [24] 2588 	cjne	a,_count,00109$
+      0006B3 05 47            [12] 2589 	inc	(_count + 1)
+      0006B5                       2590 00109$:
+                           0005DE  2591 	C$lab5.c$136$2$126 ==.
+                                   2592 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:136: PCA0L = PCA_START;
+      0006B5 75 E9 00         [24] 2593 	mov	_PCA0L,#0x00
+                           0005E1  2594 	C$lab5.c$137$2$126 ==.
+                                   2595 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:137: PCA0H = PCA_START >> 8;
+      0006B8 75 F9 70         [24] 2596 	mov	_PCA0H,#0x70
+      0006BB                       2597 00102$:
+                           0005E4  2598 	C$lab5.c$140$1$125 ==.
+                                   2599 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:140: PCA0CN &= 0xC0;
+      0006BB 53 D8 C0         [24] 2600 	anl	_PCA0CN,#0xC0
+      0006BE D0 D0            [24] 2601 	pop	psw
+      0006C0 D0 E0            [24] 2602 	pop	acc
+                           0005EB  2603 	C$lab5.c$141$1$125 ==.
+                           0005EB  2604 	XG$PCA_ISR$0$0 ==.
+      0006C2 32               [24] 2605 	reti
+                                   2606 ;	eliminated unneeded mov psw,# (no regs used in bank)
+                                   2607 ;	eliminated unneeded push/pop dpl
+                                   2608 ;	eliminated unneeded push/pop dph
+                                   2609 ;	eliminated unneeded push/pop b
+                                   2610 ;------------------------------------------------------------
+                                   2611 ;Allocation info for local variables in function 'wait'
+                                   2612 ;------------------------------------------------------------
+                                   2613 ;old_count                 Allocated to registers r6 r7 
+                                   2614 ;------------------------------------------------------------
+                           0005EC  2615 	G$wait$0$0 ==.
+                           0005EC  2616 	C$lab5.c$143$1$125 ==.
+                                   2617 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:143: void wait(void)
+                                   2618 ;	-----------------------------------------
+                                   2619 ;	 function wait
+                                   2620 ;	-----------------------------------------
+      0006C3                       2621 _wait:
+                           0005EC  2622 	C$lab5.c$145$1$128 ==.
+                                   2623 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:145: int old_count = count+1;
+      0006C3 74 01            [12] 2624 	mov	a,#0x01
+      0006C5 25 46            [12] 2625 	add	a,_count
+      0006C7 FE               [12] 2626 	mov	r6,a
+      0006C8 E4               [12] 2627 	clr	a
+      0006C9 35 47            [12] 2628 	addc	a,(_count + 1)
+      0006CB FF               [12] 2629 	mov	r7,a
+                           0005F5  2630 	C$lab5.c$146$1$128 ==.
+                                   2631 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:146: while (old_count> count);
+      0006CC                       2632 00101$:
+      0006CC 8E 04            [24] 2633 	mov	ar4,r6
+      0006CE 8F 05            [24] 2634 	mov	ar5,r7
+      0006D0 C3               [12] 2635 	clr	c
+      0006D1 E5 46            [12] 2636 	mov	a,_count
+      0006D3 9C               [12] 2637 	subb	a,r4
+      0006D4 E5 47            [12] 2638 	mov	a,(_count + 1)
+      0006D6 9D               [12] 2639 	subb	a,r5
+      0006D7 40 F3            [24] 2640 	jc	00101$
+                           000602  2641 	C$lab5.c$147$1$128 ==.
+                           000602  2642 	XG$wait$0$0 ==.
+      0006D9 22               [24] 2643 	ret
+                                   2644 ;------------------------------------------------------------
+                                   2645 ;Allocation info for local variables in function 'start'
+                                   2646 ;------------------------------------------------------------
+                           000603  2647 	G$start$0$0 ==.
+                           000603  2648 	C$lab5.c$149$1$128 ==.
+                                   2649 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:149: void start(void)            ///WAITS UNTIL '*' IS ENTERED
+                                   2650 ;	-----------------------------------------
+                                   2651 ;	 function start
+                                   2652 ;	-----------------------------------------
+      0006DA                       2653 _start:
+                           000603  2654 	C$lab5.c$151$1$130 ==.
+                                   2655 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:151: while (read_keypad() != '*') wait();
+      0006DA                       2656 00101$:
+      0006DA 12 01 F1         [24] 2657 	lcall	_read_keypad
+      0006DD AF 82            [24] 2658 	mov	r7,dpl
+      0006DF BF 2A 02         [24] 2659 	cjne	r7,#0x2A,00112$
+      0006E2 80 05            [24] 2660 	sjmp	00104$
+      0006E4                       2661 00112$:
+      0006E4 12 06 C3         [24] 2662 	lcall	_wait
+      0006E7 80 F1            [24] 2663 	sjmp	00101$
+      0006E9                       2664 00104$:
+                           000612  2665 	C$lab5.c$152$1$130 ==.
+                           000612  2666 	XG$start$0$0 ==.
+      0006E9 22               [24] 2667 	ret
+                                   2668 ;------------------------------------------------------------
+                                   2669 ;Allocation info for local variables in function 'set_gains'
+                                   2670 ;------------------------------------------------------------
+                           000613  2671 	G$set_gains$0$0 ==.
+                           000613  2672 	C$lab5.c$154$1$130 ==.
+                                   2673 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:154: void set_gains(void)
+                                   2674 ;	-----------------------------------------
+                                   2675 ;	 function set_gains
+                                   2676 ;	-----------------------------------------
+      0006EA                       2677 _set_gains:
+                           000613  2678 	C$lab5.c$156$1$132 ==.
+                                   2679 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:156: lcd_clear();
+      0006EA 12 01 B8         [24] 2680 	lcall	_lcd_clear
+                           000616  2681 	C$lab5.c$157$1$132 ==.
+                                   2682 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:157: lcd_print("Please enter a ks value:\n ");
+      0006ED 74 5C            [12] 2683 	mov	a,#___str_5
+      0006EF C0 E0            [24] 2684 	push	acc
+      0006F1 74 12            [12] 2685 	mov	a,#(___str_5 >> 8)
+      0006F3 C0 E0            [24] 2686 	push	acc
+      0006F5 74 80            [12] 2687 	mov	a,#0x80
+      0006F7 C0 E0            [24] 2688 	push	acc
+      0006F9 12 01 33         [24] 2689 	lcall	_lcd_print
+      0006FC 15 81            [12] 2690 	dec	sp
+      0006FE 15 81            [12] 2691 	dec	sp
+      000700 15 81            [12] 2692 	dec	sp
+                           00062B  2693 	C$lab5.c$158$1$132 ==.
+                                   2694 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:158: ks = kpd_input(0);
+      000702 75 82 00         [24] 2695 	mov	dpl,#0x00
+      000705 12 02 70         [24] 2696 	lcall	_kpd_input
+      000708 AE 82            [24] 2697 	mov	r6,dpl
+      00070A 8E 48            [24] 2698 	mov	_ks,r6
+                           000635  2699 	C$lab5.c$159$1$132 ==.
+                                   2700 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:159: lcd_clear();
+      00070C 12 01 B8         [24] 2701 	lcall	_lcd_clear
+                           000638  2702 	C$lab5.c$160$1$132 ==.
+                                   2703 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:160: lcd_print("Please enter a kdx value:\n ");
+      00070F 74 77            [12] 2704 	mov	a,#___str_6
+      000711 C0 E0            [24] 2705 	push	acc
+      000713 74 12            [12] 2706 	mov	a,#(___str_6 >> 8)
+      000715 C0 E0            [24] 2707 	push	acc
+      000717 74 80            [12] 2708 	mov	a,#0x80
+      000719 C0 E0            [24] 2709 	push	acc
+      00071B 12 01 33         [24] 2710 	lcall	_lcd_print
+      00071E 15 81            [12] 2711 	dec	sp
+      000720 15 81            [12] 2712 	dec	sp
+      000722 15 81            [12] 2713 	dec	sp
+                           00064D  2714 	C$lab5.c$161$1$132 ==.
+                                   2715 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:161: kdx = kpd_input(0);
+      000724 75 82 00         [24] 2716 	mov	dpl,#0x00
+      000727 12 02 70         [24] 2717 	lcall	_kpd_input
+      00072A AE 82            [24] 2718 	mov	r6,dpl
+      00072C 8E 4A            [24] 2719 	mov	_kdx,r6
+                           000657  2720 	C$lab5.c$162$1$132 ==.
+                                   2721 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:162: lcd_clear();
+      00072E 12 01 B8         [24] 2722 	lcall	_lcd_clear
+                           00065A  2723 	C$lab5.c$163$1$132 ==.
+                                   2724 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:163: lcd_print("Please enter a kdy value:\n ");
+      000731 74 93            [12] 2725 	mov	a,#___str_7
+      000733 C0 E0            [24] 2726 	push	acc
+      000735 74 12            [12] 2727 	mov	a,#(___str_7 >> 8)
+      000737 C0 E0            [24] 2728 	push	acc
+      000739 74 80            [12] 2729 	mov	a,#0x80
+      00073B C0 E0            [24] 2730 	push	acc
+      00073D 12 01 33         [24] 2731 	lcall	_lcd_print
+      000740 15 81            [12] 2732 	dec	sp
+      000742 15 81            [12] 2733 	dec	sp
+      000744 15 81            [12] 2734 	dec	sp
+                           00066F  2735 	C$lab5.c$164$1$132 ==.
+                                   2736 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:164: kdy = kpd_input(0);
+      000746 75 82 00         [24] 2737 	mov	dpl,#0x00
+      000749 12 02 70         [24] 2738 	lcall	_kpd_input
+      00074C AE 82            [24] 2739 	mov	r6,dpl
+      00074E 8E 49            [24] 2740 	mov	_kdy,r6
+                           000679  2741 	C$lab5.c$165$1$132 ==.
+                                   2742 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:165: lcd_clear();
+      000750 12 01 B8         [24] 2743 	lcall	_lcd_clear
+                           00067C  2744 	C$lab5.c$166$1$132 ==.
+                                   2745 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:166: lcd_print("Please enter a ki value:\n ");	
+      000753 74 AF            [12] 2746 	mov	a,#___str_8
+      000755 C0 E0            [24] 2747 	push	acc
+      000757 74 12            [12] 2748 	mov	a,#(___str_8 >> 8)
+      000759 C0 E0            [24] 2749 	push	acc
+      00075B 74 80            [12] 2750 	mov	a,#0x80
+      00075D C0 E0            [24] 2751 	push	acc
+      00075F 12 01 33         [24] 2752 	lcall	_lcd_print
+      000762 15 81            [12] 2753 	dec	sp
+      000764 15 81            [12] 2754 	dec	sp
+      000766 15 81            [12] 2755 	dec	sp
+                           000691  2756 	C$lab5.c$167$1$132 ==.
+                                   2757 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:167: ki  = kpd_input(0);
+      000768 75 82 00         [24] 2758 	mov	dpl,#0x00
+      00076B 12 02 70         [24] 2759 	lcall	_kpd_input
+      00076E AE 82            [24] 2760 	mov	r6,dpl
+      000770 8E 4B            [24] 2761 	mov	_ki,r6
+                           00069B  2762 	C$lab5.c$168$1$132 ==.
+                                   2763 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:168: lcd_clear();
+      000772 12 01 B8         [24] 2764 	lcall	_lcd_clear
+                           00069E  2765 	C$lab5.c$169$1$132 ==.
+                           00069E  2766 	XG$set_gains$0$0 ==.
+      000775 22               [24] 2767 	ret
+                                   2768 ;------------------------------------------------------------
+                                   2769 ;Allocation info for local variables in function 'XBR0_Init'
+                                   2770 ;------------------------------------------------------------
+                           00069F  2771 	G$XBR0_Init$0$0 ==.
+                           00069F  2772 	C$lab5.c$171$1$132 ==.
+                                   2773 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:171: void XBR0_Init(void)
+                                   2774 ;	-----------------------------------------
+                                   2775 ;	 function XBR0_Init
+                                   2776 ;	-----------------------------------------
+      000776                       2777 _XBR0_Init:
+                           00069F  2778 	C$lab5.c$173$1$134 ==.
+                                   2779 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:173: XBR0 = 0x17;
+      000776 75 E1 17         [24] 2780 	mov	_XBR0,#0x17
+                           0006A2  2781 	C$lab5.c$174$1$134 ==.
+                           0006A2  2782 	XG$XBR0_Init$0$0 ==.
+      000779 22               [24] 2783 	ret
+                                   2784 ;------------------------------------------------------------
+                                   2785 ;Allocation info for local variables in function 'SMB_Init'
+                                   2786 ;------------------------------------------------------------
+                           0006A3  2787 	G$SMB_Init$0$0 ==.
+                           0006A3  2788 	C$lab5.c$176$1$134 ==.
+                                   2789 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:176: void SMB_Init(void)
+                                   2790 ;	-----------------------------------------
+                                   2791 ;	 function SMB_Init
+                                   2792 ;	-----------------------------------------
+      00077A                       2793 _SMB_Init:
+                           0006A3  2794 	C$lab5.c$178$1$136 ==.
+                                   2795 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:178: SMB0CR =0x93;
+      00077A 75 CF 93         [24] 2796 	mov	_SMB0CR,#0x93
+                           0006A6  2797 	C$lab5.c$179$1$136 ==.
+                                   2798 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:179: ENSMB =1;
+      00077D D2 C6            [12] 2799 	setb	_ENSMB
+                           0006A8  2800 	C$lab5.c$180$1$136 ==.
+                           0006A8  2801 	XG$SMB_Init$0$0 ==.
+      00077F 22               [24] 2802 	ret
+                                   2803 ;------------------------------------------------------------
+                                   2804 ;Allocation info for local variables in function 'Update_Value'
+                                   2805 ;------------------------------------------------------------
+                                   2806 ;incr                      Allocated with name '_Update_Value_PARM_2'
+                                   2807 ;maxval                    Allocated with name '_Update_Value_PARM_3'
+                                   2808 ;minval                    Allocated with name '_Update_Value_PARM_4'
+                                   2809 ;Constant                  Allocated to registers r6 r7 
+                                   2810 ;deflt                     Allocated to registers r4 r5 
+                                   2811 ;input                     Allocated to registers r3 
                                    2812 ;------------------------------------------------------------
-                                   2813 ;Allocation info for local variables in function 'Update_Value'
-                                   2814 ;------------------------------------------------------------
-                                   2815 ;incr                      Allocated with name '_Update_Value_PARM_2'
-                                   2816 ;maxval                    Allocated with name '_Update_Value_PARM_3'
-                                   2817 ;minval                    Allocated with name '_Update_Value_PARM_4'
-                                   2818 ;Constant                  Allocated to registers r6 r7 
-                                   2819 ;deflt                     Allocated to registers r4 r5 
-                                   2820 ;input                     Allocated to registers r3 
-                                   2821 ;------------------------------------------------------------
-                           0006C3  2822 	G$Update_Value$0$0 ==.
-                           0006C3  2823 	C$lab5.c$169$1$136 ==.
-                                   2824 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:169: void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
-                                   2825 ;	-----------------------------------------
-                                   2826 ;	 function Update_Value
-                                   2827 ;	-----------------------------------------
-      00079A                       2828 _Update_Value:
-      00079A AE 82            [24] 2829 	mov	r6,dpl
-      00079C AF 83            [24] 2830 	mov	r7,dph
-                           0006C7  2831 	C$lab5.c$175$1$138 ==.
-                                   2832 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:175: deflt = Constant;
-      00079E 8E 04            [24] 2833 	mov	ar4,r6
-      0007A0 8F 05            [24] 2834 	mov	ar5,r7
-                           0006CB  2835 	C$lab5.c$176$1$138 ==.
-                                   2836 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:176: while(1)
-      0007A2                       2837 00114$:
-                           0006CB  2838 	C$lab5.c$178$2$139 ==.
-                                   2839 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:178: input = getchar();
-      0007A2 C0 07            [24] 2840 	push	ar7
-      0007A4 C0 06            [24] 2841 	push	ar6
-      0007A6 C0 05            [24] 2842 	push	ar5
-      0007A8 C0 04            [24] 2843 	push	ar4
-      0007AA 12 01 24         [24] 2844 	lcall	_getchar
-      0007AD AB 82            [24] 2845 	mov	r3,dpl
-      0007AF D0 04            [24] 2846 	pop	ar4
-      0007B1 D0 05            [24] 2847 	pop	ar5
-      0007B3 D0 06            [24] 2848 	pop	ar6
-      0007B5 D0 07            [24] 2849 	pop	ar7
-                           0006E0  2850 	C$lab5.c$179$2$139 ==.
-                                   2851 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:179: if (input == 'c') Constant = deflt;
-      0007B7 BB 63 04         [24] 2852 	cjne	r3,#0x63,00102$
-      0007BA 8C 06            [24] 2853 	mov	ar6,r4
-      0007BC 8D 07            [24] 2854 	mov	ar7,r5
-      0007BE                       2855 00102$:
-                           0006E7  2856 	C$lab5.c$180$2$139 ==.
-                                   2857 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:180: if (input == 'i')
-      0007BE BB 69 1F         [24] 2858 	cjne	r3,#0x69,00106$
-                           0006EA  2859 	C$lab5.c$182$3$140 ==.
-                                   2860 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:182: Constant += incr;
-      0007C1 A9 55            [24] 2861 	mov	r1,_Update_Value_PARM_2
-      0007C3 7A 00            [12] 2862 	mov	r2,#0x00
-      0007C5 E9               [12] 2863 	mov	a,r1
-      0007C6 2E               [12] 2864 	add	a,r6
-      0007C7 FE               [12] 2865 	mov	r6,a
-      0007C8 EA               [12] 2866 	mov	a,r2
-      0007C9 3F               [12] 2867 	addc	a,r7
-      0007CA FF               [12] 2868 	mov	r7,a
-                           0006F4  2869 	C$lab5.c$183$3$140 ==.
-                                   2870 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:183: if (Constant > maxval) Constant = maxval;
-      0007CB C3               [12] 2871 	clr	c
-      0007CC E5 56            [12] 2872 	mov	a,_Update_Value_PARM_3
-      0007CE 9E               [12] 2873 	subb	a,r6
-      0007CF E5 57            [12] 2874 	mov	a,(_Update_Value_PARM_3 + 1)
-      0007D1 64 80            [12] 2875 	xrl	a,#0x80
-      0007D3 8F F0            [24] 2876 	mov	b,r7
-      0007D5 63 F0 80         [24] 2877 	xrl	b,#0x80
-      0007D8 95 F0            [12] 2878 	subb	a,b
-      0007DA 50 04            [24] 2879 	jnc	00106$
-      0007DC AE 56            [24] 2880 	mov	r6,_Update_Value_PARM_3
-      0007DE AF 57            [24] 2881 	mov	r7,(_Update_Value_PARM_3 + 1)
-      0007E0                       2882 00106$:
-                           000709  2883 	C$lab5.c$185$2$139 ==.
-                                   2884 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:185: if (input == 'd')
-      0007E0 BB 64 20         [24] 2885 	cjne	r3,#0x64,00110$
-                           00070C  2886 	C$lab5.c$187$3$141 ==.
-                                   2887 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:187: Constant -= incr;
-      0007E3 A9 55            [24] 2888 	mov	r1,_Update_Value_PARM_2
-      0007E5 7A 00            [12] 2889 	mov	r2,#0x00
-      0007E7 EE               [12] 2890 	mov	a,r6
-      0007E8 C3               [12] 2891 	clr	c
-      0007E9 99               [12] 2892 	subb	a,r1
-      0007EA FE               [12] 2893 	mov	r6,a
-      0007EB EF               [12] 2894 	mov	a,r7
-      0007EC 9A               [12] 2895 	subb	a,r2
-      0007ED FF               [12] 2896 	mov	r7,a
-                           000717  2897 	C$lab5.c$188$3$141 ==.
-                                   2898 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:188: if (Constant < minval) Constant = minval;
-      0007EE C3               [12] 2899 	clr	c
-      0007EF EE               [12] 2900 	mov	a,r6
-      0007F0 95 58            [12] 2901 	subb	a,_Update_Value_PARM_4
-      0007F2 EF               [12] 2902 	mov	a,r7
-      0007F3 64 80            [12] 2903 	xrl	a,#0x80
-      0007F5 85 59 F0         [24] 2904 	mov	b,(_Update_Value_PARM_4 + 1)
-      0007F8 63 F0 80         [24] 2905 	xrl	b,#0x80
-      0007FB 95 F0            [12] 2906 	subb	a,b
-      0007FD 50 04            [24] 2907 	jnc	00110$
-      0007FF AE 58            [24] 2908 	mov	r6,_Update_Value_PARM_4
-      000801 AF 59            [24] 2909 	mov	r7,(_Update_Value_PARM_4 + 1)
-      000803                       2910 00110$:
-                           00072C  2911 	C$lab5.c$190$2$139 ==.
-                                   2912 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:190: if (input == 'u')
-      000803 BB 75 9C         [24] 2913 	cjne	r3,#0x75,00114$
-                           00072F  2914 	C$lab5.c$192$3$142 ==.
-                                   2915 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:192: return;
-                           00072F  2916 	C$lab5.c$195$1$138 ==.
-                           00072F  2917 	XG$Update_Value$0$0 ==.
-      000806 22               [24] 2918 	ret
-                                   2919 ;------------------------------------------------------------
-                                   2920 ;Allocation info for local variables in function 'read_accels'
-                                   2921 ;------------------------------------------------------------
-                                   2922 ;Data                      Allocated with name '_read_accels_Data_1_144'
-                                   2923 ;avg_gx                    Allocated with name '_read_accels_avg_gx_1_144'
-                                   2924 ;avg_gy                    Allocated to registers r3 r4 
-                                   2925 ;i                         Allocated to registers 
-                                   2926 ;------------------------------------------------------------
-                           000730  2927 	G$read_accels$0$0 ==.
-                           000730  2928 	C$lab5.c$197$1$138 ==.
-                                   2929 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:197: void read_accels(void)
-                                   2930 ;	-----------------------------------------
-                                   2931 ;	 function read_accels
-                                   2932 ;	-----------------------------------------
-      000807                       2933 _read_accels:
-                           000730  2934 	C$lab5.c$201$1$138 ==.
-                                   2935 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:201: char i =0;
-                           000730  2936 	C$lab5.c$202$1$144 ==.
-                                   2937 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:202: avg_gy=avg_gx=0;
-      000807 E4               [12] 2938 	clr	a
-      000808 FF               [12] 2939 	mov	r7,a
-      000809 F5 5E            [12] 2940 	mov	_read_accels_avg_gx_1_144,a
-      00080B F5 5F            [12] 2941 	mov	(_read_accels_avg_gx_1_144 + 1),a
-      00080D FB               [12] 2942 	mov	r3,a
-      00080E FC               [12] 2943 	mov	r4,a
-                           000738  2944 	C$lab5.c$203$1$144 ==.
-                                   2945 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:203: gx=gy=0;
-      00080F F5 4E            [12] 2946 	mov	_gy,a
-      000811 F5 4F            [12] 2947 	mov	(_gy + 1),a
-      000813 F5 4C            [12] 2948 	mov	_gx,a
-      000815 F5 4D            [12] 2949 	mov	(_gx + 1),a
-      000817                       2950 00105$:
-                           000740  2951 	C$lab5.c$204$1$144 ==.
-                                   2952 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:204: for (; i < 12; i++)
-      000817 C3               [12] 2953 	clr	c
-      000818 EF               [12] 2954 	mov	a,r7
-      000819 64 80            [12] 2955 	xrl	a,#0x80
-      00081B 94 8C            [12] 2956 	subb	a,#0x8c
-      00081D 40 03            [24] 2957 	jc	00119$
-      00081F 02 08 BC         [24] 2958 	ljmp	00103$
-      000822                       2959 00119$:
-                           00074B  2960 	C$lab5.c$206$2$145 ==.
-                                   2961 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:206: wait();
-      000822 C0 07            [24] 2962 	push	ar7
-      000824 C0 04            [24] 2963 	push	ar4
-      000826 C0 03            [24] 2964 	push	ar3
-      000828 12 06 DD         [24] 2965 	lcall	_wait
-                           000754  2966 	C$lab5.c$207$2$145 ==.
-                                   2967 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:207: i2c_read_data(0x30,0x27,Data,1);
-      00082B 75 2D 5A         [24] 2968 	mov	_i2c_read_data_PARM_3,#_read_accels_Data_1_144
-      00082E 75 2E 00         [24] 2969 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
-      000831 75 2F 40         [24] 2970 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
-      000834 75 2C 27         [24] 2971 	mov	_i2c_read_data_PARM_2,#0x27
-      000837 75 30 01         [24] 2972 	mov	_i2c_read_data_PARM_4,#0x01
-      00083A 75 82 30         [24] 2973 	mov	dpl,#0x30
-      00083D 12 04 BF         [24] 2974 	lcall	_i2c_read_data
-      000840 D0 03            [24] 2975 	pop	ar3
-      000842 D0 04            [24] 2976 	pop	ar4
-      000844 D0 07            [24] 2977 	pop	ar7
-                           00076F  2978 	C$lab5.c$208$2$145 ==.
-                                   2979 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:208: if (Data[0] & 0x03 == 0x03)
-      000846 E5 5A            [12] 2980 	mov	a,_read_accels_Data_1_144
-      000848 30 E0 6D         [24] 2981 	jnb	acc.0,00106$
-                           000774  2982 	C$lab5.c$210$3$146 ==.
-                                   2983 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:210: i2c_read_data(0x30,0x28|0x80,Data,4);
-      00084B 75 2D 5A         [24] 2984 	mov	_i2c_read_data_PARM_3,#_read_accels_Data_1_144
-      00084E 75 2E 00         [24] 2985 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
-      000851 75 2F 40         [24] 2986 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
-      000854 75 2C A8         [24] 2987 	mov	_i2c_read_data_PARM_2,#0xA8
-      000857 75 30 04         [24] 2988 	mov	_i2c_read_data_PARM_4,#0x04
-      00085A 75 82 30         [24] 2989 	mov	dpl,#0x30
-      00085D C0 07            [24] 2990 	push	ar7
-      00085F C0 04            [24] 2991 	push	ar4
-      000861 C0 03            [24] 2992 	push	ar3
-      000863 12 04 BF         [24] 2993 	lcall	_i2c_read_data
-      000866 D0 03            [24] 2994 	pop	ar3
-      000868 D0 04            [24] 2995 	pop	ar4
-      00086A D0 07            [24] 2996 	pop	ar7
-                           000795  2997 	C$lab5.c$211$3$146 ==.
-                                   2998 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:211: avg_gx += ((Data[1] << 8) >> 4);
-      00086C AA 5B            [24] 2999 	mov	r2,(_read_accels_Data_1_144 + 0x0001)
-      00086E E5 5B            [12] 3000 	mov	a,(_read_accels_Data_1_144 + 0x0001)
-      000870 33               [12] 3001 	rlc	a
-      000871 95 E0            [12] 3002 	subb	a,acc
-      000873 8A 06            [24] 3003 	mov	ar6,r2
-      000875 7A 00            [12] 3004 	mov	r2,#0x00
-      000877 EE               [12] 3005 	mov	a,r6
-      000878 C4               [12] 3006 	swap	a
-      000879 CA               [12] 3007 	xch	a,r2
-      00087A C4               [12] 3008 	swap	a
-      00087B 54 0F            [12] 3009 	anl	a,#0x0F
-      00087D 6A               [12] 3010 	xrl	a,r2
-      00087E CA               [12] 3011 	xch	a,r2
-      00087F 54 0F            [12] 3012 	anl	a,#0x0F
-      000881 CA               [12] 3013 	xch	a,r2
-      000882 6A               [12] 3014 	xrl	a,r2
-      000883 CA               [12] 3015 	xch	a,r2
-      000884 30 E3 02         [24] 3016 	jnb	acc.3,00121$
-      000887 44 F0            [12] 3017 	orl	a,#0xF0
-      000889                       3018 00121$:
-      000889 FE               [12] 3019 	mov	r6,a
-      00088A EA               [12] 3020 	mov	a,r2
-      00088B 25 5E            [12] 3021 	add	a,_read_accels_avg_gx_1_144
-      00088D F5 5E            [12] 3022 	mov	_read_accels_avg_gx_1_144,a
-      00088F EE               [12] 3023 	mov	a,r6
-      000890 35 5F            [12] 3024 	addc	a,(_read_accels_avg_gx_1_144 + 1)
-      000892 F5 5F            [12] 3025 	mov	(_read_accels_avg_gx_1_144 + 1),a
-                           0007BD  3026 	C$lab5.c$212$3$146 ==.
-                                   3027 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:212: avg_gy += ((Data[3] << 8) >> 4);
-      000894 AD 5D            [24] 3028 	mov	r5,(_read_accels_Data_1_144 + 0x0003)
-      000896 E5 5D            [12] 3029 	mov	a,(_read_accels_Data_1_144 + 0x0003)
-      000898 33               [12] 3030 	rlc	a
-      000899 95 E0            [12] 3031 	subb	a,acc
-      00089B 8D 06            [24] 3032 	mov	ar6,r5
-      00089D 7D 00            [12] 3033 	mov	r5,#0x00
-      00089F EE               [12] 3034 	mov	a,r6
-      0008A0 C4               [12] 3035 	swap	a
-      0008A1 CD               [12] 3036 	xch	a,r5
-      0008A2 C4               [12] 3037 	swap	a
-      0008A3 54 0F            [12] 3038 	anl	a,#0x0F
-      0008A5 6D               [12] 3039 	xrl	a,r5
-      0008A6 CD               [12] 3040 	xch	a,r5
-      0008A7 54 0F            [12] 3041 	anl	a,#0x0F
-      0008A9 CD               [12] 3042 	xch	a,r5
-      0008AA 6D               [12] 3043 	xrl	a,r5
-      0008AB CD               [12] 3044 	xch	a,r5
-      0008AC 30 E3 02         [24] 3045 	jnb	acc.3,00122$
-      0008AF 44 F0            [12] 3046 	orl	a,#0xF0
-      0008B1                       3047 00122$:
-      0008B1 FE               [12] 3048 	mov	r6,a
-      0008B2 ED               [12] 3049 	mov	a,r5
-      0008B3 2B               [12] 3050 	add	a,r3
-      0008B4 FB               [12] 3051 	mov	r3,a
-      0008B5 EE               [12] 3052 	mov	a,r6
-      0008B6 3C               [12] 3053 	addc	a,r4
-      0008B7 FC               [12] 3054 	mov	r4,a
-      0008B8                       3055 00106$:
-                           0007E1  3056 	C$lab5.c$204$1$144 ==.
-                                   3057 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:204: for (; i < 12; i++)
-      0008B8 0F               [12] 3058 	inc	r7
-      0008B9 02 08 17         [24] 3059 	ljmp	00105$
-      0008BC                       3060 00103$:
-                           0007E5  3061 	C$lab5.c$215$1$144 ==.
-                                   3062 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:215: avg_gy= avg_gy/12;
-      0008BC 75 11 0C         [24] 3063 	mov	__divsint_PARM_2,#0x0C
-      0008BF 75 12 00         [24] 3064 	mov	(__divsint_PARM_2 + 1),#0x00
-      0008C2 8B 82            [24] 3065 	mov	dpl,r3
-      0008C4 8C 83            [24] 3066 	mov	dph,r4
-      0008C6 12 11 F6         [24] 3067 	lcall	__divsint
-      0008C9 AB 82            [24] 3068 	mov	r3,dpl
-      0008CB AC 83            [24] 3069 	mov	r4,dph
-                           0007F6  3070 	C$lab5.c$216$1$144 ==.
-                                   3071 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:216: avg_gx= avg_gx/12;
-      0008CD 75 11 0C         [24] 3072 	mov	__divsint_PARM_2,#0x0C
-      0008D0 75 12 00         [24] 3073 	mov	(__divsint_PARM_2 + 1),#0x00
-      0008D3 85 5E 82         [24] 3074 	mov	dpl,_read_accels_avg_gx_1_144
-      0008D6 85 5F 83         [24] 3075 	mov	dph,(_read_accels_avg_gx_1_144 + 1)
-      0008D9 C0 04            [24] 3076 	push	ar4
-      0008DB C0 03            [24] 3077 	push	ar3
-      0008DD 12 11 F6         [24] 3078 	lcall	__divsint
-      0008E0 85 82 4C         [24] 3079 	mov	_gx,dpl
-      0008E3 85 83 4D         [24] 3080 	mov	(_gx + 1),dph
-      0008E6 D0 03            [24] 3081 	pop	ar3
-      0008E8 D0 04            [24] 3082 	pop	ar4
-                           000813  3083 	C$lab5.c$218$1$144 ==.
-                                   3084 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:218: gy = avg_gy;
-      0008EA 8B 4E            [24] 3085 	mov	_gy,r3
-      0008EC 8C 4F            [24] 3086 	mov	(_gy + 1),r4
-                           000817  3087 	C$lab5.c$221$1$144 ==.
-                           000817  3088 	XG$read_accels$0$0 ==.
-      0008EE 22               [24] 3089 	ret
-                                   3090 ;------------------------------------------------------------
-                                   3091 ;Allocation info for local variables in function 'set_servo_PWM'
-                                   3092 ;------------------------------------------------------------
-                           000818  3093 	G$set_servo_PWM$0$0 ==.
-                           000818  3094 	C$lab5.c$223$1$144 ==.
-                                   3095 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:223: void set_servo_PWM(void)
-                                   3096 ;	-----------------------------------------
-                                   3097 ;	 function set_servo_PWM
-                                   3098 ;	-----------------------------------------
-      0008EF                       3099 _set_servo_PWM:
-                           000818  3100 	C$lab5.c$225$1$148 ==.
-                                   3101 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:225: STR_PW = PW_CENTER - ks  * gx;
-      0008EF AE 48            [24] 3102 	mov	r6,_ks
-      0008F1 7F 00            [12] 3103 	mov	r7,#0x00
-      0008F3 85 4C 11         [24] 3104 	mov	__mulint_PARM_2,_gx
-      0008F6 85 4D 12         [24] 3105 	mov	(__mulint_PARM_2 + 1),(_gx + 1)
-      0008F9 8E 82            [24] 3106 	mov	dpl,r6
-      0008FB 8F 83            [24] 3107 	mov	dph,r7
-      0008FD 12 0A 34         [24] 3108 	lcall	__mulint
-      000900 AE 82            [24] 3109 	mov	r6,dpl
-      000902 AF 83            [24] 3110 	mov	r7,dph
-      000904 E5 32            [12] 3111 	mov	a,_PW_CENTER
-      000906 C3               [12] 3112 	clr	c
-      000907 9E               [12] 3113 	subb	a,r6
-      000908 F5 40            [12] 3114 	mov	_STR_PW,a
-      00090A E5 33            [12] 3115 	mov	a,(_PW_CENTER + 1)
-      00090C 9F               [12] 3116 	subb	a,r7
-      00090D F5 41            [12] 3117 	mov	(_STR_PW + 1),a
-                           000838  3118 	C$lab5.c$226$1$148 ==.
-                                   3119 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:226: if (STR_PW < PW_LEFT) STR_PW = PW_LEFT;
-      00090F C3               [12] 3120 	clr	c
-      000910 E5 40            [12] 3121 	mov	a,_STR_PW
-      000912 95 36            [12] 3122 	subb	a,_PW_LEFT
-      000914 E5 41            [12] 3123 	mov	a,(_STR_PW + 1)
-      000916 95 37            [12] 3124 	subb	a,(_PW_LEFT + 1)
-      000918 50 06            [24] 3125 	jnc	00102$
-      00091A 85 36 40         [24] 3126 	mov	_STR_PW,_PW_LEFT
-      00091D 85 37 41         [24] 3127 	mov	(_STR_PW + 1),(_PW_LEFT + 1)
-      000920                       3128 00102$:
-                           000849  3129 	C$lab5.c$227$1$148 ==.
-                                   3130 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:227: if (STR_PW > PW_RIGHT) STR_PW = PW_RIGHT;
-      000920 C3               [12] 3131 	clr	c
-      000921 E5 34            [12] 3132 	mov	a,_PW_RIGHT
-      000923 95 40            [12] 3133 	subb	a,_STR_PW
-      000925 E5 35            [12] 3134 	mov	a,(_PW_RIGHT + 1)
-      000927 95 41            [12] 3135 	subb	a,(_STR_PW + 1)
-      000929 50 06            [24] 3136 	jnc	00104$
-      00092B 85 34 40         [24] 3137 	mov	_STR_PW,_PW_RIGHT
-      00092E 85 35 41         [24] 3138 	mov	(_STR_PW + 1),(_PW_RIGHT + 1)
-      000931                       3139 00104$:
-                           00085A  3140 	C$lab5.c$228$1$148 ==.
-                                   3141 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:228: PCA0CP1 = 0xFFFF - STR_PW;
-      000931 74 FF            [12] 3142 	mov	a,#0xFF
-      000933 C3               [12] 3143 	clr	c
-      000934 95 40            [12] 3144 	subb	a,_STR_PW
-      000936 F5 EB            [12] 3145 	mov	((_PCA0CP1 >> 0) & 0xFF),a
-      000938 74 FF            [12] 3146 	mov	a,#0xFF
-      00093A 95 41            [12] 3147 	subb	a,(_STR_PW + 1)
-      00093C F5 FB            [12] 3148 	mov	((_PCA0CP1 >> 8) & 0xFF),a
-                           000867  3149 	C$lab5.c$229$1$148 ==.
-                           000867  3150 	XG$set_servo_PWM$0$0 ==.
-      00093E 22               [24] 3151 	ret
-                                   3152 ;------------------------------------------------------------
-                                   3153 ;Allocation info for local variables in function 'PCA_Init'
-                                   3154 ;------------------------------------------------------------
-                           000868  3155 	G$PCA_Init$0$0 ==.
-                           000868  3156 	C$lab5.c$231$1$148 ==.
-                                   3157 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:231: void PCA_Init(void)
-                                   3158 ;	-----------------------------------------
-                                   3159 ;	 function PCA_Init
-                                   3160 ;	-----------------------------------------
-      00093F                       3161 _PCA_Init:
-                           000868  3162 	C$lab5.c$233$1$150 ==.
-                                   3163 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:233: PCA0MD = 0x81;
-      00093F 75 D9 81         [24] 3164 	mov	_PCA0MD,#0x81
-                           00086B  3165 	C$lab5.c$234$1$150 ==.
-                                   3166 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:234: PCA0CPM0 = 0xC2;
-      000942 75 DA C2         [24] 3167 	mov	_PCA0CPM0,#0xC2
-                           00086E  3168 	C$lab5.c$235$1$150 ==.
-                                   3169 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:235: PCA0CPM1 = 0xC2;
-      000945 75 DB C2         [24] 3170 	mov	_PCA0CPM1,#0xC2
-                           000871  3171 	C$lab5.c$236$1$150 ==.
-                                   3172 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:236: PCA0CN 	= 0x40;      //Enable PCA counter
-      000948 75 D8 40         [24] 3173 	mov	_PCA0CN,#0x40
-                           000874  3174 	C$lab5.c$237$1$150 ==.
-                                   3175 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:237: EIE1 |= 0x08;       //Enable PCA interrupt
-      00094B 43 E6 08         [24] 3176 	orl	_EIE1,#0x08
-                           000877  3177 	C$lab5.c$238$1$150 ==.
-                                   3178 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:238: EA = 1;             //Enable global interrupts
-      00094E D2 AF            [12] 3179 	setb	_EA
-                           000879  3180 	C$lab5.c$241$1$150 ==.
-                           000879  3181 	XG$PCA_Init$0$0 ==.
-      000950 22               [24] 3182 	ret
-                                   3183 ;------------------------------------------------------------
-                                   3184 ;Allocation info for local variables in function 'updateLCD'
-                                   3185 ;------------------------------------------------------------
-                           00087A  3186 	G$updateLCD$0$0 ==.
-                           00087A  3187 	C$lab5.c$243$1$150 ==.
-                                   3188 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:243: void updateLCD(void)
-                                   3189 ;	-----------------------------------------
-                                   3190 ;	 function updateLCD
-                                   3191 ;	-----------------------------------------
-      000951                       3192 _updateLCD:
-                           00087A  3193 	C$lab5.c$245$1$152 ==.
-                                   3194 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:245: lcd_clear();
-      000951 12 01 B8         [24] 3195 	lcall	_lcd_clear
-                           00087D  3196 	C$lab5.c$246$1$152 ==.
-                                   3197 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:246: lcd_print("ks: %u kdx: %u\rkdy: %u\rMpw: %u\rSpw: %u",ks,kdx,kdy,DRV_PW,STR_PW);
-      000954 AE 49            [24] 3198 	mov	r6,_kdy
-      000956 7F 00            [12] 3199 	mov	r7,#0x00
-      000958 AC 4A            [24] 3200 	mov	r4,_kdx
-      00095A 7D 00            [12] 3201 	mov	r5,#0x00
-      00095C AA 48            [24] 3202 	mov	r2,_ks
-      00095E 7B 00            [12] 3203 	mov	r3,#0x00
-      000960 C0 40            [24] 3204 	push	_STR_PW
-      000962 C0 41            [24] 3205 	push	(_STR_PW + 1)
-      000964 C0 3E            [24] 3206 	push	_DRV_PW
-      000966 C0 3F            [24] 3207 	push	(_DRV_PW + 1)
-      000968 C0 06            [24] 3208 	push	ar6
-      00096A C0 07            [24] 3209 	push	ar7
-      00096C C0 04            [24] 3210 	push	ar4
-      00096E C0 05            [24] 3211 	push	ar5
-      000970 C0 02            [24] 3212 	push	ar2
-      000972 C0 03            [24] 3213 	push	ar3
-      000974 74 DE            [12] 3214 	mov	a,#___str_10
-      000976 C0 E0            [24] 3215 	push	acc
-      000978 74 12            [12] 3216 	mov	a,#(___str_10 >> 8)
-      00097A C0 E0            [24] 3217 	push	acc
-      00097C 74 80            [12] 3218 	mov	a,#0x80
-      00097E C0 E0            [24] 3219 	push	acc
-      000980 12 01 33         [24] 3220 	lcall	_lcd_print
-      000983 E5 81            [12] 3221 	mov	a,sp
-      000985 24 F3            [12] 3222 	add	a,#0xf3
-      000987 F5 81            [12] 3223 	mov	sp,a
-                           0008B2  3224 	C$lab5.c$247$1$152 ==.
-                           0008B2  3225 	XG$updateLCD$0$0 ==.
-      000989 22               [24] 3226 	ret
-                                   3227 ;------------------------------------------------------------
-                                   3228 ;Allocation info for local variables in function 'set_drive_PWM'
-                                   3229 ;------------------------------------------------------------
-                           0008B3  3230 	G$set_drive_PWM$0$0 ==.
-                           0008B3  3231 	C$lab5.c$249$1$152 ==.
-                                   3232 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:249: void set_drive_PWM(void)
-                                   3233 ;	-----------------------------------------
-                                   3234 ;	 function set_drive_PWM
-                                   3235 ;	-----------------------------------------
-      00098A                       3236 _set_drive_PWM:
-                           0008B3  3237 	C$lab5.c$251$1$154 ==.
-                                   3238 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:251: DRV_PW = SERVO_PW + kdy * gy;
-      00098A AE 49            [24] 3239 	mov	r6,_kdy
-      00098C 7F 00            [12] 3240 	mov	r7,#0x00
-      00098E 85 4E 11         [24] 3241 	mov	__mulint_PARM_2,_gy
-      000991 85 4F 12         [24] 3242 	mov	(__mulint_PARM_2 + 1),(_gy + 1)
-      000994 8E 82            [24] 3243 	mov	dpl,r6
-      000996 8F 83            [24] 3244 	mov	dph,r7
-      000998 12 0A 34         [24] 3245 	lcall	__mulint
-      00099B AE 82            [24] 3246 	mov	r6,dpl
-      00099D AF 83            [24] 3247 	mov	r7,dph
-      00099F EE               [12] 3248 	mov	a,r6
-      0009A0 25 38            [12] 3249 	add	a,_SERVO_PW
-      0009A2 F5 3E            [12] 3250 	mov	_DRV_PW,a
-      0009A4 EF               [12] 3251 	mov	a,r7
-      0009A5 35 39            [12] 3252 	addc	a,(_SERVO_PW + 1)
-      0009A7 F5 3F            [12] 3253 	mov	(_DRV_PW + 1),a
-                           0008D2  3254 	C$lab5.c$252$1$154 ==.
-                                   3255 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:252: DRV_PW += kdx * abs(gx); + ki * error_sum;
-      0009A9 85 4C 82         [24] 3256 	mov	dpl,_gx
-      0009AC 85 4D 83         [24] 3257 	mov	dph,(_gx + 1)
-      0009AF 12 0A 27         [24] 3258 	lcall	_abs
-      0009B2 85 82 11         [24] 3259 	mov	__mulint_PARM_2,dpl
-      0009B5 85 83 12         [24] 3260 	mov	(__mulint_PARM_2 + 1),dph
-      0009B8 AE 4A            [24] 3261 	mov	r6,_kdx
-      0009BA 7F 00            [12] 3262 	mov	r7,#0x00
-      0009BC 8E 82            [24] 3263 	mov	dpl,r6
-      0009BE 8F 83            [24] 3264 	mov	dph,r7
-      0009C0 12 0A 34         [24] 3265 	lcall	__mulint
-      0009C3 AE 82            [24] 3266 	mov	r6,dpl
-      0009C5 AF 83            [24] 3267 	mov	r7,dph
-      0009C7 EE               [12] 3268 	mov	a,r6
-      0009C8 25 3E            [12] 3269 	add	a,_DRV_PW
-      0009CA F5 3E            [12] 3270 	mov	_DRV_PW,a
-      0009CC EF               [12] 3271 	mov	a,r7
-      0009CD 35 3F            [12] 3272 	addc	a,(_DRV_PW + 1)
-      0009CF F5 3F            [12] 3273 	mov	(_DRV_PW + 1),a
-                           0008FA  3274 	C$lab5.c$253$1$154 ==.
-                                   3275 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:253: error_sum += gy + abs(gx);
-      0009D1 85 4C 82         [24] 3276 	mov	dpl,_gx
-      0009D4 85 4D 83         [24] 3277 	mov	dph,(_gx + 1)
-      0009D7 12 0A 27         [24] 3278 	lcall	_abs
-      0009DA AE 82            [24] 3279 	mov	r6,dpl
-      0009DC AF 83            [24] 3280 	mov	r7,dph
-      0009DE EE               [12] 3281 	mov	a,r6
-      0009DF 25 4E            [12] 3282 	add	a,_gy
-      0009E1 FE               [12] 3283 	mov	r6,a
-      0009E2 EF               [12] 3284 	mov	a,r7
-      0009E3 35 4F            [12] 3285 	addc	a,(_gy + 1)
-      0009E5 FF               [12] 3286 	mov	r7,a
-      0009E6 EE               [12] 3287 	mov	a,r6
-      0009E7 25 53            [12] 3288 	add	a,_error_sum
-      0009E9 F5 53            [12] 3289 	mov	_error_sum,a
-      0009EB EF               [12] 3290 	mov	a,r7
-      0009EC 35 54            [12] 3291 	addc	a,(_error_sum + 1)
-      0009EE F5 54            [12] 3292 	mov	(_error_sum + 1),a
-                           000919  3293 	C$lab5.c$255$1$154 ==.
-                                   3294 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:255: PCA0CP0 = 0xFFFF - DRV_PW;
-      0009F0 74 FF            [12] 3295 	mov	a,#0xFF
-      0009F2 C3               [12] 3296 	clr	c
-      0009F3 95 3E            [12] 3297 	subb	a,_DRV_PW
-      0009F5 F5 EA            [12] 3298 	mov	((_PCA0CP0 >> 0) & 0xFF),a
-      0009F7 74 FF            [12] 3299 	mov	a,#0xFF
-      0009F9 95 3F            [12] 3300 	subb	a,(_DRV_PW + 1)
-      0009FB F5 FA            [12] 3301 	mov	((_PCA0CP0 >> 8) & 0xFF),a
-                           000926  3302 	C$lab5.c$256$1$154 ==.
-                           000926  3303 	XG$set_drive_PWM$0$0 ==.
-      0009FD 22               [24] 3304 	ret
-                                   3305 ;------------------------------------------------------------
-                                   3306 ;Allocation info for local variables in function 'Port_Init'
-                                   3307 ;------------------------------------------------------------
-                           000927  3308 	G$Port_Init$0$0 ==.
-                           000927  3309 	C$lab5.c$260$1$154 ==.
-                                   3310 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:260: void Port_Init(void)
-                                   3311 ;	-----------------------------------------
-                                   3312 ;	 function Port_Init
-                                   3313 ;	-----------------------------------------
-      0009FE                       3314 _Port_Init:
-                           000927  3315 	C$lab5.c$262$1$156 ==.
-                                   3316 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:262: P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
-      0009FE 43 A5 03         [24] 3317 	orl	_P1MDOUT,#0x03
-                           00092A  3318 	C$lab5.c$265$1$156 ==.
-                                   3319 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:265: P3MDOUT &= ~0x40;
-      000A01 AF A7            [24] 3320 	mov	r7,_P3MDOUT
-      000A03 74 BF            [12] 3321 	mov	a,#0xBF
-      000A05 5F               [12] 3322 	anl	a,r7
-      000A06 F5 A7            [12] 3323 	mov	_P3MDOUT,a
-                           000931  3324 	C$lab5.c$266$1$156 ==.
-                                   3325 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:266: P3 = 0x40;
-      000A08 75 B0 40         [24] 3326 	mov	_P3,#0x40
-                           000934  3327 	C$lab5.c$267$1$156 ==.
-                           000934  3328 	XG$Port_Init$0$0 ==.
-      000A0B 22               [24] 3329 	ret
-                                   3330 	.area CSEG    (CODE)
-                                   3331 	.area CONST   (CODE)
-                           000000  3332 Flab5$__str_0$0$0 == .
-      001232                       3333 ___str_0:
-      001232 0A                    3334 	.db 0x0A
-      001233 54 79 70 65 20 64 69  3335 	.ascii "Type digits; end w/#"
+                           0006A9  2813 	G$Update_Value$0$0 ==.
+                           0006A9  2814 	C$lab5.c$182$1$136 ==.
+                                   2815 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:182: void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
+                                   2816 ;	-----------------------------------------
+                                   2817 ;	 function Update_Value
+                                   2818 ;	-----------------------------------------
+      000780                       2819 _Update_Value:
+      000780 AE 82            [24] 2820 	mov	r6,dpl
+      000782 AF 83            [24] 2821 	mov	r7,dph
+                           0006AD  2822 	C$lab5.c$188$1$138 ==.
+                                   2823 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:188: deflt = Constant;
+      000784 8E 04            [24] 2824 	mov	ar4,r6
+      000786 8F 05            [24] 2825 	mov	ar5,r7
+                           0006B1  2826 	C$lab5.c$189$1$138 ==.
+                                   2827 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:189: while(1)
+      000788                       2828 00114$:
+                           0006B1  2829 	C$lab5.c$191$2$139 ==.
+                                   2830 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:191: input = getchar();
+      000788 C0 07            [24] 2831 	push	ar7
+      00078A C0 06            [24] 2832 	push	ar6
+      00078C C0 05            [24] 2833 	push	ar5
+      00078E C0 04            [24] 2834 	push	ar4
+      000790 12 01 24         [24] 2835 	lcall	_getchar
+      000793 AB 82            [24] 2836 	mov	r3,dpl
+      000795 D0 04            [24] 2837 	pop	ar4
+      000797 D0 05            [24] 2838 	pop	ar5
+      000799 D0 06            [24] 2839 	pop	ar6
+      00079B D0 07            [24] 2840 	pop	ar7
+                           0006C6  2841 	C$lab5.c$192$2$139 ==.
+                                   2842 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:192: if (input == 'c') Constant = deflt;
+      00079D BB 63 04         [24] 2843 	cjne	r3,#0x63,00102$
+      0007A0 8C 06            [24] 2844 	mov	ar6,r4
+      0007A2 8D 07            [24] 2845 	mov	ar7,r5
+      0007A4                       2846 00102$:
+                           0006CD  2847 	C$lab5.c$193$2$139 ==.
+                                   2848 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:193: if (input == 'i')
+      0007A4 BB 69 1F         [24] 2849 	cjne	r3,#0x69,00106$
+                           0006D0  2850 	C$lab5.c$195$3$140 ==.
+                                   2851 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:195: Constant += incr;
+      0007A7 A9 55            [24] 2852 	mov	r1,_Update_Value_PARM_2
+      0007A9 7A 00            [12] 2853 	mov	r2,#0x00
+      0007AB E9               [12] 2854 	mov	a,r1
+      0007AC 2E               [12] 2855 	add	a,r6
+      0007AD FE               [12] 2856 	mov	r6,a
+      0007AE EA               [12] 2857 	mov	a,r2
+      0007AF 3F               [12] 2858 	addc	a,r7
+      0007B0 FF               [12] 2859 	mov	r7,a
+                           0006DA  2860 	C$lab5.c$196$3$140 ==.
+                                   2861 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:196: if (Constant > maxval) Constant = maxval;
+      0007B1 C3               [12] 2862 	clr	c
+      0007B2 E5 56            [12] 2863 	mov	a,_Update_Value_PARM_3
+      0007B4 9E               [12] 2864 	subb	a,r6
+      0007B5 E5 57            [12] 2865 	mov	a,(_Update_Value_PARM_3 + 1)
+      0007B7 64 80            [12] 2866 	xrl	a,#0x80
+      0007B9 8F F0            [24] 2867 	mov	b,r7
+      0007BB 63 F0 80         [24] 2868 	xrl	b,#0x80
+      0007BE 95 F0            [12] 2869 	subb	a,b
+      0007C0 50 04            [24] 2870 	jnc	00106$
+      0007C2 AE 56            [24] 2871 	mov	r6,_Update_Value_PARM_3
+      0007C4 AF 57            [24] 2872 	mov	r7,(_Update_Value_PARM_3 + 1)
+      0007C6                       2873 00106$:
+                           0006EF  2874 	C$lab5.c$198$2$139 ==.
+                                   2875 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:198: if (input == 'd')
+      0007C6 BB 64 20         [24] 2876 	cjne	r3,#0x64,00110$
+                           0006F2  2877 	C$lab5.c$200$3$141 ==.
+                                   2878 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:200: Constant -= incr;
+      0007C9 A9 55            [24] 2879 	mov	r1,_Update_Value_PARM_2
+      0007CB 7A 00            [12] 2880 	mov	r2,#0x00
+      0007CD EE               [12] 2881 	mov	a,r6
+      0007CE C3               [12] 2882 	clr	c
+      0007CF 99               [12] 2883 	subb	a,r1
+      0007D0 FE               [12] 2884 	mov	r6,a
+      0007D1 EF               [12] 2885 	mov	a,r7
+      0007D2 9A               [12] 2886 	subb	a,r2
+      0007D3 FF               [12] 2887 	mov	r7,a
+                           0006FD  2888 	C$lab5.c$201$3$141 ==.
+                                   2889 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:201: if (Constant < minval) Constant = minval;
+      0007D4 C3               [12] 2890 	clr	c
+      0007D5 EE               [12] 2891 	mov	a,r6
+      0007D6 95 58            [12] 2892 	subb	a,_Update_Value_PARM_4
+      0007D8 EF               [12] 2893 	mov	a,r7
+      0007D9 64 80            [12] 2894 	xrl	a,#0x80
+      0007DB 85 59 F0         [24] 2895 	mov	b,(_Update_Value_PARM_4 + 1)
+      0007DE 63 F0 80         [24] 2896 	xrl	b,#0x80
+      0007E1 95 F0            [12] 2897 	subb	a,b
+      0007E3 50 04            [24] 2898 	jnc	00110$
+      0007E5 AE 58            [24] 2899 	mov	r6,_Update_Value_PARM_4
+      0007E7 AF 59            [24] 2900 	mov	r7,(_Update_Value_PARM_4 + 1)
+      0007E9                       2901 00110$:
+                           000712  2902 	C$lab5.c$203$2$139 ==.
+                                   2903 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:203: if (input == 'u')
+      0007E9 BB 75 9C         [24] 2904 	cjne	r3,#0x75,00114$
+                           000715  2905 	C$lab5.c$205$3$142 ==.
+                                   2906 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:205: return;
+                           000715  2907 	C$lab5.c$208$1$138 ==.
+                           000715  2908 	XG$Update_Value$0$0 ==.
+      0007EC 22               [24] 2909 	ret
+                                   2910 ;------------------------------------------------------------
+                                   2911 ;Allocation info for local variables in function 'read_accels'
+                                   2912 ;------------------------------------------------------------
+                                   2913 ;Data                      Allocated with name '_read_accels_Data_1_144'
+                                   2914 ;avg_gx                    Allocated with name '_read_accels_avg_gx_1_144'
+                                   2915 ;avg_gy                    Allocated to registers r3 r4 
+                                   2916 ;i                         Allocated to registers 
+                                   2917 ;------------------------------------------------------------
+                           000716  2918 	G$read_accels$0$0 ==.
+                           000716  2919 	C$lab5.c$210$1$138 ==.
+                                   2920 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:210: void read_accels(void)
+                                   2921 ;	-----------------------------------------
+                                   2922 ;	 function read_accels
+                                   2923 ;	-----------------------------------------
+      0007ED                       2924 _read_accels:
+                           000716  2925 	C$lab5.c$214$1$138 ==.
+                                   2926 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:214: char i =0;
+                           000716  2927 	C$lab5.c$215$1$144 ==.
+                                   2928 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:215: avg_gy=avg_gx=0;
+      0007ED E4               [12] 2929 	clr	a
+      0007EE FF               [12] 2930 	mov	r7,a
+      0007EF F5 5E            [12] 2931 	mov	_read_accels_avg_gx_1_144,a
+      0007F1 F5 5F            [12] 2932 	mov	(_read_accels_avg_gx_1_144 + 1),a
+      0007F3 FB               [12] 2933 	mov	r3,a
+      0007F4 FC               [12] 2934 	mov	r4,a
+                           00071E  2935 	C$lab5.c$216$1$144 ==.
+                                   2936 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:216: gx=gy=0;
+      0007F5 F5 4E            [12] 2937 	mov	_gy,a
+      0007F7 F5 4F            [12] 2938 	mov	(_gy + 1),a
+      0007F9 F5 4C            [12] 2939 	mov	_gx,a
+      0007FB F5 4D            [12] 2940 	mov	(_gx + 1),a
+      0007FD                       2941 00105$:
+                           000726  2942 	C$lab5.c$217$1$144 ==.
+                                   2943 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:217: for (; i < 12; i++)
+      0007FD C3               [12] 2944 	clr	c
+      0007FE EF               [12] 2945 	mov	a,r7
+      0007FF 64 80            [12] 2946 	xrl	a,#0x80
+      000801 94 8C            [12] 2947 	subb	a,#0x8c
+      000803 40 03            [24] 2948 	jc	00119$
+      000805 02 08 A2         [24] 2949 	ljmp	00103$
+      000808                       2950 00119$:
+                           000731  2951 	C$lab5.c$219$2$145 ==.
+                                   2952 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:219: wait();
+      000808 C0 07            [24] 2953 	push	ar7
+      00080A C0 04            [24] 2954 	push	ar4
+      00080C C0 03            [24] 2955 	push	ar3
+      00080E 12 06 C3         [24] 2956 	lcall	_wait
+                           00073A  2957 	C$lab5.c$220$2$145 ==.
+                                   2958 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:220: i2c_read_data(0x30,0x27,Data,1);
+      000811 75 2D 5A         [24] 2959 	mov	_i2c_read_data_PARM_3,#_read_accels_Data_1_144
+      000814 75 2E 00         [24] 2960 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
+      000817 75 2F 40         [24] 2961 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
+      00081A 75 2C 27         [24] 2962 	mov	_i2c_read_data_PARM_2,#0x27
+      00081D 75 30 01         [24] 2963 	mov	_i2c_read_data_PARM_4,#0x01
+      000820 75 82 30         [24] 2964 	mov	dpl,#0x30
+      000823 12 04 BF         [24] 2965 	lcall	_i2c_read_data
+      000826 D0 03            [24] 2966 	pop	ar3
+      000828 D0 04            [24] 2967 	pop	ar4
+      00082A D0 07            [24] 2968 	pop	ar7
+                           000755  2969 	C$lab5.c$221$2$145 ==.
+                                   2970 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:221: if (Data[0] & 0x03 == 0x03)
+      00082C E5 5A            [12] 2971 	mov	a,_read_accels_Data_1_144
+      00082E 30 E0 6D         [24] 2972 	jnb	acc.0,00106$
+                           00075A  2973 	C$lab5.c$223$3$146 ==.
+                                   2974 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:223: i2c_read_data(0x30,0x28|0x80,Data,4);
+      000831 75 2D 5A         [24] 2975 	mov	_i2c_read_data_PARM_3,#_read_accels_Data_1_144
+      000834 75 2E 00         [24] 2976 	mov	(_i2c_read_data_PARM_3 + 1),#0x00
+      000837 75 2F 40         [24] 2977 	mov	(_i2c_read_data_PARM_3 + 2),#0x40
+      00083A 75 2C A8         [24] 2978 	mov	_i2c_read_data_PARM_2,#0xA8
+      00083D 75 30 04         [24] 2979 	mov	_i2c_read_data_PARM_4,#0x04
+      000840 75 82 30         [24] 2980 	mov	dpl,#0x30
+      000843 C0 07            [24] 2981 	push	ar7
+      000845 C0 04            [24] 2982 	push	ar4
+      000847 C0 03            [24] 2983 	push	ar3
+      000849 12 04 BF         [24] 2984 	lcall	_i2c_read_data
+      00084C D0 03            [24] 2985 	pop	ar3
+      00084E D0 04            [24] 2986 	pop	ar4
+      000850 D0 07            [24] 2987 	pop	ar7
+                           00077B  2988 	C$lab5.c$224$3$146 ==.
+                                   2989 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:224: avg_gx += ((Data[1] << 8) >> 4);
+      000852 AA 5B            [24] 2990 	mov	r2,(_read_accels_Data_1_144 + 0x0001)
+      000854 E5 5B            [12] 2991 	mov	a,(_read_accels_Data_1_144 + 0x0001)
+      000856 33               [12] 2992 	rlc	a
+      000857 95 E0            [12] 2993 	subb	a,acc
+      000859 8A 06            [24] 2994 	mov	ar6,r2
+      00085B 7A 00            [12] 2995 	mov	r2,#0x00
+      00085D EE               [12] 2996 	mov	a,r6
+      00085E C4               [12] 2997 	swap	a
+      00085F CA               [12] 2998 	xch	a,r2
+      000860 C4               [12] 2999 	swap	a
+      000861 54 0F            [12] 3000 	anl	a,#0x0F
+      000863 6A               [12] 3001 	xrl	a,r2
+      000864 CA               [12] 3002 	xch	a,r2
+      000865 54 0F            [12] 3003 	anl	a,#0x0F
+      000867 CA               [12] 3004 	xch	a,r2
+      000868 6A               [12] 3005 	xrl	a,r2
+      000869 CA               [12] 3006 	xch	a,r2
+      00086A 30 E3 02         [24] 3007 	jnb	acc.3,00121$
+      00086D 44 F0            [12] 3008 	orl	a,#0xF0
+      00086F                       3009 00121$:
+      00086F FE               [12] 3010 	mov	r6,a
+      000870 EA               [12] 3011 	mov	a,r2
+      000871 25 5E            [12] 3012 	add	a,_read_accels_avg_gx_1_144
+      000873 F5 5E            [12] 3013 	mov	_read_accels_avg_gx_1_144,a
+      000875 EE               [12] 3014 	mov	a,r6
+      000876 35 5F            [12] 3015 	addc	a,(_read_accels_avg_gx_1_144 + 1)
+      000878 F5 5F            [12] 3016 	mov	(_read_accels_avg_gx_1_144 + 1),a
+                           0007A3  3017 	C$lab5.c$225$3$146 ==.
+                                   3018 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:225: avg_gy += ((Data[3] << 8) >> 4);
+      00087A AD 5D            [24] 3019 	mov	r5,(_read_accels_Data_1_144 + 0x0003)
+      00087C E5 5D            [12] 3020 	mov	a,(_read_accels_Data_1_144 + 0x0003)
+      00087E 33               [12] 3021 	rlc	a
+      00087F 95 E0            [12] 3022 	subb	a,acc
+      000881 8D 06            [24] 3023 	mov	ar6,r5
+      000883 7D 00            [12] 3024 	mov	r5,#0x00
+      000885 EE               [12] 3025 	mov	a,r6
+      000886 C4               [12] 3026 	swap	a
+      000887 CD               [12] 3027 	xch	a,r5
+      000888 C4               [12] 3028 	swap	a
+      000889 54 0F            [12] 3029 	anl	a,#0x0F
+      00088B 6D               [12] 3030 	xrl	a,r5
+      00088C CD               [12] 3031 	xch	a,r5
+      00088D 54 0F            [12] 3032 	anl	a,#0x0F
+      00088F CD               [12] 3033 	xch	a,r5
+      000890 6D               [12] 3034 	xrl	a,r5
+      000891 CD               [12] 3035 	xch	a,r5
+      000892 30 E3 02         [24] 3036 	jnb	acc.3,00122$
+      000895 44 F0            [12] 3037 	orl	a,#0xF0
+      000897                       3038 00122$:
+      000897 FE               [12] 3039 	mov	r6,a
+      000898 ED               [12] 3040 	mov	a,r5
+      000899 2B               [12] 3041 	add	a,r3
+      00089A FB               [12] 3042 	mov	r3,a
+      00089B EE               [12] 3043 	mov	a,r6
+      00089C 3C               [12] 3044 	addc	a,r4
+      00089D FC               [12] 3045 	mov	r4,a
+      00089E                       3046 00106$:
+                           0007C7  3047 	C$lab5.c$217$1$144 ==.
+                                   3048 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:217: for (; i < 12; i++)
+      00089E 0F               [12] 3049 	inc	r7
+      00089F 02 07 FD         [24] 3050 	ljmp	00105$
+      0008A2                       3051 00103$:
+                           0007CB  3052 	C$lab5.c$228$1$144 ==.
+                                   3053 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:228: avg_gy= avg_gy/12;
+      0008A2 75 11 0C         [24] 3054 	mov	__divsint_PARM_2,#0x0C
+      0008A5 75 12 00         [24] 3055 	mov	(__divsint_PARM_2 + 1),#0x00
+      0008A8 8B 82            [24] 3056 	mov	dpl,r3
+      0008AA 8C 83            [24] 3057 	mov	dph,r4
+      0008AC 12 11 DC         [24] 3058 	lcall	__divsint
+      0008AF AB 82            [24] 3059 	mov	r3,dpl
+      0008B1 AC 83            [24] 3060 	mov	r4,dph
+                           0007DC  3061 	C$lab5.c$229$1$144 ==.
+                                   3062 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:229: avg_gx= avg_gx/12;
+      0008B3 75 11 0C         [24] 3063 	mov	__divsint_PARM_2,#0x0C
+      0008B6 75 12 00         [24] 3064 	mov	(__divsint_PARM_2 + 1),#0x00
+      0008B9 85 5E 82         [24] 3065 	mov	dpl,_read_accels_avg_gx_1_144
+      0008BC 85 5F 83         [24] 3066 	mov	dph,(_read_accels_avg_gx_1_144 + 1)
+      0008BF C0 04            [24] 3067 	push	ar4
+      0008C1 C0 03            [24] 3068 	push	ar3
+      0008C3 12 11 DC         [24] 3069 	lcall	__divsint
+      0008C6 85 82 4C         [24] 3070 	mov	_gx,dpl
+      0008C9 85 83 4D         [24] 3071 	mov	(_gx + 1),dph
+      0008CC D0 03            [24] 3072 	pop	ar3
+      0008CE D0 04            [24] 3073 	pop	ar4
+                           0007F9  3074 	C$lab5.c$231$1$144 ==.
+                                   3075 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:231: gy = avg_gy;
+      0008D0 8B 4E            [24] 3076 	mov	_gy,r3
+      0008D2 8C 4F            [24] 3077 	mov	(_gy + 1),r4
+                           0007FD  3078 	C$lab5.c$234$1$144 ==.
+                           0007FD  3079 	XG$read_accels$0$0 ==.
+      0008D4 22               [24] 3080 	ret
+                                   3081 ;------------------------------------------------------------
+                                   3082 ;Allocation info for local variables in function 'set_servo_PWM'
+                                   3083 ;------------------------------------------------------------
+                           0007FE  3084 	G$set_servo_PWM$0$0 ==.
+                           0007FE  3085 	C$lab5.c$236$1$144 ==.
+                                   3086 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:236: void set_servo_PWM(void)
+                                   3087 ;	-----------------------------------------
+                                   3088 ;	 function set_servo_PWM
+                                   3089 ;	-----------------------------------------
+      0008D5                       3090 _set_servo_PWM:
+                           0007FE  3091 	C$lab5.c$238$1$148 ==.
+                                   3092 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:238: STR_PW = PW_CENTER - ks  * gx;
+      0008D5 AE 48            [24] 3093 	mov	r6,_ks
+      0008D7 7F 00            [12] 3094 	mov	r7,#0x00
+      0008D9 85 4C 11         [24] 3095 	mov	__mulint_PARM_2,_gx
+      0008DC 85 4D 12         [24] 3096 	mov	(__mulint_PARM_2 + 1),(_gx + 1)
+      0008DF 8E 82            [24] 3097 	mov	dpl,r6
+      0008E1 8F 83            [24] 3098 	mov	dph,r7
+      0008E3 12 0A 1A         [24] 3099 	lcall	__mulint
+      0008E6 AE 82            [24] 3100 	mov	r6,dpl
+      0008E8 AF 83            [24] 3101 	mov	r7,dph
+      0008EA E5 32            [12] 3102 	mov	a,_PW_CENTER
+      0008EC C3               [12] 3103 	clr	c
+      0008ED 9E               [12] 3104 	subb	a,r6
+      0008EE F5 40            [12] 3105 	mov	_STR_PW,a
+      0008F0 E5 33            [12] 3106 	mov	a,(_PW_CENTER + 1)
+      0008F2 9F               [12] 3107 	subb	a,r7
+      0008F3 F5 41            [12] 3108 	mov	(_STR_PW + 1),a
+                           00081E  3109 	C$lab5.c$239$1$148 ==.
+                                   3110 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:239: if (STR_PW < PW_LEFT) STR_PW = PW_LEFT;
+      0008F5 C3               [12] 3111 	clr	c
+      0008F6 E5 40            [12] 3112 	mov	a,_STR_PW
+      0008F8 95 36            [12] 3113 	subb	a,_PW_LEFT
+      0008FA E5 41            [12] 3114 	mov	a,(_STR_PW + 1)
+      0008FC 95 37            [12] 3115 	subb	a,(_PW_LEFT + 1)
+      0008FE 50 06            [24] 3116 	jnc	00102$
+      000900 85 36 40         [24] 3117 	mov	_STR_PW,_PW_LEFT
+      000903 85 37 41         [24] 3118 	mov	(_STR_PW + 1),(_PW_LEFT + 1)
+      000906                       3119 00102$:
+                           00082F  3120 	C$lab5.c$240$1$148 ==.
+                                   3121 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:240: if (STR_PW > PW_RIGHT) STR_PW = PW_RIGHT;
+      000906 C3               [12] 3122 	clr	c
+      000907 E5 34            [12] 3123 	mov	a,_PW_RIGHT
+      000909 95 40            [12] 3124 	subb	a,_STR_PW
+      00090B E5 35            [12] 3125 	mov	a,(_PW_RIGHT + 1)
+      00090D 95 41            [12] 3126 	subb	a,(_STR_PW + 1)
+      00090F 50 06            [24] 3127 	jnc	00104$
+      000911 85 34 40         [24] 3128 	mov	_STR_PW,_PW_RIGHT
+      000914 85 35 41         [24] 3129 	mov	(_STR_PW + 1),(_PW_RIGHT + 1)
+      000917                       3130 00104$:
+                           000840  3131 	C$lab5.c$241$1$148 ==.
+                                   3132 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:241: PCA0CP1 = 0xFFFF - STR_PW;
+      000917 74 FF            [12] 3133 	mov	a,#0xFF
+      000919 C3               [12] 3134 	clr	c
+      00091A 95 40            [12] 3135 	subb	a,_STR_PW
+      00091C F5 EB            [12] 3136 	mov	((_PCA0CP1 >> 0) & 0xFF),a
+      00091E 74 FF            [12] 3137 	mov	a,#0xFF
+      000920 95 41            [12] 3138 	subb	a,(_STR_PW + 1)
+      000922 F5 FB            [12] 3139 	mov	((_PCA0CP1 >> 8) & 0xFF),a
+                           00084D  3140 	C$lab5.c$242$1$148 ==.
+                           00084D  3141 	XG$set_servo_PWM$0$0 ==.
+      000924 22               [24] 3142 	ret
+                                   3143 ;------------------------------------------------------------
+                                   3144 ;Allocation info for local variables in function 'PCA_Init'
+                                   3145 ;------------------------------------------------------------
+                           00084E  3146 	G$PCA_Init$0$0 ==.
+                           00084E  3147 	C$lab5.c$244$1$148 ==.
+                                   3148 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:244: void PCA_Init(void)
+                                   3149 ;	-----------------------------------------
+                                   3150 ;	 function PCA_Init
+                                   3151 ;	-----------------------------------------
+      000925                       3152 _PCA_Init:
+                           00084E  3153 	C$lab5.c$246$1$150 ==.
+                                   3154 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:246: PCA0MD = 0x81;
+      000925 75 D9 81         [24] 3155 	mov	_PCA0MD,#0x81
+                           000851  3156 	C$lab5.c$247$1$150 ==.
+                                   3157 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:247: PCA0CPM0 = 0xC2;
+      000928 75 DA C2         [24] 3158 	mov	_PCA0CPM0,#0xC2
+                           000854  3159 	C$lab5.c$248$1$150 ==.
+                                   3160 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:248: PCA0CPM1 = 0xC2;
+      00092B 75 DB C2         [24] 3161 	mov	_PCA0CPM1,#0xC2
+                           000857  3162 	C$lab5.c$249$1$150 ==.
+                                   3163 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:249: PCA0CN 	= 0x40;      //Enable PCA counter
+      00092E 75 D8 40         [24] 3164 	mov	_PCA0CN,#0x40
+                           00085A  3165 	C$lab5.c$250$1$150 ==.
+                                   3166 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:250: EIE1 |= 0x08;       //Enable PCA interrupt
+      000931 43 E6 08         [24] 3167 	orl	_EIE1,#0x08
+                           00085D  3168 	C$lab5.c$251$1$150 ==.
+                                   3169 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:251: EA = 1;             //Enable global interrupts
+      000934 D2 AF            [12] 3170 	setb	_EA
+                           00085F  3171 	C$lab5.c$254$1$150 ==.
+                           00085F  3172 	XG$PCA_Init$0$0 ==.
+      000936 22               [24] 3173 	ret
+                                   3174 ;------------------------------------------------------------
+                                   3175 ;Allocation info for local variables in function 'updateLCD'
+                                   3176 ;------------------------------------------------------------
+                           000860  3177 	G$updateLCD$0$0 ==.
+                           000860  3178 	C$lab5.c$256$1$150 ==.
+                                   3179 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:256: void updateLCD(void)
+                                   3180 ;	-----------------------------------------
+                                   3181 ;	 function updateLCD
+                                   3182 ;	-----------------------------------------
+      000937                       3183 _updateLCD:
+                           000860  3184 	C$lab5.c$258$1$152 ==.
+                                   3185 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:258: lcd_clear();
+      000937 12 01 B8         [24] 3186 	lcall	_lcd_clear
+                           000863  3187 	C$lab5.c$259$1$152 ==.
+                                   3188 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:259: lcd_print("ks: %u kdx: %u\rkdy: %u\rMpw: %u\rSpw: %u",ks,kdx,kdy,DRV_PW,STR_PW);
+      00093A AE 49            [24] 3189 	mov	r6,_kdy
+      00093C 7F 00            [12] 3190 	mov	r7,#0x00
+      00093E AC 4A            [24] 3191 	mov	r4,_kdx
+      000940 7D 00            [12] 3192 	mov	r5,#0x00
+      000942 AA 48            [24] 3193 	mov	r2,_ks
+      000944 7B 00            [12] 3194 	mov	r3,#0x00
+      000946 C0 40            [24] 3195 	push	_STR_PW
+      000948 C0 41            [24] 3196 	push	(_STR_PW + 1)
+      00094A C0 3E            [24] 3197 	push	_DRV_PW
+      00094C C0 3F            [24] 3198 	push	(_DRV_PW + 1)
+      00094E C0 06            [24] 3199 	push	ar6
+      000950 C0 07            [24] 3200 	push	ar7
+      000952 C0 04            [24] 3201 	push	ar4
+      000954 C0 05            [24] 3202 	push	ar5
+      000956 C0 02            [24] 3203 	push	ar2
+      000958 C0 03            [24] 3204 	push	ar3
+      00095A 74 CA            [12] 3205 	mov	a,#___str_9
+      00095C C0 E0            [24] 3206 	push	acc
+      00095E 74 12            [12] 3207 	mov	a,#(___str_9 >> 8)
+      000960 C0 E0            [24] 3208 	push	acc
+      000962 74 80            [12] 3209 	mov	a,#0x80
+      000964 C0 E0            [24] 3210 	push	acc
+      000966 12 01 33         [24] 3211 	lcall	_lcd_print
+      000969 E5 81            [12] 3212 	mov	a,sp
+      00096B 24 F3            [12] 3213 	add	a,#0xf3
+      00096D F5 81            [12] 3214 	mov	sp,a
+                           000898  3215 	C$lab5.c$260$1$152 ==.
+                           000898  3216 	XG$updateLCD$0$0 ==.
+      00096F 22               [24] 3217 	ret
+                                   3218 ;------------------------------------------------------------
+                                   3219 ;Allocation info for local variables in function 'set_drive_PWM'
+                                   3220 ;------------------------------------------------------------
+                           000899  3221 	G$set_drive_PWM$0$0 ==.
+                           000899  3222 	C$lab5.c$262$1$152 ==.
+                                   3223 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:262: void set_drive_PWM(void)
+                                   3224 ;	-----------------------------------------
+                                   3225 ;	 function set_drive_PWM
+                                   3226 ;	-----------------------------------------
+      000970                       3227 _set_drive_PWM:
+                           000899  3228 	C$lab5.c$264$1$154 ==.
+                                   3229 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:264: DRV_PW = SERVO_PW + kdy * gy;
+      000970 AE 49            [24] 3230 	mov	r6,_kdy
+      000972 7F 00            [12] 3231 	mov	r7,#0x00
+      000974 85 4E 11         [24] 3232 	mov	__mulint_PARM_2,_gy
+      000977 85 4F 12         [24] 3233 	mov	(__mulint_PARM_2 + 1),(_gy + 1)
+      00097A 8E 82            [24] 3234 	mov	dpl,r6
+      00097C 8F 83            [24] 3235 	mov	dph,r7
+      00097E 12 0A 1A         [24] 3236 	lcall	__mulint
+      000981 AE 82            [24] 3237 	mov	r6,dpl
+      000983 AF 83            [24] 3238 	mov	r7,dph
+      000985 EE               [12] 3239 	mov	a,r6
+      000986 25 38            [12] 3240 	add	a,_SERVO_PW
+      000988 F5 3E            [12] 3241 	mov	_DRV_PW,a
+      00098A EF               [12] 3242 	mov	a,r7
+      00098B 35 39            [12] 3243 	addc	a,(_SERVO_PW + 1)
+      00098D F5 3F            [12] 3244 	mov	(_DRV_PW + 1),a
+                           0008B8  3245 	C$lab5.c$265$1$154 ==.
+                                   3246 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:265: DRV_PW += kdx * abs(gx); + ki * error_sum;
+      00098F 85 4C 82         [24] 3247 	mov	dpl,_gx
+      000992 85 4D 83         [24] 3248 	mov	dph,(_gx + 1)
+      000995 12 0A 0D         [24] 3249 	lcall	_abs
+      000998 85 82 11         [24] 3250 	mov	__mulint_PARM_2,dpl
+      00099B 85 83 12         [24] 3251 	mov	(__mulint_PARM_2 + 1),dph
+      00099E AE 4A            [24] 3252 	mov	r6,_kdx
+      0009A0 7F 00            [12] 3253 	mov	r7,#0x00
+      0009A2 8E 82            [24] 3254 	mov	dpl,r6
+      0009A4 8F 83            [24] 3255 	mov	dph,r7
+      0009A6 12 0A 1A         [24] 3256 	lcall	__mulint
+      0009A9 AE 82            [24] 3257 	mov	r6,dpl
+      0009AB AF 83            [24] 3258 	mov	r7,dph
+      0009AD EE               [12] 3259 	mov	a,r6
+      0009AE 25 3E            [12] 3260 	add	a,_DRV_PW
+      0009B0 F5 3E            [12] 3261 	mov	_DRV_PW,a
+      0009B2 EF               [12] 3262 	mov	a,r7
+      0009B3 35 3F            [12] 3263 	addc	a,(_DRV_PW + 1)
+      0009B5 F5 3F            [12] 3264 	mov	(_DRV_PW + 1),a
+                           0008E0  3265 	C$lab5.c$266$1$154 ==.
+                                   3266 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:266: error_sum += gy + abs(gx);
+      0009B7 85 4C 82         [24] 3267 	mov	dpl,_gx
+      0009BA 85 4D 83         [24] 3268 	mov	dph,(_gx + 1)
+      0009BD 12 0A 0D         [24] 3269 	lcall	_abs
+      0009C0 AE 82            [24] 3270 	mov	r6,dpl
+      0009C2 AF 83            [24] 3271 	mov	r7,dph
+      0009C4 EE               [12] 3272 	mov	a,r6
+      0009C5 25 4E            [12] 3273 	add	a,_gy
+      0009C7 FE               [12] 3274 	mov	r6,a
+      0009C8 EF               [12] 3275 	mov	a,r7
+      0009C9 35 4F            [12] 3276 	addc	a,(_gy + 1)
+      0009CB FF               [12] 3277 	mov	r7,a
+      0009CC EE               [12] 3278 	mov	a,r6
+      0009CD 25 53            [12] 3279 	add	a,_error_sum
+      0009CF F5 53            [12] 3280 	mov	_error_sum,a
+      0009D1 EF               [12] 3281 	mov	a,r7
+      0009D2 35 54            [12] 3282 	addc	a,(_error_sum + 1)
+      0009D4 F5 54            [12] 3283 	mov	(_error_sum + 1),a
+                           0008FF  3284 	C$lab5.c$268$1$154 ==.
+                                   3285 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:268: PCA0CP0 = 0xFFFF - DRV_PW;
+      0009D6 74 FF            [12] 3286 	mov	a,#0xFF
+      0009D8 C3               [12] 3287 	clr	c
+      0009D9 95 3E            [12] 3288 	subb	a,_DRV_PW
+      0009DB F5 EA            [12] 3289 	mov	((_PCA0CP0 >> 0) & 0xFF),a
+      0009DD 74 FF            [12] 3290 	mov	a,#0xFF
+      0009DF 95 3F            [12] 3291 	subb	a,(_DRV_PW + 1)
+      0009E1 F5 FA            [12] 3292 	mov	((_PCA0CP0 >> 8) & 0xFF),a
+                           00090C  3293 	C$lab5.c$269$1$154 ==.
+                           00090C  3294 	XG$set_drive_PWM$0$0 ==.
+      0009E3 22               [24] 3295 	ret
+                                   3296 ;------------------------------------------------------------
+                                   3297 ;Allocation info for local variables in function 'Port_Init'
+                                   3298 ;------------------------------------------------------------
+                           00090D  3299 	G$Port_Init$0$0 ==.
+                           00090D  3300 	C$lab5.c$273$1$154 ==.
+                                   3301 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:273: void Port_Init(void)
+                                   3302 ;	-----------------------------------------
+                                   3303 ;	 function Port_Init
+                                   3304 ;	-----------------------------------------
+      0009E4                       3305 _Port_Init:
+                           00090D  3306 	C$lab5.c$275$1$156 ==.
+                                   3307 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:275: P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
+      0009E4 43 A5 03         [24] 3308 	orl	_P1MDOUT,#0x03
+                           000910  3309 	C$lab5.c$278$1$156 ==.
+                                   3310 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:278: P3MDOUT &= ~0x40;
+      0009E7 AF A7            [24] 3311 	mov	r7,_P3MDOUT
+      0009E9 74 BF            [12] 3312 	mov	a,#0xBF
+      0009EB 5F               [12] 3313 	anl	a,r7
+      0009EC F5 A7            [12] 3314 	mov	_P3MDOUT,a
+                           000917  3315 	C$lab5.c$279$1$156 ==.
+                                   3316 ;	C:\Users\Michael\Documents\GitHub\LITEC\lab5\lab5.c:279: P3 = 0x40;
+      0009EE 75 B0 40         [24] 3317 	mov	_P3,#0x40
+                           00091A  3318 	C$lab5.c$280$1$156 ==.
+                           00091A  3319 	XG$Port_Init$0$0 ==.
+      0009F1 22               [24] 3320 	ret
+                                   3321 	.area CSEG    (CODE)
+                                   3322 	.area CONST   (CODE)
+                           000000  3323 Flab5$__str_0$0$0 == .
+      001218                       3324 ___str_0:
+      001218 0A                    3325 	.db 0x0A
+      001219 54 79 70 65 20 64 69  3326 	.ascii "Type digits; end w/#"
              67 69 74 73 3B 20 65
              6E 64 20 77 2F 23
-      001247 00                    3336 	.db 0x00
-                           000016  3337 Flab5$__str_1$0$0 == .
-      001248                       3338 ___str_1:
-      001248 20 20 20 20 20 25 63  3339 	.ascii "     %c%c%c%c%c"
+      00122D 00                    3327 	.db 0x00
+                           000016  3328 Flab5$__str_1$0$0 == .
+      00122E                       3329 ___str_1:
+      00122E 20 20 20 20 20 25 63  3330 	.ascii "     %c%c%c%c%c"
              25 63 25 63 25 63 25
              63
-      001257 00                    3340 	.db 0x00
-                           000026  3341 Flab5$__str_2$0$0 == .
-      001258                       3342 ___str_2:
-      001258 25 63                 3343 	.ascii "%c"
-      00125A 00                    3344 	.db 0x00
-                           000029  3345 Flab5$__str_3$0$0 == .
-      00125B                       3346 ___str_3:
-      00125B 0D                    3347 	.db 0x0D
-      00125C 0A                    3348 	.db 0x0A
-      00125D 47 4F 21              3349 	.ascii "GO!"
-      001260 00                    3350 	.db 0x00
-                           00002F  3351 Flab5$__str_4$0$0 == .
-      001261                       3352 ___str_4:
-      001261 0D                    3353 	.db 0x0D
-      001262 0A                    3354 	.db 0x0A
-      001263 25 64                 3355 	.ascii "%d"
-      001265 00                    3356 	.db 0x00
-                           000034  3357 Flab5$__str_5$0$0 == .
-      001266                       3358 ___str_5:
-      001266 0D                    3359 	.db 0x0D
-      001267 0A                    3360 	.db 0x0A
-      001268 09                    3361 	.db 0x09
-      001269 25 64 2C              3362 	.ascii "%d,"
-      00126C 09                    3363 	.db 0x09
-      00126D 25 64                 3364 	.ascii "%d"
-      00126F 00                    3365 	.db 0x00
-                           00003E  3366 Flab5$__str_6$0$0 == .
-      001270                       3367 ___str_6:
-      001270 50 6C 65 61 73 65 20  3368 	.ascii "Please enter a ks value:"
+      00123D 00                    3331 	.db 0x00
+                           000026  3332 Flab5$__str_2$0$0 == .
+      00123E                       3333 ___str_2:
+      00123E 25 63                 3334 	.ascii "%c"
+      001240 00                    3335 	.db 0x00
+                           000029  3336 Flab5$__str_3$0$0 == .
+      001241                       3337 ___str_3:
+      001241 0D                    3338 	.db 0x0D
+      001242 0A                    3339 	.db 0x0A
+      001243 47 4F 21              3340 	.ascii "GO!"
+      001246 00                    3341 	.db 0x00
+                           00002F  3342 Flab5$__str_4$0$0 == .
+      001247                       3343 ___str_4:
+      001247 0D                    3344 	.db 0x0D
+      001248 0A                    3345 	.db 0x0A
+      001249 25 75 2C              3346 	.ascii "%u,"
+      00124C 09                    3347 	.db 0x09
+      00124D 25 64 2C              3348 	.ascii "%d,"
+      001250 09                    3349 	.db 0x09
+      001251 25 64 2C              3350 	.ascii "%d,"
+      001254 09                    3351 	.db 0x09
+      001255 25 75 2C              3352 	.ascii "%u,"
+      001258 09                    3353 	.db 0x09
+      001259 25 75                 3354 	.ascii "%u"
+      00125B 00                    3355 	.db 0x00
+                           000044  3356 Flab5$__str_5$0$0 == .
+      00125C                       3357 ___str_5:
+      00125C 50 6C 65 61 73 65 20  3358 	.ascii "Please enter a ks value:"
              65 6E 74 65 72 20 61
              20 6B 73 20 76 61 6C
              75 65 3A
-      001288 0A                    3369 	.db 0x0A
-      001289 20                    3370 	.ascii " "
-      00128A 00                    3371 	.db 0x00
-                           000059  3372 Flab5$__str_7$0$0 == .
-      00128B                       3373 ___str_7:
-      00128B 50 6C 65 61 73 65 20  3374 	.ascii "Please enter a kdx value:"
+      001274 0A                    3359 	.db 0x0A
+      001275 20                    3360 	.ascii " "
+      001276 00                    3361 	.db 0x00
+                           00005F  3362 Flab5$__str_6$0$0 == .
+      001277                       3363 ___str_6:
+      001277 50 6C 65 61 73 65 20  3364 	.ascii "Please enter a kdx value:"
              65 6E 74 65 72 20 61
              20 6B 64 78 20 76 61
              6C 75 65 3A
-      0012A4 0A                    3375 	.db 0x0A
-      0012A5 20                    3376 	.ascii " "
-      0012A6 00                    3377 	.db 0x00
-                           000075  3378 Flab5$__str_8$0$0 == .
-      0012A7                       3379 ___str_8:
-      0012A7 50 6C 65 61 73 65 20  3380 	.ascii "Please enter a kdy value:"
+      001290 0A                    3365 	.db 0x0A
+      001291 20                    3366 	.ascii " "
+      001292 00                    3367 	.db 0x00
+                           00007B  3368 Flab5$__str_7$0$0 == .
+      001293                       3369 ___str_7:
+      001293 50 6C 65 61 73 65 20  3370 	.ascii "Please enter a kdy value:"
              65 6E 74 65 72 20 61
              20 6B 64 79 20 76 61
              6C 75 65 3A
-      0012C0 0A                    3381 	.db 0x0A
-      0012C1 20                    3382 	.ascii " "
-      0012C2 00                    3383 	.db 0x00
-                           000091  3384 Flab5$__str_9$0$0 == .
-      0012C3                       3385 ___str_9:
-      0012C3 50 6C 65 61 73 65 20  3386 	.ascii "Please enter a ki value:"
+      0012AC 0A                    3371 	.db 0x0A
+      0012AD 20                    3372 	.ascii " "
+      0012AE 00                    3373 	.db 0x00
+                           000097  3374 Flab5$__str_8$0$0 == .
+      0012AF                       3375 ___str_8:
+      0012AF 50 6C 65 61 73 65 20  3376 	.ascii "Please enter a ki value:"
              65 6E 74 65 72 20 61
              20 6B 69 20 76 61 6C
              75 65 3A
-      0012DB 0A                    3387 	.db 0x0A
-      0012DC 20                    3388 	.ascii " "
-      0012DD 00                    3389 	.db 0x00
-                           0000AC  3390 Flab5$__str_10$0$0 == .
-      0012DE                       3391 ___str_10:
-      0012DE 6B 73 3A 20 25 75 20  3392 	.ascii "ks: %u kdx: %u"
+      0012C7 0A                    3377 	.db 0x0A
+      0012C8 20                    3378 	.ascii " "
+      0012C9 00                    3379 	.db 0x00
+                           0000B2  3380 Flab5$__str_9$0$0 == .
+      0012CA                       3381 ___str_9:
+      0012CA 6B 73 3A 20 25 75 20  3382 	.ascii "ks: %u kdx: %u"
              6B 64 78 3A 20 25 75
-      0012EC 0D                    3393 	.db 0x0D
-      0012ED 6B 64 79 3A 20 25 75  3394 	.ascii "kdy: %u"
-      0012F4 0D                    3395 	.db 0x0D
-      0012F5 4D 70 77 3A 20 25 75  3396 	.ascii "Mpw: %u"
-      0012FC 0D                    3397 	.db 0x0D
-      0012FD 53 70 77 3A 20 25 75  3398 	.ascii "Spw: %u"
-      001304 00                    3399 	.db 0x00
-                                   3400 	.area XINIT   (CODE)
-                                   3401 	.area CABS    (ABS,CODE)
+      0012D8 0D                    3383 	.db 0x0D
+      0012D9 6B 64 79 3A 20 25 75  3384 	.ascii "kdy: %u"
+      0012E0 0D                    3385 	.db 0x0D
+      0012E1 4D 70 77 3A 20 25 75  3386 	.ascii "Mpw: %u"
+      0012E8 0D                    3387 	.db 0x0D
+      0012E9 53 70 77 3A 20 25 75  3388 	.ascii "Spw: %u"
+      0012F0 00                    3389 	.db 0x00
+                                   3390 	.area XINIT   (CODE)
+                                   3391 	.area CABS    (ABS,CODE)

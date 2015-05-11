@@ -2,16 +2,25 @@
 Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
 Section 03
 Side B
-Date: 05/04/15
+Date: 05/08/15
 
-The goal of this code is to read the 
+The goal of this code is to read the accelometer values to steer
+and drive up the hill until the car is level at the top. 
 
-CEX0 == DRIVE
-CEX1 == STEERING
--Y == backward
-+y == forward
--X == right
-+X == left
+CEX0 = DRIVE
+CEX1 = STEERING
+-Y = backward
++y = forward
+-X = right
++X =left
+ks = 10
+kdx = 15
+kdy = 15
+ki= 15
+
+
+
+
 */
 
 
@@ -87,20 +96,24 @@ void main(void)
 	while (1)
 	{
 		x++;
-		printf("\r\n%d",x);
 		run_stop = 0;
 		while (!run) // make run an sbit for the run/stop switch
 		{ // stay in loop until switch is in run position
+			DRV_PW = SERVO_PW;
+			STR_PW = PW_CENTER;
+			PCA0CP0 = 0xFFFF - DRV_PW;
+			PCA0CP1 = 0xFFFF - DRV_PW;
 			if (run_stop == 0)
 			{
 				set_gains(); // function adjusting feedback gains
 				run_stop = 1; // only try to update once
 			}
+			count=0;
 		}
 		read_accels();
 		set_servo_PWM(); // set the servo PWM
 		set_drive_PWM(); // set drive PWM
-		printf("\r\n\t%d,\t%d",(gx+ xoff),(gy+ yoff));
+		printf("\r\n%u,\t%d,\t%d,\t%u,\t%u",count,(gx+ xoff),(gy+ yoff),DRV_PW,STR_PW);
 		new_accels = 0;
 		if (count % 15 == 0) // enough overflow to write to LCD
 		{
@@ -239,10 +252,15 @@ void PCA_Init(void)
 
 void Port_Init(void)
 {
+<<<<<<< HEAD
+	lcd_clear();
+	lcd_print("ks: %u kdx: %u\rkdy: %u\rMpw: %u\rSpw: %u",ks,kdx,kdy,DRV_PW,STR_PW);
+=======
     P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
 
 	P3MDOUT &= ~0x40;
 	P3 = 0x40;
+>>>>>>> origin/dev
 }
 
 void XBR0_Init(void)
