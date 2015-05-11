@@ -179,7 +179,7 @@ void read_accels(void)
 	char i =0;
 	avg_gy=avg_gx=0;
 	gx=gy=0;
-	for (; i < 12; i++)
+	for (; i < 12; i++) //purpose of for loop is to take an average value because the accelerometer is noisy
 	{
 		wait();
 		i2c_read_data(0x30,0x27,Data,1);
@@ -252,15 +252,10 @@ void PCA_Init(void)
 
 void Port_Init(void)
 {
-<<<<<<< HEAD
-	lcd_clear();
-	lcd_print("ks: %u kdx: %u\rkdy: %u\rMpw: %u\rSpw: %u",ks,kdx,kdy,DRV_PW,STR_PW);
-=======
     P1MDOUT |= 0x03;  //set output pin for CEX0 and CEX2 in push-pull mode
 
 	P3MDOUT &= ~0x40;
 	P3 = 0x40;
->>>>>>> origin/dev
 }
 
 void XBR0_Init(void)
