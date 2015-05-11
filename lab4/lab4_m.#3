@@ -15,9 +15,9 @@ and steer the wheels toward a desired direction.
 #include <stdlib.h>
 #include <c8051_SDCC.h>
 #include <i2c.h>
-#define PW_CENTER_STR 2825
-#define PW_MIN_STR    2345
-#define PW_MAX_STR    3295
+#define PW_CENTER_STR 2565
+#define PW_MIN_STR    2235
+#define PW_MAX_STR    3115
 #define PW_MAX_DRIVE  3503
 #define PW_MIN_DRIVE  2028
 #define PW_NUET_DRIVE 2765
@@ -110,7 +110,9 @@ void main(void)
     count=0; //1 count = 20 milliseconds
 
 	while (count < 50);
-
+	Read_Ranger();
+	count =0;
+	while (count < 4);
 	//-----------------------------------------------------------------------------
 	// Start program 
 	//-----------------------------------------------------------------------------
@@ -127,7 +129,7 @@ void main(void)
 
 			if (count % 4==0)
 			{
-				Drive_func();
+				if (starter == 1) Drive_func();
 			}
 
 			if (count%2==0)
@@ -143,11 +145,10 @@ void main(void)
 			if (range <= 30)
 			{
 				if (starter == 1) avoid_crash();
-				else starter =1;
 			} 
 			printf("\r\n%d||%d",range,actual_heading);
 			wait();
-			
+			starter =1;
 
 		}
 
@@ -165,6 +166,7 @@ void main(void)
 void Drive_Motor(void)
 {
 //------------------------------------------------------------------------------
+	if (range == 0) {range = 35;}
 	if(range <= 12 ||(range <= 20 && STR_PW == PW_MIN_STR)){MOTOR_PW = PW_NUET_DRIVE;}
 	else if (range > 20 && range < 55) 
 	{  
@@ -374,7 +376,6 @@ void Drive_func(void)
 {
 
 	unsigned char r_addr = 0xE0;
-	unsigned int read = 0;
 
 	range = Read_Ranger();
 	r_data[0] = 0x51;
