@@ -40,7 +40,7 @@ void Update_Value(int Constant, unsigned char incr, int maxval, int minval);
 void read_accels(void);
 
 //-----------------------------------------------------------------------------
-// Global Variables
+// Define Global Variables
 //-----------------------------------------------------------------------------
 unsigned int PW_CENTER = 2675; //pw to steer straight 
 unsigned int PW_RIGHT = 3175;  //pw to steer right

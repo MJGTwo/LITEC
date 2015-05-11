@@ -17,9 +17,9 @@ The goal of the code is to contorl a blimp.
 #include <i2c.h>
 #define PCA_START 	28672
 
-
-
-
+//-----------------------------------------------------------------------------
+// c8051 Initialization Functions
+//-----------------------------------------------------------------------------
 void Port_Init(void);
 void PCA_Init (void);
 void XBR0_Init(void);
@@ -42,20 +42,26 @@ unsigned int ReadCompass(void);
 void Steering_func(void);
 void Steering_Servo(unsigned int direction);
 
+//-----------------------------------------------------------------------------
+// Define Global Variables
+//-----------------------------------------------------------------------------
 int count=0;
+//thrust control values, max=forward, min=reverse
 unsigned int PW_MIN_THRUST = 2000;
 unsigned int PW_NUET_THRUST = 2750;
 unsigned int PW_MAX_THRUST = 3500;
 
+//rudder control values
 unsigned int PW_LEFT_RUDDER = 2000;
 unsigned int PW_CENTER_RUDDER = 2750;
 unsigned int PW_RIGHT_RUDDER = 3500;
 
+//pitch angle control values, 
 unsigned int PW_UP_ANGLE = 2880;
 unsigned int PW_CENTER_ANGLE = 3530;
 unsigned int PW_DOWN_ANGLE = 4180;
 
-
+//
 unsigned int RUDDER_PW;
 unsigned int RDR_lo_to_hi;
 unsigned int ANGLE_PW;
@@ -65,6 +71,7 @@ unsigned int LTHRUST_PW;
 unsigned int RTRST_lo_to_hi;
 unsigned int LTRST_lo_to_hi;
 
+//extra variables stored on extra memory device
 __xdata  int desired_D;
 __xdata  int actual_D;
 __xdata unsigned int offset;
@@ -132,27 +139,6 @@ void main(void)
 	}
 
 }
-/*
-void Calibrate(void)
-{
-
-
-	Rudder_cal();
-	RUDDER_PW= PW_CENTER_RUDDER;
-	RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
-	PCA0CP0 = RDR_lo_to_hi;
-
-	Angle_cal();
-	ANGLE_PW = PW_CENTER_ANGLE;
-	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
-	PCA0CP1 = AGL_lo_to_hi;
-
-	Thrust_cal();
-	RTHRUST_PW = PW_NUET_THRUST;
-	LTHRUST_PW = PW_NUET_THRUST;
-	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
-	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
-}*/
 
 void kpkd(void)
 {
@@ -233,6 +219,29 @@ unsigned int ReadCompass(void)
 	Crange = ((unsigned int) Data[0] << 8 | Data[1]);
 	return Crange;
 }
+
+/*
+void Calibrate(void)
+{
+
+
+	Rudder_cal();
+	RUDDER_PW= PW_CENTER_RUDDER;
+	RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
+	PCA0CP0 = RDR_lo_to_hi;
+
+	Angle_cal();
+	ANGLE_PW = PW_CENTER_ANGLE;
+	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
+	PCA0CP1 = AGL_lo_to_hi;
+
+	Thrust_cal();
+	RTHRUST_PW = PW_NUET_THRUST;
+	LTHRUST_PW = PW_NUET_THRUST;
+	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
+	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
+}*/
+
 /*
 void Rudder_cal(void)
 {	
