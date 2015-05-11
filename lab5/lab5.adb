@@ -77,7 +77,7 @@ S:G$xoff$0$0({1}SC:S),E,0,0
 S:G$yoff$0$0({1}SC:S),E,0,0
 S:G$run_stop$0$0({1}SC:U),E,0,0
 S:G$error_sum$0$0({2}SI:S),E,0,0
-S:Llab5.main$x$1$119({2}SI:S),R,0,0,[r6,r7]
+S:Llab5.main$x$1$119({2}SI:S),R,0,0,[]
 S:Llab5.Update_Value$incr$1$137({1}SC:U),E,0,0
 S:Llab5.Update_Value$maxval$1$137({2}SI:S),E,0,0
 S:Llab5.Update_Value$minval$1$137({2}SI:S),E,0,0
@@ -435,10 +435,9 @@ S:Flab5$__str_0$0$0({22}DA22d,SC:S),D,0,0
 S:Flab5$__str_1$0$0({16}DA16d,SC:S),D,0,0
 S:Flab5$__str_2$0$0({3}DA3d,SC:S),D,0,0
 S:Flab5$__str_3$0$0({6}DA6d,SC:S),D,0,0
-S:Flab5$__str_4$0$0({5}DA5d,SC:S),D,0,0
-S:Flab5$__str_5$0$0({10}DA10d,SC:S),D,0,0
-S:Flab5$__str_6$0$0({27}DA27d,SC:S),D,0,0
+S:Flab5$__str_4$0$0({21}DA21d,SC:S),D,0,0
+S:Flab5$__str_5$0$0({27}DA27d,SC:S),D,0,0
+S:Flab5$__str_6$0$0({28}DA28d,SC:S),D,0,0
 S:Flab5$__str_7$0$0({28}DA28d,SC:S),D,0,0
-S:Flab5$__str_8$0$0({28}DA28d,SC:S),D,0,0
-S:Flab5$__str_9$0$0({27}DA27d,SC:S),D,0,0
-S:Flab5$__str_10$0$0({39}DA39d,SC:S),D,0,0
+S:Flab5$__str_8$0$0({27}DA27d,SC:S),D,0,0
+S:Flab5$__str_9$0$0({39}DA39d,SC:S),D,0,0
