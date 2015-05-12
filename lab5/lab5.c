@@ -143,7 +143,7 @@ void set_gains(void)
 	ki  = kpd_input(0);   //prompts and stores value for ki gain
 	lcd_clear();
 }
-
+/*used at the beginning of the code to adjust the max and min of the pusle width but is left out now*/
 void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
 {	
 	int deflt;
