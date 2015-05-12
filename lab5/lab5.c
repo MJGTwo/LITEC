@@ -33,20 +33,20 @@ ki= 15
 //-----------------------------------------------------------------------------
 // 8051 Initialization Functions
 //-----------------------------------------------------------------------------
-void Port_Init(void);
-void PCA_Init (void);
-void SMB_Init (void);
-void XBR0_Init(void);
-void wait(void);
-void start(void);
-void PCA_ISR ( void ) __interrupt 9;
+void Port_Init(void);   //initializes all port pins to input or output
+void PCA_Init (void);   //initializes the PCA to SYSCLK/12 with 16 bit counter
+void SMB_Init (void);   //initializes the SMB bus 
+void XBR0_Init(void);   //initializes the crossbar with desired pins
+void wait(void);        //waits 20ms
+void start(void);       //waits for input of an asterixs from keypad
+void PCA_ISR ( void ) __interrupt 9;  //sets the PCA to 20ms and resets overflow flag
 void read_accel (void); //Sets global variables gx & gy
-void set_servo_PWM (void);
-void set_drive_PWM(void);
-void updateLCD(void);
+void set_servo_PWM (void); //sets steering pulse width using desired gains
+void set_drive_PWM(void); //sets drive pulse width using desired gains
+void updateLCD(void); //prints out values while code runs
 void set_gains(void); // function which allow operator to set feedback gains
 void Update_Value(int Constant, unsigned char incr, int maxval, int minval);
-void read_accels(void);
+void read_accels(void); //reads the accelerometer and stores data
 
 //-----------------------------------------------------------------------------
 // Define Global Variables
@@ -89,7 +89,7 @@ void main(void)
 	Accel_Init();
 
 	count = 0;
-	DRV_PW = SERVO_PW;
+	DRV_PW = SERVO_PW;   //sets drive and steering pw to neutral values
 	STR_PW = PW_CENTER;
 	printf("\r\nGO!");
 
@@ -110,10 +110,11 @@ void main(void)
 			}
 			count=0;
 		}
-		read_accels();
+		read_accels();   //read accelerometer and store data
 		set_servo_PWM(); // set the servo PWM
 		set_drive_PWM(); // set drive PWM
 		printf("\r\n%u,\t%d,\t%d,\t%u,\t%u",count,(gx+ xoff),(gy+ yoff),DRV_PW,STR_PW);
+			//updates current values for x and y accelerations and drive and steering PWM
 		new_accels = 0;
 		if (count % 15 == 0) // enough overflow to write to LCD
 		{
@@ -154,7 +155,7 @@ void Update_Value(int Constant, unsigned char incr, int maxval, int minval)
 	while(1)
 	{
 		input = getchar();
-		if (input == 'c') Constant = deflt;
+		if (input == 'c') Constant = deflt; 
 		if (input == 'i')
 		{
 			Constant += incr;
@@ -176,24 +177,24 @@ void read_accels(void)
 {
 	char Data[4];
 	int avg_gx, avg_gy;
-	char i =0;
+	char i = 0;
 	avg_gy=avg_gx=0;
 	gx=gy=0;
 	for (; i < 12; i++) //purpose of for loop is to take an average value because the accelerometer is noisy
 	{
 		wait();
 		i2c_read_data(0x30,0x27,Data,1);
-		if (Data[0] & 0x03 == 0x03)
+		if (Data[0] & 0x03 == 0x03) //check if accelerometer is ready to be read
 		{
-			i2c_read_data(0x30,0x28|0x80,Data,4);
-			avg_gx += ((Data[1] << 8) >> 4);
-			avg_gy += ((Data[3] << 8) >> 4);
+			i2c_read_data(0x30,0x28|0x80,Data,4); //read accelerometer and store data
+			avg_gx += ((Data[1] << 8) >> 4); //store x data into total x data
+			avg_gy += ((Data[3] << 8) >> 4); //store y data into total y data
 		}
 	}
-	avg_gy= avg_gy/12;
-	avg_gx= avg_gx/12;
-	gx = avg_gx;
-	gy = avg_gy;
+	avg_gy= avg_gy/12; //find average of y data
+	avg_gx= avg_gx/12; //find average of x data
+	gx = avg_gx;  //set x average acceleration data to variable to be used in pwm calculation
+	gy = avg_gy;  //set y average acceleration data to variable to be used in pwm calculation
 
 
 }
@@ -227,7 +228,7 @@ void updateLCD(void)
 void wait(void)
 {
 	int old_count = count+1;
-	while (old_count> count);
+	while (old_count> count); //waits 20ms (one cycle of PCA)
 }
 
 void start(void)            ///WAITS UNTIL '*' IS ENTERED
@@ -260,7 +261,7 @@ void Port_Init(void)
 
 void XBR0_Init(void)
 {
-	XBR0 = 0x17;
+	XBR0 = 0x17;  //initializes UART0, SPIO, SMB0, CEX0, CEX1
 }
 
 void SMB_Init(void)
