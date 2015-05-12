@@ -1,6 +1,6 @@
 
  /*  Lab6
-Michael J. Gardner II && Chrstine Marini && Patrick Mitchell && Robert Guiles
+Michael J. Gardner II && Christine Marini && Patrick Mitchell && Robert Guiles
 Section 03
 Side B
 Date: 04/23/15
@@ -20,27 +20,27 @@ The goal of the code is to contorl a blimp. With style!
 //-----------------------------------------------------------------------------
 // c8051 Initialization Functions
 //-----------------------------------------------------------------------------
-void Port_Init(void);
-void PCA_Init (void);
-void XBR0_Init(void);
-void SMB_Init(void);
-void ADC_Init(void);
+void Port_Init(void);  //initializes all port pins to input or output
+void PCA_Init (void);  //initializes the PCA to SYSCLK/12 with 16 nit counter
+void XBR0_Init(void);  //initializes the crossbar with desired pins
+void SMB_Init(void);   //initializes the SMB bus 
+void ADC_Init(void);   //initializes the analog to digital converter
 
-void wait(void);
-void start(void);
-unsigned int direction(void);
+void wait(void);       //waits 20ms
+void start(void);      //waits for input of an asterixs from keypad
+unsigned int direction(void); //prompts user for desired direction
 
-//void Rudder_cal(void);
-//void Angle_cal(void);
-//void Thrust_cal(void);
-//void Calibrate(void);
-void kpkd(void);
+//void Rudder_cal(void); //runs code to calibrate the rudder
+//void Angle_cal(void);  //runs code to calibrate the angle of the thrusters
+//void Thrust_cal(void); //runs code to calibrate the speed of the thrusters
+//void Calibrate(void);  //begins to run the calibration code
+void kpkd(void);     //prompts user to enter the kp and kd gains
 
-void Change_D(void);
-unsigned int Read_Ranger(void);
-unsigned int ReadCompass(void);
-void Steering_func(void);
-void Steering_Servo(unsigned int direction);
+void Change_D(void); //code to read the ultrasonic ranger and change direction if necessary
+unsigned int Read_Ranger(void); //code that will ping and read the ranger
+unsigned int ReadCompass(void); //code to read the direction of the gondola
+void Steering_func(void);  //code to determine error in direction
+void Steering_Servo(unsigned int direction); //sets PWM for the 
 
 //-----------------------------------------------------------------------------
 // Define Global Variables
@@ -61,7 +61,7 @@ unsigned int PW_UP_ANGLE = 2880;
 unsigned int PW_CENTER_ANGLE = 3530;
 unsigned int PW_DOWN_ANGLE = 4180;
 
-//
+//defines PWM variables
 unsigned int RUDDER_PW;
 unsigned int RDR_lo_to_hi;
 unsigned int ANGLE_PW;
@@ -79,9 +79,11 @@ __xdata	 int error =0;
 __xdata  int old_error =0;
 __xdata unsigned int distanceR=40;
 
+//defines data storage for the ultrasonic ranger and address
 unsigned char r_data[2];
 unsigned char r_addr = 0xE0;
 
+//defines proportional and differential gain (kp, kd respectivly)
 float kp;
 int kd;
  
@@ -89,7 +91,7 @@ int kd;
 void main(void)
 {
 	Sys_Init();
-    putchar(' '); //the quotes in this line may not format correctly
+    putchar(' '); //initialize the board
     Port_Init();
     XBR0_Init();
     PCA_Init();
@@ -98,16 +100,19 @@ void main(void)
 	
 	count =0;
 
+    //sets the motor pulse widths equal to their neutral values
 	RUDDER_PW= PW_CENTER_RUDDER;
 	ANGLE_PW = PW_CENTER_ANGLE;
 	RTHRUST_PW = PW_NUET_THRUST;
 	LTHRUST_PW = PW_NUET_THRUST;
 
+    //sets the values to be used by the capture compare modules
 	RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
 	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
 	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 
+    //sets the capture compare modules to desired values
 	PCA0CP0 = RDR_lo_to_hi;
 	PCA0CP1 = AGL_lo_to_hi;	
 	PCA0CP2 = RTRST_lo_to_hi;
@@ -117,7 +122,7 @@ void main(void)
 	//printf("that");
 	//Calibrate();
 
-	direction();
+	direction(); //calls to find desired direction
 	count=0;
 	while (1)
 	{
@@ -126,15 +131,16 @@ void main(void)
 		if ((count +1) % 2 ==0)
 		{
 
-			Steering_func();
+			Steering_func();   //calls the steering function ever 40ms
 		}
-		if ((count +1) % 4 ==0)
+		if ((count +1) % 4 ==0) 
 		{
-			Change_D();
+			Change_D();        //calls the change_d function ever 80ms
 		}
 		if ((count+1) % 8 == 0)
 		{
 			printf("\r\n%u,\t%d,\t%d,\t%u,\t%d,\t%u",count,desired_D,actual_D,distanceR,error,RTHRUST_PW);
+			//prints set values ever 160ms
 		}
 	}
 
@@ -143,13 +149,11 @@ void main(void)
 void kpkd(void)
 {
 	lcd_clear();
-	lcd_print("Please enter a kp value:\n ");
+	lcd_print("Please enter a kp value:\n "); //prompt to enter kp value
 	kp = kpd_input(0);
-	kp = 12;
 	lcd_clear();
-	lcd_print("Please enter a kd value:\n ");
+	lcd_print("Please enter a kd value:\n "); //prompt to enter kd value
 	kd = kpd_input(0);
-	kd = 180;
 	lcd_clear();
 }
 
@@ -161,14 +165,14 @@ void Change_D(void)
 	while (distanceR < 50)
 	{
 		distanceR = 100;
-		distanceR = Read_Ranger();
+		distanceR = Read_Ranger(); //stores distance in the ranger 
 		r_data[0] = 0x51;
-		i2c_write_data(r_addr, 0, r_data, 1);
+		i2c_write_data(r_addr, 0, r_data, 1); //pings ranger to measure in cm
 		//printf("\r\n%u", distanceR);
 
 		if (distanceR < 50 && temp ==1)
 		{
-			desired_D = (desired_D + 1800) % 3600;
+			desired_D = (desired_D + 1800) % 3600; //adds 180 degrees to desired heading
 			temp =0;
 		}	
 	}
@@ -178,46 +182,46 @@ void Change_D(void)
 unsigned int Read_Ranger(void)
 {
 	__xdata unsigned int read = 0;
-	i2c_read_data(r_addr, 2, r_data, 2);
-	read = (((unsigned int) r_data[0] <<8) | r_data[1]);
-	return read;
+	i2c_read_data(r_addr, 2, r_data, 2); //reads distance from ranger 
+	read = (((unsigned int) r_data[0] <<8) | r_data[1]); 
+	return read;    //returns distance 
 }
 
 void Steering_func(void)    ///FUNCTION TO HOLD ACTIONS FOR STEERING
 {
-	actual_D = ReadCompass();
+	actual_D = ReadCompass();  //finds actual heading
 	lcd_clear();
 	lcd_print("%d", actual_D);
-	offset = (unsigned int)((actual_D +3600- desired_D ) % 3600);
-	Steering_Servo(offset);
+	offset = (unsigned int)((actual_D +3600- desired_D ) % 3600);  //calculates error between desired and actual heading
+	Steering_Servo(offset);    //sends error value to steering servo function
 }
 
 unsigned int direction(void)        ///ADJUSTS THE VALUES OF DIRECTION SO THE DESIRED DIRECTION IS THE CAR'S 'NORTH'
 {
 	__xdata int value;
 	count =0;
-	while (count < 1);
+	while (count < 1);    //pauses for 20ms
 	lcd_clear();
-	lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij");
+	lcd_print("Calibration:\nHello world!\n012_345_678:\nabc def ghij"); //prompts user for desired heading value
 	start();
 	lcd_clear();
 	value = kpd_input(0);
 	lcd_clear();
-	lcd_print("\r\nThe desired direction is: %d", value);
+	lcd_print("\r\nThe desired direction is: %d", value); //prints desired heading
 	printf("\r\nThe desired direction is: %d", value);
     
-	return value;
+	return value;  //returns desired heading value
 }
 
 unsigned int ReadCompass(void)
 {
-	unsigned char Data[2];
+	unsigned char Data[2];   //location of compass data
 
-	unsigned int Crange = 0;
+	unsigned int Crange = 0; 
 	unsigned char addr = 0xC0;
-	i2c_read_data(addr, 2,Data,2);
-	Crange = ((unsigned int) Data[0] << 8 | Data[1]);
-	return Crange;
+	i2c_read_data(addr, 2,Data,2);  //reads heading from compass
+	Crange = ((unsigned int) Data[0] << 8 | Data[1]); //saves heading to be passes to other function
+	return Crange;   //returns heading value
 }
 
 /*
@@ -593,23 +597,21 @@ void Thrust_cal(void)
 
 void Steering_Servo(unsigned int direction)
 {
-	
-
-	
-
-	if (direction > 3500 || direction < 100)
+	if (direction > 3500 || direction < 100)    //establishes a region that is in desired heading direction
 	{
 		error =0;
 	}
-	else if (direction > 1800)
+	// sets the max error to range from -180 to 180 degrees
+	else if (direction > 1800)              //if the heading is over 180 degrees, subtracts from 360 to keep from infinite circles
 	{
 		error = (3600 - (int) direction);
 	}
-	else
+	else               
 	{
-		error = -1* direction;
+		error = -1* direction;           //sets negative direction if direction is less than 180
 	}
 
+	//calculates rudder, right and left thrust PW
 	RUDDER_PW  = PW_CENTER_RUDDER + (int) (( kp* (int) error) - (int) kd * ((int)old_error -(int) error));
 
 	RTHRUST_PW = PW_NUET_THRUST   + (int) -1* (( kp* (int) error) - (int) kd * ((int)old_error -(int) error));
@@ -619,6 +621,7 @@ void Steering_Servo(unsigned int direction)
 	old_error=error;
 	//if (count % 25 == 0) printf("\r\n%d\t%u\t%u\t%u\t%d", error,RUDDER_PW,RTHRUST_PW,LTHRUST_PW,(int) (((int) kp* (int) error) - (int) kd * ((int)old_error -(int) error)));
 
+	//ensures that the PW do not exceed their max or min values
 	if (RUDDER_PW >= PW_RIGHT_RUDDER)
 	{
 		RUDDER_PW = PW_RIGHT_RUDDER;
@@ -645,10 +648,12 @@ void Steering_Servo(unsigned int direction)
 		LTHRUST_PW = PW_MIN_THRUST;
 	}
 	
+	//stores the values to be used by the capture/compare modules
 	RDR_lo_to_hi = 0xFFFF - RUDDER_PW ;
 	RTRST_lo_to_hi = 0xFFFF - RTHRUST_PW;
 	LTRST_lo_to_hi = 0xFFFF - LTHRUST_PW;
 
+	//sets the capture/compare modules to make desired PW
     PCA0CP0 = RDR_lo_to_hi;
     PCA0CP2 = RTRST_lo_to_hi;
     PCA0CP3 = LTRST_lo_to_hi;
@@ -662,17 +667,17 @@ void start(void)            ///WAITS UNTIL '*' IS ENTERED
 
 
 
-void wait(void)
+void wait(void) //pauses for 20ms
 {
-	__xdata int old_count = count+1;
+	__xdata int old_count = count+1; 
 	while (old_count> count);
 }
 
-void Port_Init(void)
+void Port_Init(void) //initializes inputs and outputs 
 {
 	P0MDOUT &= ~0x32;
 
-	P1MDIN  &= ~0x20;
+	P1MDIN  &= ~0x20;  //establishes A/D converter
 
 	P1MDOUT |= 0x0F;
 	P1MDOUT &= 0x20;
@@ -697,16 +702,16 @@ void PCA_Init(void)
 
 void XBR0_Init(void)
 {
-	XBR0 = 0x27;
+	XBR0 = 0x27;  //initializes UART0, SPI0, SMB0, CEX0, CEX1, CEX2, CEX3
 }
 
-void SMB_Init(void)
+void SMB_Init(void) 
 {
 	SMB0CR =0x93;
 	ENSMB =1;
 }
 
-void ADC_Init(void)								/////SETS ADC 
+void ADC_Init(void)	   //SETS ADC 
 {
 	REF0CN = 0x03;
 	ADC1CN = 0x80;
@@ -719,7 +724,7 @@ void PCA_ISR ( void ) __interrupt 9
     if (CF)
     {
         CF =0;
-        PCA0 = PCA_START;
+        PCA0 = PCA_START;  //Sets PCA to establish desired period
         count++;
        
 
