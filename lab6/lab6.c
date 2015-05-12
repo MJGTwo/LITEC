@@ -228,17 +228,19 @@ unsigned int ReadCompass(void)
 void Calibrate(void)
 {
 
-
+	//calls rudder calibration function and sets pulse width and capture compare modules
 	Rudder_cal();
 	RUDDER_PW= PW_CENTER_RUDDER;
 	RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
 	PCA0CP0 = RDR_lo_to_hi;
 
+	//calls angle calibration function and sets pulse width and capture compare modules
 	Angle_cal();
 	ANGLE_PW = PW_CENTER_ANGLE;
 	AGL_lo_to_hi = 0xFFFF - ANGLE_PW;
 	PCA0CP1 = AGL_lo_to_hi;
-
+	
+	//calls thrust calibration function and sets pulse width and capture compare modules
 	Thrust_cal();
 	RTHRUST_PW = PW_NUET_THRUST;
 	LTHRUST_PW = PW_NUET_THRUST;
@@ -263,20 +265,21 @@ void Rudder_cal(void)
 		count =0;
 		while (count < 1);
 		lcd_clear();
-		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
+		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen"); //prompts user with instructions
 		start();
 		lcd_clear();
-		lcd_print("\n confirm: press 3\n press * to begin");
+		lcd_print("\n confirm: press 3\n press * to begin"); //waits for user to input * 
 		start();
 		st =0;
 		while (1)
 		{
-			printf("\r\n %u",RUDDER_PW);
+			printf("\r\n %u",RUDDER_PW); 
 			RDR_lo_to_hi = 0xFFFF - RUDDER_PW;
-			PCA0CP0 = RDR_lo_to_hi;
+			PCA0CP0 = RDR_lo_to_hi; //sets capture compare module to rudder pulse width
 
 			if (times == 0 )
 			{
+				//calibrates left most rudder thrust
 				if (value ==0)
 				{
 					lcd_clear();
@@ -284,24 +287,25 @@ void Rudder_cal(void)
 					 if (st ==0 ) RUDDER_PW = PW_LEFT_RUDDER;
 					 st =1;
 				}
-				value = kpd_input(1);
+				value = kpd_input(1); //stores input value from keypad
 				if (value == 1)
 				{
-					RUDDER_PW -= 20;
+					RUDDER_PW -= 20; //decreases rudder pulsewidth by 20
 				}
-				else if (value==2)
+				else if (value==2) 
 				{
-					RUDDER_PW += 20;
+					RUDDER_PW += 20; //increases rudder pulsewidth by 20
 				}
 				else if (value == 3)
 				{
-					times++;
+					times++; //saves rudder pw as left most power
 					value =0;
 					PW_LEFT_RUDDER = RUDDER_PW;
 				}
 			}
 			else if (times ==1)
 			{
+				//calibrates neutral rudder thrust
 				if (value ==0)
 				{
 					lcd_clear();
@@ -311,21 +315,22 @@ void Rudder_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RUDDER_PW -= 20;
+					RUDDER_PW -= 20; //decreases rudder pulsewidth by 20
 				}
 				else if (value==2)
 				{
-					RUDDER_PW += 20;
+					RUDDER_PW += 20; //increases rudder pw by 20
 				}
 				else if (value == 3)
 				{
-					times++;
+					times++;        //saves rudder pw as neutral value
 					value=0;
 					PW_CENTER_RUDDER = RUDDER_PW;
 				}
 			}
 			else
 			{
+				//calibrates right most rudder thrust
 				if (value==0)
 				{
 					lcd_clear();
@@ -335,15 +340,15 @@ void Rudder_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RUDDER_PW -= 20;
+					RUDDER_PW -= 20; //decreases pw by 20
 				}
 				else if (value==2)
 				{
-					RUDDER_PW += 20;
+					RUDDER_PW += 20; //increases pw by 20
 				}
 				else if (value == 3)
 				{
-					PW_RIGHT_RUDDER = RUDDER_PW;
+					PW_RIGHT_RUDDER = RUDDER_PW; //stores pw as right most value
 					return;
 				}
 			}
@@ -362,7 +367,7 @@ void Angle_cal(void)
 	__xdata int times =0;
 	count =0;
 	lcd_clear();
-	lcd_print("Angle Calibration");
+	lcd_print("Angle Calibration");   
 	while (count < 50);
 	lcd_clear();
 	while (1)
@@ -370,8 +375,8 @@ void Angle_cal(void)
 		count = 0;
 		while (count < 1);
 		lcd_clear();
-		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
-		start();
+		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen"); //prompts with instructions 
+		start(); 
 		lcd_clear();
 		lcd_print("\n confirm: press 3\n press * to begin");
 		start();
@@ -384,6 +389,7 @@ void Angle_cal(void)
 
 			if (times == 0 )
 			{
+				//begins up angle calibration
 				if (value ==0)
 				{
 					 lcd_clear();
@@ -394,15 +400,15 @@ void Angle_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					ANGLE_PW -= 30;
+					ANGLE_PW -= 30; //decreases pw by 20
 				}
 				else if (value==2)
 				{
-					ANGLE_PW += 30;
+					ANGLE_PW += 30; //increases pw by 20
 				}
 				else if (value == 3)
 				{
-					times++;
+					times++;       //stores pw as greatest upwards angle
 					value =0;
 					st=0;
 					PW_UP_ANGLE = ANGLE_PW;
@@ -410,6 +416,7 @@ void Angle_cal(void)
 			}
 			else if (times ==1)
 			{
+				//begins neutral angle calibration
 				if (value ==0)
 				{
 					 lcd_clear();
@@ -420,15 +427,15 @@ void Angle_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					ANGLE_PW -= 30;
+					ANGLE_PW -= 30; //decreases pw by 30
 				}
 				else if (value==2)
 				{
-					ANGLE_PW += 30;
+					ANGLE_PW += 30; //increases pw by 30
 				}
 				else if (value == 3)
 				{
-					times++;
+					times++;         //stores pw value as central angle
 					value=0;
 					st=0;
 					PW_CENTER_ANGLE = ANGLE_PW;
@@ -436,6 +443,7 @@ void Angle_cal(void)
 			}
 			else
 			{
+				//begins down angle calibration
 				if (value==0)
 				{
 					 lcd_clear();
@@ -446,14 +454,15 @@ void Angle_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					ANGLE_PW -= 30;
+					ANGLE_PW -= 30; //decreases pw by 30
 				}
 				else if (value==2)
 				{
-					ANGLE_PW += 30;
+					ANGLE_PW += 30; //increases pw by 30
 				}
 				else if (value == 3)
 				{
+					//stores pw as max downward angle
 					PW_DOWN_ANGLE = ANGLE_PW;
 					return;
 				}
@@ -478,7 +487,7 @@ void Thrust_cal(void)
 		count = 0;
 		while (count < 1);
 		lcd_clear();
-		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen");
+		lcd_print("go left: press 1\n go right: press 2\nPress * for next screen"); //prompts with instructions
 		start();
 		lcd_clear();
 		lcd_print("\n confirm: press 3\n press * to begin");
@@ -499,6 +508,7 @@ void Thrust_cal(void)
 			{
 				if (value ==0)
 				{
+					//begins calibraton of minimum thrust
 					 lcd_clear();
 					 lcd_print("Now calibrating Min_PW");
 					 if (st ==0)
@@ -511,17 +521,17 @@ void Thrust_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RTHRUST_PW -= 30;
-					LTHRUST_PW += 30;
+					RTHRUST_PW -= 30; //decreases right motor by 30
+					LTHRUST_PW += 30; //increments left motor by 30
 				}
 				else if (value==2)
 				{
-					RTHRUST_PW += 30;
-					LTHRUST_PW -= 30;
+					RTHRUST_PW += 30; //increases right motor by 30
+					LTHRUST_PW -= 30; //decreases left motor by 30
 				}
 				else if (value == 3)
 				{
-					times++;
+					times++;          //stores right minimum thrust values
 					value =0;
 					st=0;
 					PW_MIN_THRUST = RTHRUST_PW;
@@ -532,8 +542,9 @@ void Thrust_cal(void)
 			{
 				if (value ==0)
 				{
+					//begins calibration of nuetral pw
 					 lcd_clear();
-					 lcd_print("Now calibrating Min_PW");
+					 lcd_print("Now calibrating NUET_PW");
 					 if (st ==0)
 					 {
 						RTHRUST_PW = PW_NUET_THRUST;
@@ -544,17 +555,17 @@ void Thrust_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RTHRUST_PW -= 30;
-					LTHRUST_PW += 30;
+					RTHRUST_PW -= 30; //decreases right motor by 30
+					LTHRUST_PW += 30; //increases left motor by 30
 				}
 				else if (value==2)
 				{
-					RTHRUST_PW += 30;
-					LTHRUST_PW -= 30;
+					RTHRUST_PW += 30; //increases right motor by 30
+					LTHRUST_PW -= 30; //decreases left motor by 30
 				}
 				else if (value == 3)
 				{
-					times++;
+					times++;          //saves right motor pw as nuetral value
 					value =0;
 					st=0;
 					PW_NUET_THRUST = RTHRUST_PW;
@@ -564,6 +575,7 @@ void Thrust_cal(void)
 			{
 				if (value==0)
 				{
+					//begins alibration of max thrust
 					 lcd_clear();
 					 lcd_print("Now calibrating Max_PW");
 					 if (st == 0)
@@ -576,15 +588,17 @@ void Thrust_cal(void)
 				value = kpd_input(1);
 				if (value == 1)
 				{
-					RTHRUST_PW -= 30;
+					RTHRUST_PW -= 30; //decreases right motor by 30
+					lTHRUST_PW += 30; //increases left motor by 30
 				}
 				else if (value==2)
 				{
-					RTHRUST_PW += 30;
+					RTHRUST_PW += 30; //increases right motor by 30
+					LTHRUST_PW -= 30; //decreases left motor by 30
 				}
 				else if (value == 3)
 				{
-					PW_MAX_THRUST = RTHRUST_PW;
+					PW_MAX_THRUST = RTHRUST_PW; //stores right motor pw as max value
 					LTHRUST_PW =PW_NUET_THRUST;
 					RTHRUST_PW =PW_NUET_THRUST;
 				}
