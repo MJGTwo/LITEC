@@ -5,7 +5,7 @@ Section 03
 Side B
 Date: 04/23/15
 
-The goal of the code is to contorl a blimp.
+The goal of the code is to contorl a blimp. With style!
 
 */
 
