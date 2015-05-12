@@ -59,8 +59,6 @@ unsigned int SERVO_MAX= 3503;  //max forward speed pw
 unsigned int SERVO_MIN= 2028;  //max reverse speed pw
 unsigned int DRV_PW;           //variable pulsewidth to control speed
 unsigned int STR_PW;           //variable pulsewidth to controll steering
-unsigned char new_accels = 0; // flag for count of accel timing
-unsigned char new_lcd = 0;    // flag for count of LCD timing
 unsigned int range;
 unsigned int count;           // overflow count for acceleration
 unsigned char ks, kdy,kdx, ki;
@@ -114,13 +112,9 @@ void main(void)
 		set_servo_PWM(); // set the servo PWM
 		set_drive_PWM(); // set drive PWM
 		printf("\r\n%u,\t%d,\t%d,\t%u,\t%u",count,(gx+ xoff),(gy+ yoff),DRV_PW,STR_PW);
-			//updates current values for x and y accelerations and drive and steering PWM
-		new_accels = 0;
 		if (count % 15 == 0) // enough overflow to write to LCD
 		{
-			updateLCD(); // display values
-			new_lcd = 0;
-	
+			updateLCD(); // display values	
 		}
 	}
 }
