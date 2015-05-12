@@ -112,11 +112,6 @@ void main(void)
 		set_servo_PWM(); // set the servo PWM
 		set_drive_PWM(); // set drive PWM
 		printf("\r\n%u,\t%d,\t%d,\t%u,\t%u",count,(gx+ xoff),(gy+ yoff),DRV_PW,STR_PW);
-<<<<<<< HEAD
-=======
-			//updates current values for x and y accelerations and drive and steering PWM
-		new_accels = 0;
->>>>>>> origin/dev
 		if (count % 15 == 0) // enough overflow to write to LCD
 		{
 			updateLCD(); // display values	
